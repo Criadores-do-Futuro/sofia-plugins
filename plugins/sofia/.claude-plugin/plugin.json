@@ -1,0 +1,22 @@
+{
+  "name": "sofia",
+  "description": "Plugin inteligente para pesquisa de vídeos virais e escrita de roteiros, guiado por princípios de Psicologia Cognitiva do Engajamento.",
+  "version": "3.10.1",
+  "author": {
+    "name": "bento-dev-ia"
+  },
+  "repository": "https://github.com/bento-dev-ia/sofia-plugins",
+  "license": "LicenseRef-Proprietary",
+  "homepage": "https://github.com/bento-dev-ia/sofia-plugins#readme",
+  "keywords": [
+    "roteiro",
+    "viral",
+    "engajamento",
+    "conteudo",
+    "psicologia-cognitiva",
+    "video",
+    "instagram",
+    "youtube",
+    "tiktok"
+  ]
+}

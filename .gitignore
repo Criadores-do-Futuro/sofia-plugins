@@ -1,0 +1,25 @@
+# Instruções e índices de assistentes de IA da máquina de quem programa
+.claude/
+CLAUDE.md
+AGENTS.md
+GEMINI.md
+.cursor*
+.aider*
+.gitnexus/
+
+# Configuração local e segredos
+config.yaml
+*.local.*
+.env
+.env.*
+
+# Saídas de trabalho do usuário
+estilos/
+saida/
+output/
+*.mp4
+*.mov
+*.zip
+
+# Sistema
+.DS_Store

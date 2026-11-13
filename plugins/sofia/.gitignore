@@ -1,0 +1,9 @@
+.DS_Store
+node_modules/
+sofia-plugin.zip
+.env
+chaves.env
+config.yaml
+CLAUDE.md
+AGENTS.md
+GEMINI.md

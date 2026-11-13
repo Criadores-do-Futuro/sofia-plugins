@@ -1,0 +1,39 @@
+{
+  "name": "sofia-plugins",
+  "description": "Sofia, a estrategista de roteiros para vídeos curtos, em português, espanhol e inglês.",
+  "owner": {
+    "name": "bento-dev-ia"
+  },
+  "plugins": [
+    {
+      "name": "sofia",
+      "source": "./plugins/sofia",
+      "version": "3.10.1",
+      "description": "Plugin inteligente para pesquisa de vídeos virais e escrita de roteiros, guiado por princípios de Psicologia Cognitiva do Engajamento.",
+      "author": {
+        "name": "srbentostk"
+      },
+      "keywords": ["português", "roteiro", "viral", "video"]
+    },
+    {
+      "name": "sofia-latam",
+      "source": "./plugins/sofia-latam",
+      "version": "1.0.0",
+      "description": "Analiza videos de TikTok, Instagram y YouTube, explica por qué funcionan y crea o mejora guiones.",
+      "author": {
+        "name": "srbentostk"
+      },
+      "keywords": ["español", "guion", "viral", "video"]
+    },
+    {
+      "name": "sofia-english",
+      "source": "./plugins/sofia-english",
+      "version": "1.0.4",
+      "description": "Sophia reviews, analyzes, writes and rewrites short-form video scripts in American English using the CDF method and the creator's own voice.",
+      "author": {
+        "name": "Alef Marques"
+      },
+      "keywords": ["english", "scripts", "short-form video", "CDF"]
+    }
+  ]
+}
