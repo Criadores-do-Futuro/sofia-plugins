@@ -51,8 +51,8 @@
       ]
     },
     {
-      "name": "cdf-equipe",
-      "source": "./plugins/cdf-equipe",
+      "name": "sofia-interna",
+      "source": "./plugins/sofia-interna",
       "version": "0.1.0",
       "description": "A Sofia interna da equipe da Criadores do Futuro: liga o Claude ao console da plataforma de desafios e traz as rotinas de gestão de comunidade (avisos, insights do Discord, demandas, depoimentos).",
       "author": {

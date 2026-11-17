@@ -1,4 +1,4 @@
-# cdf-equipe
+# Sofia Interna
 
 A Sofia interna da equipe da Criadores do Futuro. O plugin liga o Claude ao console da
 plataforma de desafios pelo MCP e traz as skills da gestão de comunidade.
@@ -7,10 +7,10 @@ plataforma de desafios pelo MCP e traz as skills da gestão de comunidade.
 
 ```
 /plugin marketplace add bento-dev-ia/sofia-plugins
-/plugin install cdf-equipe@sofia-plugins
+/plugin install sofia-interna@sofia-plugins
 ```
 
-Na primeira vez que o Claude usar o conector `cdf-equipe`, ele abre o login da plataforma
+Na primeira vez que o Claude usar o conector `sofia-interna`, ele abre o login da plataforma
 (OAuth). Entre com a conta da equipe. Ninguém cola chave nem token.
 
 ## Endereço do MCP

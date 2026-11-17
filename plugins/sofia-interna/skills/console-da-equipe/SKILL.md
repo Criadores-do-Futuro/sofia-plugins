@@ -1,12 +1,12 @@
 ---
 name: console-da-equipe
-description: "Explica o console da equipe da Criadores do Futuro, os cargos (admin, analista, gestor de comunidade, editor), os mercados (BR, LATAM, EN) e a regra de operação: a máquina prepara, uma pessoa aprova. Use no começo de qualquer trabalho da equipe com o console ou com o MCP cdf-equipe, e quando alguém disser 'o que eu posso fazer aqui?', 'qual é o meu cargo?', 'quais mercados eu enxergo?', 'como o console funciona?' ou 'por que não aparece essa ferramenta?'."
+description: "Explica o console da equipe da Criadores do Futuro, os cargos (admin, analista, gestor de comunidade, editor), os mercados (BR, LATAM, EN) e a regra de operação: a máquina prepara, uma pessoa aprova. Use no começo de qualquer trabalho da equipe com o console ou com o MCP sofia-interna, e quando alguém disser 'o que eu posso fazer aqui?', 'qual é o meu cargo?', 'quais mercados eu enxergo?', 'como o console funciona?' ou 'por que não aparece essa ferramenta?'."
 ---
 
 # Console da equipe
 
 O console é o lugar único da equipe da Criadores do Futuro para operar as comunidades de
-três mercados. Você acessa o console pelo MCP `cdf-equipe`, com as mesmas regras que a
+três mercados. Você acessa o console pelo MCP `sofia-interna`, com as mesmas regras que a
 pessoa teria na tela.
 
 Cada mercado tem a sua base. O BR fica no Firebase nacional; LATAM e EN, no internacional.

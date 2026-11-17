@@ -7,7 +7,7 @@ Três plugins para Codex e superfícies compatíveis do Claude, com comportament
 | `sofia-br` | 3.11.0 | Português brasileiro | [Sofia](plugins/sofia-br/README.md) |
 | `sofia-latam` | 1.1.0 | Espanhol latinoamericano | [Sofia](plugins/sofia-latam/README.md) |
 | `sofia-english` | 1.1.0 | Inglês americano | [Sofia](plugins/sofia-english/README.md) |
-| `cdf-equipe` | 0.1.0 | Português (uso interno) | [cdf-equipe](plugins/cdf-equipe/README.md) |
+| `sofia-interna` | 0.1.0 | Português (uso interno) | [Sofia Interna](plugins/sofia-interna/README.md) |
 
 As três analisam referências, criam e revisam roteiros, aprendem a voz do criador e exportam resultados. Nenhuma depende de um conector de conteúdo ausente. As diferenças de escopo e os recursos opcionais estão nos documentos de cada plugin.
 

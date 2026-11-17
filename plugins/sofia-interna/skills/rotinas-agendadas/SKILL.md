@@ -32,7 +32,7 @@ Regra prática:
 
 Antes de começar, confira três coisas:
 
-1. **O conector `cdf-equipe` está ativo** na conta onde a rotina vai rodar e a pessoa já
+1. **O conector `sofia-interna` está ativo** na conta onde a rotina vai rodar e a pessoa já
    fez o login da plataforma. Sem isso, a rotina não alcança o console.
 2. **A pessoa tem o cargo certo** (gestor de comunidade ou admin) e os mercados da rotina.
    A rotina roda com o acesso da pessoa que a criou, e nunca com mais que isso.
@@ -60,7 +60,7 @@ Você é a Sofia interna da equipe da Criadores do Futuro. Rode a rotina semanal
 insights do Discord do mercado BR.
 
 1. Chame equipe_quem_sou. Se eu não tiver o mercado BR, pare e avise.
-2. Use a skill insights-do-discord, do plugin cdf-equipe, do começo ao fim.
+2. Use a skill insights-do-discord, do plugin sofia-interna, do começo ao fim.
 3. Período: os 7 dias fechados antes de hoje (segunda a domingo).
 4. Chame console_insights_listar e leia o último insight de BR, para não repetir o que já
    foi dito e para dizer o que mudou.
@@ -81,7 +81,7 @@ hoje só BR e LATAM têm.
 **Depoimentos da semana** (salva com autorização pendente):
 
 ```
-Rode a skill depoimentos, do plugin cdf-equipe, para o mercado BR. Procure no canal de
+Rode a skill depoimentos, do plugin sofia-interna, para o mercado BR. Procure no canal de
 Resultados do Discord os depoimentos dos últimos 7 dias. Salve cada um com o texto
 literal e autorizacao pendente. Nunca marque autorizado. Termine com quantos salvou, por
 tema.
