@@ -29,9 +29,9 @@
         ],
         "logo": "./assets/icon.png",
         "composerIcon": "./assets/icon.png",
-        "privacyPolicyURL": "https://plataforma.academiacriadoresdofuturo.com.br/sofia/privacy",
-        "termsOfServiceURL": "https://plataforma.academiacriadoresdofuturo.com.br/sofia/terms",
-        "supportURL": "https://plataforma.academiacriadoresdofuturo.com.br/sofia/support"
+        "privacyPolicyURL": "https://plataforma.academiacriadoresdofuturo.com.br/sofia-english/privacy",
+        "termsOfServiceURL": "https://plataforma.academiacriadoresdofuturo.com.br/sofia-english/terms",
+        "supportURL": "https://plataforma.academiacriadoresdofuturo.com.br/sofia-english/support"
       },
       "requires_local_executor": true,
       "review": {
