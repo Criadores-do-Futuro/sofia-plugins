@@ -7,8 +7,28 @@ Três plugins para Codex e superfícies compatíveis do Claude, com comportament
 | `sofia-br` | 3.11.0 | Português brasileiro | [Sofia](plugins/sofia-br/README.md) |
 | `sofia-latam` | 1.1.0 | Espanhol latinoamericano | [Sofia](plugins/sofia-latam/README.md) |
 | `sofia-english` | 1.1.0 | Inglês americano | [Sofia](plugins/sofia-english/README.md) |
+| `sofia-estrategista-editora` | 0.2.4 | Português brasileiro | [Sofia Estrategista](plugins/sofia-estrategista-editora/README.md) |
 
-As três analisam referências, criam e revisam roteiros, aprendem a voz do criador e exportam resultados. Nenhuma depende de um conector de conteúdo ausente. As diferenças de escopo e os recursos opcionais estão nos documentos de cada plugin.
+As três primeiras (`sofia-br`, `sofia-latam` e `sofia-english`) analisam referências, criam e revisam roteiros, aprendem a voz do criador e exportam resultados. Nenhuma depende de um conector de conteúdo ausente. As diferenças de escopo e os recursos opcionais estão nos documentos de cada plugin.
+
+## Sofia Estrategista (a mais completa)
+
+A `sofia-estrategista-editora` aparece para as pessoas como **Sofia Estrategista**. É a Sofia do curso Criador Estrategista: faz ideia, pesquisa, roteiro e análise pelo método do curso e também edita vídeo (CapCut, DaVinci Resolve, motion, finalização e publicação).
+
+- **O que é restrito vem pelo conector.** O núcleo do método que está nos arquivos é o mesmo das Sofias públicas. Os exemplos analisados, as instruções completas de roteiro e crítica, o planejamento, o cérebro e a voz de cada aluno só chegam pelo MCP `sofia_metodo` e pelas outras ferramentas do conector, com login de aluno. A skill lê o conector primeiro e segue a descrição que vem do servidor.
+- **Fora do diretório público.** Ela leva scripts, fontes e modelos de motion que o diretório da Anthropic recusa de organização não verificada. Por isso o validador a confere à parte (`validate_complete`) e `tools/package_plugins.py` não gera ZIP dela. O ZIP para enviar em Personalizar › Plugins sai do repositório de origem (`scripts/empacotar.sh`) e fica na página Conector do site do curso.
+- **A cópia daqui não é editada aqui.** O repositório de origem é `bento-dev-ia/sofia-estrategista-editora`. Para atualizar esta pasta, use o comando abaixo e depois atualize a versão nos dois catálogos. Ele copia os mesmos arquivos que o ZIP leva.
+
+```sh
+tools/sincronizar_estrategista.sh CAMINHO_DO_CLONE_DE_SOFIA_ESTRATEGISTA_EDITORA
+```
+
+Para instalar pelo Claude Code:
+
+```sh
+claude plugin marketplace add bento-dev-ia/sofia-plugins
+claude plugin install sofia-estrategista-editora@sofia-plugins
+```
 
 ## Formatos de pacote
 
@@ -21,9 +41,9 @@ claude plugin marketplace add bento-dev-ia/sofia-plugins
 claude plugin install sofia-br@sofia-plugins
 ```
 
-Para Codex, adicione o repositório pelo gerenciador de plugins ou pelo comando `codex plugin marketplace add`, conforme as opções da versão instalada. O repositório é privado; acesso a ele não foi alterado.
+Para Codex, adicione o repositório pelo gerenciador de plugins ou pelo comando `codex plugin marketplace add`, conforme as opções da versão instalada.
 
-## Validar e gerar os três pacotes
+## Validar e gerar os pacotes públicos
 
 ```sh
 python3 -m pip install -r requirements-validation.txt
@@ -32,7 +52,7 @@ python3 -m unittest discover -s tests -v
 python3 tools/package_plugins.py
 ```
 
-Os ZIPs e seu inventário são gerados em `dist/`, fora do controle de versão. O empacotador extrai e valida cada ZIP final. Para conferir os requisitos de listagem pública:
+O validador confere as quatro Sofias, a Sofia Estrategista com as checagens próprias dela. Os ZIPs e seu inventário são gerados em `dist/`, fora do controle de versão, só para as três públicas. O empacotador extrai e valida cada ZIP final. Para conferir os requisitos de listagem pública:
 
 ```sh
 python3 tools/validate_plugins.py --submission

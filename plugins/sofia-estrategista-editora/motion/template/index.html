@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="pt-BR"><meta charset="utf-8"><title>Revisão de motion</title>
+<style>body{background:#191919;color:white;font:16px system-ui;text-align:center} canvas{display:block;max-width:90vw;max-height:75vh;margin:1em auto;background:#000}input{width:70vw}body.render{margin:0;background:transparent}body.render canvas{margin:0;max-width:none;max-height:none}body.render #controls{display:none}</style>
+<canvas id="video"></canvas><div id="controls"><button id="play">▶ / ❚❚</button> <input id="seek" type="range" min="0" value="0" step="0.001"> <span id="time"></span></div>
+<script src="animation.js"></script><script>
+(async () => {
+  const config = await (await fetch('motion.json')).json();
+  const canvas = document.querySelector('canvas'); canvas.width=config.width; canvas.height=config.height;
+  const ctx=canvas.getContext('2d'); const slider=document.querySelector('#seek'); slider.max=config.duration;
+  window.setMotionTime = async (t) => { ctx.clearRect(0,0,canvas.width,canvas.height); await window.drawMotion(ctx,t,canvas.width,canvas.height); slider.value=t; document.querySelector('#time').textContent=t.toFixed(2)+'s'; };
+  if(new URLSearchParams(location.search).has('render')) document.body.classList.add('render');
+  slider.oninput=()=>window.setMotionTime(Number(slider.value));
+  let playing=false, previous=0;
+  document.querySelector('#play').onclick=()=>{playing=!playing;previous=0;};
+  function tick(now){ if(playing){if(previous) {let next=Number(slider.value)+(now-previous)/1000; if(next>=config.duration){next=0;playing=false;} window.setMotionTime(next);} previous=now;} requestAnimationFrame(tick);}
+  await window.setMotionTime(0); window.motionReady=true;requestAnimationFrame(tick);
+})().catch(error=>{window.motionError=String(error);console.error(error)});
+</script></html>

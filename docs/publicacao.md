@@ -1,6 +1,6 @@
 # Preparação de publicação das três Sofias
 
-Revisão de 17 de novembro de 2026. Escopo: `sofia`, `sofia-latam` e `sofia-english` deste repositório. Sofia Estrategista Editora e Eu do Futuro são produtos distintos e seus pacotes não foram alterados.
+Revisão de 17 de novembro de 2026. Escopo: `sofia`, `sofia-latam` e `sofia-english` deste repositório. A Sofia Estrategista (`sofia-estrategista-editora`), que também está neste repositório, e o Eu do Futuro são produtos distintos e ficam fora desta revisão. A publicação da Sofia Estrategista está descrita no README da raiz.
 
 ## O que foi corrigido
 

@@ -1,0 +1,30 @@
+{
+  "name": "sofia-estrategista-editora",
+  "displayName": "Sofia Estrategista",
+  "version": "0.2.4",
+  "description": "A Sofia Estrategista que também edita: ideia, pesquisa com fonte, formato, estrutura, hook, roteiro, grifos e análise pelo método do curso, mais edição de vídeo direto na timeline do CapCut ou do DaVinci Resolve, aprendizado de estilo a partir de um vídeo já editado, decupagem, motion graphics, finalização e preparo da publicação. Com o conector ligado, lê e salva no planejamento do aluno no site.",
+  "author": {
+    "name": "Criadores do Futuro",
+    "email": "co.criadoresdofuturo@gmail.com",
+    "url": "https://plataforma.academiacriadoresdofuturo.com.br/sofia-editora/suporte"
+  },
+  "homepage": "https://plataforma.criadorestrategista.com.br/kit",
+  "icon": "./assets/icon.png",
+  "supportUrl": "https://plataforma.academiacriadoresdofuturo.com.br/sofia-editora/suporte",
+  "privacyPolicyUrl": "https://plataforma.academiacriadoresdofuturo.com.br/sofia-editora/privacidade",
+  "termsOfServiceUrl": "https://plataforma.academiacriadoresdofuturo.com.br/sofia-editora/termos",
+  "repository": "https://github.com/bento-dev-ia/sofia-estrategista-editora",
+  "license": "LicenseRef-Proprietary",
+  "types": "./types/index.d.ts",
+  "keywords": [
+    "roteiro",
+    "edicao de video",
+    "capcut",
+    "davinci resolve",
+    "motion graphics",
+    "video curto",
+    "reels",
+    "tiktok",
+    "criador estrategista"
+  ]
+}

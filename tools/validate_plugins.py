@@ -16,6 +16,19 @@ from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[1]
 NAMES = ("sofia-br", "sofia-latam", "sofia-english")
+# Plugins de uso interno da equipe não ficam neste repositório público: a Sofia Interna
+# vive no repositório privado Criadores-do-Futuro/sofia-interna. A lista fica vazia de
+# propósito; os testes conferem que nenhum interno entra no pacote público.
+INTERNAL: tuple[str, ...] = ()
+# A Sofia Estrategista, a mais completa: além do método, edita vídeo, então leva scripts,
+# fontes e modelos que o diretório público não aceita de organização não verificada.
+# Ela é distribuída pelo próprio .zip (enviado em Personalizar > Plugins) e por este
+# marketplace. A cópia vem do repositório de origem por tools/sincronizar_estrategista.sh;
+# o conteúdo restrito do método fica no conector (MCP), não nos arquivos.
+COMPLETE = ("sofia-estrategista-editora",)
+ALL_NAMES = NAMES + INTERNAL + COMPLETE
+# O envio de plugin no claude.ai recusa o .zip inteiro se um caminho tiver outro caractere.
+PATH_CHARS = re.compile(r"[A-Za-z0-9._/-]+")
 SCHEMA = json.loads((ROOT / "tools/schemas/plugin.schema.json").read_text())
 CATEGORIES = {"Business & Operations", "Communication", "Creativity", "Data & Analytics",
               "Developer Tools", "Education & Research", "Entertainment", "Finance",
@@ -143,7 +156,9 @@ def validate_plugin(folder: Path) -> dict:
         check(0 < len(interface["shortDescription"]) <= 30, "Subtítulo inválido")
         check(0 < len(interface["longDescription"]) <= 4000, "Descrição longa inválida")
         check(interface["category"] in CATEGORIES, "Categoria não suportada")
-        check(ext.get("requires_local_executor") is True, "Execução local precisa ser declarada")
+        internal = folder.name in INTERNAL
+        if not internal:
+            check(ext.get("requires_local_executor") is True, "Execução local precisa ser declarada")
         prompts = interface["defaultPrompt"]
         check(isinstance(prompts, list) and 1 <= len(prompts) <= 3, "Quantidade de sugestões inválida")
         check(all(isinstance(p, str) and p.strip() and len(p) <= 128 and "\n" not in p for p in prompts),
@@ -160,7 +175,8 @@ def validate_plugin(folder: Path) -> dict:
         for field in URL_FIELDS:
             url = interface.get(field)
             if not url:
-                gaps.append(field)
+                if not internal:
+                    gaps.append(field)
             else:
                 check(url.startswith("https://") and len(url) <= 1024, f"Endereço inválido: {field}")
         for field in ("logo", "composerIcon"):
@@ -235,15 +251,73 @@ def validate_plugin(folder: Path) -> dict:
             "structure_valid": not errors, "submission_metadata_complete": not errors and not gaps}
 
 
+def validate_complete(folder: Path) -> dict:
+    """Checagens da Sofia completa: as mesmas de estrutura, sem as regras do diretório público."""
+    errors: list[str] = []
+    skills: list[str] = []
+
+    def check(condition: bool, message: str) -> None:
+        if not condition:
+            errors.append(message)
+
+    try:
+        claude = json.loads((folder / ".claude-plugin/plugin.json").read_text())
+        codex = json.loads((folder / ".codex-plugin/plugin.json").read_text())
+        check(claude["name"] == folder.name and codex["name"] == folder.name, "Identidade diferente da pasta")
+        check(bool(re.fullmatch(r"\d+\.\d+\.\d+", claude["version"])), "Versão semântica inválida")
+        check(codex["version"] == claude["version"], "Versões diferentes entre Claude e Codex")
+        check(claude.get("displayName") == codex["interface"]["displayName"] == "Sofia Estrategista",
+              "Nome público diferente de Sofia Estrategista")
+        check(codex.get("skills") == "./skills/", "Pasta de habilidades Codex inválida")
+        servers = json.loads((folder / ".mcp.json").read_text())["mcpServers"]
+        check(bool(servers) and all(s.get("url", "").startswith("https://") for s in servers.values()),
+              "Conector precisa ser https")
+        check((folder / "README.md").exists() and (folder / "LICENSE").exists(), "README ou LICENSE ausente")
+        for path in folder.rglob("*"):
+            rel = path.relative_to(folder)
+            check(not path.is_symlink(), f"Link simbólico: {rel}")
+            check(path.name not in {"node_modules", ".env", ".DS_Store", "__pycache__"}, f"Arquivo indevido: {rel}")
+            check(bool(PATH_CHARS.fullmatch(str(rel))), f"Caminho que o envio recusa: {rel}")
+            if not path.is_file():
+                continue
+            if path.suffix == ".json":
+                json.loads(path.read_text())
+            if path.suffix in {".yaml", ".yml"}:
+                yaml.safe_load(path.read_text())
+            if path.suffix == ".py":
+                ast.parse(path.read_text(), filename=str(path))
+            if path.suffix in {".md", ".json", ".yaml", ".py", ".sh", ".mjs", ".ts", ".tsx"}:
+                text = path.read_text(errors="replace")
+                check(not re.search(r"-----BEGIN (?:RSA |EC )?PRIVATE KEY-----|\bAIza[\w-]{30,}|\bsk-[A-Za-z0-9]{20,}"
+                                    r"|\bghp_[A-Za-z0-9]{30,}", text),
+                      f"Possível credencial em {rel}; valor oculto")
+        for path in sorted((folder / "skills").glob("*/SKILL.md")):
+            text = path.read_text()
+            check(text.startswith("---\n"), "Habilidade sem cabeçalho YAML")
+            front = yaml.safe_load(text.split("---", 2)[1])
+            check(front["name"] == path.parent.name and front["name"] not in skills, "Nome de habilidade inválido")
+            check(isinstance(front["description"], str) and bool(front["description"].strip()), "Descrição ausente")
+            skills.append(front["name"])
+        check(bool(skills), "Pacote sem habilidade utilizável")
+    except (KeyError, ValueError, OSError, TypeError, yaml.YAMLError) as error:
+        errors.append(str(error)[:600])
+    return {"plugin": folder.name, "errors": errors, "missing_listing_fields": [], "skills": skills,
+            "structure_valid": not errors, "submission_metadata_complete": False}
+
+
 def validate_all(root: Path = ROOT) -> list[dict]:
-    reports = [validate_plugin(root / "plugins" / name) for name in NAMES]
+    reports = [(validate_complete if name in COMPLETE else validate_plugin)(root / "plugins" / name)
+               for name in ALL_NAMES]
     claude = json.loads((root / ".claude-plugin/marketplace.json").read_text())
     codex = json.loads((root / ".agents/plugins/marketplace.json").read_text())
-    if [p["name"] for p in claude["plugins"]] != list(NAMES) or [p["name"] for p in codex["plugins"]] != list(NAMES):
-        raise ValueError("Catálogos não contêm as três identidades esperadas")
+    if [p["name"] for p in claude["plugins"]] != list(ALL_NAMES) or [p["name"] for p in codex["plugins"]] != list(ALL_NAMES):
+        raise ValueError("Catálogos não contêm as identidades esperadas (três públicas e a completa)")
     for entry, other in zip(claude["plugins"], codex["plugins"]):
         folder = root / "plugins" / entry["name"]
-        manifest = listing(entry["name"])
+        if entry["name"] in COMPLETE:
+            manifest = json.loads((folder / ".claude-plugin/plugin.json").read_text())
+        else:
+            manifest = listing(entry["name"])
         if any(entry[key] != manifest[key] for key in ("version", "description", "author")):
             raise ValueError("Catálogo Claude divergente")
         if (root / other["source"]["path"]).resolve() != folder.resolve():
@@ -257,7 +331,7 @@ if __name__ == "__main__":
     parser.add_argument("--fix", action="store_true", help="Aplica as correções seguras antes de validar")
     args = parser.parse_args()
     if args.fix:
-        for name in NAMES:
+        for name in NAMES + INTERNAL:  # a completa é cópia da origem: corrige-se lá
             for change in autofix(ROOT / "plugins" / name):
                 print(f"[{name}] corrigido: {change}")
     reports = validate_all()
