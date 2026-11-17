@@ -21,6 +21,13 @@ CATEGORIES = {"Business & Operations", "Communication", "Creativity", "Data & An
               "Developer Tools", "Education & Research", "Entertainment", "Finance",
               "Healthcare", "Other", "Productivity", "Scientific Research", "Security", "Travel"}
 URL_FIELDS = ("websiteURL", "supportURL", "privacyPolicyURL", "termsOfServiceURL")
+# Manifesto agent-plugins (listagem do Codex) fica fora da pasta do plugin:
+# o diretório da Anthropic avisa quando o encontra dentro do pacote.
+LISTINGS = ROOT / "listings"
+
+
+def listing(name: str) -> dict:
+    return json.loads((LISTINGS / f"{name}.json").read_text())
 
 
 def contained(base: Path, target: str) -> Path:
@@ -28,6 +35,88 @@ def contained(base: Path, target: str) -> Path:
     if not result.is_relative_to(base.resolve()):
         raise ValueError(f"Caminho fora do pacote: {target}")
     return result
+
+
+# Regras que o diretório da Anthropic aplica a organizações não verificadas.
+# Cada uma veio de um bloqueio ou aviso real do portal; acrescente as novas aqui.
+PORTAL_SUFFIXES = {".md", ".txt", ".json", ".yaml", ".yml", ".png", ".jpg", ".jpeg", ".gif", ".webp", ".ico"}
+PORTAL_NAMES = {"LICENSE", ".gitignore"}
+PORTAL_FORBIDDEN = {"package.json", "package-lock.json", "yarn.lock", "pnpm-lock.yaml", "bun.lockb", ".npmrc",
+                    "requirements.txt", "pyproject.toml", "Pipfile", "Pipfile.lock", "poetry.lock"}
+IMAGE_SUFFIXES = {".png", ".jpg", ".jpeg", ".gif", ".webp", ".ico"}
+CREDENTIAL_READ = re.compile(r"process\.env|os\.environ|getenv\(|\$\{?[A-Z][A-Z0-9_]*_(?:KEY|TOKEN|SECRET)\b"
+                             r"|\b[A-Z][A-Z0-9_]*_(?:API_KEY|TOKEN|SECRET)\b")
+FRONT_LINE = re.compile(r"[A-Za-z_][\w-]*:( .*)?|- .*")
+
+
+def frontmatter_lines(text: str) -> list[str] | None:
+    if not text.startswith("---\n"):
+        return None
+    end = text.find("\n---", 4)
+    return text[4:end].split("\n") if end != -1 else None
+
+
+def fix_frontmatter(text: str) -> str:
+    """Junta continuações soltas na linha da chave e tira espaços no fim (sem mudar o valor YAML)."""
+    lines = frontmatter_lines(text)
+    if lines is None:
+        return text
+    out: list[str] = []
+    for line in lines:
+        line = line.replace("\t", "  ").rstrip()
+        block = out and re.search(r":\s*[|>][-+]?$", out[-1])
+        nested = out and out[-1].endswith(":")
+        if line.startswith(" ") and out and not block and not nested and not out[-1].startswith(" "):
+            out[-1] = out[-1] + " " + line.strip()
+        else:
+            out.append(line)
+    return "---\n" + "\n".join(out) + text[4 + len("\n".join(lines)):]
+
+
+def portal_issues(folder: Path) -> list[str]:
+    issues: list[str] = []
+    if (folder / "plugin.json").exists():
+        issues.append("plugin.json agent-plugins na raiz do pacote (o portal avisa e o ignora)")
+    files = [p for p in folder.rglob("*") if p.is_file()]
+    texts = {p: p.read_text(errors="replace") for p in files if p.suffix in {".md", ".json", ".yaml", ".yml", ".txt"}}
+    corpus = "\n".join(texts.values())
+    for path in files:
+        rel = str(path.relative_to(folder))
+        if path.name in PORTAL_FORBIDDEN:
+            issues.append(f"Arquivo de gerenciador de pacotes: {rel}")
+        elif path.name not in PORTAL_NAMES and path.suffix.lower() not in PORTAL_SUFFIXES:
+            issues.append(f"Tipo de arquivo recusado: {rel}")
+        if path.read_bytes()[:2] == b"#!":
+            issues.append(f"Arquivo executável (#!): {rel}")
+        if path.suffix.lower() in IMAGE_SUFFIXES and rel not in corpus and f"./{rel}" not in corpus:
+            issues.append(f"Imagem sem uso no pacote: {rel}")
+    for path, text in texts.items():
+        rel = str(path.relative_to(folder))
+        if CREDENTIAL_READ.search(text):
+            issues.append(f"Instrução de ler credencial da máquina: {rel}")
+        if path.name == "SKILL.md":
+            lines = frontmatter_lines(text) or []
+            prev = ""
+            for line in lines:
+                bad = "\t" in line or line != line.rstrip()
+                cont = line.startswith(" ") and not re.search(r":\s*[|>][-+]?$", prev) and not prev.endswith(":")
+                if bad or (line and not line.startswith(" ") and not FRONT_LINE.fullmatch(line)) or (cont and not prev.startswith(" ")):
+                    issues.append(f"Frontmatter fora do formato chave: valor em uma linha: {rel}")
+                    break
+                prev = line
+    return issues
+
+
+def autofix(folder: Path) -> list[str]:
+    """Correções seguras e mecânicas; o resto continua como erro para revisão."""
+    done: list[str] = []
+    for path in folder.rglob("SKILL.md"):
+        text = path.read_text()
+        fixed = fix_frontmatter(text)
+        if fixed != text:
+            path.write_text(fixed)
+            done.append(f"Frontmatter em linhas simples: {path.relative_to(folder)}")
+    return done
 
 
 def validate_plugin(folder: Path) -> dict:
@@ -40,7 +129,8 @@ def validate_plugin(folder: Path) -> dict:
             errors.append(message)
 
     try:
-        manifest = json.loads((folder / "plugin.json").read_text())
+        manifest = listing(folder.name)
+        errors.extend("Portal: " + issue for issue in portal_issues(folder))
         jsonschema.validate(manifest, SCHEMA)
         check(manifest["name"] == folder.name, "Identidade diferente da pasta")
         check(bool(re.fullmatch(r"\d+\.\d+\.\d+", manifest["version"])), "Versão semântica inválida")
@@ -150,7 +240,7 @@ def validate_all(root: Path = ROOT) -> list[dict]:
         raise ValueError("Catálogos não contêm as três identidades esperadas")
     for entry, other in zip(claude["plugins"], codex["plugins"]):
         folder = root / "plugins" / entry["name"]
-        manifest = json.loads((folder / "plugin.json").read_text())
+        manifest = listing(entry["name"])
         if any(entry[key] != manifest[key] for key in ("version", "description", "author")):
             raise ValueError("Catálogo Claude divergente")
         if (root / other["source"]["path"]).resolve() != folder.resolve():
@@ -161,7 +251,12 @@ def validate_all(root: Path = ROOT) -> list[dict]:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--submission", action="store_true", help="Falha também se faltarem campos da listagem")
+    parser.add_argument("--fix", action="store_true", help="Aplica as correções seguras antes de validar")
     args = parser.parse_args()
+    if args.fix:
+        for name in NAMES:
+            for change in autofix(ROOT / "plugins" / name):
+                print(f"[{name}] corrigido: {change}")
     reports = validate_all()
     print(json.dumps(reports, ensure_ascii=False, indent=2))
     raise SystemExit(any(r["errors"] or (args.submission and r["missing_listing_fields"]) for r in reports))

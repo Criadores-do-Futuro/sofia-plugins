@@ -23,7 +23,7 @@ def package(output: Path, require_submission: bool = False) -> list[dict]:
         folder = ROOT / "plugins" / name
         if output.resolve().is_relative_to(folder.resolve()):
             raise ValueError("O ZIP deve ficar fora da pasta do plugin")
-        version = json.loads((folder / "plugin.json").read_text())["version"]
+        version = json.loads((folder / ".claude-plugin/plugin.json").read_text())["version"]
         path = output / f"{name}-{version}.zip"
         with zipfile.ZipFile(path, "w", zipfile.ZIP_DEFLATED) as archive:
             for source in sorted(folder.rglob("*")):

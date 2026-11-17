@@ -57,12 +57,44 @@ class PackageContractTests(unittest.TestCase):
                     self.assertIn(path.suffix.lower(), ALLOWED_SUFFIXES)
                     self.assertNotEqual(path.read_bytes()[:2], b"#!")
 
+    def test_portal_rules_catch_every_problem_the_directory_reported(self):
+        from validate_plugins import autofix, portal_issues
+        with tempfile.TemporaryDirectory() as temp:
+            dest = Path(temp) / "sofia-english"
+            shutil.copytree(ROOT / "plugins/sofia-english", dest)
+            self.assertEqual(portal_issues(dest), [])
+            (dest / "plugin.json").write_text("{}")
+            (dest / "scripts").mkdir()
+            (dest / "scripts/prepare.py").write_text("#!/usr/bin/env python3\n")
+            (dest / "templates").mkdir()
+            (dest / "templates/dashboard.html").write_text("<html></html>")
+            (dest / "package.json").write_text("{}")
+            shutil.copy(dest / "assets/icon.png", dest / ".claude-plugin/icon.png")
+            (dest / "setup.md").write_text("Read `GEMINI_API_KEY` from the environment.")
+            skill = dest / "skills/sofia-english/SKILL.md"
+            text = skill.read_text()
+            skill.write_text(text.replace("description: ", "description: wrapped\n  ", 1))
+            found = "\n".join(portal_issues(dest))
+            for expected in ("plugin.json agent-plugins", "prepare.py", "dashboard.html", "package.json",
+                             ".claude-plugin/icon.png", "setup.md", "Frontmatter"):
+                with self.subTest(expected=expected):
+                    self.assertIn(expected, found)
+            self.assertTrue(autofix(dest))
+            self.assertNotIn("Frontmatter", "\n".join(portal_issues(dest)))
+
+    def test_plugins_have_no_agent_plugins_manifest_or_unused_icon(self):
+        for name in NAMES:
+            with self.subTest(plugin=name):
+                folder = ROOT / "plugins" / name
+                self.assertFalse((folder / "plugin.json").exists())
+                self.assertFalse((folder / ".claude-plugin/icon.png").exists())
+
     def test_every_plugin_shows_the_same_name_to_people(self):
         import json
         for name in NAMES:
-            for manifest in ("plugin.json", ".codex-plugin/plugin.json"):
-                with self.subTest(plugin=name, manifest=manifest):
-                    data = json.loads((ROOT / "plugins" / name / manifest).read_text(encoding="utf-8"))
+            for manifest in (ROOT / "listings" / f"{name}.json", ROOT / "plugins" / name / ".codex-plugin/plugin.json"):
+                with self.subTest(plugin=name, manifest=manifest.name):
+                    data = json.loads(manifest.read_text(encoding="utf-8"))
                     display = data.get("displayName") or data.get("interface", {}).get("displayName")
                     if display is not None:
                         self.assertEqual(display, "Sofia")

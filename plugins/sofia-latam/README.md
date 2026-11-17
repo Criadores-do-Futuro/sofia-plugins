@@ -9,7 +9,7 @@ claude plugin marketplace add bento-dev-ia/sofia-plugins
 claude plugin install sofia-latam@sofia-plugins
 ```
 
-En Codex, usa el catálogo del repositorio en `.agents/plugins/marketplace.json`. `plugin.json` y `.codex-plugin/plugin.json` describen la misma versión. Para subir un paquete manualmente, utiliza el ZIP generado con `python3 tools/package_plugins.py` desde la raíz del repositorio.
+En Codex, usa el catálogo del repositorio en `.agents/plugins/marketplace.json`. `.claude-plugin/plugin.json` y `.codex-plugin/plugin.json` describen la misma versión. Para subir un paquete manualmente, utiliza el ZIP generado con `python3 tools/package_plugins.py` desde la raíz del repositorio.
 
 Pide analizar un video o una transcripción, escribir un guion, revisar un texto, aprender una voz o exportar resultados. La habilidad `sofia-latam` elige el flujo adecuado. Las respuestas y archivos generados están en español.
 
