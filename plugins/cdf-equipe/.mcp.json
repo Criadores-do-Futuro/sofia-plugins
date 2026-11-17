@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "cdf-equipe": {
+      "type": "http",
+      "url": "https://CONFIRMAR-ENDERECO-DA-PLATAFORMA/api/mcp"
+    }
+  }
+}
