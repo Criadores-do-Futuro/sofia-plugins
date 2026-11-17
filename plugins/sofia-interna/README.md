@@ -44,6 +44,12 @@ Este plugin é de uso interno. Ele fica no repositório privado `sofia-plugins` 
 do GitHub precisa ter sido convidada) e nunca é enviado ao diretório público da Anthropic
 nem ao da OpenAI.
 
+## Privacidade, termos e suporte
+
+- [Privacy — política de privacidade](https://plataforma.academiacriadoresdofuturo.com.br/sofia/privacidade)
+- [Terms — termos de uso](https://plataforma.academiacriadoresdofuturo.com.br/sofia/termos)
+- [Support — suporte](https://plataforma.academiacriadoresdofuturo.com.br/sofia/suporte)
+
 ## Como atualizar
 
 As ferramentas do MCP moram em outro repositório, o `desafiocdf-internacional`, na pasta
