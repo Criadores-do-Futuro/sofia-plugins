@@ -1,0 +1,16 @@
+{
+  "name": "sofia-br",
+  "description": "Pesquisa e analisa vídeos curtos, cria e revisa roteiros em português brasileiro, aprende a voz do criador e exporta análises. Usa referências incluídas no pacote e fatos fornecidos ou verificados. A preparação visual local exige FFmpeg e execução de comandos; a análise de texto funciona sem esses recursos. Serviços externos opcionais usam a conta da pessoa e só são acionados com autorização.",
+  "version": "3.11.0",
+  "author": {
+    "name": "Alef Marques"
+  },
+  "repository": "https://github.com/bento-dev-ia/sofia-plugins",
+  "license": "LicenseRef-Proprietary",
+  "keywords": [
+    "roteiro",
+    "vídeo",
+    "análise",
+    "português"
+  ]
+}

@@ -15,7 +15,7 @@ import yaml
 from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[1]
-NAMES = ("sofia", "sofia-latam", "sofia-english")
+NAMES = ("sofia-br", "sofia-latam", "sofia-english")
 SCHEMA = json.loads((ROOT / "tools/schemas/plugin.schema.json").read_text())
 CATEGORIES = {"Business & Operations", "Communication", "Creativity", "Data & Analytics",
               "Developer Tools", "Education & Research", "Entertainment", "Finance",

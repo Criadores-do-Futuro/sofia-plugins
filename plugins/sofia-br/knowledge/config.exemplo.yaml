@@ -1,0 +1,25 @@
+# Sofia 2.0 — Modelo de configuração
+#
+# Este arquivo é só um modelo. A configuração de verdade fica FORA da pasta do
+# plugin, em ~/.sofia/config.yaml (no Windows, %USERPROFILE%\.sofia\config.yaml).
+# A pasta do plugin é trocada a cada atualização, e o que estiver nela se perde.
+# Rode /sofia-br:setup para criar o arquivo.
+#
+# Chaves de API NÃO ficam neste arquivo nem na máquina para a Sofia ler.
+# Serviços opcionais (Apify, YouTube, Gemini) entram só por um conector oficial
+# instalado e autorizado pela pessoa. O yt-dlp funciona sem chave.
+
+sofia:
+  # Onde salvar análises e roteiros (pasta escolhida pela pessoa no setup)
+  output_path: ""            # ex.: ~/Sofia ou <seu vault do Obsidian>/Sofia
+  output_format: "obsidian"  # obsidian | markdown | json
+
+  # Ambiente
+  ambiente: ""               # claude-code | gemini | outro
+  setup_completo: false
+  data_setup: ""
+
+  # Preferências
+  idioma: "pt-BR"
+  max_comentarios: 20        # Quantos comentários extrair por vídeo
+  auto_aprender: false       # Salvar padrões automaticamente após análise

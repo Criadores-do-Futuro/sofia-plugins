@@ -4,9 +4,9 @@ Três plugins para Codex e superfícies compatíveis do Claude, com comportament
 
 | Plugin | Versão | Idioma | Documentação |
 |---|---|---|---|
-| `sofia` | 3.11.0 | Português brasileiro | [Sofia Português](plugins/sofia/README.md) |
-| `sofia-latam` | 1.1.0 | Espanhol latinoamericano | [Sofia LATAM](plugins/sofia-latam/README.md) |
-| `sofia-english` | 1.1.0 | Inglês americano | [Sophia English](plugins/sofia-english/README.md) |
+| `sofia-br` | 3.11.0 | Português brasileiro | [Sofia](plugins/sofia-br/README.md) |
+| `sofia-latam` | 1.1.0 | Espanhol latinoamericano | [Sofia](plugins/sofia-latam/README.md) |
+| `sofia-english` | 1.1.0 | Inglês americano | [Sofia](plugins/sofia-english/README.md) |
 
 As três analisam referências, criam e revisam roteiros, aprendem a voz do criador e exportam resultados. Nenhuma depende de um conector de conteúdo ausente. As diferenças de escopo e os recursos opcionais estão nos documentos de cada plugin.
 
@@ -18,7 +18,7 @@ O catálogo Claude fica em `.claude-plugin/marketplace.json`. O catálogo Codex 
 
 ```sh
 claude plugin marketplace add bento-dev-ia/sofia-plugins
-claude plugin install sofia@sofia-plugins
+claude plugin install sofia-br@sofia-plugins
 ```
 
 Para Codex, adicione o repositório pelo gerenciador de plugins ou pelo comando `codex plugin marketplace add`, conforme as opções da versão instalada. O repositório é privado; acesso a ele não foi alterado.

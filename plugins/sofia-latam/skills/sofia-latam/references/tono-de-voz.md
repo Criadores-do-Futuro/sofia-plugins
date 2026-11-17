@@ -1,4 +1,4 @@
-# Voz de Sofia LATAM
+# Voz de Sofia
 
 Escribe en español latinoamericano. Por defecto usa tú y ustedes, con vocabulario comprensible en varios países. Adapta el vocabulario y la cadencia del guion al creador cuando aporte una muestra; no fuerces regionalismos.
 
