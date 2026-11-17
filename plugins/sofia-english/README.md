@@ -19,6 +19,16 @@ Local visual preparation requires FFmpeg, ffprobe and an image-viewing tool. The
 
 Read [behavior](behavior.md). Installing programs, using paid services or sending media to third parties requires authorization. Save results and voice profiles outside the installation. There is no built-in telemetry.
 
+## Data and external services
+
+The plugin has no server of its own and keeps nothing outside the person's computer.
+
+- **Stored locally, only when asked or authorized:** voice profiles for the creator and clients, analyses, scripts and exports, in the chosen folder.
+- **Video comments:** only the literal text and like counts; the author's name, handle, photo and profile address are not kept.
+- **External services, always with authorization for each use:**
+  - YouTube, Instagram and TikTok, through `yt-dlp`, to download an authorized public video or its metadata and comments;
+  - Apify, YouTube Data API and Gemini, only through the official connector the person installed, under their own account and billing.
+
 ## Distribution and support
 
 Intended publisher: Alef Marques. Purchases of subscriptions, community memberships or courses take place through Hotmart. This plugin does not process payments or enforce access. Publisher verification and legal declarations belong to the portal.

@@ -21,6 +21,16 @@ Vídeo local exige FFmpeg e ffprobe, além de ferramenta para abrir imagens. A [
 
 Leia [comportamento](comportamento.md) e [análise visual](references/analise-de-video.md). Instalações, serviços pagos e envio a terceiros exigem autorização. Serviços opcionais, como Apify, YouTube ou Gemini, só são usados por um conector oficial que a pessoa instalou e autorizou; a Sofia não lê chaves da máquina. Aprendizados e exportações ficam fora da instalação; não há telemetria própria.
 
+## Dados e serviços externos
+
+O plugin não tem servidor próprio e não guarda nada fora do computador da pessoa.
+
+- **Guardado localmente, só com pedido ou autorização:** perfis de voz do criador e de clientes, análises, roteiros e exportações, em `~/.sofia/` ou na pasta escolhida.
+- **Comentários de vídeos:** só o texto literal e as curtidas; nome, identificador, foto e endereço do autor não são guardados.
+- **Serviços externos, sempre com autorização a cada uso:**
+  - YouTube, Instagram e TikTok, pelo `yt-dlp`, para baixar um vídeo público autorizado ou seus metadados e comentários;
+  - Apify, YouTube Data API e Gemini, apenas pelo conector oficial que a pessoa instalou, com a conta e a cobrança dela.
+
 ## Distribuição e atendimento
 
 Publicador pretendido: Alef Marques. Compras de assinaturas, comunidades ou cursos ocorrem na Hotmart; este plugin não processa pagamentos nem controla acesso. A verificação de publicador e as declarações legais são feitas no portal.

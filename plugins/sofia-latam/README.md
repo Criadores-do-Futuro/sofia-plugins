@@ -19,6 +19,16 @@ La preparación visual local necesita FFmpeg y ffprobe, además de una herramien
 
 Lee [comportamiento](comportamiento.md). Instalar programas, gastar créditos o enviar medios a terceros requiere autorización. Los resultados y perfiles se guardan fuera de la instalación. No hay telemetría propia.
 
+## Datos y servicios externos
+
+El plugin no tiene servidor propio y no guarda nada fuera de la computadora de la persona.
+
+- **Guardado localmente, solo si se pide o autoriza:** perfiles de voz del creador y de clientes, análisis, guiones y exportaciones, en la carpeta elegida.
+- **Comentarios de videos:** solo el texto literal y los me gusta; no se guardan nombre, identificador, foto ni dirección del autor.
+- **Servicios externos, siempre con autorización en cada uso:**
+  - YouTube, Instagram y TikTok, mediante `yt-dlp`, para descargar un video público autorizado o sus metadatos y comentarios;
+  - Apify, YouTube Data API y Gemini, solo mediante el conector oficial que la persona instaló, con su cuenta y su facturación.
+
 ## Distribución y soporte
 
 Publicador previsto: Alef Marques. Las compras de suscripciones, comunidades o cursos se realizan en Hotmart. El plugin no procesa pagos ni controla el acceso. La identidad y las declaraciones legales se verifican en el portal.
