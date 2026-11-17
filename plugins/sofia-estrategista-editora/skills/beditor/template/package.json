@@ -1,0 +1,21 @@
+{
+  "name": "beditor-projeto",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "studio": "remotion studio",
+    "render": "remotion render Video out/master.mp4",
+    "still": "remotion still Video out/frame.png"
+  },
+  "dependencies": {
+    "@remotion/captions": "4.0.522",
+    "@remotion/cli": "4.0.522",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "remotion": "4.0.522"
+  },
+  "devDependencies": {
+    "@types/react": "19.2.7",
+    "typescript": "5.9.2"
+  }
+}

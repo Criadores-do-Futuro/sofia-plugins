@@ -1,0 +1,280 @@
+{
+  "estilo": "demonstracao",
+  "frames_analisados": 1432,
+  "medida_global": {
+    "y_mediana": 61.388,
+    "preto": 5.834,
+    "branco": 180.609,
+    "y_media": 76.033,
+    "pct_abaixo_40": 35.672,
+    "pct_acima_235": 0.2,
+    "saturacao": 0.246,
+    "contraste": 53.394,
+    "vinheta": 0.259,
+    "grao_no_preto": 5.717,
+    "cor_na_borda": 5.986,
+    "densidade_borda": 11.478,
+    "temperatura": 2.16
+  },
+  "paleta_global": [
+    "#0C0C0D",
+    "#323633",
+    "#865B42",
+    "#5A6E78",
+    "#ABA89F",
+    "#EDEEEC"
+  ],
+  "grupos": [
+    {
+      "grupo": "g00",
+      "frames": 356,
+      "medida": {
+        "y_mediana": 121.29,
+        "preto": 33.03,
+        "branco": 223.563,
+        "y_media": 123.966,
+        "pct_abaixo_40": 7.597,
+        "pct_acima_235": 1.322,
+        "saturacao": 0.233,
+        "contraste": 58.299,
+        "vinheta": -0.128,
+        "grao_no_preto": 16.864,
+        "cor_na_borda": 2.474,
+        "densidade_borda": 12.672,
+        "temperatura": 1.915
+      },
+      "paleta": [
+        "#272222",
+        "#69555A",
+        "#928C94",
+        "#BCB5C0",
+        "#D7D6D7",
+        "#F8F8F6"
+      ],
+      "folha": "(fora do plugin) folhas/g00.jpg",
+      "exemplos": [
+        "frames-por-categoria/09-tela-dispositivo/7672369808196914462/7672369808196914462_000010.jpg",
+        "frames-por-categoria/09-tela-dispositivo/7672369808196914462/7672369808196914462_000009.jpg",
+        "frames-por-categoria/09-tela-dispositivo/7675362859332767006/7675362859332767006_000049.jpg",
+        "frames-por-categoria/09-tela-dispositivo/7670175535326039326/7670175535326039326_000092.jpg"
+      ],
+      "leitura": "",
+      "quando_usar": ""
+    },
+    {
+      "grupo": "g01",
+      "frames": 204,
+      "medida": {
+        "y_mediana": 14.0,
+        "preto": 0.0,
+        "branco": 101.744,
+        "y_media": 24.912,
+        "pct_abaixo_40": 83.179,
+        "pct_acima_235": 0.092,
+        "saturacao": 0.197,
+        "contraste": 34.199,
+        "vinheta": 0.481,
+        "grao_no_preto": 2.085,
+        "cor_na_borda": 11.54,
+        "densidade_borda": 7.972,
+        "temperatura": 0.965
+      },
+      "paleta": [
+        "#070708",
+        "#1A1A1C",
+        "#423F3F",
+        "#747370",
+        "#A36D46",
+        "#C4CDC8"
+      ],
+      "folha": "(fora do plugin) folhas/g01.jpg",
+      "exemplos": [
+        "frames-por-categoria/09-tela-dispositivo/7631193788505017630/7631193788505017630_000052.jpg",
+        "frames-por-categoria/09-tela-dispositivo/7638625287726451999/7638625287726451999_000044.jpg",
+        "frames-por-categoria/09-tela-dispositivo/7631193788505017630/7631193788505017630_000051.jpg",
+        "frames-por-categoria/09-tela-dispositivo/7631193788505017630/7631193788505017630_000114.jpg"
+      ],
+      "leitura": "",
+      "quando_usar": ""
+    },
+    {
+      "grupo": "g02",
+      "frames": 267,
+      "medida": {
+        "y_mediana": 97.0,
+        "preto": 11.996,
+        "branco": 224.495,
+        "y_media": 103.911,
+        "pct_abaixo_40": 21.352,
+        "pct_acima_235": 2.534,
+        "saturacao": 0.233,
+        "contraste": 70.262,
+        "vinheta": 0.297,
+        "grao_no_preto": 10.501,
+        "cor_na_borda": 5.521,
+        "densidade_borda": 13.643,
+        "temperatura": 2.927
+      },
+      "paleta": [
+        "#0F0F0F",
+        "#4B413A",
+        "#7F7269",
+        "#C0AC89",
+        "#C1C4CC",
+        "#F3F4F8"
+      ],
+      "folha": "(fora do plugin) folhas/g02.jpg",
+      "exemplos": [
+        "frames-por-categoria/09-tela-dispositivo/7621635352423451935/7621635352423451935_000115.jpg",
+        "frames-por-categoria/07-broll-cinematografico/7621635352423451935/7621635352423451935_000116.jpg",
+        "frames-por-categoria/09-tela-dispositivo/7629340491724688671/7629340491724688671_000141.jpg",
+        "frames-por-categoria/09-tela-dispositivo/7629340491724688671/7629340491724688671_000140.jpg"
+      ],
+      "leitura": "",
+      "quando_usar": ""
+    },
+    {
+      "grupo": "g03",
+      "frames": 106,
+      "medida": {
+        "y_mediana": 55.739,
+        "preto": 5.227,
+        "branco": 186.175,
+        "y_media": 74.974,
+        "pct_abaixo_40": 41.694,
+        "pct_acima_235": 0.185,
+        "saturacao": 0.298,
+        "contraste": 64.901,
+        "vinheta": 0.183,
+        "grao_no_preto": 2.484,
+        "cor_na_borda": 5.831,
+        "densidade_borda": 12.187,
+        "temperatura": 3.301
+      },
+      "paleta": [
+        "#0C0A0A",
+        "#3D3532",
+        "#696763",
+        "#959798",
+        "#C3B39C",
+        "#DFE0E0"
+      ],
+      "folha": "(fora do plugin) folhas/g03.jpg",
+      "exemplos": [
+        "frames-por-categoria/07-broll-cinematografico/7657196843067067679/7657196843067067679_000003.jpg",
+        "frames-por-categoria/11-composicao-hibrida/7637566011461340446/7637566011461340446_000108.jpg",
+        "frames-por-categoria/07-broll-cinematografico/7629340491724688671/7629340491724688671_000023.jpg",
+        "frames-por-categoria/08-broll-cotidiano/7629340491724688671/7629340491724688671_000024.jpg"
+      ],
+      "leitura": "",
+      "quando_usar": ""
+    },
+    {
+      "grupo": "g04",
+      "frames": 275,
+      "medida": {
+        "y_mediana": 57.961,
+        "preto": 0.0,
+        "branco": 177.027,
+        "y_media": 67.745,
+        "pct_abaixo_40": 35.114,
+        "pct_acima_235": 0.162,
+        "saturacao": 0.283,
+        "contraste": 57.611,
+        "vinheta": 0.668,
+        "grao_no_preto": 3.682,
+        "cor_na_borda": 5.974,
+        "densidade_borda": 11.259,
+        "temperatura": -0.851
+      },
+      "paleta": [
+        "#030304",
+        "#38373B",
+        "#2B5F96",
+        "#6A6661",
+        "#909DA3",
+        "#C6C9C7"
+      ],
+      "folha": "(fora do plugin) folhas/g04.jpg",
+      "exemplos": [
+        "frames-por-categoria/05-arquivo-found-footage/7663107181834751262/7663107181834751262_000015.jpg",
+        "frames-por-categoria/07-broll-cinematografico/7663473072820833566/7663473072820833566_000108.jpg",
+        "frames-por-categoria/02-motion3d-objeto-simbolo/7668664540174830879/7668664540174830879_000036.jpg",
+        "frames-por-categoria/09-tela-dispositivo/7660915692694244638/7660915692694244638_000019.jpg"
+      ],
+      "leitura": "",
+      "quando_usar": ""
+    },
+    {
+      "grupo": "g05",
+      "frames": 224,
+      "medida": {
+        "y_mediana": 30.515,
+        "preto": 1.644,
+        "branco": 119.04,
+        "y_media": 40.574,
+        "pct_abaixo_40": 65.486,
+        "pct_acima_235": 0.165,
+        "saturacao": 0.245,
+        "contraste": 36.806,
+        "vinheta": 0.179,
+        "grao_no_preto": 3.93,
+        "cor_na_borda": 9.433,
+        "densidade_borda": 10.382,
+        "temperatura": 3.296
+      },
+      "paleta": [
+        "#0A090A",
+        "#252526",
+        "#544342",
+        "#316886",
+        "#8E7564",
+        "#BABCBA"
+      ],
+      "folha": "(fora do plugin) folhas/g05.jpg",
+      "exemplos": [
+        "frames-por-categoria/09-tela-dispositivo/7627534609986719007/7627534609986719007_000124.jpg",
+        "frames-por-categoria/09-tela-dispositivo/7627534609986719007/7627534609986719007_000123.jpg",
+        "frames-por-categoria/09-tela-dispositivo/7627534609986719007/7627534609986719007_000122.jpg",
+        "frames-por-categoria/09-tela-dispositivo/7634193226546547999/7634193226546547999_000063.jpg"
+      ],
+      "leitura": "",
+      "quando_usar": ""
+    }
+  ],
+  "confianca": {
+    "medido_direto": [
+      "preto",
+      "branco",
+      "y_mediana",
+      "pct_abaixo_40",
+      "pct_acima_235",
+      "saturacao",
+      "contraste",
+      "vinheta",
+      "temperatura",
+      "paleta"
+    ],
+    "aproximado": [
+      "grao_no_preto (some com compressao forte)",
+      "cor_na_borda (nao separa aberracao de luz de contorno)",
+      "densidade_borda (conta textura junto com contorno)"
+    ],
+    "so_olhando": [
+      "tipografia",
+      "movimento de camera",
+      "ritmo de corte",
+      "o que cada grupo significa",
+      "quando usar cada um"
+    ]
+  },
+  "leitura": "",
+  "preset_sugerido": {
+    "fundo": "#060606",
+    "sujeito": "#B5B5B5",
+    "grao": 1.0,
+    "aberracao_a_confirmar": 0,
+    "vinheta": 0.26,
+    "dessaturacao_pct": 30
+  }
+}

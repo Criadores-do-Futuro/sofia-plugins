@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>bEditor · Blocos</title>
+<style>
+:root{
+  --bg:#f5f4f1;--painel:#fff;--linha:#e3e0da;--texto:#1d1c1a;--suave:#6f6b64;--foco:#1d1c1a;
+  --comando:#d9480f;--agente:#7048e8;--skill:#0c8599;--script:#2b8a3e;--referencia:#1971c2;--template:#c2255c;--painelc:#868e96;--plugin:#e67700;
+  --ok:#2b8a3e;--ruim:#c92a2a;--aviso:#e67700;--sombra:0 1px 2px rgba(0,0,0,.06),0 4px 14px rgba(0,0,0,.05);
+  --mono:ui-monospace,"SF Mono",Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#141414;--painel:#1d1d1d;--linha:#2e2e2e;--texto:#ecebe8;--suave:#9a968f;--foco:#ecebe8;
+  --comando:#ff8a50;--agente:#a68bff;--skill:#3bc9db;--script:#69db7c;--referencia:#74c0fc;--template:#f783ac;--painelc:#adb5bd;--plugin:#ffc078;
+  --ok:#69db7c;--ruim:#ff8787;--aviso:#ffc078;--sombra:0 1px 2px rgba(0,0,0,.4);
+}}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--texto);font:14px/1.45 -apple-system,BlinkMacSystemFont,"Inter",sans-serif}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer;border:1px solid var(--linha);background:var(--painel);border-radius:8px;padding:6px 12px}
+button:hover{border-color:var(--foco)}
+button.primario{background:var(--texto);color:var(--bg);border-color:var(--texto)}
+button:disabled{opacity:.4;cursor:default}
+.app{display:grid;grid-template-rows:auto 1fr;height:100vh}
+header{display:flex;align-items:center;gap:14px;padding:10px 18px;border-bottom:1px solid var(--linha);background:var(--painel);flex-wrap:wrap}
+header h1{font-size:15px;margin:0;font-weight:700;letter-spacing:-.01em}
+header h1 span{color:var(--suave);font-weight:500}
+.abas{display:flex;gap:2px;background:var(--bg);padding:3px;border-radius:9px}
+.abas button{border:0;background:transparent;padding:5px 14px;border-radius:7px}
+.abas button.ativa{background:var(--painel);box-shadow:var(--sombra);font-weight:600}
+.busca{flex:1;min-width:180px;max-width:340px;padding:7px 11px;border:1px solid var(--linha);border-radius:8px;background:var(--bg)}
+.filtros{display:flex;gap:6px;flex-wrap:wrap}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:12px;padding:3px 9px;border-radius:99px;border:1px solid var(--linha);background:var(--painel);cursor:pointer;user-select:none}
+.chip.off{opacity:.35}
+.ponto{width:8px;height:8px;border-radius:50%;background:var(--c)}
+main{display:grid;grid-template-columns:1fr 0;min-height:0;transition:grid-template-columns .2s}
+main.aberto{grid-template-columns:1fr minmax(380px,46%)}
+.palco{overflow:auto;position:relative;min-height:0}
+/* mapa */
+.mapa{display:grid;grid-auto-flow:column;grid-auto-columns:250px;gap:18px;padding:18px;position:relative;min-width:max-content}
+.coluna h2{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--suave);margin:0 0 8px;display:flex;justify-content:space-between}
+.grupo{font-size:11px;color:var(--suave);margin:12px 0 5px;font-family:var(--mono)}
+.bloco{position:relative;z-index:1;background:var(--painel);border:1px solid var(--linha);border-left:3px solid var(--c);border-radius:8px;padding:7px 10px;margin-bottom:6px;cursor:pointer;box-shadow:var(--sombra);transition:opacity .15s,transform .15s}
+.bloco:hover{transform:translateY(-1px)}
+.bloco .nome{font-weight:600;font-size:13px;display:flex;align-items:center;gap:6px;overflow:hidden}
+.bloco .nome b{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bloco .desc{font-size:11.5px;color:var(--suave);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-top:2px}
+.bloco.sel{outline:2px solid var(--c);outline-offset:1px}
+.bloco.apagado{opacity:.18}
+.bloco.vizinho{opacity:1}
+.etiqueta{font-size:10px;font-family:var(--mono);padding:0 5px;border-radius:4px;background:var(--bg);color:var(--suave);flex-shrink:0}
+.etiqueta.M{background:var(--aviso);color:#000}.etiqueta.A{background:var(--ok);color:#000}.etiqueta.orfao{border:1px dashed var(--suave);background:transparent}
+svg.fios{position:absolute;inset:0;pointer-events:none;z-index:0;overflow:visible}
+svg.fios path{fill:none;stroke-width:1.6;opacity:.75}
+/* fluxo */
+.fluxo{padding:18px;display:flex;flex-direction:column;gap:22px}
+.raia{display:grid;grid-template-columns:190px 1fr;gap:14px;align-items:start}
+.raia-cab{position:sticky;left:0}
+.raia-cab .num{font:700 28px/1 var(--mono);color:var(--comando)}
+.raia-cab .cmd{font-weight:700;margin-top:4px}
+.raia-cab p{font-size:12px;color:var(--suave);margin:4px 0 0}
+.passos{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px}
+.passo{flex:0 0 280px;background:var(--painel);border:1px solid var(--linha);border-radius:10px;padding:10px 12px;box-shadow:var(--sombra);cursor:pointer;position:relative}
+.passo:hover{border-color:var(--foco)}
+.passo .n{font:700 11px var(--mono);color:var(--suave)}
+.passo .t{font-size:12.5px;display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden;margin:4px 0 8px;white-space:pre-line}
+.passo .liga{display:flex;flex-wrap:wrap;gap:4px}
+.passo+.passo::before{content:"→";position:absolute;left:-10px;top:14px;color:var(--suave);font-size:11px;transform:translateX(-50%)}
+.mini{font-size:11px;padding:1px 7px;border-radius:99px;border:1px solid var(--c);color:var(--c);background:transparent;cursor:pointer;white-space:nowrap}
+.vazio{color:var(--suave);font-size:12px;padding:12px;border:1px dashed var(--linha);border-radius:10px}
+/* saúde */
+.saude{padding:18px;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;align-content:start}
+.cartao{background:var(--painel);border:1px solid var(--linha);border-radius:12px;padding:14px 16px;box-shadow:var(--sombra)}
+.cartao h3{margin:0 0 4px;font-size:14px}
+.cartao .sub{font-size:12px;color:var(--suave);margin:0 0 10px}
+.item{display:flex;justify-content:space-between;gap:10px;padding:4px 0;border-top:1px solid var(--linha);font-size:12.5px}
+.item:first-of-type{border-top:0}
+.item a{color:inherit;cursor:pointer;text-decoration:underline dotted;font-family:var(--mono);font-size:11.5px;word-break:break-all}
+.sim{color:var(--ok);font-weight:600}.nao{color:var(--ruim);font-weight:600}
+pre.saida{font:11.5px/1.4 var(--mono);white-space:pre-wrap;background:var(--bg);padding:8px;border-radius:6px;max-height:220px;overflow:auto;margin:8px 0 0}
+/* editor */
+.editor{border-left:1px solid var(--linha);background:var(--painel);display:flex;flex-direction:column;min-height:0;min-width:0;overflow:hidden}
+.ed-cab{padding:12px 16px;border-bottom:1px solid var(--linha)}
+.ed-cab .linha1{display:flex;align-items:center;gap:8px}
+.ed-cab .titulo{font-weight:700;font-size:15px;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ed-cab .caminho{font:11.5px var(--mono);color:var(--suave);margin-top:2px;word-break:break-all}
+.campos{display:grid;grid-template-columns:auto 1fr;gap:6px 10px;padding:10px 16px;border-bottom:1px solid var(--linha);align-items:center}
+.campos label{font:11.5px var(--mono);color:var(--suave)}
+.campos input,.campos textarea{width:100%;padding:5px 8px;border:1px solid var(--linha);border-radius:6px;background:var(--bg);font-size:12.5px}
+.campos textarea{resize:vertical;min-height:52px}
+.ligacoes{padding:8px 16px;border-bottom:1px solid var(--linha);display:flex;flex-direction:column;gap:5px;max-height:120px;overflow:auto}
+.ligacoes .rot{font-size:11px;color:var(--suave);margin-right:4px}
+.ligacoes div{display:flex;flex-wrap:wrap;gap:4px;align-items:center}
+.codigo{flex:1;display:grid;grid-template-columns:auto 1fr;min-height:0;font:12.5px/20px var(--mono)}
+.gutter{padding:10px 8px 10px 12px;text-align:right;color:var(--suave);background:var(--bg);overflow:hidden;user-select:none;white-space:pre}
+.codigo textarea{border:0;outline:0;resize:none;padding:10px 14px;background:transparent;font:inherit;white-space:pre;overflow:auto;tab-size:2}
+.ed-pe{display:flex;gap:8px;padding:10px 16px;border-top:1px solid var(--linha);align-items:center;flex-wrap:wrap}
+.ed-pe .estado{font-size:12px;color:var(--suave);flex:1}
+dialog{border:1px solid var(--linha);border-radius:12px;background:var(--painel);color:var(--texto);padding:18px;max-width:min(760px,92vw);width:100%}
+dialog::backdrop{background:rgba(0,0,0,.35)}
+dialog pre{font:12px/1.45 var(--mono);white-space:pre;overflow:auto;max-height:60vh;background:var(--bg);padding:10px;border-radius:8px}
+.add{color:var(--ok)}.del{color:var(--ruim)}
+.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:var(--texto);color:var(--bg);padding:8px 16px;border-radius:8px;font-size:13px;z-index:9;opacity:0;transition:opacity .2s;pointer-events:none}
+.toast.on{opacity:1}
+@media (max-width:760px){main.aberto{grid-template-columns:0 1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <h1>bEditor <span>· blocos</span></h1>
+    <div class="abas" id="abas">
+      <button data-v="fluxo" class="ativa">Fluxo</button>
+      <button data-v="mapa">Mapa</button>
+      <button data-v="saude">Saúde</button>
+    </div>
+    <input class="busca" id="busca" placeholder="Buscar bloco, script, texto da descrição…">
+    <div class="filtros" id="filtros"></div>
+    <button id="novo">+ Novo bloco</button>
+  </header>
+  <main id="main">
+    <section class="palco" id="palco"></section>
+    <aside class="editor" id="editor" hidden></aside>
+  </main>
+</div>
+<dialog id="dlg"></dialog>
+<div class="toast" id="toast"></div>
+<script>
+const TIPOS = {
+  comando:{rot:"Comandos",c:"--comando",ajuda:"O que você digita: /sofia-estrategista-editora:…"},
+  agente:{rot:"Agentes",c:"--agente",ajuda:"Subagentes que o comando despacha"},
+  skill:{rot:"Skills",c:"--skill",ajuda:"O procedimento que o Claude lê"},
+  script:{rot:"Scripts",c:"--script",ajuda:"A lógica que roda de verdade"},
+  referencia:{rot:"Referências",c:"--referencia",ajuda:"Regras e conhecimento consultado"},
+  template:{rot:"Template",c:"--template",ajuda:"Projeto Remotion copiado para cada vídeo"},
+  painel:{rot:"Painel",c:"--painelc",ajuda:"Painel e mesa de decupagem"},
+  plugin:{rot:"Plugin",c:"--plugin",ajuda:"Manifesto"},
+  outro:{rot:"Outros",c:"--painelc",ajuda:""},
+};
+const MOTIVO = {roda:"roda",importa:"importa",consulta:"consulta",despacha:"despacha agente",chama:"chama comando","usa skill":"usa skill"};
+const $ = s => document.querySelector(s);
+let G, porId = {}, vista = "fluxo", filtroOff = new Set(), sel = null, aberto = null;
+
+function cor(tipo){return `var(${TIPOS[tipo]?.c||"--painelc"})`}
+function esc(s){return String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
+function toast(t){const e=$("#toast");e.textContent=t;e.classList.add("on");clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove("on"),2600)}
+async function api(u,corpo){
+  const r = await fetch(u, corpo ? {method:"POST",headers:{"Content-Type":"application/json","X-Blocos":"1"},body:JSON.stringify(corpo)} : {});
+  const j = await r.json(); if(!r.ok) throw new Error(j.erro||r.status); return j;
+}
+const saidas = id => G.arestas.filter(a=>a.de===id);
+const entradas = id => G.arestas.filter(a=>a.para===id);
+
+async function carregar(){
+  G = await api("/api/grafo");
+  porId = Object.fromEntries(G.nos.map(n=>[n.id,n]));
+  montarFiltros(); desenhar();
+}
+
+function montarFiltros(){
+  const cont = {}; G.nos.forEach(n=>cont[n.tipo]=(cont[n.tipo]||0)+1);
+  $("#filtros").innerHTML = Object.keys(TIPOS).filter(t=>cont[t]).map(t=>
+    `<span class="chip ${filtroOff.has(t)?"off":""}" data-t="${t}" title="${esc(TIPOS[t].ajuda)}" style="--c:${cor(t)}"><i class="ponto"></i>${TIPOS[t].rot} ${cont[t]}</span>`).join("");
+}
+$("#filtros").onclick = e => { const t=e.target.closest(".chip")?.dataset.t; if(!t) return; filtroOff.has(t)?filtroOff.delete(t):filtroOff.add(t); montarFiltros(); desenhar(); };
+$("#abas").onclick = e => { const v=e.target.dataset.v; if(!v) return; vista=v; document.querySelectorAll("#abas button").forEach(b=>b.classList.toggle("ativa",b.dataset.v===v)); desenhar(); };
+$("#busca").oninput = () => desenhar();
+
+function passaBusca(n){
+  const q = $("#busca").value.trim().toLowerCase(); if(!q) return true;
+  return (n.nome+" "+n.id+" "+n.descricao).toLowerCase().includes(q);
+}
+
+function desenhar(){
+  if(vista==="mapa") desenharMapa();
+  else if(vista==="fluxo") desenharFluxo();
+  else desenharSaude();
+}
+
+/* ---------- MAPA ---------- */
+function blocoHTML(n){
+  const orfao = n.entradas===0 && ["script","referencia","template"].includes(n.tipo);
+  return `<div class="bloco ${sel===n.id?"sel":""}" data-id="${esc(n.id)}" style="--c:${cor(n.tipo)}">
+    <div class="nome"><b>${esc(n.nome)}</b>${n.git?`<span class="etiqueta ${n.git[0]}" title="alterado no git">${esc(n.git)}</span>`:""}${orfao?`<span class="etiqueta orfao" title="ninguém referencia este arquivo">órfão</span>`:""}</div>
+    <div class="desc">${esc(n.descricao)}</div></div>`;
+}
+function desenharMapa(){
+  const ordem = ["comando","agente","skill","script","referencia","template","painel","plugin"];
+  let h = `<div class="mapa" id="mapa"><svg class="fios" id="fios"></svg>`;
+  for(const t of ordem){
+    if(filtroOff.has(t)) continue;
+    const nos = G.nos.filter(n=>n.tipo===t && passaBusca(n));
+    if(!nos.length) continue;
+    h += `<div class="coluna"><h2><span>${TIPOS[t].rot}</span><span>${nos.length}</span></h2>`;
+    let grupo = null;
+    nos.sort((a,b)=>a.id.localeCompare(b.id)).forEach(n=>{
+      const g = t==="comando"||t==="agente" ? null : n.id.split("/").slice(0,-1).join("/");
+      if(g!==grupo){ grupo=g; if(g) h+=`<div class="grupo">${esc(g)}/</div>`; }
+      h += blocoHTML(n);
+    });
+    h += `</div>`;
+  }
+  $("#palco").innerHTML = h + `</div>`;
+  $("#mapa").onclick = e => { const b=e.target.closest(".bloco"); if(b) selecionar(b.dataset.id); };
+  realcar();
+}
+function realcar(){
+  const mapa = $("#mapa"); if(!mapa) return;
+  const svg = $("#fios"); svg.innerHTML = "";
+  const blocos = mapa.querySelectorAll(".bloco");
+  if(!sel){ blocos.forEach(b=>b.classList.remove("apagado","vizinho","sel")); return; }
+  const viz = new Set([sel]); const ligs = [...saidas(sel),...entradas(sel)];
+  ligs.forEach(a=>{viz.add(a.de);viz.add(a.para)});
+  blocos.forEach(b=>{b.classList.toggle("apagado",!viz.has(b.dataset.id));b.classList.toggle("sel",b.dataset.id===sel)});
+  const base = mapa.getBoundingClientRect();
+  const el = id => mapa.querySelector(`.bloco[data-id="${CSS.escape(id)}"]`);
+  svg.setAttribute("width",mapa.scrollWidth); svg.setAttribute("height",mapa.scrollHeight);
+  let paths = "";
+  for(const a of ligs){
+    const A=el(a.de), B=el(a.para); if(!A||!B) continue;
+    const ra=A.getBoundingClientRect(), rb=B.getBoundingClientRect();
+    const dir = rb.left>=ra.left;
+    const x1=(dir?ra.right:ra.left)-base.left, y1=ra.top+ra.height/2-base.top;
+    const x2=(dir?rb.left:rb.right)-base.left, y2=rb.top+rb.height/2-base.top;
+    const dx = Math.max(40,Math.abs(x2-x1)/2)*(dir?1:-1);
+    const same = Math.abs(ra.left-rb.left)<5;
+    const d = same ? `M${ra.right-base.left},${y1} C${ra.right-base.left+60},${y1} ${rb.right-base.left+60},${y2} ${rb.right-base.left},${y2}`
+                   : `M${x1},${y1} C${x1+dx},${y1} ${x2-dx},${y2} ${x2},${y2}`;
+    paths += `<path d="${d}" stroke="${cor(porId[a.de].tipo)}"><title>${esc(porId[a.de].nome)} ${MOTIVO[a.motivo]} ${esc(porId[a.para].nome)}</title></path>`;
+  }
+  svg.innerHTML = paths;
+}
+
+/* ---------- FLUXO ---------- */
+function ligacoesDoTexto(texto, id){
+  // o que um passo menciona, resolvido contra as arestas do comando
+  const achados = [];
+  for(const a of saidas(id)){
+    const n = porId[a.para]; const chave = n.tipo==="agente" ? n.nome : n.tipo==="comando" ? n.nome : n.arquivo;
+    if(texto.includes(chave)) achados.push(n);
+  }
+  return achados;
+}
+function desenharFluxo(){
+  const cmds = G.nos.filter(n=>n.tipo==="comando" && passaBusca(n));
+  const etapas = cmds.filter(n=>n.etapa[0]!==null).sort((a,b)=>a.etapa[0]-b.etapa[0]);
+  const outros = cmds.filter(n=>n.etapa[0]===null);
+  const raia = (n, rotulo) => {
+    const ps = n.passos||[];
+    const cards = ps.length ? ps.map((p,i)=>{
+      const liga = ligacoesDoTexto(p.texto, n.id);
+      const limpo = p.texto.replace(/^\d+[a-z]?\.\s*/,"").replace(/\$\{CLAUDE_PLUGIN_ROOT\}\/skills\/beditor\//g,"").replace(/\s+\n/g,"\n");
+      return `<div class="passo" data-id="${esc(n.id)}" data-i="${i}">
+        <div class="n">PASSO ${esc(p.n)} · linha ${p.linha}</div>
+        <div class="t">${esc(limpo)}</div>
+        <div class="liga">${liga.map(x=>`<span class="mini" data-ir="${esc(x.id)}" style="--c:${cor(x.tipo)}">${esc(x.nome)}</span>`).join("")}</div>
+      </div>`}).join("")
+      : `<div class="vazio">Sem passos numerados — este comando é texto corrido. Clique no nome para editar. ${saidas(n.id).map(a=>`<span class="mini" data-ir="${esc(a.para)}" style="--c:${cor(porId[a.para].tipo)}">${esc(porId[a.para].nome)}</span>`).join(" ")}</div>`;
+    return `<div class="raia">
+      <div class="raia-cab"><div class="num">${rotulo}</div><div class="cmd"><span class="mini" data-ir="${esc(n.id)}" style="--c:var(--comando)">${esc(n.nome)}</span></div><p>${esc(n.descricao)}</p></div>
+      <div class="passos">${cards}</div></div>`;
+  };
+  $("#palco").innerHTML = `<div class="fluxo">
+    <div class="cartao" style="box-shadow:none"><h3>Como o vídeo anda</h3><p class="sub" style="margin:0">Cada linha é um comando; cada cartão é um passo escrito no arquivo do comando. Clique num passo para editá-lo na linha exata; clique numa pílula para abrir o script, agente ou referência que ele usa. Uma etapa só roda com a anterior aprovada (<code>edicao/aprovado/</code>).</p></div>
+    ${etapas.map(n=>raia(n, String(n.etapa[0]))).join("")}
+    <h2 style="font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--suave);margin:8px 0 -8px">Utilitários e caminhos antigos</h2>
+    ${outros.map(n=>raia(n,"·")).join("")}
+  </div>`;
+  $("#palco").onclick = e => {
+    const ir = e.target.closest("[data-ir]"); if(ir){ e.stopPropagation(); return selecionar(ir.dataset.ir); }
+    const p = e.target.closest(".passo"); if(p){ const n=porId[p.dataset.id]; selecionar(n.id, n.passos[+p.dataset.i]); }
+  };
+}
+
+/* ---------- SAÚDE ---------- */
+async function desenharSaude(){
+  $("#palco").innerHTML = `<div class="saude"><div class="cartao">Conferindo dependências…</div></div>`;
+  const S = await api("/api/saude");
+  const lista = (obj, dica={}) => Object.entries(obj).map(([k,v])=>`<div class="item"><span>${esc(k)}${dica[k]?` <span style="color:var(--suave)">— ${dica[k]}</span>`:""}</span><span class="${v?"sim":"nao"}">${v?"ok":"falta"}</span></div>`).join("");
+  const orfaos = G.nos.filter(n=>n.entradas===0 && ["script","referencia","template"].includes(n.tipo));
+  const mod = G.nos.filter(n=>n.git);
+  const ext = Object.entries(G.externas);
+  $("#palco").innerHTML = `<div class="saude">
+    <div class="cartao"><h3>Programas</h3><p class="sub">Precisam estar instalados na máquina de quem usa.</p>${lista(S.binarios,{swiftc:"compila recorte e rastrear-rosto (só macOS)",whisper:"transcrição",["yt-dlp"]:"baixa referências"})}</div>
+    <div class="cartao"><h3>Pacotes Python</h3><p class="sub">Não há requirements.txt no plugin — quem instala não sabe que precisa destes.</p>${lista(S.python)}</div>
+    <div class="cartao"><h3>Ferramentas locais</h3><p class="sub">Geradas em ~/.beditor/bin por scripts/instalar_bin.sh.</p>${lista(S.swift)}<div class="item"><span>~/.config/beditor/env (chave de imagem)</span><span class="${S.chaveGemini?"sim":"nao"}">${S.chaveGemini?"ok":"opcional"}</span></div></div>
+    <div class="cartao"><h3>Skills e plugins de fora</h3><p class="sub">Citados pelo bEditor, mas não vêm dentro dele.</p>${ext.map(([k,v])=>`<div class="item"><span>${esc(k)}</span><span>${v.map(x=>`<a data-ir="${esc(x)}">${esc(porId[x]?.nome||x)}</a>`).join(" ")}</span></div>`).join("")||"<p class='sub'>nenhuma</p>"}</div>
+    <div class="cartao"><h3>Testes</h3><p class="sub">skills/beditor/tests — roda o unittest inteiro (~30 s).</p><button class="primario" id="rodarTestes">Rodar testes</button><pre class="saida" id="saidaTestes" hidden></pre></div>
+    <div class="cartao"><h3>Referências quebradas</h3><p class="sub">Arquivos que o texto cita e não existem.</p>${G.quebradas.map(q=>`<div class="item"><a data-ir="${esc(q.de)}">${esc(q.de)}</a><span class="nao">${esc(q.ref)}</span></div>`).join("")||"<span class='sim'>nenhuma</span>"}</div>
+    <div class="cartao"><h3>Órfãos (${orfaos.length})</h3><p class="sub">Ninguém cita — pode ser código morto ou só importado de um jeito que o mapa não lê.</p>${orfaos.map(n=>`<div class="item"><a data-ir="${esc(n.id)}">${esc(n.id)}</a></div>`).join("")}</div>
+    <div class="cartao"><h3>Alterados sem commit (${mod.length})</h3><p class="sub">Clique para abrir e ver o diff.</p>${mod.map(n=>`<div class="item"><a data-ir="${esc(n.id)}">${esc(n.id)}</a><span class="etiqueta ${n.git[0]}">${esc(n.git)}</span></div>`).join("")}</div>
+  </div>`;
+  $("#palco").onclick = async e => {
+    const ir = e.target.closest("[data-ir]"); if(ir) return selecionar(ir.dataset.ir);
+    if(e.target.id==="rodarTestes"){
+      e.target.disabled = true; e.target.textContent = "Rodando…";
+      const out = $("#saidaTestes"); out.hidden = false; out.textContent = "…";
+      try{ const r = await api("/api/testes",{}); out.textContent = r.resumo + (r.falhas.length?"\n\n"+r.falhas.join("\n"):""); out.style.color = r.ok?"var(--ok)":"var(--ruim)"; }
+      catch(err){ out.textContent = err.message }
+      e.target.disabled = false; e.target.textContent = "Rodar testes";
+    }
+  };
+}
+
+/* ---------- EDITOR ---------- */
+let original = "";
+const sujo = () => aberto && $("#txt") && $("#txt").value !== original;
+
+async function selecionar(id, passo){
+  if(aberto!==id && sujo() && !confirm("Há alterações não salvas neste arquivo. Descartar?")) return;
+  sel = id;
+  if(vista==="mapa") realcar();
+  const n = porId[id]; if(!n) return;
+  if(aberto!==id){
+    const r = await api("/api/arquivo?caminho="+encodeURIComponent(id));
+    original = r.conteudo; aberto = id;
+    abrirEditor(n, r.conteudo);
+  }
+  if(passo) irParaLinha(passo.linha, passo.ate-passo.de+1);
+}
+
+function camposDe(texto){
+  if(!texto.startsWith("---\n")) return null;
+  const fim = texto.indexOf("\n---",4); if(fim<0) return null;
+  const out = [];
+  texto.slice(4,fim).split("\n").forEach(l=>{const m=l.match(/^([\w-]+):\s*(.+)$/); if(m && !m[2].startsWith("#")) out.push([m[1],m[2]])});
+  return out;
+}
+function trocarCampo(texto, chave, valor){
+  const fim = texto.indexOf("\n---",4);
+  const cab = texto.slice(0,fim).split("\n").map(l=> l.match(new RegExp("^"+chave+":\\s")) ? `${chave}: ${valor.replace(/\n/g," ")}` : l).join("\n");
+  return cab + texto.slice(fim);
+}
+
+function abrirEditor(n, texto){
+  $("#main").classList.add("aberto");
+  const ed = $("#editor"); ed.hidden = false;
+  const campos = camposDe(texto);
+  const ligs = (lista, lado) => lista.map(a=>{const o=porId[lado==="s"?a.para:a.de]; return `<span class="mini" data-ir="${esc(o.id)}" style="--c:${cor(o.tipo)}" title="${esc(MOTIVO[a.motivo])}">${esc(o.nome)}</span>`}).join("");
+  const S = saidas(n.id), E = entradas(n.id);
+  ed.innerHTML = `
+    <div class="ed-cab">
+      <div class="linha1"><i class="ponto" style="--c:${cor(n.tipo)}"></i><span class="titulo">${esc(n.nome)}</span><span class="etiqueta">${esc(TIPOS[n.tipo]?.rot||n.tipo)}</span><button id="fechar" title="Fechar (Esc)">✕</button></div>
+      <div class="caminho">${esc(n.id)} · ${n.linhas} linhas${n.git?` · <b>${esc(n.git)} no git</b>`:""}</div>
+    </div>
+    ${campos?`<div class="campos">${campos.map(([k,v])=>`<label for="c-${k}">${esc(k)}</label>${v.length>70?`<textarea data-k="${k}" id="c-${k}">${esc(v)}</textarea>`:`<input data-k="${k}" id="c-${k}" value="${esc(v)}">`}`).join("")}</div>`:""}
+    ${(S.length||E.length)?`<div class="ligacoes">${S.length?`<div><span class="rot">usa →</span>${ligs(S,"s")}</div>`:""}${E.length?`<div><span class="rot">← usado por</span>${ligs(E,"e")}</div>`:""}</div>`:""}
+    <div class="codigo"><div class="gutter" id="gutter"></div><textarea id="txt" spellcheck="false"></textarea></div>
+    <div class="ed-pe"><span class="estado" id="estado">sem alterações</span><button id="diff">Diff git</button><button id="descartar" disabled>Descartar</button><button class="primario" id="salvar" disabled>Salvar ⌘S</button></div>`;
+  const txt = $("#txt"); txt.value = texto; atualizarGutter();
+  txt.oninput = () => { atualizarGutter(); marcarSujo(); sincronizarCampos(); };
+  txt.onscroll = () => $("#gutter").scrollTop = txt.scrollTop;
+  txt.onkeydown = e => { if(e.key==="Tab"){ e.preventDefault(); const s=txt.selectionStart; txt.setRangeText("  ",s,txt.selectionEnd,"end"); txt.oninput(); } };
+  ed.querySelectorAll("[data-k]").forEach(i=> i.oninput = () => { txt.value = trocarCampo(txt.value, i.dataset.k, i.value); atualizarGutter(); marcarSujo(); });
+  ed.onclick = e => { const ir=e.target.closest("[data-ir]"); if(ir) selecionar(ir.dataset.ir); };
+  $("#fechar").onclick = fechar;
+  $("#salvar").onclick = salvar;
+  $("#descartar").onclick = () => { txt.value = original; atualizarGutter(); marcarSujo(); sincronizarCampos(); };
+  $("#diff").onclick = verDiff;
+}
+function sincronizarCampos(){
+  const c = camposDe($("#txt").value)||[];
+  c.forEach(([k,v])=>{ const i=document.querySelector(`[data-k="${k}"]`); if(i && document.activeElement!==i) i.value=v; });
+}
+function atualizarGutter(){
+  const n = $("#txt").value.split("\n").length;
+  $("#gutter").textContent = Array.from({length:n},(_,i)=>i+1).join("\n");
+}
+function marcarSujo(){
+  const s = sujo();
+  $("#salvar").disabled = !s; $("#descartar").disabled = !s;
+  $("#estado").textContent = s ? "● alterações não salvas" : "sem alterações";
+  $("#estado").style.color = s ? "var(--aviso)" : "";
+}
+function irParaLinha(linha, qtd=1){
+  const txt = $("#txt"); const ls = txt.value.split("\n");
+  const ini = ls.slice(0,linha-1).join("\n").length + (linha>1?1:0);
+  const fim = ini + ls.slice(linha-1, linha-1+qtd).join("\n").length;
+  txt.focus(); txt.setSelectionRange(ini, fim);
+  txt.scrollTop = Math.max(0,(linha-4)*20);
+}
+async function salvar(){
+  if(!sujo()) return;
+  try{
+    await api("/api/arquivo",{caminho:aberto,conteudo:$("#txt").value});
+    original = $("#txt").value; marcarSujo(); toast("Salvo em "+aberto);
+    const manter = aberto; await carregar(); sel = manter;
+    const n = porId[manter]; if(n) { $("#editor").querySelector(".caminho").innerHTML = `${esc(n.id)} · ${n.linhas} linhas${n.git?` · <b>${esc(n.git)} no git</b>`:""}`; }
+    if(vista==="mapa") realcar();
+  }catch(e){ toast("Não salvou: "+e.message) }
+}
+async function verDiff(){
+  const r = await api("/api/diff?caminho="+encodeURIComponent(aberto));
+  const linhas = (r.diff||"Sem diferenças em relação ao último commit (as alterações ainda não salvas não aparecem aqui).").split("\n")
+    .map(l=>`<span class="${l.startsWith("+")&&!l.startsWith("+++")?"add":l.startsWith("-")&&!l.startsWith("---")?"del":""}">${esc(l)}</span>`).join("\n");
+  const d = $("#dlg"); d.innerHTML = `<h3 style="margin-top:0">git diff · ${esc(aberto)}</h3><pre>${linhas}</pre><form method="dialog" style="text-align:right"><button>Fechar</button></form>`; d.showModal();
+}
+function fechar(){
+  if(sujo() && !confirm("Descartar alterações não salvas?")) return;
+  aberto = null; sel = null; $("#main").classList.remove("aberto"); $("#editor").hidden = true;
+  if(vista==="mapa") realcar();
+}
+
+/* ---------- NOVO BLOCO ---------- */
+const MODELOS = {
+  comando:{pasta:"commands/",ext:".md",txt:n=>`---\ndescription: O que este comando faz, numa frase\nargument-hint: <arquivo>\nallowed-tools: Read, Write, Edit, Bash, Glob\n---\n\nArgumentos: \`$ARGUMENTS\` = …\n\n1. \`python3 \${CLAUDE_PLUGIN_ROOT}/skills/beditor/scripts/…\`\n2. Entregue … e pare para o editor aprovar.\n`},
+  agente:{pasta:"agents/",ext:".md",txt:n=>`---\nname: ${n}\ndescription: Quem é este agente, o que recebe, o que devolve e quando usar.\nmodel: sonnet\ntools: Read, Write\n---\n\nVocê …\n`},
+  referencia:{pasta:"skills/beditor/referencias/",ext:".md",txt:n=>`# ${n}\n\nA regra, por que ela existe, e o exemplo que a gerou.\n`},
+  script:{pasta:"skills/beditor/scripts/",ext:".py",txt:n=>`#!/usr/bin/env python3\n"""\n${n}.py — o que faz, numa frase.\n\nUso: python3 ${n}.py …\n"""\nimport argparse\n\n\ndef main():\n    ap = argparse.ArgumentParser()\n    ap.parse_args()\n\n\nif __name__ == "__main__":\n    main()\n`},
+};
+$("#novo").onclick = () => {
+  const d = $("#dlg");
+  d.innerHTML = `<h3 style="margin-top:0">Novo bloco</h3>
+    <form method="dialog" id="fNovo" style="display:grid;gap:10px">
+      <label>Tipo <select id="nTipo">${Object.keys(MODELOS).map(t=>`<option value="${t}">${TIPOS[t].rot.replace(/s$/,"")}</option>`).join("")}</select></label>
+      <label>Nome (sem extensão, com hífen) <input id="nNome" required pattern="[a-z0-9][a-z0-9_-]*" placeholder="ex.: revisar-legenda"></label>
+      <div class="sub" id="nCaminho" style="font:12px var(--mono);color:var(--suave)"></div>
+      <div style="display:flex;gap:8px;justify-content:flex-end"><button value="cancel" formnovalidate>Cancelar</button><button class="primario" value="ok">Criar</button></div>
+    </form>`;
+  const prev = () => { const m=MODELOS[$("#nTipo").value]; $("#nCaminho").textContent = m.pasta + ($("#nNome").value||"…") + m.ext; };
+  $("#nTipo").onchange = prev; $("#nNome").oninput = prev; prev();
+  d.onclose = async () => {
+    if(d.returnValue!=="ok") return;
+    const m = MODELOS[$("#nTipo").value], nome = $("#nNome").value, caminho = m.pasta+nome+m.ext;
+    try{ await api("/api/arquivo",{caminho,conteudo:m.txt(nome),novo:true}); await carregar(); toast("Criado: "+caminho); selecionar(caminho); }
+    catch(e){ toast("Não criou: "+e.message) }
+  };
+  d.showModal();
+};
+
+document.addEventListener("keydown", e => {
+  if((e.metaKey||e.ctrlKey) && e.key==="s"){ e.preventDefault(); salvar(); }
+  if(e.key==="Escape" && aberto && !$("#dlg").open) fechar();
+});
+window.addEventListener("beforeunload", e => { if(sujo()){ e.preventDefault(); e.returnValue=""; } });
+window.addEventListener("resize", () => vista==="mapa" && realcar());
+carregar().catch(e => $("#palco").innerHTML = `<div class="saude"><div class="cartao"><h3>Não carregou</h3><p class="sub">${esc(e.message)}</p></div></div>`);
+</script>
+</body>
+</html>

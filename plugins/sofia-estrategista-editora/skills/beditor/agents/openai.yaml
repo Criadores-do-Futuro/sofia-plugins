@@ -1,0 +1,21 @@
+interface:
+  display_name: "bEditor"
+  short_description: "Edição bEditor no CapCut com cortes, visuais e legendas"
+  brand_color: "#5E183A"
+  default_prompt: "Use $beditor para editar este vídeo no CapCut: verifique e prepare o plugin se necessário, preserve a fala, aplique os cortes e visuais pedidos, revise as legendas e entregue o rascunho salvo para revisão."
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "capcut_creation"
+      description: "Plugin CapCut: edição, materiais, legendas e geração com a conta conectada"
+      transport: "streamable_http"
+      url: "https://www.capcut.com/api/external_mcp"
+    - type: "mcp"
+      value: "capcut_creation_resource"
+      description: "Plugin CapCut: cards de planos e prévias, sem OAuth"
+      transport: "streamable_http"
+      url: "https://www.capcut.com/api/external_mcp/resource"
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,1967 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Mesa de decupagem</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bangers&family=Inter:wght@400;500;600;800;900&display=swap">
+
+<style>
+/* Mesma identidade do painel do bEditor (painel/modelo.html): papel creme com
+   ponto, painéis brancos de borda grossa e sombra dura, Bangers no display.
+   Uma skill, uma cara — quem abre a mesa reconhece de onde ela veio. */
+:root{
+  --paper:#FFFFFF; --ground:#FBEBD2; --cream:#F6DEBC; --ink:#17110E; --muted:#6B5443;
+  --orange:#F2620F; --deep:#C2410C; --amber:#F6A93B; --rule:rgba(23,17,14,.14);
+  --verde:#3F7D53; --vermelho:#B5241B; --agua:#2F6E8F;
+  --hard:5px 5px 0 var(--ink); --hard-sm:3px 3px 0 var(--ink);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{
+  margin:0; color:var(--ink); background:var(--ground);
+  background-image:radial-gradient(var(--cream) 1.6px, transparent 1.7px);
+  background-size:14px 14px;
+  font:15px/1.55 Inter,system-ui,sans-serif;
+}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+.wrap{max-width:1340px;margin:0 auto;padding-inline:20px;padding-block:26px 80px}
+h1,h2,.num,.chip,.btn,.kicker,.tc b,.selo-hook span{font-family:Bangers,Impact,"Arial Narrow",sans-serif;font-weight:400;letter-spacing:.02em}
+h1{font-size:clamp(40px,6.4vw,74px);line-height:.86;margin:0;text-transform:uppercase;
+   color:var(--paper);-webkit-text-stroke:3px var(--ink);paint-order:stroke fill;
+   text-shadow:6px 6px 0 var(--orange)}
+h2{font-size:30px;line-height:.95;margin:0 0 4px;text-transform:uppercase}
+.kicker{font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:var(--deep)}
+.muted{color:var(--muted)}
+.small{font-size:12.5px}
+header{display:grid;grid-template-columns:1fr auto;gap:16px 28px;align-items:end;margin-bottom:18px}
+.meta{font-size:13px;color:var(--muted);margin:10px 0 0}
+code{font:600 12px/1.4 ui-monospace,Menlo,monospace;word-break:break-word}
+.kpis{display:flex;gap:14px;flex-wrap:wrap}
+.kpi{background:var(--paper);border:3px solid var(--ink);border-radius:14px;box-shadow:var(--hard);
+     padding:10px 16px;min-width:104px}
+.kpi .num{font-size:42px;line-height:.9;display:block;color:var(--deep)}
+.kpi small{font-size:11px;font-weight:900;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+
+nav.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 22px}
+.chip{font-size:18px;letter-spacing:.05em;text-transform:uppercase;padding:5px 14px;border-radius:999px;
+      border:3px solid var(--ink);background:var(--paper);color:var(--ink);box-shadow:var(--hard-sm)}
+.chip:hover{background:var(--orange);color:var(--paper)}
+
+.bento{display:grid;gap:20px;grid-template-columns:repeat(12,1fr);margin-bottom:20px}
+.panel{background:var(--paper);border:3px solid var(--ink);border-radius:16px;box-shadow:var(--hard);
+       padding:18px 20px;min-width:0}
+.c12{grid-column:span 12}.c8{grid-column:span 8}.c7{grid-column:span 7}
+.c5{grid-column:span 5}.c4{grid-column:span 4}
+@media (max-width:1100px){.c8,.c7,.c5,.c4{grid-column:span 12}header{grid-template-columns:1fr}}
+
+.btn{font-size:16px;letter-spacing:.04em;text-transform:uppercase;border:3px solid var(--ink);
+     border-radius:10px;background:var(--paper);color:var(--ink);padding:4px 12px;box-shadow:var(--hard-sm)}
+.btn:hover{background:var(--amber)}
+.btn.pri{background:var(--orange);color:var(--paper)}
+.btn.pri:hover{background:var(--deep)}
+.btn:disabled{opacity:.4;box-shadow:none;cursor:default}
+.btn[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.btn.mini{font-family:Inter;font-size:11px;font-weight:800;letter-spacing:.06em;padding:2px 8px;
+          border-width:2px;box-shadow:2px 2px 0 var(--ink)}
+.btn kbd{font:800 9px/1 Inter;border:1.5px solid currentColor;border-radius:3px;padding:1px 3px;
+         margin-left:5px;vertical-align:1px;opacity:.75}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.campo-linha{display:flex;align-items:center;gap:5px;font-size:12px;font-weight:600}
+.campo-linha input{width:64px;border:2px solid var(--ink);border-radius:7px;padding:3px 6px;
+  font:700 12px/1 ui-monospace,Menlo,monospace;text-align:right}
+
+.aviso{border:3px dashed var(--ink);border-radius:12px;padding:11px 13px;background:var(--cream);
+       font-size:13px;line-height:1.5;margin:0 0 14px}
+.aviso b{font-weight:800}
+.aviso.grito{border-style:solid;background:#FDF2F1;border-color:var(--vermelho)}
+
+/* ------------------------------------------------------------------ roteiro */
+.roteiro{display:flex;flex-direction:column;gap:6px;max-height:min(64vh,720px);
+         overflow-y:auto;padding-right:6px;margin-top:10px}
+.parte{font-size:11px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;color:var(--deep);
+       border-bottom:2px solid var(--rule);padding:12px 0 4px}
+.parte:first-child{padding-top:0}
+.momento{display:grid;grid-template-columns:58px 1fr;gap:0 12px;padding:9px 11px;
+         border:2px solid var(--ink);border-radius:12px;background:var(--paper)}
+.momento[data-decisao="aroll"]{background:#FDFCFA}
+.momento[data-decisao="motion"]{background:#FFF7E8}
+.momento[data-decisao="aroll+motion"]{background:#FFF2DF}
+.momento[data-decisao="cortar"],.momento.sai{background:repeating-linear-gradient(45deg,
+  #F4E7E5 0 7px,var(--paper) 7px 14px);border-style:dashed}
+.momento.tocando{box-shadow:var(--hard-sm);transform:translate(-1px,-1px)}
+.tc{font:600 11px/1.35 ui-monospace,Menlo,monospace;color:var(--muted);text-align:right;padding-top:2px}
+.tc b{display:block;font-size:19px;line-height:1;color:var(--ink)}
+.corpo-momento{min-width:0}
+.linha-topo{display:flex;align-items:center;gap:7px;margin-bottom:3px;flex-wrap:wrap}
+.id{font:800 11px/1 Inter;letter-spacing:.08em;color:var(--muted)}
+.selo{font:900 10px/1.6 Inter;letter-spacing:.08em;text-transform:uppercase;padding:0 7px;
+      border-radius:999px;border:2px solid var(--ink);background:var(--paper)}
+.selo[data-d="aroll"]{background:#E6F0E8}
+.selo[data-d="motion"]{background:var(--amber)}
+.selo[data-d="aroll+motion"]{background:var(--orange);color:var(--paper)}
+.selo[data-d="cortar"]{background:var(--vermelho);color:var(--paper)}
+.selo.jc{background:var(--agua);color:var(--paper);border-color:var(--ink)}
+.selo.pedacos{background:var(--cream)}
+.acoes{margin-left:auto;display:flex;gap:5px}
+.fala{margin:0;cursor:pointer;font-size:14.5px}
+.momento.sai .fala{text-decoration:line-through;text-decoration-color:var(--vermelho);
+  text-decoration-thickness:2px;color:var(--muted)}
+.porque{margin:4px 0 0;font-size:12.5px;color:var(--muted)}
+.motion{margin-top:8px;border:2px solid var(--ink);border-radius:10px;background:var(--cream);overflow:hidden}
+.motion > summary{list-style:none;display:flex;align-items:center;gap:8px;padding:6px 10px;
+  font-size:12.5px;cursor:pointer;flex-wrap:wrap}
+.motion > summary::-webkit-details-marker{display:none}
+.motion > summary::before{content:"▶";font-size:9px}
+.motion[open] > summary::before{content:"▼"}
+.motion .tipo{font:900 10px/1.6 Inter;letter-spacing:.09em;text-transform:uppercase;
+  background:var(--ink);color:var(--paper);padding:0 7px;border-radius:999px}
+.motion .ideia{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.campos{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:9px;
+  padding:6px 10px 11px;border-top:2px solid var(--ink);background:var(--paper)}
+.campo{display:flex;flex-direction:column;gap:3px;min-width:0}
+.campo.largo{grid-column:1/-1}
+label{font:900 10px/1.5 Inter;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.campo input,.campo select,.campo textarea,#hook-texto{background:var(--paper);
+  border:2px solid var(--ink);border-radius:8px;padding:5px 8px;font-size:13px;width:100%;resize:vertical}
+.campo textarea{min-height:52px;line-height:1.4}
+
+/* ------------------------------------------------------------ prévia viva */
+/* A edição como dados (painel/previa.py): o take leve toca por baixo, o zoom e
+   o recorte do montador viram transform, e a legenda é a página do render
+   carregada por cima, só com seek. Nada aqui foi renderizado. */
+.pv-grade{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:22px;margin-top:12px;align-items:start}
+@media (max-width:820px){.pv-grade{grid-template-columns:1fr}}
+/* `.tela` vem depois e limita a altura a 54vh: sem o seletor duplo o quadro deixava de ser
+   9:16 e a legenda, que mora no terço de baixo, ficava fora da tela */
+.tela.pv-tela{max-height:none;max-width:340px;height:auto;aspect-ratio:9/16}
+.pv-quadro{position:absolute;inset:0;overflow:hidden}
+.tela .pv-quadro video{position:absolute;left:0;top:0;width:100%;height:100%;object-fit:cover;
+  transform-origin:0 0;will-change:transform}
+.pv-tela iframe{position:absolute;left:0;top:0;width:1080px;height:1920px;border:0;
+  transform-origin:0 0;pointer-events:none;background:transparent}
+.pv-tela iframe.off,.pv-tela.sem-legenda iframe{visibility:hidden}
+.pv-zoom{position:absolute;right:8px;top:8px;font:800 11px/1 ui-monospace,Menlo,monospace;
+  background:var(--ink);color:var(--paper);padding:4px 7px;border-radius:999px;z-index:3}
+.pv-zoom.enfase{background:var(--orange)}
+.pv-vazio{position:absolute;inset:0;display:grid;place-items:center;padding:18px;text-align:center;
+  color:var(--paper);font-size:13px;line-height:1.45}
+.pv-lado{display:flex;flex-direction:column;gap:14px;min-width:0}
+.pv-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px}
+.pv-kpis .kpi{padding:8px 12px;box-shadow:var(--hard-sm)}
+.pv-kpis .kpi .num{font-size:32px}
+.pv-transporte{flex-wrap:wrap}
+/* a barra de tempo da prévia: arrastar para qualquer ponto; embaixo dela, as
+   emendas (traço) e os trechos com zoom (faixa laranja) */
+.pv-barra{position:relative;max-width:340px;margin:10px 0 2px;height:30px}
+.pv-barra .trilho{position:absolute;left:0;right:0;top:11px;height:8px;background:var(--paper);
+  border:2px solid var(--ink);border-radius:5px;overflow:hidden}
+.pv-barra .feito{position:absolute;left:0;top:0;bottom:0;background:var(--amber)}
+.pv-barra .zm{position:absolute;top:0;bottom:0;background:var(--orange);opacity:.55}
+.pv-barra .em{position:absolute;top:6px;height:18px;width:2px;margin-left:-1px;background:var(--ink);opacity:.35}
+.pv-barra input{position:absolute;inset:0;width:100%;margin:0;opacity:0;cursor:pointer;touch-action:none}
+.pv-barra .cabeca{position:absolute;top:5px;width:14px;height:20px;margin-left:-7px;background:var(--ink);
+  border-radius:4px;box-shadow:var(--hard-sm);pointer-events:none}
+.pv-barra input:focus-visible ~ .cabeca{outline:3px solid var(--orange);outline-offset:2px}
+.pv-enfases{display:flex;flex-wrap:wrap;gap:6px;max-height:190px;overflow:auto;padding:2px}
+.pv-enfases button{font:700 12px/1 ui-monospace,Menlo,monospace;border:2px solid var(--ink);
+  border-radius:999px;background:var(--paper);padding:5px 9px;font-variant-numeric:tabular-nums}
+.pv-enfases button:hover{background:var(--amber)}
+.pv-enfases button[aria-current="true"]{background:var(--orange);color:var(--paper)}
+.pv-agora{border:2px dashed var(--rule);border-radius:10px;padding:9px 12px;font-size:14px;min-height:2.6em}
+.pv-agora b{font:900 10px/1.6 Inter;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:block}
+body.sem-dados .bento:not(#previa-sec),body.sem-dados .tabs a:not([href="#previa"]),
+body.sem-dados #kpis{display:none}
+
+/* --------------------------------------------------------------------- visor */
+.visor{position:sticky;top:20px}
+.tela{position:relative;background:var(--ink);border:3px solid var(--ink);border-radius:12px;
+  overflow:hidden;aspect-ratio:9/16;max-height:54vh;margin:0 auto;width:100%;container-type:inline-size}
+.tela video,.tela img{width:100%;height:100%;object-fit:contain;display:block}
+.selo-hook{position:absolute;left:0;right:0;top:12%;height:22%;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;pointer-events:none;text-align:center;padding-inline:7%}
+.selo-hook span{color:#FFA33A;line-height:1.04;font-size:clamp(20px,9cqw,46px);
+  -webkit-text-stroke:2px rgba(0,0,0,.9);paint-order:stroke fill;text-transform:uppercase}
+/* a máscara Dividir desenhada por cima do preview — a mesma rampa do mascara.py */
+.mascara-previa{position:absolute;inset:0;pointer-events:none}
+.mascara-previa i{position:absolute;left:8px;font:700 10px/1 ui-monospace,Menlo,monospace;
+  color:#fff;background:rgba(0,0,0,.55);padding:3px 6px;border-radius:5px;font-style:normal}
+.mascara-opcoes{display:flex;flex-direction:column;gap:9px}
+.mascara-opcoes select{border:2px solid var(--ink);border-radius:7px;padding:4px 6px;font:600 12px Inter,sans-serif;background:var(--paper)}
+.mascara-opcoes.desligada .deslizante,.mascara-opcoes.desligada .campo-linha{opacity:.45}
+.transporte{display:flex;align-items:center;gap:10px;margin-top:12px}
+.relogio{font:700 13px/1 ui-monospace,Menlo,monospace}
+.agora{margin-left:auto;font-size:12px;color:var(--muted);overflow:hidden;
+  text-overflow:ellipsis;white-space:nowrap;max-width:170px}
+
+/* ----------------------------------------------------------------------- cor */
+.presets{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0}
+.deslizantes{display:flex;flex-direction:column;gap:7px;margin-bottom:12px}
+.deslizante{display:grid;grid-template-columns:84px 1fr 54px;align-items:center;gap:9px}
+.deslizante label{text-transform:none;letter-spacing:0;font-size:12px;font-weight:600;color:var(--ink)}
+.deslizante output{font:700 12px/1 ui-monospace,Menlo,monospace;text-align:right}
+input[type=range]{-webkit-appearance:none;appearance:none;background:transparent;width:100%;height:18px}
+input[type=range]::-webkit-slider-runnable-track{height:4px;background:var(--ink);border-radius:2px}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;
+  background:var(--orange);border:2.5px solid var(--ink);margin-top:-6.5px}
+input[type=range]::-moz-range-track{height:4px;background:var(--ink);border-radius:2px}
+input[type=range]::-moz-range-thumb{width:14px;height:14px;border:2.5px solid var(--ink);
+  border-radius:50%;background:var(--orange)}
+.confronto{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
+.confronto figure{margin:0;display:flex;flex-direction:column;gap:5px}
+.confronto img{width:100%;border:2px solid var(--ink);border-radius:8px;display:block;background:var(--ink)}
+.confronto figcaption{font:900 10px/1.4 Inter;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.linha-ffmpeg{font:600 10.5px/1.55 ui-monospace,Menlo,monospace;background:var(--cream);
+  border:2px solid var(--ink);border-radius:8px;padding:7px 9px;overflow-x:auto;white-space:pre}
+.marcar{display:flex;align-items:flex-start;gap:8px;font-size:12.5px;line-height:1.45;
+  cursor:pointer;margin-top:10px}
+.marcar input{margin-top:3px;width:17px;height:17px;accent-color:var(--orange)}
+
+/* ---------------------------------------------------------------------- hook */
+.hooks{display:flex;flex-direction:column;gap:9px;margin:10px 0}
+.hook-opcao{display:grid;grid-template-columns:70px 1fr;gap:11px;align-items:center;padding:7px;
+  border:3px solid var(--ink);border-radius:12px;background:var(--paper);text-align:left;width:100%}
+.hook-opcao[aria-pressed="true"]{background:var(--amber);box-shadow:var(--hard-sm)}
+.hook-opcao img{width:100%;border:2px solid var(--ink);border-radius:6px;display:block}
+.hook-opcao b{display:block;font-family:Bangers;font-size:17px;letter-spacing:.02em;
+  text-transform:uppercase;line-height:1.05;margin-bottom:3px}
+.hook-opcao span span{font-size:11.5px;color:var(--muted);line-height:1.35}
+
+/* ------------------------------------------------------------------ timeline */
+.ferramentas{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:12px 0 10px;
+  padding:10px 12px;border:2px solid var(--ink);border-radius:12px;background:var(--cream)}
+.ferramentas .sep{width:2px;align-self:stretch;background:var(--rule)}
+/* ---- jog: a roda do Final Cut do iPad, para a agulha andar fino ---------- */
+.mesa-jog{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin:0 0 12px;
+  padding:12px;border:2px solid var(--ink);border-radius:12px;background:var(--paper)}
+.jog{position:relative;width:132px;height:132px;flex:none;touch-action:none;cursor:grab}
+.jog:active{cursor:grabbing}
+.jog svg{display:block;overflow:visible}
+.jog .face{fill:var(--cream);stroke:var(--ink);stroke-width:3}
+.jog .risco{stroke:var(--ink);stroke-width:1.5;opacity:.55}
+.jog .risco.forte{stroke-width:2.5;opacity:1}
+.jog .marca{stroke:var(--orange);stroke-width:4;stroke-linecap:round}
+.jog .miolo{fill:var(--paper);stroke:var(--ink);stroke-width:3}
+.jog .tc-jog{font:700 13px/1 ui-monospace,Menlo,monospace;fill:var(--ink);text-anchor:middle}
+.jog .passo-jog{font:900 8px/1 Inter;letter-spacing:.08em;fill:var(--muted);text-anchor:middle}
+.jog-lado{display:flex;flex-direction:column;gap:8px;min-width:230px;flex:1}
+.jog-modo{display:inline-flex;border:2px solid var(--ink);border-radius:999px;overflow:hidden;
+  box-shadow:2px 2px 0 var(--ink);width:max-content}
+.jog-modo button{font:900 10px/1 Inter;letter-spacing:.07em;text-transform:uppercase;
+  padding:6px 11px;background:var(--paper);border:none}
+.jog-modo button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.atalhos{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:3px 12px;
+  font-size:11.5px;color:var(--muted);margin:0}
+.atalhos div{display:flex;gap:6px;align-items:baseline}
+.atalhos kbd{font:800 10px/1.5 Inter;border:2px solid var(--ink);border-radius:4px;
+  padding:0 4px;background:var(--cream);color:var(--ink);white-space:nowrap;
+  box-shadow:1.5px 1.5px 0 var(--ink)}
+
+.pistas{position:relative;user-select:none;touch-action:none}
+/* a régua é a barra de rolagem da agulha: arrastar nela é o gesto de mão */
+.regua{position:relative;height:16px;font:600 9.5px/1 ui-monospace,Menlo,monospace;color:var(--muted);
+  cursor:ew-resize;touch-action:none;user-select:none}
+.regua span{position:absolute;top:0;transform:translateX(-50%)}
+.pista{position:relative;border:2px solid var(--ink);border-radius:8px;overflow:hidden;
+  background:var(--cream);margin-bottom:5px;cursor:crosshair}
+.pista.video{height:56px}
+.pista.audio{height:44px}
+.tiras{position:absolute;inset:0;background-repeat:no-repeat;background-size:100% 100%;opacity:.5}
+/* na trilha junta cada clipe carrega a sua fatia da tira: o quadro continua
+   embaixo do pedaço mesmo depois que o buraco se fechou */
+.clipe .tira{position:absolute;inset:0;background-repeat:no-repeat;opacity:.5;
+  pointer-events:none;border-radius:3px}
+.pista canvas{position:absolute;inset:0;width:100%;height:100%}
+.clipes{position:absolute;inset:0}
+.clipe{position:absolute;top:2px;bottom:2px;border:2px solid var(--ink);border-radius:5px;
+  background:rgba(255,255,255,.5);overflow:hidden}
+.clipe.fora{background:repeating-linear-gradient(45deg,rgba(181,36,27,.55) 0 6px,rgba(251,235,210,.85) 6px 12px);
+  border-style:dashed}
+.clipe.sel{border-color:var(--orange);border-width:3px;background:rgba(246,169,59,.42);z-index:2}
+.clipe .etiqueta{position:absolute;left:4px;top:2px;font:900 9px/1.3 Inter;letter-spacing:.05em;
+  pointer-events:none;white-space:nowrap;text-shadow:0 0 3px var(--paper),0 0 3px var(--paper)}
+.pista.video .clipe{cursor:grab}
+.clipe .borda{position:absolute;top:0;bottom:0;width:8px;cursor:ew-resize}
+.clipe .borda.esq{left:-2px}.clipe .borda.dir{right:-2px}
+.clipe .borda:hover{background:var(--orange)}
+.pista.audio .clipe{background:rgba(47,110,143,.22);cursor:grab}
+.pista.audio .clipe.movido{background:rgba(47,110,143,.45);border-color:var(--agua)}
+.pista.audio .clipe.travado{cursor:not-allowed;opacity:.7}
+.agulha{position:absolute;top:0;bottom:0;width:2px;background:var(--orange);pointer-events:none;z-index:4}
+.agulha::before{content:"";position:absolute;top:-5px;left:-5px;border:6px solid transparent;
+  border-top-color:var(--orange)}
+/* a cabeça da agulha é a única parte que recebe o dedo: uma área de pegar
+   maior que o triângulo, senão só acerta quem tem mão de cirurgião */
+.agulha .pega{position:absolute;top:-9px;left:-11px;width:24px;height:20px;
+  pointer-events:auto;cursor:ew-resize;touch-action:none}
+.agulha.pegando{width:3px}
+.agulha.pegando::before{border-width:8px;top:-7px;left:-7px}
+.faixa-motion{display:flex;height:8px;border:2px solid var(--ink);border-radius:999px;overflow:hidden}
+.faixa-motion i{display:block;height:100%}
+.legenda-pistas{display:flex;gap:14px;flex-wrap:wrap;font-size:11px;color:var(--muted);margin-top:8px}
+.legenda-pistas i{display:inline-block;width:11px;height:11px;border:2px solid var(--ink);
+  border-radius:3px;vertical-align:-2px;margin-right:4px}
+
+/* ------------------------------------------------------------------- escuta */
+.escuta{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-direction:column;gap:9px}
+.escuta li{border:3px solid var(--vermelho);border-radius:12px;padding:10px 12px;background:#FDF2F1}
+.escuta .quando{font:700 13px/1 ui-monospace,Menlo,monospace;margin-bottom:4px;display:block}
+.escuta .dito{font-family:Bangers;font-size:21px;letter-spacing:.02em;text-transform:uppercase;
+  display:block;margin-bottom:3px}
+
+.barra{position:sticky;bottom:0;margin-top:18px;padding:14px 0 6px;
+  background:linear-gradient(to top,var(--ground) 74%,rgba(251,235,210,0));
+  display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+.estado{font-size:13px;color:var(--muted)}
+.estado b{color:var(--ink);font-weight:800}
+
+/* ------------------------------------------------------- formato `analise` */
+/* Painel do formato: a espinha em porcentagem, os cartões de prova com o modo
+   de entrada, os batimentos de destaque e o que o formato pede e este take
+   não tem. Entra AO LADO das ferramentas de corte — nenhuma sai. */
+.espinha{display:flex;flex-direction:column;gap:4px;margin:12px 0 4px}
+.faixa-bloco{display:grid;grid-template-columns:1fr 74px;gap:10px;align-items:center;
+  font-size:13px;padding:5px 9px;border:2px solid var(--ink);border-radius:9px;background:var(--paper);
+  cursor:pointer;text-align:left;width:100%}
+.faixa-bloco:hover{background:var(--cream)}
+.faixa-bloco b{font-weight:700}
+.faixa-bloco .pc{font:700 12px/1 ui-monospace,Menlo,monospace;color:var(--muted);text-align:right}
+.faixa-bloco[data-alerta="1"]{border-color:var(--vermelho);background:#FDF2F1}
+
+.provas{list-style:none;margin:12px 0 0;padding:0;display:flex;flex-direction:column;gap:10px}
+.provas li{border:3px solid var(--ink);border-radius:12px;background:var(--paper);padding:10px 12px}
+.provas .cab{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:5px}
+.modo{font:900 10px/1.7 Inter;letter-spacing:.08em;text-transform:uppercase;padding:0 8px;
+  border-radius:999px;border:2px solid var(--ink)}
+.modo[data-m="1"]{background:#E6F0E8}
+.modo[data-m="2"]{background:var(--amber)}
+.modo[data-m="3"]{background:var(--orange);color:var(--paper)}
+.provas .oquê{font-size:13.5px;margin:0 0 4px;font-weight:600}
+.provas .porquê{font-size:12.5px;color:var(--muted);margin:0}
+.modo-troca{margin-left:auto;display:flex;gap:4px}
+
+.batimentos{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0 0;padding:0;list-style:none}
+.batimentos li{border:2px solid var(--ink);border-radius:9px;background:var(--cream);
+  padding:5px 9px;font-size:12.5px;max-width:100%}
+.batimentos b{display:block;font-family:Bangers;font-size:17px;letter-spacing:.02em;
+  text-transform:uppercase;line-height:1.1}
+.batimentos small{color:var(--muted);font-size:10.5px;font-weight:800;letter-spacing:.07em;
+  text-transform:uppercase}
+
+.buracos{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-direction:column;gap:8px}
+.buracos li{border:3px solid var(--vermelho);border-radius:12px;background:#FDF2F1;padding:9px 12px;
+  font-size:13px;line-height:1.5}
+.buracos .qual{font-family:Bangers;font-size:18px;letter-spacing:.02em;text-transform:uppercase;
+  display:block;margin-bottom:2px}
+</style>
+
+<div class="wrap">
+  <header>
+    <div>
+      <div class="kicker">bEditor · etapa 1 de 4 · o corte, antes do motion</div>
+      <h1>Mesa de decupagem</h1>
+      <p class="meta" id="meta"></p>
+    </div>
+    <div class="kpis" id="kpis"></div>
+  </header>
+
+  <nav class="tabs" aria-label="Seções">
+    <a class="chip" href="#previa">Prévia viva</a>
+    <a class="chip" href="#roteiro-sec">Roteiro</a>
+    <a class="chip" href="#escuta-sec">O que o áudio conta</a>
+    <a class="chip" href="#tempo">Linha do tempo</a>
+    <a class="chip" href="#cor">Cor</a>
+    <a class="chip" href="#hook">Hook</a>
+    <a class="chip" href="#analise-sec">Análise</a>
+  </nav>
+
+  <section class="bento" id="previa-sec">
+    <div class="panel c12" id="previa">
+      <div class="kicker">A edição como dados · nada foi renderizado</div>
+      <h2>Prévia viva</h2>
+      <p class="small muted" id="pv-meta">Carregando a edição…</p>
+      <div class="pv-grade">
+        <div>
+          <div class="tela pv-tela" id="pv-tela">
+            <div class="pv-quadro"><video id="pv-video" playsinline preload="auto"></video></div>
+            <iframe id="pv-legenda" title="Legenda e hook, a mesma página do render" tabindex="-1"></iframe>
+            <span class="pv-zoom" id="pv-zoom" hidden>1,00×</span>
+            <div class="pv-vazio" id="pv-vazio" hidden></div>
+          </div>
+          <div class="pv-barra" id="pv-barra">
+            <div class="trilho" id="pv-trilho"><div class="feito" id="pv-feito"></div></div>
+            <input type="range" id="pv-tempo" min="0" max="1" step="0.01" value="0"
+                   aria-label="Tempo do vídeo — arraste; setas andam 1 s, Shift + setas 5 s">
+            <div class="cabeca" id="pv-cabeca" style="left:0"></div>
+          </div>
+          <div class="transporte pv-transporte">
+            <button class="btn pri" id="pv-tocar">▶ Tocar</button>
+            <button class="btn mini" id="pv-menos" title="Voltar 5 s (Shift + ←)">−5 s</button>
+            <button class="btn mini" id="pv-mais" title="Avançar 5 s (Shift + →)">+5 s</button>
+            <button class="btn mini" id="pv-ant" title="Ênfase anterior">◀ ênfase</button>
+            <button class="btn mini" id="pv-prox" title="Próxima ênfase">ênfase ▶</button>
+            <span class="relogio"><span id="pv-agora">0:00</span> / <span id="pv-total">–</span></span>
+          </div>
+          <div class="transporte pv-transporte">
+            <button class="btn mini" id="pv-bt-legenda" aria-pressed="true">Legenda e hook</button>
+            <button class="btn mini" id="pv-bt-zoom" aria-pressed="true">Zoom</button>
+          </div>
+        </div>
+        <div class="pv-lado">
+          <div class="pv-kpis" id="pv-kpis"></div>
+          <div class="pv-agora" id="pv-fala"><b>Na tela agora</b>–</div>
+          <div>
+            <label>Onde entra o zoom (cada um é um pico de voz; sai no corte seguinte)</label>
+            <div class="pv-enfases" id="pv-enfases"></div>
+          </div>
+          <p class="small muted" style="margin:0">O vídeo é o take já cortado, em 360p. Zoom e
+          recorte são os números do montador, aplicados aqui. A legenda e o hook são a mesma
+          página que o render grava. Aprovou? O render final sai igual a isto.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bento">
+    <div class="panel c7" id="roteiro-sec">
+      <div class="kicker">Cada momento, o que ele pede e por quê</div>
+      <h2>Roteiro</h2>
+      <p class="small muted">Clique na frase para ir até ela. O motion de cada momento fica
+      embaixo da frase que ele ilustra, e abre para editar.</p>
+      <div class="roteiro" id="roteiro"></div>
+    </div>
+
+    <div class="panel c5 visor">
+      <div class="kicker">O corte como está agora</div>
+      <h2>Preview</h2>
+      <div class="tela" style="margin-top:10px">
+        <video id="video" src="corte-revisao.mp4" playsinline preload="metadata"></video>
+        <div class="mascara-previa" id="mascara-previa" hidden></div>
+        <div class="selo-hook" id="selo" hidden></div>
+      </div>
+      <div class="transporte">
+        <button class="btn" id="tocar">▶ Tocar</button>
+        <span class="relogio"><span id="agora">0:00</span> / <span id="total">–</span></span>
+        <span class="agora" id="rotulo-agora"></span>
+      </div>
+      <p class="small muted" style="margin:10px 0 0">O arquivo é o render da rodada anterior:
+      o que você mexer aqui não reaparece nele. Salve, me diga no chat, e a etapa roda de novo.</p>
+    </div>
+  </section>
+
+  <section class="bento" id="escuta-sec">
+    <div class="panel c12">
+      <div class="kicker">Fala que o transcript não registrou</div>
+      <h2>O que o áudio conta</h2>
+      <p class="small muted">O Whisper limpa gagueira de propósito, e não há parâmetro que
+      desligue isso: frase começada, travada e recomeçada chega ao texto como se tivesse sido
+      dita uma vez só. Quem acha estas é a medição de energia do áudio.</p>
+      <ul class="escuta" id="escuta"></ul>
+    </div>
+  </section>
+
+  <section class="bento" id="tempo">
+    <div class="panel c12">
+      <div class="kicker" id="kicker-tempo">Relógio do take bruto · duas pistas, pedaços próprios</div>
+      <h2>Linha do tempo</h2>
+
+      <div class="ferramentas">
+        <button class="btn mini" id="f-lamina">✂ Cortar na agulha <kbd>B</kbd></button>
+        <button class="btn mini" id="f-apagar">⌫ Apagar com ripple <kbd>⌫</kbd></button>
+        <button class="btn mini" id="f-juntar">↩ Juntar de volta <kbd>J</kbd></button>
+        <span class="sep"></span>
+        <button class="btn mini" id="f-trilha" aria-pressed="false">⇥ Juntar a trilha <kbd>T</kbd></button>
+        <button class="btn mini" id="f-vazios">␣ Apagar espaços vazios <kbd>V</kbd></button>
+        <span class="sep"></span>
+        <button class="btn mini" id="f-silencio">🤫 Remover silêncios <kbd>R</kbd></button>
+        <span class="campo-linha">mín <input id="f-silencio-ms" type="number" value="700" min="300" step="50"> ms</span>
+        <span class="sep"></span>
+        <button class="btn mini" id="f-jcut">⤵ J-cut automático</button>
+        <span class="campo-linha">alvo <input id="f-jcut-ms" type="number" value="240" min="0" step="20"> ms</span>
+        <button class="btn mini" id="f-recolar">🔗 Recolar áudio</button>
+        <button class="btn mini" id="f-ima" aria-pressed="true">🧲 Ímã</button>
+        <span class="sep"></span>
+        <button class="btn mini" id="f-desfazer">↶ Desfazer <kbd>⌘Z</kbd></button>
+      </div>
+      <p class="aviso" id="aviso-jcut" hidden></p>
+
+      <div class="mesa-jog">
+        <div class="jog" id="jog" role="slider" tabindex="0" aria-label="Roda de precisão da agulha"
+             aria-valuemin="0" aria-valuenow="0" aria-valuetext="0:00">
+          <svg viewBox="-4 -70 140 140" width="132" height="132" aria-hidden="true">
+            <path class="face" d="M 0 -62 A 62 62 0 0 1 0 62 Z"></path>
+            <g id="jog-riscos"></g>
+            <line class="marca" id="jog-marca" x1="22" y1="0" x2="58" y2="0"></line>
+            <circle class="miolo" cx="0" cy="0" r="19"></circle>
+            <text class="tc-jog" x="0" y="-1" id="jog-tc">0:00</text>
+            <text class="passo-jog" x="0" y="10" id="jog-passo">QUADRO</text>
+          </svg>
+        </div>
+        <div class="jog-lado">
+          <div class="row">
+            <span class="jog-modo" role="group" aria-label="Passo da roda">
+              <button id="jog-fino" aria-pressed="true">Quadro</button>
+              <button id="jog-medio" aria-pressed="false">Meio seg</button>
+              <button id="jog-grosso" aria-pressed="false">Segundo</button>
+            </span>
+            <span class="small muted">arraste a roda · a agulha anda no passo escolhido</span>
+            <span class="small muted">ou pegue a agulha pela cabeça, ou arraste a régua, para ir na mão</span>
+          </div>
+          <div class="atalhos">
+            <div><kbd>←</kbd><kbd>→</kbd> um quadro</div>
+            <div><kbd>⇧←</kbd><kbd>⇧→</kbd> dez quadros</div>
+            <div><kbd>⌥←</kbd><kbd>⌥→</kbd> corte anterior · seguinte</div>
+            <div><kbd>,</kbd><kbd>.</kbd> mesmo que as setas</div>
+            <div><kbd>B</kbd> cortar na agulha</div>
+            <div><kbd>⌫</kbd> tirar do corte</div>
+            <div><kbd>J</kbd> juntar de volta</div>
+            <div><kbd>R</kbd> remover silêncios</div>
+            <div><kbd>T</kbd> juntar a trilha</div>
+            <div><kbd>V</kbd> apagar espaços vazios</div>
+            <div><kbd>espaço</kbd> tocar · pausar</div>
+            <div><kbd>⌘Z</kbd> desfazer</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pistas" id="pistas">
+        <div class="regua" id="regua"></div>
+        <div class="pista video" id="pista-video">
+          <div class="tiras" id="tiras"></div>
+          <div class="clipes" id="clipes-v"></div>
+        </div>
+        <div class="pista audio" id="pista-audio">
+          <canvas id="onda"></canvas>
+          <div class="clipes" id="clipes-a"></div>
+        </div>
+        <div class="faixa-motion" id="faixa"></div>
+        <div class="agulha" id="agulha" style="left:0"><i class="pega" id="agulha-pega"
+          title="Arraste a agulha (ou a régua) para mover na mão"></i></div>
+      </div>
+      <div class="legenda-pistas">
+        <span><i style="background:rgba(255,255,255,.6)"></i>vídeo no corte</span>
+        <span><i style="background:repeating-linear-gradient(45deg,rgba(181,36,27,.55) 0 4px,#FBEBD2 4px 8px)"></i>fora</span>
+        <span><i style="background:rgba(47,110,143,.22)"></i>áudio colado</span>
+        <span><i style="background:rgba(47,110,143,.45);border-color:#2F6E8F"></i>áudio adiantado (J-cut)</span>
+        <span id="onde-clicou"></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="bento">
+    <div class="panel c7" id="cor">
+      <div class="kicker">Dez números, e eles atravessam os vídeos</div>
+      <h2>Cor</h2>
+      <p class="small muted">Os deslizantes mexem no preview por aproximação, no navegador.
+      <b>Quem decide o pixel é o ffmpeg</b> — os dois quadros abaixo são render de verdade.</p>
+      <div class="presets" id="presets"></div>
+      <div class="deslizantes" id="deslizantes"></div>
+      <div class="confronto">
+        <figure><img id="cmp-a" alt="Quadro do meio do take com a grade escolhida"><figcaption id="cap-a"></figcaption></figure>
+        <figure><img id="cmp-b" alt="Quadro do fim do take com a grade escolhida"><figcaption id="cap-b"></figcaption></figure>
+      </div>
+      <div class="linha-ffmpeg" id="ffmpeg"></div>
+      <label class="marcar">
+        <input type="checkbox" id="cor-preferencia" checked>
+        <span>Guardar como <b>preferência do canal</b> — vale para os próximos vídeos, em
+        <code>~/.beditor/cor.json</code>. Sem isto, a grade fica só neste vídeo.</span>
+      </label>
+    </div>
+
+    <div class="panel c5" id="hook">
+      <div class="kicker">Os primeiros 1,5 segundos</div>
+      <h2>Hook</h2>
+      <p class="small muted">Archivo Black em âmbar no terço superior, fora da faixa onde a
+      legenda do corpo vive. Duas linhas, sem pontuação, repetindo o termo técnico.</p>
+      <div class="hooks" id="hooks"></div>
+      <div class="campo largo">
+        <label for="hook-texto">Escrever outro (uma linha por linha)</label>
+        <textarea id="hook-texto" spellcheck="false" rows="2"></textarea>
+      </div>
+    </div>
+  </section>
+
+  <section class="bento">
+    <div class="panel c5" id="mascara">
+      <div class="kicker">Opcional · como no CapCut</div>
+      <h2>Máscara Dividir</h2>
+      <p class="small muted">Horizontal, com <b>Suavizar 30%</b> de fábrica. No vídeo solo, a
+      parte de cima do seu clipe some num degradê e o hook ganha fundo. Na tela dividida, o apoio
+      dissolve sobre você na junção, sem linha. Só no A-roll — o motion de tela cheia não recebe.</p>
+      <div class="mascara-opcoes desligada" id="mascara-opcoes">
+        <label class="marcar"><input type="checkbox" id="m-ligada">
+          <span><b>Ligar a máscara</b> neste vídeo</span></label>
+        <label class="campo-linha" for="m-onde">Onde
+          <select id="m-onde">
+            <option value="solo">no meu vídeo (topo)</option>
+            <option value="split">na tela dividida (apoio)</option>
+          </select></label>
+        <div class="deslizante"><label for="m-linha">Linha</label>
+          <input type="range" id="m-linha" min="0" max="100" step="1"><output id="o-m-linha"></output></div>
+        <div class="deslizante"><label for="m-suavizar">Suavizar</label>
+          <input type="range" id="m-suavizar" min="0" max="100" step="1"><output id="o-m-suavizar"></output></div>
+        <label class="campo-linha" for="m-manter">Fica
+          <select id="m-manter">
+            <option value="baixo">a parte de baixo</option>
+            <option value="cima">a parte de cima</option>
+          </select></label>
+        <button class="btn mini" id="m-padrao" type="button">Voltar ao padrão (Suavizar 30%)</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="bento" id="analise-sec" hidden>
+    <div class="panel c7">
+      <div class="kicker" id="analise-kicker">Formato analise · quem tem a voz manda no tamanho</div>
+      <h2>Os cartões de prova</h2>
+      <p class="small muted" id="analise-nota"></p>
+      <ul class="provas" id="provas"></ul>
+      <p class="small muted" style="margin:12px 0 0">Clique no número do modo para trocar.
+      <b>1</b> = atrás de você, mudo, você continua falando. <b>2</b> = na frente, você cala,
+      o áudio do clipe assume. <b>3</b> = máximo, você sai de quadro. A moldura nunca some:
+      sem moldura vira repost.</p>
+    </div>
+
+    <div class="panel c5">
+      <div class="kicker">A espinha, em porcentagem do corte</div>
+      <h2>Estrutura</h2>
+      <div class="espinha" id="espinha"></div>
+
+      <div class="kicker" style="margin-top:18px">Os batimentos que o destaque marca</div>
+      <h2>Destaques</h2>
+      <p class="small muted">A palavra em destaque marca a <b>estrutura</b>, não a emoção.
+      Alvo do formato: 6 a 10 num vídeo de dois minutos.</p>
+      <ul class="batimentos" id="batimentos"></ul>
+
+      <div class="kicker" style="margin-top:18px">O que o formato pede e este take não tem</div>
+      <h2>Buracos</h2>
+      <ul class="buracos" id="buracos"></ul>
+    </div>
+  </section>
+
+  <div class="barra">
+    <button class="btn pri" id="salvar">Salvar decisões</button>
+    <span class="estado" id="estado">Nada mudou ainda.</span>
+  </div>
+</div>
+
+<script>
+"use strict";
+const $ = (s, r = document) => r.querySelector(s);
+
+let D = null;
+/* O estado da mesa é só isto, e cada peça é um pedaço de momento que continua
+   no corte. `cortes` do documento salvo sai daqui direto: quem reparte momento
+   em pedaços e transforma o buraco em `cortar` é o aplicar_decisoes.py, que já
+   existe — a mesa não repete essa regra, só diz o que ficou. */
+let pecas = [];          // {mid, sub, de, ate, fora}
+let jcuts = {};          // {M03: ms} — o áudio entra antes da imagem
+let motions = {};        // {M03: {...}} — o motion editado
+let cor = {}, hookEsc = "a", hookLinhas = null;
+let sel = null, sujo = false, arrastando = null, ima = true, db = null, PROJ = "projeto";
+const pilha = [];        // desfazer
+
+const clone = o => JSON.parse(JSON.stringify(o));
+function guardar(){ pilha.push({pecas: clone(pecas), jcuts: clone(jcuts)}); if(pilha.length > 40) pilha.shift(); }
+function desfazer(){
+  const a = pilha.pop(); if(!a) return;
+  pecas = a.pecas; jcuts = a.jcuts;
+  redesenhar(); marcarSujo("desfeito");
+}
+
+/* ---- a mesma ficha de cor do cor.py, para o painel e para o resumo ------- */
+const COR_PADRAO = {contraste:1.15,gama:1.02,saturacao:1.00,brilho:0.00,gamaAzul:1.00,
+  temperatura:6500,tonalidade:0.00,preto:0.000,branco:1.000,nitidez:0.85};
+const CAMPOS_COR = [
+  {k:"contraste",r:"Contraste",min:0.5,max:2,p:0.01},
+  {k:"gama",r:"Meio-tom",min:0.5,max:2,p:0.01},
+  {k:"saturacao",r:"Saturação",min:0,max:2,p:0.01},
+  {k:"brilho",r:"Brilho",min:-0.3,max:0.3,p:0.005},
+  {k:"temperatura",r:"Kelvin",min:3000,max:10000,p:50},
+  {k:"tonalidade",r:"Verde·magenta",min:-0.3,max:0.3,p:0.005},
+  {k:"preto",r:"Preto",min:0,max:0.2,p:0.001},
+  {k:"branco",r:"Branco",min:0.8,max:1,p:0.005},
+  {k:"nitidez",r:"Nitidez",min:0,max:2,p:0.05},
+  {k:"gamaAzul",r:"Gama azul",min:0.7,max:1.4,p:0.01},
+];
+const quase = (a,b,t=1e-3) => Math.abs(a-b) < t;
+const cheia = c => Object.assign({}, COR_PADRAO, c || {});
+function filtroCss(c){
+  c = cheia(c);
+  const k = (c.temperatura - 6500)/3500;
+  const b = (1 + c.brilho)*Math.sqrt(Math.max(0.01, 2 - c.gama));
+  return `contrast(${c.contraste.toFixed(3)}) saturate(${c.saturacao.toFixed(3)}) `
+       + `brightness(${b.toFixed(3)}) sepia(${(Math.max(0,k)*0.35).toFixed(3)}) `
+       + `hue-rotate(${(-k*8 + c.tonalidade*40).toFixed(1)}deg)`;
+}
+function filtroFfmpeg(c){
+  c = cheia(c); const p = [], eq = [];
+  if(!quase(c.contraste,1)) eq.push(`contrast=${c.contraste.toFixed(3)}`);
+  if(!quase(c.gama,1))      eq.push(`gamma=${c.gama.toFixed(3)}`);
+  if(!quase(c.saturacao,1)) eq.push(`saturation=${c.saturacao.toFixed(3)}`);
+  if(!quase(c.brilho,0))    eq.push(`brightness=${c.brilho.toFixed(3)}`);
+  if(!quase(c.gamaAzul,1))  eq.push(`gamma_b=${c.gamaAzul.toFixed(3)}`);
+  if(eq.length) p.push("eq=" + eq.join(":"));
+  if(!quase(c.temperatura,6500,1)) p.push(`colortemperature=temperature=${Math.round(c.temperatura)}:mix=1`);
+  if(!quase(c.tonalidade,0)) p.push(`colorbalance=gm=${(-c.tonalidade).toFixed(3)}:rm=${(c.tonalidade/2).toFixed(3)}:bm=${(c.tonalidade/2).toFixed(3)}`);
+  if(!(quase(c.preto,0) && quase(c.branco,1))) p.push(`curves=all='0/${c.preto.toFixed(3)} 1/${c.branco.toFixed(3)}'`);
+  if(!quase(c.nitidez,0)) p.push(`unsharp=luma_msize_x=5:luma_msize_y=5:luma_amount=${c.nitidez.toFixed(2)}:chroma_amount=0.0`);
+  return p.join(",") || "null";
+}
+
+const ms2tc = ms => {
+  const s = Math.max(0, ms)/1000;
+  return `${Math.floor(s/60)}:${String(Math.floor(s%60)).padStart(2,"0")}`;
+};
+const ms2exato = ms => `${Math.floor(ms/60000)}:${(ms%60000/1000).toFixed(2).padStart(5,"0")}`;
+const esc = t => String(t).replace(/[&<>"]/g, m => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]));
+
+function marcarSujo(t){
+  sujo = true;
+  $("#estado").innerHTML = `<b>${esc(t || "Há mudanças por salvar.")}</b>`;
+  $("#salvar").disabled = false;
+}
+
+fetch("dados.json").then(r => r.json()).then(d => { D = d; montar(); })
+  .catch(() => {
+    document.body.classList.add("sem-dados");
+    $("#estado").textContent = "Este projeto veio só com a prévia (sem decupagem na mesa).";
+    $("#salvar").disabled = true;
+  });
+
+function montar(){
+  PROJ = D.projeto || "projeto";
+  D.momentos.forEach(m => {
+    if(m.motion) motions[m.id] = clone(m.motion);
+    if(m.audioAntesMs) jcuts[m.id] = m.audioAntesMs;
+    pecas.push({mid: m.id, sub: 0, de: m.deMs, ate: m.ateMs, fora: m.decisao === "cortar"});
+  });
+  cor = cheia(D.corAtual);
+  $("#meta").innerHTML = `<b>${esc(PROJ)}</b> · motion <code>${esc(D.estilos.motion)}</code>`
+    + ` · hook <code>${esc(D.estilos.hook)}</code> — ${esc(D.arco.split(".")[0])}.`;
+  $("#total").textContent = ms2tc(D.tabela[D.tabela.length-1].corteAte);
+  desenharRoteiro(); desenharEscuta(); desenharCor(); desenharHook(); desenharMascara(); desenharAnalise();
+  desenharTempo(); ligarJog(); ligarFerramentas(); ligarVideo(); ligarDb();
+  $("#salvar").disabled = true;
+}
+
+/* ------------------------------------------------------ o modelo das peças */
+const momento = mid => D.momentos.find(m => m.id === mid);
+const vivas = () => pecas.filter(p => !p.fora).sort((a,b) => a.de - b.de);
+const doMomento = mid => pecas.filter(p => p.mid === mid).sort((a,b) => a.de - b.de);
+const estaViva = mid => pecas.some(p => p.mid === mid && !p.fora);
+const chave = p => p.mid + "·" + p.sub;
+const pecaEm = t => pecas.find(p => t >= p.de && t < p.ate);
+const palavrasEm = (de, ate) => D.palavras.filter(w => w.de >= de && w.ate <= ate);
+
+function somaViva(){ return vivas().reduce((s,p) => s + (p.ate - p.de), 0); }
+function pctMotion(){
+  const t = vivas().filter(p => {
+    const m = momento(p.mid);
+    return m && m.decisao !== "aroll" && m.decisao !== "cortar" && motions[p.mid];
+  }).reduce((s,p) => s + (p.ate - p.de), 0);
+  return Math.round(100*t/Math.max(1, somaViva()));
+}
+function desenharKpis(){
+  const fora = pecas.filter(p => p.fora).length;
+  const comJcut = Object.values(jcuts).filter(v => v > 0).length;
+  $("#kpis").innerHTML =
+    `<div class="kpi"><span class="num">${(somaViva()/1000).toFixed(0)}s</span><small>no corte</small></div>
+     <div class="kpi"><span class="num">${pctMotion()}%</span><small>motion</small></div>
+     <div class="kpi"><span class="num">${fora}</span><small>fora</small></div>
+     <div class="kpi"><span class="num">${comJcut}</span><small>J-cuts</small></div>`;
+}
+
+/* --------------------------------------------------------------- as ações */
+const MIN_PEDACO = 300;   // abaixo disso o plano não chega a existir
+
+function lamina(t){
+  const p = pecaEm(t);
+  if(!p){ recado("A agulha não está em cima de nenhum pedaço."); return; }
+  if(t - p.de < MIN_PEDACO || p.ate - t < MIN_PEDACO){
+    recado(`Corte perto demais da borda — cada lado precisa de ${MIN_PEDACO} ms.`); return;
+  }
+  guardar();
+  const novo = {mid: p.mid, sub: proximoSub(p.mid), de: t, ate: p.ate, fora: p.fora};
+  p.ate = t;
+  pecas.push(novo);
+  sel = chave(novo);
+  redesenhar(); marcarSujo(`${p.mid} cortado em ${ms2exato(t)}`);
+}
+const proximoSub = mid => Math.max(...pecas.filter(p => p.mid === mid).map(p => p.sub)) + 1;
+
+function apagar(){
+  const p = pecas.find(x => chave(x) === sel);
+  if(!p){ recado("Selecione um pedaço na pista de vídeo."); return; }
+  guardar();
+  p.fora = !p.fora;
+  redesenhar();
+  marcarSujo(`${rotulo(p)} ${p.fora ? "sai do corte" : "volta para o corte"}`);
+}
+
+function juntar(){
+  const p = pecas.find(x => chave(x) === sel);
+  if(!p){ recado("Selecione um pedaço para juntar ao vizinho."); return; }
+  const irmaos = doMomento(p.mid);
+  const i = irmaos.indexOf(p);
+  const outro = irmaos[i+1] || irmaos[i-1];
+  if(!outro){ recado(`${p.mid} tem um pedaço só — não há o que juntar.`); return; }
+  guardar();
+  const de = Math.min(p.de, outro.de), ate = Math.max(p.ate, outro.ate);
+  pecas = pecas.filter(x => x !== outro);
+  p.de = de; p.ate = ate; p.fora = false;
+  sel = chave(p);
+  redesenhar(); marcarSujo(`${p.mid} voltou a ser um pedaço só`);
+}
+
+function removerSilencios(minMs){
+  const G = D.regras.guardaMs, B = D.regras.buracoMinMs;
+  guardar();
+  let achados = 0, sumiram = 0;
+  const novas = [];
+  for(const p of pecas){
+    if(p.fora){ novas.push(p); continue; }
+    const ws = palavrasEm(p.de, p.ate);
+    if(ws.length < 2){
+      // pedaço sem palavra nenhuma dentro é pausa inteira: sai do corte
+      if(!ws.length && p.ate - p.de >= minMs){ p.fora = true; sumiram++; }
+      novas.push(p); continue;
+    }
+    let cursor = p.de, sub = p.sub, primeiro = true;
+    for(let i = 0; i < ws.length - 1; i++){
+      const fim = ws[i].ate + G, inicio = ws[i+1].de - G;
+      const buraco = inicio - fim;
+      if(buraco < B || (ws[i+1].de - ws[i].ate) < minMs) continue;
+      if(fim - cursor < MIN_PEDACO || p.ate - inicio < MIN_PEDACO) continue;
+      novas.push({mid: p.mid, sub: primeiro ? p.sub : sub, de: cursor, ate: fim, fora: false});
+      primeiro = false; sub = proximoSub(p.mid) + achados;
+      cursor = inicio; achados++;
+    }
+    novas.push({mid: p.mid, sub: primeiro ? p.sub : sub + 1, de: cursor, ate: p.ate, fora: false});
+  }
+  pecas = novas;
+  redesenhar();
+  if(!achados && !sumiram){
+    pilha.pop();
+    recado(`Nenhuma pausa acima de ${minMs} ms que sobre ${B} ms depois da guarda de ${G} ms de cada lado. `
+         + "Este take já está apertado.");
+  } else {
+    marcarSujo(`${achados} pausa(s) fora${sumiram ? `, ${sumiram} trecho(s) mudo(s) removido(s)` : ""}`);
+  }
+}
+
+/* Espaço vazio é ar sem fala, e ele tem duas formas: o pedaço que não tem
+   palavra nenhuma dentro, e a cabeça ou a cauda de um pedaço — o que sobra
+   antes da primeira palavra e depois da última. É o que fica para trás quando
+   se apara à mão e quando um momento foi partido. Não confundir com 🤫 remover
+   silêncios, que trata da pausa ENTRE duas palavras, no meio do pedaço. A
+   guarda de `ritmo.md` fica de pé nas duas pontas: sem ela o corte come a
+   consoante que abre e a que fecha. */
+function apagarVazios(){
+  const G = D.regras.guardaMs, B = D.regras.buracoMinMs;
+  guardar();
+  let mudos = 0, aparados = 0, ganho = 0;
+  for(const p of pecas){
+    if(p.fora) continue;
+    const ws = palavrasEm(p.de, p.ate);
+    if(!ws.length){ p.fora = true; mudos++; ganho += p.ate - p.de; continue; }
+    const novoDe = Math.max(p.de, ws[0].de - G);
+    const novoAte = Math.min(p.ate, ws[ws.length-1].ate + G);
+    if(novoAte - novoDe < MIN_PEDACO) continue;          // pedaço curto demais para aparar
+    let mexeu = false;
+    if(novoDe - p.de >= B){ ganho += novoDe - p.de; p.de = novoDe; mexeu = true; }
+    if(p.ate - novoAte >= B){ ganho += p.ate - novoAte; p.ate = novoAte; mexeu = true; }
+    if(mexeu) aparados++;
+  }
+  if(!mudos && !aparados){
+    pilha.pop();
+    recado(`Nenhum espaço vazio acima de ${B} ms depois da guarda de ${G} ms. `
+         + "Todo pedaço já começa e termina na fala.");
+    return;
+  }
+  redesenhar();
+  marcarSujo(`${(ganho/1000).toFixed(1)}s de ar fora`
+    + (aparados ? ` · ${aparados} pedaço(s) aparado(s)` : "")
+    + (mudos ? ` · ${mudos} pedaço(s) mudo(s) removido(s)` : ""));
+}
+
+/* O J-cut só existe onde a cauda de quem sai NÃO mostra a boca de quem fala.
+   Num take de rosto na câmera não há esse lugar, e um J-cut que chegue ao
+   montador põe a voz à frente da boca pelo trecho todo — três masters saíram
+   assim. Por isso a mesa mede antes de oferecer, e diz quando não dá. */
+const cobreORosto = mid => (momento(mid) || {}).decisao === "motion";
+
+function jcutAutomatico(alvo){
+  const vs = vivas();
+  let feitos = 0; const barrados = [];
+  guardar();
+  for(let i = 1; i < vs.length; i++){
+    const sai = vs[i-1], entra = vs[i];
+    if(entra.mid === sai.mid) continue;                 // não é corte de momento
+    if(jcuts["_mao_" + entra.mid]) continue;            // movido à mão: não toca
+    if(!cobreORosto(sai.mid)){ barrados.push(`${sai.mid}→${entra.mid}`); continue; }
+    const ws = palavrasEm(sai.de, sai.ate);
+    const cauda = ws.length ? sai.ate - ws[ws.length-1].ate : sai.ate - sai.de;
+    const v = Math.max(0, Math.min(alvo, Math.round(cauda)));
+    if(v > 0){ jcuts[entra.mid] = v; feitos++; }
+  }
+  redesenhar();
+  const av = $("#aviso-jcut");
+  if(!feitos && barrados.length){
+    pilha.pop();
+    av.hidden = false;
+    av.className = "aviso grito";
+    av.innerHTML = "<b>Não há lugar para J-cut neste take.</b> O J-cut só existe onde a cauda de "
+      + "quem sai não mostra a boca de quem fala, e aqui o rosto está em quadro em todos os cortes ("
+      + esc(barrados.join(", ")) + "). Forçar isso põe a voz à frente da boca pelo trecho inteiro — "
+      + "o montador recusa, e três masters já saíram assim antes de alguém olhar.";
+    recado("Nenhum J-cut cabe aqui.");
+  } else {
+    av.hidden = feitos > 0 && !barrados.length;
+    if(barrados.length){
+      av.className = "aviso";
+      av.innerHTML = `<b>${feitos} J-cut(s) montados.</b> Ficaram de fora `
+        + esc(barrados.join(", ")) + " — nesses cortes quem sai está com o rosto em quadro.";
+    }
+    marcarSujo(`${feitos} J-cut(s) automáticos`);
+  }
+}
+
+function recolarAudio(){
+  guardar();
+  jcuts = {};
+  redesenhar(); marcarSujo("áudio recolado na imagem");
+  $("#aviso-jcut").hidden = true;
+}
+
+function recado(t){ $("#onde-clicou").innerHTML = `<b>${esc(t)}</b>`; }
+const rotulo = p => p.mid + (doMomento(p.mid).length > 1 ? "·" + "abcdefgh"[doMomento(p.mid).indexOf(p)] : "");
+
+/* ---- a roda de precisão -------------------------------------------------
+   É a roda do Final Cut do iPad: meia-lua com riscos, arrastada para a agulha
+   andar devagar. O grau vale um passo, e o passo é escolhido ao lado — quadro,
+   meio segundo ou segundo. Sem ela, mover a agulha é arrastar numa pista de
+   1200 px para 77 s: cada pixel vale 64 ms, e não há como parar entre dois
+   quadros. Com ela, 180° de curso valem 45 quadros. */
+const GRAUS_POR_PASSO = 4;
+const PASSOS = {fino: "quadro", medio: "meio seg", grosso: "segundo"};
+let jogPasso = "fino", jogAng = null, jogResto = 0;
+
+const quadroMs = () => 1000 / (D.take.fps || 30);
+function passoMs(){
+  return jogPasso === "fino" ? quadroMs() : jogPasso === "medio" ? 500 : 1000;
+}
+
+function desenharJog(){
+  const g = $("#jog-riscos");
+  let h = "";
+  // 61 riscos no arco de 180°, o de 15 em 15 mais forte — como no mostrador
+  for(let i = 0; i <= 60; i++){
+    const a = (-90 + i*3) * Math.PI/180;
+    const forte = i % 5 === 0;
+    const r0 = forte ? 44 : 50, r1 = 60;
+    h += `<line class="risco${forte ? " forte" : ""}" x1="${(Math.cos(a)*r0).toFixed(1)}"
+          y1="${(Math.sin(a)*r0).toFixed(1)}" x2="${(Math.cos(a)*r1).toFixed(1)}"
+          y2="${(Math.sin(a)*r1).toFixed(1)}"></line>`;
+  }
+  g.innerHTML = h;
+}
+
+function pintarJog(){
+  // a marca gira com a agulha: uma volta inteira a cada 90 passos
+  const passos = agulhaMs / passoMs();
+  const a = ((passos * GRAUS_POR_PASSO) % 360 - 90) * Math.PI/180;
+  const m = $("#jog-marca");
+  m.setAttribute("x1", (Math.cos(a)*22).toFixed(1));
+  m.setAttribute("y1", (Math.sin(a)*22).toFixed(1));
+  m.setAttribute("x2", (Math.cos(a)*58).toFixed(1));
+  m.setAttribute("y2", (Math.sin(a)*58).toFixed(1));
+  $("#jog-tc").textContent = ms2tc(paraVideo(agulhaMs)*1000);
+  $("#jog-passo").textContent = PASSOS[jogPasso].toUpperCase();
+  const j = $("#jog");
+  j.setAttribute("aria-valuenow", Math.round(agulhaMs));
+  j.setAttribute("aria-valuetext", ms2exato(agulhaMs));
+}
+
+function andar(passos){
+  if(trilhaJunta){
+    // na trilha junta a roda anda no tempo do arquivo: o que foi apagado não
+    // gasta quadro nenhum, e a agulha pula o buraco em vez de atravessá-lo
+    const t = Math.max(0, Math.min(MONT.total, bruto2junta(agulhaMs) + passos*passoMs()));
+    irPara(Math.round(junta2bruto(t)));
+    return;
+  }
+  const t = Math.max(0, Math.min(D.take.duracaoMs, Math.round(agulhaMs + passos*passoMs())));
+  irPara(t);
+}
+
+function irParaCorte(dir){
+  // as bordas de peça são os cortes: é onde o olho precisa parar exato
+  const lista = trilhaJunta ? vivas() : pecas;
+  const bordas = [...new Set(lista.flatMap(p => [p.de, p.ate]))].sort((a,b) => a-b);
+  const alvo = dir > 0 ? bordas.find(b => b > agulhaMs + 1)
+                       : [...bordas].reverse().find(b => b < agulhaMs - 1);
+  if(alvo === undefined){ recado("Não há corte desse lado."); return; }
+  irPara(alvo);
+  const p = pecaEm(alvo) || pecaEm(alvo - 1);
+  recado(`Agulha na borda de ${p ? rotulo(p) : "corte"} · ${ms2exato(alvo)}`);
+}
+
+function ligarJog(){
+  desenharJog(); pintarJog();
+  const el = $("#jog");
+  const centro = () => {
+    const r = el.getBoundingClientRect();
+    // o centro do svg é a origem do viewBox: 4px da esquerda, meio da altura
+    return {x: r.left + 4, y: r.top + r.height/2};
+  };
+  const angulo = ev => {
+    const c = centro();
+    return Math.atan2(ev.clientY - c.y, ev.clientX - c.x) * 180/Math.PI;
+  };
+  el.addEventListener("pointerdown", ev => {
+    el.setPointerCapture(ev.pointerId);
+    jogAng = angulo(ev); jogResto = 0;
+  });
+  el.addEventListener("pointermove", ev => {
+    if(jogAng === null) return;
+    const a = angulo(ev);
+    let d = a - jogAng;
+    if(d > 180) d -= 360; else if(d < -180) d += 360;   // dá a volta sem saltar
+    jogAng = a;
+    jogResto += d / GRAUS_POR_PASSO;
+    const inteiros = Math.trunc(jogResto);
+    if(inteiros){ jogResto -= inteiros; andar(inteiros); }
+  });
+  const soltar = () => { jogAng = null; };
+  el.addEventListener("pointerup", soltar);
+  el.addEventListener("pointercancel", soltar);
+  el.addEventListener("keydown", ev => {
+    if(ev.key === "ArrowLeft" || ev.key === "ArrowRight"){
+      ev.preventDefault(); andar(ev.key === "ArrowRight" ? 1 : -1);
+    }
+  });
+
+  const botoes = {fino: "#jog-fino", medio: "#jog-medio", grosso: "#jog-grosso"};
+  Object.entries(botoes).forEach(([k, s]) => $(s).addEventListener("click", () => {
+    jogPasso = k;
+    Object.entries(botoes).forEach(([k2, s2]) =>
+      $(s2).setAttribute("aria-pressed", String(k2 === k)));
+    pintarJog();
+    recado(`Roda no passo de ${PASSOS[k]}.`);
+  }));
+}
+
+function ligarFerramentas(){
+  $("#f-lamina").onclick = () => lamina(agulhaMs);
+  $("#f-apagar").onclick = apagar;
+  $("#f-juntar").onclick = juntar;
+  $("#f-trilha").onclick = juntarTrilha;
+  $("#f-vazios").onclick = apagarVazios;
+  $("#f-silencio").onclick = () => removerSilencios(Number($("#f-silencio-ms").value) || 700);
+  $("#f-jcut").onclick = () => jcutAutomatico(Number($("#f-jcut-ms").value) || 0);
+  $("#f-recolar").onclick = recolarAudio;
+  $("#f-desfazer").onclick = desfazer;
+  $("#f-ima").onclick = () => {
+    ima = !ima;
+    $("#f-ima").setAttribute("aria-pressed", String(ima));
+    recado(ima ? "Ímã ligado: a borda do áudio encaixa na do vídeo." : "Ímã desligado.");
+  };
+  document.addEventListener("keydown", ev => {
+    if(ev.target.matches("input,textarea,select")) return;
+    const k = ev.key.toLowerCase();
+    // precisão: seta anda um quadro, com ⇧ anda dez, com ⌥ pula para o corte
+    if(ev.key === "ArrowLeft" || ev.key === "ArrowRight" || k === "," || k === "."){
+      ev.preventDefault();
+      const dir = (ev.key === "ArrowRight" || k === ".") ? 1 : -1;
+      if(ev.altKey) irParaCorte(dir);
+      else andar(dir * (ev.shiftKey ? 10 : 1));
+      return;
+    }
+    if(k === "b"){ ev.preventDefault(); lamina(agulhaMs); }
+    else if(k === "backspace" || k === "delete"){ ev.preventDefault(); apagar(); }
+    else if(k === "j"){ ev.preventDefault(); juntar(); }
+    else if(k === "r"){ ev.preventDefault(); removerSilencios(Number($("#f-silencio-ms").value) || 700); }
+    else if(k === "t"){ ev.preventDefault(); juntarTrilha(); }
+    else if(k === "v" && !ev.metaKey && !ev.ctrlKey){ ev.preventDefault(); apagarVazios(); }
+    else if(k === "z" && (ev.metaKey || ev.ctrlKey)){ ev.preventDefault(); desfazer(); }
+    else if(ev.code === "Space"){ ev.preventDefault(); const v = $("#video"); v.paused ? v.play() : v.pause(); }
+  });
+}
+
+/* --------------------------------------------------------------- o roteiro */
+const ENTRADAS = ["corte","deslizar","subir","escalar"];
+const SAIDAS = ["corte","varrer","empurrar","implodir","apagar"];
+const TIPOS = ["cartela","palavras","camadas","indice","tela","dado","objeto",
+               "personagem","galaxia","paper","retrato"];
+
+function desenharRoteiro(){
+  const alvo = $("#roteiro");
+  alvo.innerHTML = "";
+  let parte = -1;
+  D.momentos.forEach(m => {
+    const i = D.estrutura.findIndex(e => m.deMs >= e.deMs && m.deMs < e.ateMs);
+    if(i !== parte && i >= 0){
+      parte = i;
+      const h = document.createElement("div");
+      h.className = "parte"; h.textContent = D.estrutura[i].nome;
+      alvo.appendChild(h);
+    }
+    alvo.appendChild(cartaoMomento(m));
+  });
+  desenharKpis();
+}
+
+function cartaoMomento(m){
+  const viva = estaViva(m.id);
+  const dec = viva ? (motions[m.id] ? (m.decisao === "motion" ? "motion" : "aroll+motion") : "aroll") : "cortar";
+  const el = document.createElement("article");
+  el.className = "momento" + (viva ? "" : " sai");
+  el.dataset.id = m.id; el.dataset.decisao = dec;
+  const mo = motions[m.id];
+  const ps = doMomento(m.id);
+  const dur = (ps.filter(p => !p.fora).reduce((s,p)=>s+(p.ate-p.de),0)/1000).toFixed(1).replace(".", ",");
+  el.innerHTML = `
+    <div class="tc"><b>${ms2tc(m.deMs)}</b>${dur} s</div>
+    <div class="corpo-momento">
+      <div class="linha-topo">
+        <span class="id">${m.id}</span>
+        <span class="selo" data-d="${dec}">${dec}</span>
+        ${ps.length > 1 ? `<span class="selo pedacos">${ps.filter(p=>!p.fora).length} de ${ps.length} pedaços</span>` : ""}
+        ${jcuts[m.id] ? `<span class="selo jc">áudio −${jcuts[m.id]} ms</span>` : ""}
+        <div class="acoes">
+          <button class="btn mini" data-acao="alternar">${viva ? "cortar" : "devolver"}</button>
+          ${mo ? `<button class="btn mini" data-acao="tirar-motion">sem motion</button>`
+               : (viva ? `<button class="btn mini" data-acao="por-motion">+ motion</button>` : "")}
+        </div>
+      </div>
+      <p class="fala">${esc(m.fala)}</p>
+      <p class="porque">${esc(m.porque)}</p>
+    </div>`;
+  if(mo) el.querySelector(".corpo-momento").appendChild(formMotion(m.id, mo));
+  el.querySelector(".fala").addEventListener("click", () => irPara(m.deMs));
+  el.addEventListener("click", ev => {
+    const b = ev.target.closest("button[data-acao]"); if(!b) return;
+    const a = b.dataset.acao;
+    guardar();
+    if(a === "alternar"){
+      doMomento(m.id).forEach(p => p.fora = viva);
+      marcarSujo(`${m.id} ${viva ? "sai do" : "volta para o"} corte`);
+    } else if(a === "tirar-motion"){
+      delete motions[m.id];
+      marcarSujo(`${m.id} fica só com o rosto`);
+    } else if(a === "por-motion"){
+      motions[m.id] = {tipo:"cartela", ideia:"", movimento:"", entrada:"corte",
+                       saida:"corte", entraAntesMs:0, dados:{}};
+      marcarSujo(`${m.id} ganhou motion`);
+    }
+    redesenhar();
+  });
+  return el;
+}
+
+function formMotion(id, mo){
+  const d = document.createElement("details");
+  d.className = "motion";
+  const opc = (l, v) => l.map(o => `<option ${o===v?"selected":""}>${o}</option>`).join("");
+  d.innerHTML = `
+    <summary><span class="tipo">${esc(mo.tipo)}</span>
+      <span class="ideia">${esc(mo.ideia || "sem ideia escrita")}</span></summary>
+    <div class="campos">
+      <div class="campo"><label for="t-${id}">Tipo</label>
+        <select id="t-${id}" data-c="tipo">${opc(TIPOS, mo.tipo)}</select></div>
+      <div class="campo"><label for="e-${id}">Entrada</label>
+        <select id="e-${id}" data-c="entrada">${opc(ENTRADAS, mo.entrada)}</select></div>
+      <div class="campo"><label for="s-${id}">Saída</label>
+        <select id="s-${id}" data-c="saida">${opc(SAIDAS, mo.saida)}</select></div>
+      <div class="campo"><label for="a-${id}">Entra antes (ms)</label>
+        <input id="a-${id}" type="number" min="0" step="10" value="${mo.entraAntesMs ?? 0}" data-c="entraAntesMs"></div>
+      <div class="campo largo"><label for="i-${id}">Ideia</label>
+        <input id="i-${id}" value="${esc(mo.ideia||"")}" data-c="ideia"></div>
+      <div class="campo largo"><label for="m-${id}">Movimento — o que entra, o que acontece, o que sai</label>
+        <textarea id="m-${id}" data-c="movimento">${esc(mo.movimento||"")}</textarea></div>
+      ${mo.cena ? `
+      <div class="campo largo"><label for="x-${id}">Texto exato na tela (até 6 palavras)</label>
+        <input id="x-${id}" value="${esc(mo.cena.texto||"")}" data-c="cenaTexto"></div>
+      <div class="campo largo"><label for="so-${id}">Som da cena</label>
+        <input id="so-${id}" value="${esc(mo.cena.som||"")}" data-c="cenaSom"></div>` : ""}
+      ${mo.dados && mo.dados.palavras ? `
+      <div class="campo largo"><label for="p-${id}">Palavras na tela (uma por linha)</label>
+        <textarea id="p-${id}" data-c="palavras">${esc(mo.dados.palavras.join("\n"))}</textarea></div>` : ""}
+    </div>`;
+  d.addEventListener("input", ev => {
+    const c = ev.target.dataset.c; if(!c) return;
+    const alvo = motions[id];
+    if(c === "palavras") alvo.dados.palavras = ev.target.value.split("\n").map(s=>s.trim()).filter(Boolean);
+    else if(c === "cenaTexto") (alvo.cena = alvo.cena || {}).texto = ev.target.value;
+    else if(c === "cenaSom") (alvo.cena = alvo.cena || {}).som = ev.target.value;
+    else if(c === "entraAntesMs") alvo[c] = Number(ev.target.value) || 0;
+    else alvo[c] = ev.target.value;
+    if(c === "tipo") d.querySelector(".tipo").textContent = ev.target.value;
+    if(c === "ideia") d.querySelector(".ideia").textContent = ev.target.value || "sem ideia escrita";
+    marcarSujo(`${id} · ${c} mudou`);
+  });
+  return d;
+}
+
+function redesenhar(){
+  const aberto = new Set([...document.querySelectorAll(".motion[open]")]
+    .map(d => d.closest(".momento").dataset.id));
+  desenharRoteiro();
+  aberto.forEach(id => {
+    const d = document.querySelector(`.momento[data-id="${id}"] .motion`);
+    if(d) d.open = true;
+  });
+  pintarClipes(); pintarFaixa();
+  // com a trilha junta o total encolhe a cada corte: régua e onda acompanham
+  if(trilhaJunta){ desenharRegua(); desenharOnda(); pintarAgulha(agulhaMs); }
+}
+
+/* ------------------------------------------------------------------- escuta */
+function desenharEscuta(){
+  const ul = $("#escuta");
+  if(!D.escuta.length){
+    ul.innerHTML = `<li style="border-color:var(--ink);background:var(--cream)">
+      Nenhuma falsa partida ouvida neste take.</li>`;
+    return;
+  }
+  ul.innerHTML = D.escuta.map(a => {
+    const m = D.momentos.find(x => Math.abs(x.deMs - a.deMs) < 400 && x.decisao === "cortar");
+    return `<li>
+      <span class="quando">${ms2exato(a.deMs)} → ${ms2exato(a.ateMs)} · ${a.ateMs - a.deMs} ms</span>
+      <span class="dito">“${esc(a.texto)}”</span>
+      <span class="small">${esc(a.porque)}</span>
+      <div class="row" style="margin-top:8px">
+        <button class="btn mini" data-ir="${a.deMs}">ver na linha do tempo</button>
+        <span class="small muted">${m ? `já está fora do corte, como <b>${m.id}</b>`
+                                      : "<b>ainda está no corte</b>"}</span>
+      </div></li>`;
+  }).join("");
+  ul.addEventListener("click", ev => {
+    const b = ev.target.closest("button[data-ir]"); if(!b) return;
+    irPara(Number(b.dataset.ir));
+    $("#tempo").scrollIntoView({behavior:"smooth", block:"center"});
+  });
+}
+
+/* ---------------------------------------------------------------------- cor */
+function desenharCor(){
+  const pv = $("#presets");
+  pv.innerHTML = Object.entries(D.presetsCor).map(([k,p]) =>
+    `<button class="btn mini" data-p="${k}" title="${esc(p.nota)}" aria-pressed="false">${esc(p.rotulo)}</button>`).join("");
+  pv.addEventListener("click", ev => {
+    const b = ev.target.closest("button[data-p]"); if(!b) return;
+    cor = cheia(D.presetsCor[b.dataset.p].cor);
+    aplicarCor(b.dataset.p);
+    marcarSujo(`grade: ${D.presetsCor[b.dataset.p].rotulo}`);
+  });
+  $("#deslizantes").innerHTML = CAMPOS_COR.map(c => `
+    <div class="deslizante">
+      <label for="c-${c.k}">${c.r}</label>
+      <input type="range" id="c-${c.k}" data-k="${c.k}" min="${c.min}" max="${c.max}" step="${c.p}">
+      <output id="o-${c.k}"></output>
+    </div>`).join("");
+  $("#deslizantes").addEventListener("input", ev => {
+    const k = ev.target.dataset.k; if(!k) return;
+    cor[k] = Number(ev.target.value);
+    aplicarCor(null); marcarSujo("grade de cor ajustada");
+  });
+  aplicarCor("fabrica");
+}
+function aplicarCor(preset){
+  CAMPOS_COR.forEach(c => {
+    const i = $("#c-"+c.k), o = $("#o-"+c.k);
+    if(i) i.value = cor[c.k];
+    if(o) o.textContent = c.k === "temperatura" ? Math.round(cor[c.k])+"K"
+                        : cor[c.k].toFixed(c.p < 0.01 ? 3 : 2);
+  });
+  $("#video").style.filter = filtroCss(cor);
+  $("#ffmpeg").textContent = 'ffmpeg -vf "' + filtroFfmpeg(cor) + '"';
+  document.querySelectorAll("#presets button").forEach(b =>
+    b.setAttribute("aria-pressed", String(b.dataset.p === preset)));
+  const p = preset && D.presetsCor[preset] ? preset : null;
+  $("#cmp-a").src = p ? `cor/${p}-14s.jpg` : "cor/cru-14s.jpg";
+  $("#cmp-b").src = p ? `cor/${p}-62s.jpg` : "cor/cru-62s.jpg";
+  $("#cmp-a").style.filter = $("#cmp-b").style.filter = p ? "none" : filtroCss(cor);
+  $("#cap-a").textContent = p ? "14 s · render de verdade" : "14 s · aproximação";
+  $("#cap-b").textContent = p ? "62 s · render de verdade" : "62 s · aproximação";
+}
+
+/* ----------------------------------------------------------------- analise */
+/* O painel do formato `analise`. Só aparece quando o guia declara o formato —
+   num `dinamismo` a seção fica escondida e a mesa é a de sempre. O modo de
+   cada cartão é editável aqui porque ele é a decisão que mais custa errar:
+   cartão do modo 2 com o autor falando por cima é o portão 5 reprovado. */
+const MODOS = {1:"1 · atrás", 2:"2 · sobreposto", 3:"3 · máximo"};
+
+function desenharAnalise(){
+  const A = D.analise;
+  if(!A){ return; }
+  $("#analise-sec").hidden = false;
+  $("#analise-kicker").textContent =
+    `Formato analise · analisado: ${A.assunto || "—"}`;
+  const f = A.fonte;
+  $("#analise-nota").innerHTML = esc(A.nota || "")
+    + (f ? `<br><b>Fonte:</b> ${esc(f.titulo)} — ${esc(f.canal)} · `
+         + `<code>${esc(f.url)}</code> · ${(f.viewsYoutube/1e6).toFixed(1)} mi no YouTube `
+         + `em ${esc(f.medidoEm)}.` : "");
+
+  const comProva = D.momentos.filter(m => m.analise);
+  $("#provas").innerHTML = comProva.map(m => `
+    <li data-id="${m.id}">
+      <div class="cab">
+        <span class="id">${m.id}</span>
+        <span class="modo" data-m="${m.analise.modo}">${MODOS[m.analise.modo]}</span>
+        <span class="small muted">${ms2tc(m.deMs)}</span>
+        <span class="modo-troca">
+          ${[1,2,3].map(n => `<button class="btn mini" data-modo="${n}"
+             ${n===m.analise.modo?'disabled':''}>${n}</button>`).join("")}
+        </span>
+      </div>
+      <p class="oquê">${esc(m.analise.prova)}</p>
+      <p class="porquê">${esc(m.analise.porque)}</p>
+    </li>`).join("");
+
+  const total = D.tabela[D.tabela.length-1].corteAte;
+  $("#espinha").innerHTML = D.estrutura.map(e => {
+    const p = e.pct ? e.pct : [100*e.deMs/total, 100*e.ateMs/total];
+    return `<button class="faixa-bloco" data-t="${e.deMs}" data-alerta="${e.alerta?1:0}">
+      <span><b>${esc(e.nome)}</b></span>
+      <span class="pc">${p[0].toFixed(1)}–${p[1].toFixed(1)}%</span>
+    </button>`;
+  }).join("");
+
+  if(!desenharAnalise.ligado){
+    desenharAnalise.ligado = true;
+    $("#provas").addEventListener("click", ev => {
+      const b = ev.target.closest("button[data-modo]"); if(!b) return;
+      const id = b.closest("li").dataset.id;
+      const m = momento(id);
+      guardar();
+      m.analise.modo = Number(b.dataset.modo);
+      desenharAnalise();
+      marcarSujo(`${id} passou para o modo ${m.analise.modo}`);
+    });
+    $("#espinha").addEventListener("click", ev => {
+      const b = ev.target.closest("button[data-t]"); if(!b) return;
+      const v = $("#video"); v.currentTime = Number(b.dataset.t)/1000; v.play();
+    });
+  }
+
+  $("#batimentos").innerHTML = (A.destaques || []).map(x => `
+    <li><small>${esc(x.momento)} · ${esc(x.batimento)}</small><b>${esc(x.palavra)}</b></li>`).join("");
+
+  const gaps = (D.correcoes || []).filter(c => c.momento === "estrutura" || c.oCerto.includes("NÃO HÁ"));
+  $("#buracos").innerHTML = gaps.length
+    ? gaps.map(c => `<li><span class="qual">${esc(c.momento)}</span>${esc(c.oCerto)}</li>`).join("")
+    : `<li style="border-color:var(--verde);background:#EEF6EF">Nada faltando.</li>`;
+}
+
+/* --------------------------------------------------------------------- hook */
+function desenharHook(){
+  $("#hooks").innerHTML = Object.entries(D.hook).map(([k,l]) => `
+    <button class="hook-opcao" data-h="${k}" aria-pressed="${k===hookEsc}">
+      <img src="hook/hook-${k}.jpg" alt="Hook ${k} sobre o primeiro quadro">
+      <span><b>${esc(l.join(" "))}</b>
+      <span>${esc((D.hookNotas || {})[k] || "")}</span></span>
+    </button>`).join("");
+  $("#hooks").addEventListener("click", ev => {
+    const b = ev.target.closest("button[data-h]"); if(!b) return;
+    hookEsc = b.dataset.h; hookLinhas = null; $("#hook-texto").value = "";
+    pintarHook(); marcarSujo("hook trocado");
+  });
+  $("#hook-texto").addEventListener("input", ev => {
+    const l = ev.target.value.split("\n").map(s=>s.trim()).filter(Boolean).slice(0,3);
+    hookLinhas = l.length ? l : null;
+    pintarHook(); marcarSujo("hook reescrito");
+  });
+  pintarHook();
+}
+const linhasDoHook = () => hookLinhas || D.hook[hookEsc];
+function pintarHook(){
+  document.querySelectorAll(".hook-opcao").forEach(b =>
+    b.setAttribute("aria-pressed", String(!hookLinhas && b.dataset.h === hookEsc)));
+  const selo = $("#selo");
+  selo.innerHTML = linhasDoHook().map(l => `<span>${esc(l)}</span>`).join("");
+  selo.hidden = false;
+}
+
+/* ------------------------------------------------------------------ máscara
+   O Dividir do CapCut. Desligado de fábrica; a conta é a do scripts/mascara.py
+   (rampa = suavizar × metade da altura, centrada na linha, smoothstep) para o
+   preview mostrar o que o render vai fazer. Na tela dividida a linha é a junção. */
+const MASCARA_PADRAO = {ligada: false, onde: "solo", linhaPct: 20, suavizarPct: 30, manter: "baixo"};
+const JUNCAO_PCT = 43.75;   // 840 de 1920, tela-dividida.md
+let mascara = {...MASCARA_PADRAO};
+const suave = t => { t = Math.min(1, Math.max(0, t)); return t * t * (3 - 2 * t); };
+
+function desenharMascara(){
+  const base = D.mascara || {};
+  mascara = {...MASCARA_PADRAO, ...base};
+  if(mascara.onde === "auto") mascara.onde = (D.formato === "tela-dividida") ? "split" : "solo";
+  const ligar = (id, ev, fn) => $(id).addEventListener(ev, fn);
+  ligar("#m-ligada", "change", ev => { mascara.ligada = ev.target.checked; pintarMascara();
+    marcarSujo(mascara.ligada ? "máscara Dividir ligada" : "máscara desligada"); });
+  ligar("#m-onde", "change", ev => {
+    mascara.onde = ev.target.value;
+    mascara.linhaPct = mascara.onde === "split" ? JUNCAO_PCT : MASCARA_PADRAO.linhaPct;
+    pintarMascara(); marcarSujo("máscara: lugar trocado"); });
+  ligar("#m-linha", "input", ev => { mascara.linhaPct = Number(ev.target.value); pintarMascara(); marcarSujo("máscara: linha"); });
+  ligar("#m-suavizar", "input", ev => { mascara.suavizarPct = Number(ev.target.value); pintarMascara(); marcarSujo("máscara: suavizar"); });
+  ligar("#m-manter", "change", ev => { mascara.manter = ev.target.value; pintarMascara(); marcarSujo("máscara: lado"); });
+  ligar("#m-padrao", "click", () => {
+    mascara = {...MASCARA_PADRAO, ligada: mascara.ligada, onde: mascara.onde,
+               linhaPct: mascara.onde === "split" ? JUNCAO_PCT : MASCARA_PADRAO.linhaPct};
+    pintarMascara(); marcarSujo("máscara no padrão");
+  });
+  pintarMascara();
+}
+
+function pintarMascara(){
+  $("#m-ligada").checked = mascara.ligada;
+  $("#m-onde").value = mascara.onde;
+  $("#m-linha").value = mascara.linhaPct; $("#o-m-linha").textContent = Math.round(mascara.linhaPct) + "%";
+  $("#m-suavizar").value = mascara.suavizarPct; $("#o-m-suavizar").textContent = Math.round(mascara.suavizarPct) + "%";
+  $("#m-manter").value = mascara.manter;
+  $("#mascara-opcoes").classList.toggle("desligada", !mascara.ligada);
+  const pv = $("#mascara-previa");
+  pv.hidden = !mascara.ligada;
+  if(!mascara.ligada) return;
+  const rampa = mascara.suavizarPct / 2, ini = mascara.linhaPct - rampa / 2;   // em % da altura
+  const paradas = [];
+  for(let k = 0; k <= 6; k++){
+    const t = k / 6;
+    let cob = 1 - suave(t);                       // o quanto some
+    if(mascara.manter === "cima") cob = 1 - cob;
+    paradas.push(mascara.onde === "split"
+      // o apoio (cinza-azulado, no preview) dissolvendo sobre quem fala
+      ? `rgba(47,110,143,${(0.85 * (1 - suave(t))).toFixed(3)}) ${(ini + rampa * t).toFixed(2)}%`
+      : `rgba(0,0,0,${cob.toFixed(3)}) ${(ini + rampa * t).toFixed(2)}%`);
+  }
+  pv.style.background = `linear-gradient(to bottom, ${paradas.join(", ")})`;
+  pv.innerHTML = mascara.onde === "split"
+    ? `<i style="top:8px">apoio</i><i style="top:${mascara.linhaPct}%">junção · suavizar ${Math.round(mascara.suavizarPct)}%</i>`
+    : "";
+}
+
+/* ---------------------------------------------------------------- timeline */
+let agulhaMs = 0;
+
+/* ---- os dois relógios ---------------------------------------------------
+   A peça guarda o tempo do BRUTO — é de lá que o montador tira o material, e
+   nenhuma ferramenta pode mexer nisso. Mas ler o corte no relógio do bruto
+   obriga o olho a pular os buracos que apagar deixou. Então a mesa desenha em
+   dois relógios: o do bruto, onde cada pedaço está onde foi gravado, e o da
+   TRILHA JUNTA, onde os pedaços vivos ficam ombro a ombro, como vão sair no
+   arquivo. Só o desenho muda; o dado salvo é o mesmo nos dois. O áudio anda
+   junto porque a posição dele é a do vídeo dono menos o J-cut — a sincronia é
+   por construção, não por ajuste. */
+let trilhaJunta = false;
+let MONT = {mapa: new Map(), total: 1};
+
+function recalcularMontagem(){
+  let t = 0; const m = new Map();
+  for(const p of vivas()){ m.set(chave(p), t); t += p.ate - p.de; }
+  MONT = {mapa: m, total: Math.max(1, t)};
+}
+const escalaMs = () => trilhaJunta ? MONT.total : D.take.duracaoMs;
+const pct = ms => 100*ms/escalaMs();                 // uma duração vira largura
+const posDe = p => trilhaJunta ? (MONT.mapa.get(chave(p)) || 0) : p.de;
+function bruto2junta(ms){
+  for(const p of vivas()){
+    const b = MONT.mapa.get(chave(p)) || 0;
+    if(ms < p.de) return b;                          // caiu num buraco: encosta no próximo
+    if(ms <= p.ate) return b + (ms - p.de);
+  }
+  return MONT.total;
+}
+function junta2bruto(t){
+  const vs = vivas();
+  for(const p of vs){
+    const b = MONT.mapa.get(chave(p)) || 0;
+    if(t <= b + (p.ate - p.de)) return p.de + Math.max(0, t - b);
+  }
+  return vs.length ? vs[vs.length-1].ate : 0;
+}
+const posMs = ms => trilhaJunta ? bruto2junta(ms) : ms;
+
+// a fatia de tiras.jpg que cabe num pedaço, para o clipe carregar o quadro
+function fundoTira(p){
+  const t0 = D.tabela[0].brutoDe, t1 = D.tabela[D.tabela.length-1].brutoAte;
+  const dur = p.ate - p.de, vao = (t1 - t0) - dur;
+  if(dur <= 0 || t1 <= t0) return "";
+  const x = vao > 0 ? 100*(p.de - t0)/vao : 0;
+  return `background-image:url(tiras.jpg);background-size:${(100*(t1-t0)/dur).toFixed(2)}% 100%;`
+       + `background-position:${x.toFixed(2)}% 0`;
+}
+
+function desenharTempo(){
+  desenharRegua();
+  desenharOnda(); pintarClipes(); pintarFaixa();
+  ligarArraste();
+}
+
+function desenharRegua(){
+  const t0 = D.tabela[0].brutoDe, t1 = D.tabela[D.tabela.length-1].brutoAte;
+  const tiras = $("#tiras");
+  tiras.hidden = trilhaJunta;                  // na trilha junta quem carrega a tira é o clipe
+  tiras.style.backgroundImage = "url(tiras.jpg)";
+  tiras.style.left = trilhaJunta ? "0" : pct(t0) + "%";
+  tiras.style.width = trilhaJunta ? "0" : pct(t1-t0) + "%";
+  const r = $("#regua");
+  r.innerHTML = "";
+  for(let s = 0; s <= escalaMs()/1000; s += 10){
+    const e = document.createElement("span");
+    e.style.left = pct(s*1000) + "%";
+    e.textContent = ms2tc(s*1000);
+    r.appendChild(e);
+  }
+}
+
+function juntarTrilha(){
+  trilhaJunta = !trilhaJunta;
+  recalcularMontagem();
+  $("#f-trilha").setAttribute("aria-pressed", String(trilhaJunta));
+  $("#kicker-tempo").textContent = trilhaJunta
+    ? "Trilha junta · os pedaços vivos ombro a ombro, como saem no arquivo"
+    : "Relógio do take bruto · duas pistas, pedaços próprios";
+  desenharRegua(); desenharOnda(); pintarClipes(); pintarFaixa(); pintarAgulha(agulhaMs);
+  recado(trilhaJunta
+    ? `Trilha junta: ${(MONT.total/1000).toFixed(1)}s sem buraco. Quem está fora sai da vista — `
+      + "para devolver um pedaço, use “devolver” no roteiro."
+    : "De volta ao relógio do bruto: cada pedaço no tempo em que foi gravado.");
+}
+
+function desenharOnda(){
+  const c = $("#onda"), ctx = c.getContext("2d");
+  const l = c.clientWidth*devicePixelRatio, a = c.clientHeight*devicePixelRatio;
+  c.width = l; c.height = a;
+  ctx.clearRect(0, 0, l, a);
+  ctx.fillStyle = "#C2410C";
+  const N = D.onda.length, balde = D.take.duracaoMs/N;
+  const barra = (i, x, w) => {
+    const h = Math.max(1, D.onda[i]*a*0.9);
+    ctx.fillRect(x, (a-h)/2, Math.max(1, w-0.4), h);
+  };
+  if(!trilhaJunta){
+    const passo = l/N;
+    D.onda.forEach((_, i) => barra(i, i*passo, passo));
+    return;
+  }
+  // na trilha junta a onda também fecha o buraco: cada pedaço traz a sua fatia
+  const k = l/MONT.total;
+  for(const p of vivas()){
+    const base = (MONT.mapa.get(chave(p)) || 0)*k, larg = (p.ate - p.de)*k;
+    ctx.save();
+    ctx.beginPath(); ctx.rect(base, 0, larg, a); ctx.clip();
+    const i0 = Math.max(0, Math.floor(p.de/balde)), i1 = Math.min(N, Math.ceil(p.ate/balde));
+    for(let i = i0; i < i1; i++) barra(i, base + (i*balde - p.de)*k, balde*k);
+    ctx.restore();
+  }
+}
+
+function pintarClipes(){
+  recalcularMontagem();
+  const desenhar = p => trilhaJunta ? !p.fora : true;
+  $("#clipes-v").innerHTML = pecas.filter(desenhar).map(p => `
+    <div class="clipe${p.fora ? " fora" : ""}${chave(p)===sel ? " sel" : ""}"
+         data-k="${chave(p)}" style="left:${pct(posDe(p))}%;width:${pct(p.ate-p.de)}%">
+      ${trilhaJunta && !p.fora ? `<i class="tira" style="${fundoTira(p)}"></i>` : ""}
+      <span class="etiqueta">${rotulo(p)}</span>
+      <div class="borda esq" data-borda="de"></div>
+      <div class="borda dir" data-borda="ate"></div>
+    </div>`).join("");
+  $("#clipes-a").innerHTML = pecas.filter(desenhar).map(p => {
+    const j = jcuts[p.mid] || 0;
+    const pode = cobreORosto(p.mid);
+    // o áudio é a posição do vídeo dono menos o J-cut: anda junto nos dois relógios
+    return `<div class="clipe${p.fora ? " fora" : ""}${j ? " movido" : ""}${pode ? "" : " travado"}${chave(p)===sel ? " sel" : ""}"
+      data-k="${chave(p)}" data-audio="1"
+      style="left:${pct(Math.max(0, posDe(p) - j))}%;width:${pct(p.ate-p.de)}%">
+      ${j ? `<span class="etiqueta">−${j} ms</span>` : ""}</div>`;
+  }).join("");
+  desenharKpis();
+}
+
+function pintarFaixa(){
+  const lista = pecas.slice().sort((a,b)=>a.de-b.de).filter(p => trilhaJunta ? !p.fora : true);
+  $("#faixa").innerHTML = lista.map(p => {
+    const m = momento(p.mid);
+    const cor_ = p.fora ? "transparent"
+      : !motions[p.mid] ? "#E6D9C4"
+      : (m.decisao === "motion" ? "var(--amber)" : "var(--orange)");
+    return `<i style="width:${pct(p.ate-p.de)}%;background:${cor_}"></i>`;
+  }).join("");
+}
+
+function ligarArraste(){
+  const caixa = () => $("#pistas").getBoundingClientRect();
+  const msDoX = x => {
+    const c = caixa();
+    const t = Math.min(1, Math.max(0, (x - c.left)/c.width)) * escalaMs();
+    return Math.round(trilhaJunta ? junta2bruto(t) : t);   // o dado é sempre do bruto
+  };
+
+  /* A agulha na mão. Três lugares levam a agulha, e o gesto é o mesmo nos três:
+     a régua em cima, a cabeça da própria agulha, e o corpo das pistas (já ligado
+     abaixo). A roda de precisão continua para o quadro exato; isto aqui é para
+     atravessar o take depressa, sem contar passo. Quem estava tocando pausa no
+     primeiro toque: o preview tem que seguir a mão, não brigar com ela. */
+  const pegarAgulha = el => {
+    const largar = ev => {
+      if(!arrastando || arrastando.tipo !== "agulha") return;
+      arrastando = null;
+      $("#agulha").classList.remove("pegando");
+      if(el.hasPointerCapture && ev && el.hasPointerCapture(ev.pointerId))
+        el.releasePointerCapture(ev.pointerId);
+      recado(`Agulha em ${ms2exato(agulhaMs)}`);
+    };
+    el.addEventListener("pointerdown", ev => {
+      ev.preventDefault();
+      el.setPointerCapture(ev.pointerId);
+      const v = $("#video"); if(v && !v.paused) v.pause();
+      arrastando = {tipo:"agulha"};
+      $("#agulha").classList.add("pegando");
+      irPara(msDoX(ev.clientX));
+    });
+    el.addEventListener("pointermove", ev => {
+      if(arrastando && arrastando.tipo === "agulha") irPara(msDoX(ev.clientX));
+    });
+    el.addEventListener("pointerup", largar);
+    el.addEventListener("pointercancel", largar);
+  };
+  pegarAgulha($("#regua"));
+  pegarAgulha($("#agulha-pega"));
+
+  ["#pista-video","#pista-audio"].forEach(sel_ => {
+    const pista = $(sel_);
+    pista.addEventListener("pointerdown", ev => {
+      const borda = ev.target.closest(".borda");
+      const clipe = ev.target.closest(".clipe");
+      pista.setPointerCapture(ev.pointerId);
+
+      if(clipe){
+        sel = clipe.dataset.k;
+        const p = pecas.find(x => chave(x) === sel);
+        if(borda && !clipe.dataset.audio){
+          guardar();
+          arrastando = {tipo:"aparar", p, borda: borda.dataset.borda};
+          return;
+        }
+        if(clipe.dataset.audio){
+          if(!cobreORosto(p.mid)){
+            recado(`Sem J-cut em ${p.mid}: quem sai está com o rosto em quadro.`);
+          } else {
+            guardar();
+            arrastando = {tipo:"jcut", p, x0: ev.clientX, j0: jcuts[p.mid] || 0};
+          }
+          pintarClipes(); return;
+        }
+        pintarClipes();
+        recado(`${rotulo(p)} selecionado — ✂ corta na agulha, ⌫ tira do corte.`);
+      }
+      arrastando = arrastando || {tipo:"agulha"};
+      if(arrastando.tipo === "agulha") irPara(msDoX(ev.clientX));
+    });
+
+    pista.addEventListener("pointermove", ev => {
+      if(!arrastando) return;
+      if(arrastando.tipo === "agulha"){ irPara(msDoX(ev.clientX)); return; }
+      if(arrastando.tipo === "aparar"){
+        const p = arrastando.p, t = msDoX(ev.clientX);
+        const m = momento(p.mid);
+        const irmaos = doMomento(p.mid);
+        const i = irmaos.indexOf(p);
+        // apara para dentro e devolve para fora, sem invadir o vizinho nem sair do momento
+        const min = i > 0 ? irmaos[i-1].ate : m.deMs;
+        const max = i < irmaos.length-1 ? irmaos[i+1].de : m.ateMs;
+        if(arrastando.borda === "de") p.de = Math.max(min, Math.min(t, p.ate - MIN_PEDACO));
+        else                          p.ate = Math.min(max, Math.max(t, p.de + MIN_PEDACO));
+        pintarClipes(); return;
+      }
+      if(arrastando.tipo === "jcut"){
+        const c = caixa();
+        const d = (arrastando.x0 - ev.clientX)/c.width * escalaMs();
+        let v = Math.max(0, Math.round(arrastando.j0 + d));
+        if(ima && v < D.regras.imaMs) v = 0;            // encaixa de volta na imagem
+        jcuts[arrastando.p.mid] = v;
+        jcuts["_mao_" + arrastando.p.mid] = true;       // o automático não mexe mais nele
+        pintarClipes(); return;
+      }
+    });
+
+    const soltar = () => {
+      if(arrastando && arrastando.tipo === "aparar")
+        marcarSujo(`${rotulo(arrastando.p)} aparado`);
+      if(arrastando && arrastando.tipo === "jcut")
+        marcarSujo(`${arrastando.p.mid}: áudio ${jcuts[arrastando.p.mid] || 0} ms antes`);
+      arrastando = null;
+    };
+    pista.addEventListener("pointerup", soltar);
+    pista.addEventListener("pointercancel", soltar);
+  });
+}
+
+/* -------------------------------------------------------------------- vídeo */
+// a tabela do corte manda: o bruto tem buracos, o arquivo de preview não
+function paraVideo(ms){
+  for(const t of D.tabela)
+    if(ms >= t.brutoDe && ms <= t.brutoAte) return (t.corteDe + (ms - t.brutoDe))/1000;
+  for(const t of D.tabela) if(ms < t.brutoDe) return t.corteDe/1000;
+  return D.tabela[D.tabela.length-1].corteAte/1000;
+}
+function doVideo(s){
+  const ms = s*1000;
+  for(const t of D.tabela)
+    if(ms >= t.corteDe && ms <= t.corteAte) return t.brutoDe + (ms - t.corteDe);
+  return D.take.duracaoMs;
+}
+function irPara(ms){
+  agulhaMs = ms;
+  $("#video").currentTime = paraVideo(ms);
+  pintarAgulha(ms);
+}
+function pintarAgulha(ms){
+  agulhaMs = ms;
+  $("#agulha").style.left = pct(posMs(ms)) + "%";
+  $("#agora").textContent = ms2tc(paraVideo(ms)*1000);
+  const p = pecaEm(ms);
+  document.querySelectorAll(".momento").forEach(e =>
+    e.classList.toggle("tocando", !!p && e.dataset.id === p.mid));
+  $("#rotulo-agora").textContent = p ? `${rotulo(p)} · ${p.fora ? "fora" : "no corte"}` : "";
+  if($("#jog-marca")) pintarJog();
+}
+function ligarVideo(){
+  const v = $("#video");
+  v.addEventListener("timeupdate", () => { if(!arrastando) pintarAgulha(doVideo(v.currentTime)); });
+  v.addEventListener("play",  () => $("#tocar").textContent = "❚❚ Pausar");
+  v.addEventListener("pause", () => $("#tocar").textContent = "▶ Tocar");
+  $("#tocar").addEventListener("click", () => v.paused ? v.play() : v.pause());
+}
+
+/* ----------------------------------------------------------------------- db */
+async function ligarDb(){
+  db = await (window.claude?.use?.("db") ?? Promise.resolve(null));
+  if(!db){ $("#salvar").title = "Sem armazenamento nesta visualização."; return; }
+  try{
+    const s = await db.doc("decisoes/" + PROJ).get();
+    if(!s.exists) return;
+    const d = s.data();
+    if(d.pecas) pecas = d.pecas;
+    if(d.jcuts) jcuts = d.jcuts;
+    if(d.motions) Object.assign(motions, d.motions);
+    if(d.cor) cor = cheia(d.cor);
+    if(d.hook){ hookEsc = d.hook.opcao || "a"; hookLinhas = d.hook.linhas || null; }
+    if(d.mascara) mascara = {...MASCARA_PADRAO, ...d.mascara};
+    redesenhar(); aplicarCor(null); pintarHook(); pintarMascara();
+    $("#estado").innerHTML = `Retomado do que ficou salvo em <b>${esc(d.quando || "antes")}</b>.`;
+  }catch(e){ /* documento ausente não é erro */ }
+}
+
+/* Os quatro mapas que o aplicar_decisoes.py espera. A mesa não traduz nada
+   além disto: quem reparte momento, aparra J-cut contra a pausa da frase e
+   devolve o buraco como `cortar` é o script, que já faz e já tem teste. */
+function documento(){
+  const escolhas = {}, cortes = {}, js = {};
+  for(const m of D.momentos){
+    const ps = doMomento(m.id);
+    const vivos = ps.filter(p => !p.fora).sort((a,b) => a.de - b.de);
+    escolhas[m.id] = vivos.length ? "fica" : "sai";
+    const inteiro = vivos.length === 1 && vivos[0].de === m.deMs && vivos[0].ate === m.ateMs;
+    if(vivos.length && !inteiro) cortes[m.id] = vivos.map(p => ({de: p.de, ate: p.ate}));
+    const j = jcuts[m.id] || 0;
+    if(j || m.audioAntesMs) js[m.id] = j;
+  }
+  return {
+    projeto: PROJ,
+    quando: new Date().toISOString().slice(0,16).replace("T"," "),
+    escolhas, cortes, jcuts: js, motions,
+    pecas,                                   // o estado cru, para a mesa reabrir igual
+    cor: Object.fromEntries(Object.entries(cor).filter(([k,v]) => !quase(v, COR_PADRAO[k], 1e-6))),
+    corPreferenciaDoCanal: $("#cor-preferencia").checked,
+    corFiltro: filtroFfmpeg(cor),
+    hook: {opcao: hookLinhas ? null : hookEsc, linhas: linhasDoHook()},
+    mascara: {tipo: "dividir", orientacao: "horizontal", ...mascara},
+  };
+}
+
+$("#salvar").addEventListener("click", async () => {
+  const ficha = documento();
+  if(!db){
+    $("#estado").innerHTML = "<b>Sem armazenamento aqui.</b> O resumo saiu no console.";
+    console.log(JSON.stringify(ficha, null, 2));
+    return;
+  }
+  $("#salvar").disabled = true;
+  $("#estado").textContent = "Salvando…";
+  try{
+    await db.doc("decisoes/" + PROJ).set(ficha);
+    sujo = false;
+    $("#estado").innerHTML = "<b>Salvo.</b> Me diga no chat que terminou e eu aplico no guia.";
+  }catch(e){
+    $("#salvar").disabled = false;
+    $("#estado").innerHTML = `<b>Não salvou</b> (${esc(e.code || "erro")}). Tente de novo.`;
+  }
+});
+
+window.addEventListener("beforeunload", ev => { if(sujo){ ev.preventDefault(); ev.returnValue = ""; } });
+window.addEventListener("resize", () => { if(D) desenharOnda(); });
+</script>
+
+<script>
+"use strict";
+/* ------------------------------------------------------------ prévia viva */
+(() => {
+  const q = s => document.querySelector(s);
+  const tela = q("#pv-tela"), video = q("#pv-video"), ifr = q("#pv-legenda");
+  const selo = q("#pv-zoom"), vazio = q("#pv-vazio");
+  let E = null, tl = null, idx = -1, usarZoom = true, enfases = [];
+  const mmss = s => `${Math.floor(s/60)}:${String(Math.floor(s%60)).padStart(2,"0")}`;
+  const esc = t => String(t).replace(/[&<>"]/g, m => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]));
+
+  function aviso(t){ vazio.textContent = t; vazio.hidden = false; }
+
+
+  fetch("previa/edicao.json").then(r => { if(!r.ok) throw 0; return r.json(); }).then(d => {
+    E = d;
+    video.src = "previa/take.mp4";
+    ifr.src = "previa/legenda.html";
+    const r = d.resumo || {};
+    q("#pv-meta").innerHTML = `<b>${esc(d.projeto)}</b> · gerada ${esc((d.quando||"").replace("T"," "))}`
+      + (d.nota ? ` · ${esc(d.nota)}` : "")
+      + ` · legenda <code>${esc(d.estilos?.legenda||"")}</code> · hook <code>${esc(d.estilos?.hook||"")}</code>`;
+    q("#pv-total").textContent = mmss(d.duracaoS);
+    q("#pv-kpis").innerHTML = [
+      [mmss(d.duracaoS), "duração"], [r.zooms ?? 0, "zooms de ênfase"],
+      [r.grupos ?? 0, "legendas"], [r.cortesPorMin ?? 0, "planos/min"]]
+      .map(([n,l]) => `<div class="kpi"><span class="num">${n}</span><small>${l}</small></div>`).join("");
+    enfases = d.faixas.filter(f => f.zoom > 1.001);
+    q("#pv-enfases").innerHTML = enfases.length
+      ? enfases.map((f,i) => `<button data-i="${i}" title="${f.zoom.toFixed(2)}× até ${mmss(f.ate)}">${mmss(f.de)} · ${f.zoom.toFixed(2).replace(".",",")}×</button>`).join("")
+      : `<span class="small muted">Nenhuma ênfase forte o bastante: o vídeo fica 1,0× inteiro.</span>`;
+    if(!(r.grupos > 0)) aviso("Sem grupos de legenda nesta edição. Confira a transcrição antes de aprovar.");
+    montarBarra();
+    escalar(); pintar();
+  }).catch(() => {
+    q("#pv-meta").textContent = "Ainda não há prévia publicada. Rode painel/previa.py e republique a mesa.";
+    aviso("Sem prévia");
+  });
+
+  /* a página da legenda tem 1080×1920: escala para a largura da tela */
+  function escalar(){
+    const k = tela.clientWidth / (E?.largura || 1080);
+    ifr.style.width = (E?.largura || 1080) + "px"; ifr.style.height = (E?.altura || 1920) + "px";
+    ifr.style.transform = `scale(${k})`;
+  }
+  new ResizeObserver(escalar).observe(tela);
+
+  ifr.addEventListener("load", () => {
+    try { tl = ifr.contentWindow.__timelines?.main || null; } catch(e){ tl = null; }
+    if(!tl) setTimeout(() => { try { tl = ifr.contentWindow.__timelines?.main || null; pintar(); } catch(e){} }, 800);
+    pintar();
+  });
+
+  function faixaEm(t){
+    const fs = E.faixas; let a = 0, b = fs.length - 1;
+    while(a < b){ const m = (a + b + 1) >> 1; if(fs[m].de <= t) a = m; else b = m - 1; }
+    return a;
+  }
+
+  function pintar(){
+    if(!E) return;
+    const t = video.currentTime || 0;
+    const i = faixaEm(t), f = E.faixas[i];
+    if(i !== idx){
+      idx = i;
+      const z = usarZoom ? (f.zoom || 1) : 1;
+      if(z > 1.001 && f.recorte){
+        const [x, y] = f.recorte;
+        video.style.transform = `translate(${(-x/E.largura*100).toFixed(3)}%,${(-y/E.altura*100).toFixed(3)}%) scale(${z})`;
+      } else video.style.transform = "none";
+      selo.hidden = false;
+      selo.textContent = f.tipo === "clip" ? `motion ${f.id||""}` : `${z.toFixed(2).replace(".",",")}×`;
+      selo.classList.toggle("enfase", z > 1.001);
+      document.querySelectorAll("#pv-enfases button").forEach(b =>
+        b.setAttribute("aria-current", String(enfases[+b.dataset.i] === f)));
+    }
+    if(tl){ try { tl.seek(t, false); } catch(e){} }
+    const lg = E.legendas.find(g => t >= g.de && t < g.ate);
+    q("#pv-fala").innerHTML = `<b>Na tela agora</b>${lg ? esc(lg.texto) : "–"}`;
+    q("#pv-agora").textContent = mmss(t);
+    marcarBarra(t);
+  }
+
+  /* barra de tempo: o input range faz o arrasto e o teclado; o desenho é nosso */
+  const barra = q("#pv-tempo"), feito = q("#pv-feito"), cabeca = q("#pv-cabeca");
+  let arrastando = false;
+  function montarBarra(){
+    const D = E.duracaoS || 1, tr = q("#pv-trilho");
+    barra.max = D;
+    const pct = s => (s / D * 100).toFixed(3) + "%";
+    E.faixas.forEach((f, i) => {
+      if(f.zoom > 1.001){
+        const z = document.createElement("div"); z.className = "zm";
+        z.style.left = pct(f.de); z.style.width = pct(f.ate - f.de); tr.appendChild(z);
+      }
+    });
+    // as emendas da imagem (`cortes`, do plano); prévia antiga não traz, e sem
+    // elas a barra só mostra o zoom
+    (E.cortes || []).forEach(s => {
+      const m = document.createElement("div"); m.className = "em"; m.style.left = pct(s);
+      q("#pv-barra").insertBefore(m, barra);
+    });
+  }
+  function marcarBarra(t){
+    if(!E) return;
+    const p = Math.min(100, t / (E.duracaoS || 1) * 100);
+    feito.style.width = p + "%"; cabeca.style.left = p + "%";
+    if(!arrastando) barra.value = t;
+    barra.setAttribute("aria-valuetext", `${mmss(t)} de ${mmss(E.duracaoS || 0)}`);
+  }
+  barra.addEventListener("input", () => { arrastando = true; ir(+barra.value); });
+  barra.addEventListener("change", () => { arrastando = false; ir(+barra.value); });
+  barra.addEventListener("keydown", ev => {
+    if(!ev.shiftKey || !["ArrowLeft","ArrowRight"].includes(ev.key)) return;
+    ev.preventDefault(); ir(video.currentTime + (ev.key === "ArrowRight" ? 5 : -5));
+  });
+  barra.step = 1;
+  q("#pv-menos").addEventListener("click", () => ir(video.currentTime - 5));
+  q("#pv-mais").addEventListener("click", () => ir(video.currentTime + 5));
+  document.addEventListener("keydown", ev => {
+    if(ev.target.closest("input,textarea,select,button,[contenteditable]") || !E) return;
+    if(ev.key === " "){ ev.preventDefault(); video.paused ? video.play() : video.pause(); }
+    else if(ev.key === "ArrowLeft" || ev.key === "ArrowRight"){
+      ev.preventDefault(); ir(video.currentTime + (ev.key === "ArrowRight" ? 1 : -1) * (ev.shiftKey ? 5 : 1));
+    }
+  });
+
+  function laco(){ pintar(); if(!video.paused) requestAnimationFrame(laco); }
+  video.addEventListener("play", () => { q("#pv-tocar").textContent = "❚❚ Pausar"; laco(); });
+  video.addEventListener("pause", () => { q("#pv-tocar").textContent = "▶ Tocar"; pintar(); });
+  video.addEventListener("seeked", pintar);
+  video.addEventListener("error", () => aviso("O take da prévia não carregou (previa/take.mp4)."));
+  q("#pv-tocar").addEventListener("click", () => video.paused ? video.play() : video.pause());
+  const ir = t => { video.currentTime = Math.min(Math.max(0, t), E?.duracaoS || t); pintar(); };
+  q("#pv-enfases").addEventListener("click", ev => {
+    const b = ev.target.closest("button[data-i]"); if(b) ir(enfases[+b.dataset.i].de - 1.2);
+  });
+  q("#pv-prox").addEventListener("click", () => {
+    const f = enfases.find(f => f.de > video.currentTime + 1.3); if(f) ir(f.de - 1.2);
+  });
+  q("#pv-ant").addEventListener("click", () => {
+    const fs = enfases.filter(f => f.de < video.currentTime + 1.1); if(fs.length > 1) ir(fs[fs.length-2].de - 1.2); else ir(0);
+  });
+  q("#pv-bt-legenda").addEventListener("click", ev => {
+    const on = ev.currentTarget.getAttribute("aria-pressed") !== "true";
+    ev.currentTarget.setAttribute("aria-pressed", String(on)); tela.classList.toggle("sem-legenda", !on);
+  });
+  q("#pv-bt-zoom").addEventListener("click", ev => {
+    usarZoom = ev.currentTarget.getAttribute("aria-pressed") !== "true";
+    ev.currentTarget.setAttribute("aria-pressed", String(usarZoom)); idx = -1; pintar();
+  });
+})();
+</script>
+
+</body></html>

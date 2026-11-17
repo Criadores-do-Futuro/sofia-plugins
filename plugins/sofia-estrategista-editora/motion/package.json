@@ -1,0 +1,15 @@
+{
+  "name": "beditor-motion",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Prévia e renderização determinística de motion em Canvas para bEditor",
+  "dependencies": {
+    "playwright-core": "^1.56.0"
+  },
+  "files": [
+    "bin/motion.mjs",
+    "template/index.html",
+    "template/animation.js",
+    "template/motion.json"
+  ]
+}

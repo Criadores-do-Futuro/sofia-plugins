@@ -1,0 +1,641 @@
+<title>Painel bEditor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bangers&family=Inter:wght@400;500;600;800;900&display=swap">
+<style>
+:root{
+  --paper:#FFFFFF; --ground:#FBEBD2; --cream:#F6DEBC; --ink:#17110E; --muted:#6B5443;
+  --orange:#F2620F; --deep:#C2410C; --amber:#F6A93B; --rule:rgba(23,17,14,.14);
+  --l0:#FFFFFF; --l1:#FBE6C9; --l2:#F8C98A; --l3:#F2620F; --l4:#8A2B06;
+  --t0:#8A7461; --t1:#17110E; --t2:#17110E; --t3:#FFFFFF; --t4:#FFFFFF;
+  --hard:5px 5px 0 var(--ink); --hard-sm:3px 3px 0 var(--ink);
+}
+*{box-sizing:border-box}
+body{
+  margin:0; color:var(--ink); background:var(--ground);
+  background-image:radial-gradient(var(--cream) 1.6px, transparent 1.7px);
+  background-size:14px 14px;
+  font:15px/1.55 Inter,system-ui,sans-serif;
+}
+.wrap{max-width:1340px;margin:0 auto;padding:26px 20px 70px}
+h1,h2,h3.b,.num,.chip,.btn,th.k,.kicker{font-family:Bangers,Impact,"Arial Narrow",sans-serif;font-weight:400;letter-spacing:.02em}
+h1{font-size:clamp(46px,7vw,86px);line-height:.86;margin:0;text-transform:uppercase;
+   color:var(--paper);-webkit-text-stroke:3px var(--ink);paint-order:stroke fill;
+   text-shadow:6px 6px 0 var(--orange)}
+h2{font-size:32px;line-height:.95;margin:0 0 4px;text-transform:uppercase}
+.kicker{font-size:15px;letter-spacing:.1em;text-transform:uppercase;color:var(--deep)}
+.muted{color:var(--muted)}
+.small{font-size:12.5px}
+header{display:grid;grid-template-columns:1fr auto;gap:16px 28px;align-items:end;margin-bottom:18px}
+.meta{font-size:13px;color:var(--muted);margin:10px 0 0}
+.meta code,code{font:600 12px/1.4 ui-monospace,Menlo,monospace;word-break:break-word}
+.kpis{display:flex;gap:14px;flex-wrap:wrap}
+.kpi{background:var(--paper);border:3px solid var(--ink);border-radius:14px;box-shadow:var(--hard);
+     padding:10px 16px;min-width:112px}
+.kpi .num{font-size:46px;line-height:.9;display:block;color:var(--deep)}
+.kpi small{font-size:11px;font-weight:900;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+nav.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 22px}
+.chip{font-size:19px;letter-spacing:.05em;text-transform:uppercase;padding:5px 14px;border-radius:999px;
+      border:3px solid var(--ink);background:var(--paper);color:var(--ink);cursor:pointer;box-shadow:var(--hard-sm)}
+.chip[aria-pressed="true"],.chip:hover{background:var(--orange);color:var(--paper)}
+.chip:focus-visible,.btn:focus-visible,.cell:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid var(--deep);outline-offset:2px}
+.panel{background:var(--paper);border:3px solid var(--ink);border-radius:16px;box-shadow:var(--hard);padding:18px 20px;min-width:0}
+.bento{display:grid;gap:20px;grid-template-columns:repeat(12,1fr);margin-bottom:20px}
+.c12{grid-column:span 12}.c8{grid-column:span 8}.c7{grid-column:span 7}.c6{grid-column:span 6}
+.c5{grid-column:span 5}.c4{grid-column:span 4}
+.btn{font-size:17px;letter-spacing:.04em;text-transform:uppercase;border:3px solid var(--ink);border-radius:10px;
+     background:var(--paper);color:var(--ink);padding:4px 12px;cursor:pointer;box-shadow:var(--hard-sm)}
+.btn:hover{background:var(--amber)}
+.btn.pri{background:var(--orange);color:var(--paper)}
+.btn.pri:hover{background:var(--deep)}
+.btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+.btn[disabled]{opacity:.45;cursor:not-allowed;box-shadow:none}
+input,textarea,select{font:15px Inter,system-ui,sans-serif;color:var(--ink);background:var(--paper);
+  border:3px solid var(--ink);border-radius:10px;padding:8px 10px;width:100%}
+textarea{min-height:76px;resize:vertical}
+label{display:block;font:900 11px Inter;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:10px 0 4px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.row>*{min-width:0}
+/* linha de produção */
+.flow{width:100%;border-collapse:separate;border-spacing:6px}
+.flow th.k{font-size:19px;text-transform:uppercase;color:var(--deep);text-align:center;padding-bottom:2px}
+.flow th.pj,.flow td.pj{text-align:left;font-weight:800;font-size:13.5px;max-width:230px}
+.flow td.pj small{display:block;font-weight:400;color:var(--muted)}
+.st{width:100%;border:3px solid var(--ink);border-radius:12px;background:var(--paper);padding:8px 6px;
+    cursor:pointer;display:grid;gap:2px;justify-items:center;font:600 11px Inter;box-shadow:var(--hard-sm)}
+.st b{font:900 10px Inter;letter-spacing:.08em;text-transform:uppercase}
+.st.feito{background:var(--amber)}
+.st.aprovado{background:var(--orange);color:var(--paper)}
+.st.vazio{background:repeating-linear-gradient(45deg,var(--paper),var(--paper) 6px,var(--ground) 6px,var(--ground) 12px);color:var(--muted)}
+.st:hover{background:var(--cream)}
+/* listas */
+ul.list{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:10px;max-height:460px;overflow:auto}
+ul.list li{border:3px solid var(--ink);border-radius:12px;padding:10px 12px;background:var(--ground)}
+.tag{font:900 10px Inter;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:999px;
+     border:2px solid var(--ink);background:var(--paper);white-space:nowrap}
+.tag.aberto{background:var(--amber)}
+.tag.feito{background:var(--orange);color:var(--paper)}
+.tag.recusado{background:var(--paper);color:var(--muted)}
+.bolha{border:3px solid var(--ink);border-radius:14px;padding:10px 12px;background:var(--ground);position:relative}
+.bolha.eu{background:var(--paper)}
+.bolha b{font:900 11px Inter;letter-spacing:.08em;text-transform:uppercase;color:var(--deep)}
+#conversa{display:grid;gap:10px;max-height:320px;overflow:auto;margin-top:10px}
+/* custo */
+.tele{display:grid;gap:10px;margin-top:10px}
+.tl{display:grid;grid-template-columns:150px 1fr auto;gap:10px;align-items:center}
+.tl .nome{font-weight:800;font-size:13px}
+.trilho{background:var(--ground);border:3px solid var(--ink);border-radius:999px;height:22px;overflow:hidden}
+.trilho i{display:block;height:100%;background:var(--orange)}
+.tl .v{font-variant-numeric:tabular-nums;font-weight:800;font-size:13px;text-align:right;min-width:74px}
+.tl.sel .trilho i{background:var(--deep)}
+/* mapa */
+.gridbox{overflow-x:auto}
+table.mapa{border-collapse:separate;border-spacing:4px;width:100%;min-width:760px}
+table.mapa th{font:900 10px/1.2 Inter;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-align:center;padding:8px 2px 4px;vertical-align:bottom}
+table.mapa th.fmt,table.mapa td.fmt{text-align:left}
+td.fmt{font-weight:600;font-size:13px;white-space:nowrap;padding-right:8px}
+td.fmt small{display:block;font-weight:400;font-size:10.5px;color:var(--muted)}
+tr.grp td{font:900 10px Inter;letter-spacing:.14em;text-transform:uppercase;color:var(--deep);padding:12px 2px 2px}
+.cell{width:100%;height:36px;border-radius:9px;border:2px solid var(--ink);font:900 13px Inter;cursor:pointer;position:relative;font-variant-numeric:tabular-nums}
+.cell[data-l="0"]{background:var(--l0);color:var(--t0);border-style:dashed}
+.cell[data-l="1"]{background:var(--l1);color:var(--t1)}.cell[data-l="2"]{background:var(--l2);color:var(--t2)}
+.cell[data-l="3"]{background:var(--l3);color:var(--t3)}.cell[data-l="4"]{background:var(--l4);color:var(--t4)}
+.cell.inh{opacity:.6}.cell.sel{outline:3px solid var(--deep);outline-offset:1px}
+.cell .flag{position:absolute;top:-6px;right:-6px;width:16px;height:16px;border-radius:50%;background:var(--amber);border:2px solid var(--ink);font:900 9px/12px Inter}
+td.pct{font:400 20px Bangers,sans-serif;text-align:right;padding-left:6px}
+tfoot td{font:400 18px Bangers,sans-serif;text-align:center;color:var(--muted);padding-top:4px}
+dl{margin:0}dt{font:900 10px Inter;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:12px}
+dd{margin:4px 0 0;font-size:13.5px}
+ul.ev{list-style:none;padding:0;margin:6px 0 0;display:grid;gap:6px}
+ul.ev li{display:grid;grid-template-columns:auto 1fr;gap:8px;align-items:start;font-size:12px}
+.why{font-size:12px;color:var(--muted);margin-top:2px}
+ol.next{margin:8px 0 0;padding-left:20px;display:grid;gap:9px;font-size:13.5px}
+.stage{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;padding:9px 0;border-top:2px solid var(--rule)}
+.stage:first-of-type{border-top:0}
+.rev-tela{background:var(--ink);border:3px solid var(--ink);border-radius:14px;display:grid;place-items:center;padding:10px;margin-top:10px}
+.rev-tela video{display:block;height:min(62vh,640px);max-width:100%;aspect-ratio:9/16;border-radius:8px;background:#000}
+.aviso{border:3px dashed var(--ink);border-radius:12px;padding:10px 12px;background:var(--cream);font-size:13px;margin-top:10px}
+@media (max-width:1100px){.c8,.c7,.c6,.c5,.c4{grid-column:span 12}header{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:no-preference){.st,.cell{transition:transform .1s ease}.st:hover,.cell:hover{transform:translateY(-1px)}}
+</style>
+
+<div class="wrap">
+  <header>
+    <div>
+      <div class="kicker">bEditor · da direção ao post</div>
+      <h1>Painel bEditor</h1>
+      <p class="meta" id="meta"></p>
+    </div>
+    <div class="kpis" id="kpis"></div>
+  </header>
+
+  <nav class="tabs" aria-label="Seções">
+    <a class="chip" href="#revisao">Revisão</a>
+    <a class="chip" href="#linha">Linha de produção</a>
+    <a class="chip" href="#pedidos">Pedidos</a>
+    <a class="chip" href="#conversa-sec">Conversa</a>
+    <a class="chip" href="#fontes">Fontes de B-roll</a>
+    <a class="chip" href="#custo">Custo e tempo</a>
+    <a class="chip" href="#mapa">Mapa da skill</a>
+  </nav>
+
+  <section class="bento" id="revisao">
+    <div class="panel c7">
+      <div class="kicker">O vídeo como está agora</div>
+      <h2>Revisão</h2>
+      <p class="small muted" id="rev-meta">Nenhuma revisão publicada ainda.</p>
+      <div class="rev-tela">
+        <video id="rev-video" controls playsinline preload="metadata"></video>
+      </div>
+      <div class="row" style="margin-top:12px">
+        <label for="rev-proj" style="margin:0">Vídeo</label>
+        <select id="rev-proj" style="width:auto;flex:1 1 220px"></select>
+        <button class="btn pri" type="button" id="rev-pedir">Pedir ajuste neste ponto</button>
+      </div>
+      <p class="small muted">O ajuste pedido aqui leva o segundo em que o vídeo está pausado. A sessão refaz só os trechos tocados e troca o vídeo nesta mesma página.</p>
+    </div>
+    <div class="panel c5">
+      <div class="kicker">Cada rodada, o que foi refeito</div>
+      <h2>Versões</h2>
+      <ul class="list" id="rev-hist"></ul>
+    </div>
+  </section>
+
+  <section class="bento" id="linha">
+    <div class="panel c12">
+      <div class="kicker">Cada vídeo, etapa por etapa</div>
+      <h2>Linha de produção</h2>
+      <p class="small muted">Estado lido do disco: laranja é aprovado por você, âmbar é feito à espera de revisão, listrado é vazio. Clique numa etapa para pedir para rodar, aprovar ou ajustar.</p>
+      <div class="gridbox"><table class="flow" id="flow"></table></div>
+      <div id="acao"></div>
+    </div>
+  </section>
+
+  <section class="bento" id="pedidos">
+    <div class="panel c7">
+      <div class="kicker">Ajuste pontual, sem refazer o vídeo</div>
+      <h2>Pedidos</h2>
+      <p class="small muted">Cada pedido diz o vídeo, a etapa e o alvo (um momento, uma cena, a capa). Quem executa é a sessão do Claude: ela lê esta fila, refaz só aquele pedaço e escreve a resposta aqui.</p>
+      <form id="fp">
+        <div class="row">
+          <div style="flex:1 1 220px"><label for="p-proj">Vídeo</label><select id="p-proj"></select></div>
+          <div style="flex:1 1 150px"><label for="p-etapa">Etapa</label><select id="p-etapa"></select></div>
+          <div style="flex:1 1 150px"><label for="p-alvo">Alvo (opcional)</label><input id="p-alvo" placeholder="M12, cena M12, capa…"></div>
+        </div>
+        <label for="p-texto">O que ajustar</label>
+        <textarea id="p-texto" placeholder="Ex.: no M12 o texto da cena é outro; troque para «só três palavras» e põe whoosh na entrada."></textarea>
+        <div class="row" style="margin-top:10px">
+          <button class="btn pri" type="submit">Enviar pedido</button>
+          <button class="btn" type="button" id="p-copiar">Copiar</button>
+          <span class="small muted" id="p-status"></span>
+        </div>
+      </form>
+      <ul class="list" id="lista-pedidos"></ul>
+    </div>
+
+    <div class="panel c5" id="conversa-sec">
+      <div class="kicker">Discutir antes de pedir</div>
+      <h2>Conversa</h2>
+      <p class="small muted">Fica gravado e a sessão do Claude lê junto com a fila. A resposta rápida aqui é do Claude da própria página: ele enxerga este painel, não os arquivos do projeto — quem mexe no vídeo é a sessão.</p>
+      <div id="conversa"></div>
+      <form id="fc">
+        <label for="c-texto">Mensagem</label>
+        <textarea id="c-texto" placeholder="Ex.: o motion do 07 está denso demais no meio?"></textarea>
+        <div class="row" style="margin-top:10px">
+          <button class="btn pri" type="submit">Enviar</button>
+          <button class="btn" type="button" id="c-pedido">Virar pedido</button>
+          <span class="small muted" id="c-status"></span>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section class="bento" id="fontes">
+    <div class="panel c12">
+      <div class="kicker">De onde saem os B-rolls e inserts</div>
+      <h2>Fontes de imagem</h2>
+      <p class="small muted">Cole o link (YouTube, Drive, Instagram) ou suba o arquivo. Diga onde entra: o momento, o tema ou "à vontade". A sessão do Claude assiste, recorta e usa como B-roll — material de terceiros só entra com direito de uso.</p>
+      <form id="ff">
+        <div class="row">
+          <div style="flex:2 1 320px"><label for="f-url">Link</label><input id="f-url" type="url" placeholder="https://…"></div>
+          <div style="flex:1 1 200px"><label for="f-proj">Vídeo</label><select id="f-proj"></select></div>
+          <div style="flex:1 1 200px"><label for="f-arquivo">Ou arquivo (até 20 MB)</label><input id="f-arquivo" type="file" accept="video/*,image/*"></div>
+        </div>
+        <label for="f-onde">Onde entra</label>
+        <input id="f-onde" placeholder="Ex.: M07, quando eu falo do e-book; ou: à vontade, é textura de fundo">
+        <div class="row" style="margin-top:10px">
+          <button class="btn pri" type="submit">Adicionar fonte</button>
+          <span class="small muted" id="f-status"></span>
+        </div>
+      </form>
+      <ul class="list" id="lista-fontes"></ul>
+    </div>
+  </section>
+
+  <section class="bento" id="custo">
+    <div class="panel c7">
+      <div class="kicker">Medido nos transcripts, não estimado</div>
+      <h2>Custo por etapa</h2>
+      <p class="small muted" id="custo-nota"></p>
+      <div class="tele" id="tele-tokens"></div>
+    </div>
+    <div class="panel c5">
+      <div class="kicker">Onde o relógio anda</div>
+      <h2>Tempo por etapa</h2>
+      <div class="tele" id="tele-tempo"></div>
+      <div id="tele-porque"></div>
+    </div>
+  </section>
+
+  <section class="bento" id="mapa">
+    <div class="panel c8">
+      <div class="kicker">Estado da skill por formato criativo</div>
+      <h2>Mapa da skill</h2>
+      <div class="row" style="margin:8px 0 2px">
+        <div class="small muted" id="legend"></div>
+        <div class="row" style="margin-left:auto" role="group" aria-label="Filtro de formatos">
+          <button class="chip" aria-pressed="true" data-f="todos">Todos</button>
+          <button class="chip" aria-pressed="false" data-f="high">Automação alta</button>
+          <button class="chip" aria-pressed="false" data-f="rec">Reconhecidos</button>
+        </div>
+      </div>
+      <div class="gridbox"><table class="mapa" id="grade"></table></div>
+    </div>
+    <div class="panel c4" id="det" aria-live="polite"></div>
+  </section>
+
+  <section class="bento">
+    <div class="panel c6">
+      <div class="kicker">O que mais sobe o placar</div><h2>Próximos passos</h2>
+      <ol class="next" id="next"></ol>
+    </div>
+    <div class="panel c6">
+      <div class="kicker">Vale para todo formato</div><h2>Etapas fora da grade</h2>
+      <div id="etapas"></div>
+    </div>
+  </section>
+</div>
+
+<script>
+const E = /*ESTADO*/null;
+const GR = {high:"Automação alta", conditional:"Condicional", "performance-required":"Exige atuação gravada"};
+const ETAPAS = [["dirigir","Dirigir"],["cortar","Cortar"],["motion","Motion"],["finalizar","Finalizar"],["publicar","Publicar"]];
+const ACOES = {rodar:"rodar a etapa", aprovar:"aprovar a etapa", ajuste:"ajuste pontual"};
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const agora = () => new Date().toISOString();
+const curto = t => String(t||"").replace("T"," ").slice(0,16);
+// token cru vira numero de gente: 258679k ninguem le, 259 M sim
+const mil = n => n >= 1e6 ? (n/1e6).toFixed(1).replace(".",",") + " M" : Math.round(n/1000) + "k";
+let filtro = "todos", sel = null, DB = null, ASSETS = null, SAMPLE = null;
+const proj0 = (E.projetos||[]).find(p=>p.noFluxo) || (E.projetos||[])[0] || null;
+
+/* ---------- cabeçalho ---------- */
+document.getElementById("meta").innerHTML =
+  `Commit <code>${esc(E.commit||"—")}</code> · ${esc(E.commitMsg||"")}<br>${esc(E.commitData||"")} · ${E.testes} testes · gerado ${esc(curto(E.gerado))}`;
+document.getElementById("kpis").innerHTML =
+  `<div class="kpi"><span class="num">${E.total}%</span><small>do desejável</small></div>
+   <div class="kpi"><span class="num">${(E.projetos||[]).filter(p=>p.noFluxo).length}</span><small>vídeos no fluxo</small></div>
+   <div class="kpi"><span class="num">${E.quebradas}</span><small>evidências quebradas</small></div>`;
+
+/* ---------- linha de produção ---------- */
+function flow(){
+  const ps = (E.projetos||[]);
+  let h = `<thead><tr><th class="pj">Vídeo</th>${ETAPAS.map(([,n])=>`<th class="k">${n}</th>`).join("")}</tr></thead><tbody>`;
+  for (const p of ps){
+    h += `<tr><td class="pj">${esc(p.nome)}<small>${p.hyperframes?"projeto HyperFrames":p.noFluxo?"no fluxo da skill":"ainda não começou"}</small></td>`;
+    for (const [id,nome] of ETAPAS){
+      const e = p.etapas[id] || {estado:"vazio"};
+      const rot = {aprovado:"aprovado", feito:"a revisar", vazio:"vazio"}[e.estado];
+      h += `<td><button class="st ${e.estado}" data-p="${esc(p.id)}" data-e="${id}"
+        aria-label="${esc(p.nome)}, ${nome}: ${rot}"><b>${rot}</b>
+        <span>${esc(e.arquivo||"—")}</span><span class="small">${esc(curto(e.quando))}</span></button></td>`;
+    }
+    h += `</tr>`;
+  }
+  const t = document.getElementById("flow"); t.innerHTML = h + "</tbody>";
+  t.querySelectorAll(".st").forEach(b => b.addEventListener("click", () => acao(b.dataset.p, b.dataset.e)));
+}
+function acao(pid, eid){
+  const p = E.projetos.find(x=>x.id===pid), e = p.etapas[eid];
+  const nome = ETAPAS.find(x=>x[0]===eid)[1];
+  document.getElementById("acao").innerHTML = `
+    <div class="aviso"><b>${esc(p.nome)} · ${nome}</b> — ${esc({aprovado:"aprovado por você",feito:"feito, esperando sua revisão",vazio:"ainda não rodou"}[e.estado])}
+      ${e.arquivo?`<br><code>${esc(e.arquivo)}</code> · ${esc(curto(e.quando))}`:""}
+      <div class="row" style="margin-top:10px">
+        <button class="btn pri" data-a="rodar">Pedir para rodar</button>
+        <button class="btn" data-a="aprovar" ${e.estado==="vazio"?"disabled":""}>Aprovar</button>
+        <button class="btn" data-a="ajuste">Pedir ajuste</button>
+      </div></div>`;
+  document.querySelectorAll("#acao .btn").forEach(b => b.addEventListener("click", () => {
+    document.getElementById("p-proj").value = pid;
+    document.getElementById("p-etapa").value = eid;
+    const t = document.getElementById("p-texto");
+    if (b.dataset.a !== "ajuste") t.value = `${b.dataset.a === "rodar" ? "Rodar" : "Aprovar"} a etapa ${nome} do ${p.nome}.`;
+    t.focus();
+    t.dataset.acao = b.dataset.a;
+    document.getElementById("pedidos").scrollIntoView({behavior:"smooth", block:"start"});
+  }));
+}
+
+/* ---------- selects ---------- */
+function selects(){
+  const ops = (E.projetos||[]).map(p=>`<option value="${esc(p.id)}">${esc(p.nome)}</option>`).join("");
+  for (const id of ["p-proj","f-proj"]) document.getElementById(id).innerHTML = ops;
+  document.getElementById("p-etapa").innerHTML = ETAPAS.map(([i,n])=>`<option value="${i}">${n}</option>`).join("");
+  if (proj0){ document.getElementById("p-proj").value = proj0.id; document.getElementById("f-proj").value = proj0.id; }
+}
+
+/* ---------- capacidades ---------- */
+async function ligar(){
+  if (!window.claude || !claude.use) return semDb("esta página está aberta fora do claude.ai");
+  DB = await claude.use("db").catch(()=>null);
+  ASSETS = await claude.use("assets").catch(()=>null);
+  SAMPLE = await claude.use("sample").catch(()=>null);
+  if (!DB) return semDb("a gravação de pedidos não está disponível nesta visualização");
+  ouvir("pedidos", "criado", "desc", 60, pedidos);
+  ouvir("fontes", "criado", "desc", 60, fontes);
+  ouvir("chat", "criado", "asc", 80, conversa);
+  if (!ASSETS) document.getElementById("f-arquivo").closest("div").style.display = "none";
+  if (!SAMPLE) document.getElementById("c-status").textContent = "resposta automática indisponível; a mensagem fica gravada para a sessão.";
+}
+function semDb(motivo){
+  const nota = `<div class="aviso"><b>Sem gravação:</b> ${esc(motivo)}. Os botões continuam montando o texto do pedido — use <b>Copiar</b> e cole na conversa com o Claude.</div>`;
+  document.getElementById("lista-pedidos").insertAdjacentHTML("beforebegin", nota);
+  document.getElementById("lista-fontes").insertAdjacentHTML("beforebegin", nota);
+  document.getElementById("f-arquivo").closest("div").style.display = "none";
+}
+function ouvir(col, campo, dir, n, render){
+  try{
+    DB.collection(col).orderBy(campo, dir).limit(n).onSnapshot(
+      s => render(s.docs.map(d => ({id:d.id, ...d.data()}))),
+      e => console.warn(col, e.code));
+  }catch(e){ console.warn(col, e); }
+}
+
+/* ---------- pedidos ---------- */
+function pedidos(itens){
+  const el = document.getElementById("lista-pedidos");
+  if (!itens.length){ el.innerHTML = `<li class="muted small">Nenhum pedido ainda.</li>`; return; }
+  el.innerHTML = itens.map(p => `<li>
+      <div class="row"><span class="tag ${esc(p.status||"aberto")}">${esc(p.status||"aberto")}</span>
+        <b class="small">${esc(p.projeto||"")}</b>
+        <span class="small muted">${esc(ETAPAS.find(e=>e[0]===p.etapa)?.[1] || p.etapa || "")}${p.alvo?" · "+esc(p.alvo):""} · ${esc(ACOES[p.acao]||p.acao||"")}</span>
+        <span class="small muted" style="margin-left:auto">${esc(curto(p.criado))}</span></div>
+      <div style="margin-top:6px">${esc(p.texto||"")}</div>
+      ${p.resposta?`<div class="small" style="margin-top:6px;border-top:2px solid var(--rule);padding-top:6px"><b>Claude:</b> ${esc(p.resposta)}</div>`:""}
+      ${p.status==="aberto"?`<div class="row" style="margin-top:8px"><button class="btn" data-cancel="${esc(p.id)}">Cancelar</button></div>`:""}
+    </li>`).join("");
+  el.querySelectorAll("[data-cancel]").forEach(b => b.addEventListener("click", async () => {
+    await DB.doc("pedidos/"+b.dataset.cancel).update({status:"recusado", resposta:"cancelado no painel", atualizado:agora()}).catch(()=>{});
+  }));
+}
+function textoDoPedido(){
+  const p = E.projetos.find(x=>x.id===document.getElementById("p-proj").value);
+  const eid = document.getElementById("p-etapa").value;
+  return {projeto: p ? p.nome : "", projetoId: p ? p.id : "", caminho: p ? p.caminho : "",
+          etapa: eid, alvo: document.getElementById("p-alvo").value.trim(),
+          acao: document.getElementById("p-texto").dataset.acao || "ajuste",
+          texto: document.getElementById("p-texto").value.trim()};
+}
+document.getElementById("fp").addEventListener("submit", async ev => {
+  ev.preventDefault();
+  const d = textoDoPedido(), s = document.getElementById("p-status");
+  if (!d.texto) return void (s.textContent = "escreva o que ajustar.");
+  if (!DB) return void (s.textContent = "sem gravação — use Copiar.");
+  s.textContent = "enviando…";
+  try{
+    await DB.collection("pedidos").add({...d, status:"aberto", criado:agora()});
+    document.getElementById("p-texto").value = ""; document.getElementById("p-alvo").value = "";
+    delete document.getElementById("p-texto").dataset.acao;
+    s.textContent = "na fila. A sessão do Claude executa e responde aqui.";
+  }catch(e){ s.textContent = "não deu para gravar (" + (e.code||"erro") + ")."; }
+});
+document.getElementById("p-copiar").addEventListener("click", async () => {
+  const d = textoDoPedido();
+  const txt = `[bEditor] ${d.projeto} · ${d.etapa}${d.alvo?" · "+d.alvo:""} · ${ACOES[d.acao]}\n${d.texto}\n${d.caminho}`;
+  try{ await navigator.clipboard.writeText(txt); document.getElementById("p-status").textContent = "copiado."; }
+  catch{ document.getElementById("p-status").textContent = "copie à mão: " + txt; }
+});
+
+/* ---------- conversa ---------- */
+function conversa(msgs){
+  const el = document.getElementById("conversa");
+  el.innerHTML = msgs.length ? msgs.map(m => `<div class="bolha ${m.quem==="editor"?"eu":""}">
+      <b>${m.quem==="editor"?"Você":"Claude da página"}</b> <span class="small muted">${esc(curto(m.criado))}${m.projeto?" · "+esc(m.projeto):""}</span>
+      <div style="margin-top:4px">${esc(m.texto||"")}</div></div>`).join("")
+    : `<div class="small muted">Sem mensagens. O que você escrever aqui a sessão do Claude lê junto com a fila.</div>`;
+  el.scrollTop = el.scrollHeight;
+}
+async function responder(pergunta){
+  if (!SAMPLE) return;
+  const st = document.getElementById("c-status");
+  st.textContent = "pensando…";
+  const contexto = {
+    painel: {total:E.total, testes:E.testes, commit:E.commit, quebradas:E.quebradas},
+    formatos: (E.formatos||[]).map(f=>({nome:f.nome, pct:f.pct, reconhecido:f.reconhecido})),
+    criterios: (E.colunas||{}),
+    projetos: (E.projetos||[]).map(p=>({nome:p.nome, etapas:Object.fromEntries(Object.entries(p.etapas).map(([k,v])=>[k,v.estado]))})),
+    custo: (E.telemetria?.etapas||[]).slice(0,5).map(e=>({etapa:e.nome, custo:e.pesado, horas:+(e.ms/3.6e6).toFixed(1), porques:e.porques}))
+  };
+  try{
+    const r = await SAMPLE(
+      "Você responde no painel do bEditor, a skill de edição de vídeo do Bento. Fale português do Brasil, direto, " +
+      "sem bajular. Você vê só os dados abaixo — não tem acesso aos arquivos, ao vídeo nem ao repositório, e não executa nada: " +
+      "quem edita é a sessão do Claude Code, a partir da fila de pedidos. Se a pergunta exigir mexer no projeto, diga em uma " +
+      "linha o que pedir na fila.\n\nDADOS DO PAINEL:\n" + JSON.stringify(contexto) +
+      "\n\nPERGUNTA DO EDITOR:\n" + pergunta, {modelTier:"default", cache:false});
+    st.textContent = "";
+    if (DB) await DB.collection("chat").add({quem:"claude", texto:r.text, criado:agora()});
+  }catch(e){ st.textContent = "sem resposta automática (" + (e.code||"erro") + ")."; }
+}
+document.getElementById("fc").addEventListener("submit", async ev => {
+  ev.preventDefault();
+  const t = document.getElementById("c-texto"), txt = t.value.trim();
+  if (!txt) return;
+  const p = E.projetos.find(x=>x.id===document.getElementById("p-proj").value);
+  if (DB) await DB.collection("chat").add({quem:"editor", texto:txt, projeto:p?p.nome:"", criado:agora()}).catch(()=>{});
+  t.value = "";
+  responder(txt);
+});
+document.getElementById("c-pedido").addEventListener("click", () => {
+  const t = document.getElementById("c-texto");
+  document.getElementById("p-texto").value = t.value.trim();
+  t.value = "";
+  document.getElementById("pedidos").scrollIntoView({behavior:"smooth", block:"start"});
+  document.getElementById("p-texto").focus();
+});
+
+/* ---------- fontes de b-roll ---------- */
+function fontes(itens){
+  const el = document.getElementById("lista-fontes");
+  if (!itens.length){ el.innerHTML = `<li class="muted small">Nenhuma fonte ainda.</li>`; return; }
+  el.innerHTML = itens.map(f => `<li>
+      <div class="row"><span class="tag">${esc(f.tipo||"link")}</span><b class="small">${esc(f.projeto||"")}</b>
+        <span class="small muted" style="margin-left:auto">${esc(curto(f.criado))}</span></div>
+      <div style="margin-top:6px">${f.url?`<a href="${esc(f.url)}" target="_blank" rel="noopener"><code>${esc(f.url)}</code></a>`:`<code>${esc(f.nome||"arquivo")}</code>`}</div>
+      ${f.ondeUsar?`<div class="small muted" style="margin-top:4px">onde entra: ${esc(f.ondeUsar)}</div>`:""}
+      ${f.assetUrl?`<div style="margin-top:8px"><video src="${esc(f.assetUrl)}" controls preload="metadata" style="max-width:260px;border:3px solid var(--ink);border-radius:10px"></video></div>`:""}
+    </li>`).join("");
+}
+document.getElementById("ff").addEventListener("submit", async ev => {
+  ev.preventDefault();
+  const s = document.getElementById("f-status");
+  const url = document.getElementById("f-url").value.trim();
+  const arq = document.getElementById("f-arquivo").files[0];
+  const p = E.projetos.find(x=>x.id===document.getElementById("f-proj").value);
+  const onde = document.getElementById("f-onde").value.trim();
+  if (!url && !arq) return void (s.textContent = "cole um link ou escolha um arquivo.");
+  if (!DB) return void (s.textContent = "sem gravação nesta visualização — mande o link na conversa com o Claude.");
+  let extra = {};
+  if (arq){
+    if (!ASSETS) return void (s.textContent = "upload indisponível aqui; use o link.");
+    if (arq.size > 20 * 1024 * 1024) return void (s.textContent = "arquivo acima de 20 MB — ponha na pasta do projeto e cole o caminho no campo de link.");
+    s.textContent = "subindo…";
+    try{ const r = await ASSETS.upload(arq); extra = {assetId:r.id, assetUrl:r.url, nome:arq.name, tipo:"arquivo"}; }
+    catch(e){ return void (s.textContent = "upload falhou (" + (e.code||"erro") + ")."); }
+  }
+  try{
+    await DB.collection("fontes").add({projeto:p?p.nome:"", projetoId:p?p.id:"", url, ondeUsar:onde,
+                                       tipo:arq?"arquivo":"link", status:"novo", criado:agora(), ...extra});
+    document.getElementById("f-url").value = ""; document.getElementById("f-onde").value = "";
+    document.getElementById("f-arquivo").value = "";
+    s.textContent = "guardado. A sessão assiste e marca de onde tirou cada B-roll.";
+  }catch(e){ s.textContent = "não deu para gravar (" + (e.code||"erro") + ")."; }
+});
+
+/* ---------- custo e tempo ---------- */
+function telemetria(){
+  const T = E.telemetria;
+  const alvoT = document.getElementById("tele-tokens"), alvoH = document.getElementById("tele-tempo");
+  if (!T || !T.etapas || !T.totalPesado){
+    document.getElementById("custo-nota").textContent = "Sem medição: rode painel/telemetria.py.";
+    return;
+  }
+  document.getElementById("custo-nota").innerHTML =
+    `${T.transcripts} sessões dos últimos ${T.dias} dias · ${mil(T.totalPesado)} de custo equivalente · ` +
+    `${(T.totalMs/3.6e6).toFixed(1)} h de relógio. O custo pesa cada token pelo preço: escrito 5×, cache lido 0,1×.`;
+  const vivas = T.etapas.filter(e=>e.pesado > 0);
+  const maxT = Math.max(...vivas.map(e=>e.pesado), 1), maxH = Math.max(...vivas.map(e=>e.ms), 1);
+  alvoT.innerHTML = vivas.map(e => `<div class="tl ${e.id===T.maisTokens?"sel":""}">
+      <span class="nome">${esc(e.nome)}</span>
+      <span class="trilho"><i style="width:${Math.max(2, 100*e.pesado/maxT)}%"></i></span>
+      <span class="v">${mil(e.pesado)}</span></div>`).join("");
+  const porH = [...vivas].sort((a,b)=>b.ms-a.ms);
+  alvoH.innerHTML = porH.map(e => `<div class="tl ${e.id===T.maisTempo?"sel":""}">
+      <span class="nome">${esc(e.nome)}</span>
+      <span class="trilho"><i style="width:${Math.max(2, 100*e.ms/maxH)}%"></i></span>
+      <span class="v">${(e.ms/3.6e6).toFixed(1)} h</span></div>`).join("");
+  alvoT.querySelectorAll(".tl").forEach((el,i) => el.addEventListener("click", () => porque(vivas[i])));
+  alvoH.querySelectorAll(".tl").forEach((el,i) => el.addEventListener("click", () => porque(porH[i])));
+  porque(vivas.find(e=>e.id===T.maisTokens) || vivas[0]);
+}
+function porque(e){
+  document.getElementById("tele-porque").innerHTML = `<div class="aviso">
+    <b>${esc(e.nome)}</b> — ${mil(e.pesado)} de custo, ${(e.ms/3.6e6).toFixed(1)} h, ${e.mensagens} rodadas em ${e.sessoes} sessão(ões).
+    <dl><dt>Por que custa</dt><dd><ul style="margin:4px 0 0;padding-left:18px">${(e.porques||[]).map(p=>`<li>${esc(p)}</li>`).join("")}</ul></dd>
+    <dt>Por que demora</dt><dd><ul style="margin:4px 0 0;padding-left:18px">${(e.porquesTempo||[]).map(p=>`<li>${esc(p)}</li>`).join("")}</ul></dd></dl></div>`;
+}
+
+/* ---------- mapa da skill ---------- */
+document.getElementById("legend").innerHTML = Object.entries(E.escala)
+  .map(([n,t]) => `<span style="display:inline-flex;align-items:center;gap:5px;margin-right:10px"><i class="cell" data-l="${n}" style="width:20px;height:18px;display:inline-grid;place-items:center">${n}</i>${esc(t)}</span>`).join("");
+function visiveis(){
+  return E.formatos.filter(f => filtro==="todos" || (filtro==="high" && f.automacao==="high") || (filtro==="rec" && f.reconhecido));
+}
+function grade(){
+  let h = `<thead><tr><th class="fmt">Formato</th>${E.criterios.map(c=>`<th title="${esc(c.pergunta)}">${esc(c.nome)}</th>`).join("")}<th>Total</th></tr></thead><tbody>`;
+  let g = null;
+  for (const f of visiveis()){
+    if (f.automacao !== g){ g = f.automacao; h += `<tr class="grp"><td colspan="${E.criterios.length+2}">${esc(GR[g]||g)}</td></tr>`; }
+    h += `<tr><td class="fmt">${esc(f.nome)}<small>${f.reconhecido?"reconhecido pelo guia":"não reconhecido"}</small></td>`;
+    for (const c of E.criterios){
+      const x = f.celulas[c.id], bad = x.evidencias.some(e=>e.ok===false), id = `${f.id}|${c.id}`;
+      h += `<td><button class="cell${x.herdada?" inh":""}${sel===id?" sel":""}" data-l="${x.efetivo}" data-k="${id}"
+        aria-label="${esc(f.nome)}, ${esc(c.nome)}: nível ${x.efetivo} de 4${bad?", evidência quebrada":""}">${x.efetivo}${bad?'<span class="flag" aria-hidden="true">!</span>':""}</button></td>`;
+    }
+    h += `<td class="pct">${f.pct}%</td></tr>`;
+  }
+  h += `</tbody><tfoot><tr><td></td>${E.criterios.map(c=>`<td>${E.colunas[c.id]}%</td>`).join("")}<td></td></tr></tfoot>`;
+  const t = document.getElementById("grade"); t.innerHTML = h;
+  t.querySelectorAll(".cell").forEach(b => b.addEventListener("click", () => detalhe(b.dataset.k)));
+}
+function detalhe(k){
+  sel = k; const [fid,cid] = k.split("|");
+  const f = E.formatos.find(x=>x.id===fid), c = E.criterios.find(x=>x.id===cid), x = f.celulas[cid];
+  const ev = x.evidencias.length ? `<ul class="ev">${x.evidencias.map(e =>
+      `<li><span class="tag${e.ok===false?" aberto":""}">${e.ok===false?"quebrada":e.ok===null?"não conferida":esc(e.classe)}</span>
+       <span><code>${esc(e.texto)}</code>${e.motivo?`<div class="why">${esc(e.motivo)}</div>`:""}</span></li>`).join("")}</ul>`
+    : `<p class="muted small">Nenhuma evidência.</p>`;
+  document.getElementById("det").innerHTML = `
+    <div class="kicker">${esc(f.nome)}</div><h2 style="font-size:26px">${esc(c.nome)}</h2>
+    <div class="small muted">${esc(c.pergunta)}</div>
+    <div class="row" style="align-items:baseline;gap:8px;margin:8px 0"><span class="num" style="font-family:Bangers;font-size:46px;color:var(--deep)">${x.efetivo}<span class="muted" style="font-size:22px"> / 4</span></span><span class="small">${esc(E.escala[x.efetivo])}</span></div>
+    <dl>
+      <dt>Desejável</dt><dd>${x.desejado?esc(x.desejado):'<span class="muted">O catálogo não especifica; vale a regra geral do critério.</span>'}</dd>
+      ${x.motivo?`<dt>Por que este nível</dt><dd>${esc(x.motivo)}</dd>`:""}
+      ${x.nota?`<dt>Nota</dt><dd>${esc(x.nota)}</dd>`:""}
+      ${x.falta?`<dt>Falta</dt><dd>${esc(x.falta)}</dd>`:""}
+      <dt>Evidências</dt><dd>${ev}</dd>
+    </dl>`;
+  grade();
+}
+function proximos(){
+  const peso = {high:3, conditional:2, "performance-required":1}, itens = [];
+  for (const f of E.formatos) for (const c of E.criterios){
+    const x = f.celulas[c.id];
+    if (x.efetivo < 4 && x.falta && !x.herdada) itens.push({f, c, x, s: peso[f.automacao]*(4-x.efetivo)});
+  }
+  itens.sort((a,b)=>b.s-a.s);
+  document.getElementById("next").innerHTML = itens.slice(0,7).map(i =>
+    `<li><b>${esc(i.f.nome)} · ${esc(i.c.nome)}</b> <span class="muted">(${i.x.efetivo}/4)</span><br>${esc(i.x.falta)}</li>`).join("")
+    + `<li><b>${E.formatos.filter(f=>!f.reconhecido).length} formatos que o guia não reconhece</b><br>Cada um sobe do teto 1 quando entra em <code>formatos.md</code> com regras próprias.</li>`;
+}
+function etapasFora(){
+  document.getElementById("etapas").innerHTML = (E.etapas||[]).map(e =>
+    `<div class="stage"><i class="cell" data-l="${e.efetivo}" style="width:42px;height:38px;display:inline-grid;place-items:center;font-size:15px">${e.efetivo}</i>
+     <div><b>${esc(e.nome)}</b><div class="small muted">${esc(e.falta||e.nota||"")}</div></div></div>`).join("");
+}
+document.querySelectorAll(".chip[data-f]").forEach(b => b.addEventListener("click", () => {
+  filtro = b.dataset.f;
+  document.querySelectorAll(".chip[data-f]").forEach(x => x.setAttribute("aria-pressed", x===b));
+  grade();
+}));
+
+function revisao() {
+  const R = E.revisao;
+  const sel = document.getElementById("rev-proj"), vid = document.getElementById("rev-video");
+  if (!R || !R.projetos || !Object.keys(R.projetos).length) { document.getElementById("revisao").querySelector(".rev-tela").hidden = true; return; }
+  const ids = Object.keys(R.projetos);
+  sel.innerHTML = ids.map(id => `<option value="${esc(id)}">${esc(R.projetos[id].nome)}</option>`).join("");
+  sel.value = R.ultimo && R.projetos[R.ultimo] ? R.ultimo : ids[0];
+  const mostrar = () => {
+    const pj = R.projetos[sel.value], h = pj.historico || [], v = h[0] || {};
+    vid.src = `${pj.video}?v=${pj.versao}`;
+    document.getElementById("rev-meta").textContent =
+      `${pj.nome} · versão ${pj.versao} · ${curto(v.quando)}${v.nota ? " · " + v.nota : ""}`;
+    document.getElementById("rev-hist").innerHTML = h.map(x => {
+      const r = x.rodada || {}, seg = (r.etapas || {}).segmentos || {};
+      const refeito = seg.refeitos != null ? `${seg.refeitos} de ${seg.refeitos + (seg.daCache || 0)} trechos refeitos` : "";
+      const tempo = r.total_s != null ? `${Math.round(r.total_s)} s de máquina` : "";
+      return `<li><div class="row"><span class="tag ${x.versao === pj.versao ? "feito" : ""}">v${x.versao}</span>
+        <b class="small">${esc(curto(x.quando))}</b></div>
+        <div class="small">${esc(x.nota || "sem nota")}</div>
+        <div class="small muted" style="font-variant-numeric:tabular-nums">${esc([refeito, tempo].filter(Boolean).join(" · "))}</div></li>`;
+    }).join("");
+  };
+  sel.addEventListener("change", mostrar);
+  mostrar();
+  document.getElementById("rev-pedir").addEventListener("click", () => {
+    const t = vid.currentTime || 0, mm = Math.floor(t / 60), ss = Math.floor(t % 60).toString().padStart(2, "0");
+    const texto = document.getElementById("p-texto");
+    texto.value = `Em ${mm}:${ss} (${R.projetos[sel.value].nome}, versão ${R.projetos[sel.value].versao}): `;
+    location.hash = "#pedidos";
+    texto.focus();
+  });
+}
+
+revisao(); flow(); selects(); telemetria(); grade(); proximos(); etapasFora();
+detalhe("dynamism|cortes");
+if (proj0) acao(proj0.id, "motion");
+ligar();
+</script>

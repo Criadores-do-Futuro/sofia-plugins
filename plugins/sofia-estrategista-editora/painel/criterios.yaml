@@ -1,0 +1,428 @@
+# O estado desejável do bEditor, formato por formato, e o que prova o estado atual.
+#
+# Quem edita este arquivo: quem muda a skill. O painel (gerar.py) não confia no
+# nível declarado — ele confere cada evidência no repositório e rebaixa a célula
+# até o nível que as evidências sustentam:
+#   1 descrito   qualquer evidência existe
+#   2 regra      há regra escrita (referencias/, agents/, commands/) que existe e contém o trecho
+#   3 máquina    além da regra, um script aplica (scripts/) E um teste cobre (tests/ ... #def test_x)
+#   4 comprovado além da máquina, há entrega aprovada (entrega:<padrão> em Entregas/)
+#
+# Evidência: "caminho/relativo/ao/repo#trecho" (o arquivo precisa conter o trecho),
+# ou "entrega:<padrão glob>" dentro da pasta de entregas.
+#
+# Célula sem `nivel` herda a `base` do critério. Se o formato não é `reconhecido`
+# pelo guia, a herança é limitada a 1: a skill sabe fazer em geral, mas não sabe o
+# que aquele formato pede.
+
+# entregas e projetos vêm de ~/.config/beditor/config.json (setup.py --pastas)
+catalogo: knowledge/creative-formats.yaml do app bEditor (25 formatos)
+
+escala:
+  0: ausente
+  1: descrito
+  2: regra escrita
+  3: máquina aplica e teste cobre
+  4: comprovado em entrega aprovada
+
+criterios:
+  - id: montagem
+    nome: Montagem visual
+    pergunta: O que aparece na tela a cada momento, e com que acabamento?
+    base:
+      nivel: 3
+      evidencias:
+        - skills/beditor/referencias/catalogo-visual.md#Como escolher errado
+        - skills/beditor/referencias/rotas-de-geracao.md#A regra que decide sozinha
+        - skills/beditor/scripts/montador.py
+        - skills/beditor/scripts/validar.py#densidade
+        - skills/beditor/tests/test_validar.py#def test_densidade_fora_sem_justificativa
+        - skills/beditor/scripts/direcao.py#def prompt_da_cena
+        - skills/beditor/tests/test_direcao.py#def test_cada_cena_exige_os_cinco_itens
+        - skills/beditor/referencias/galeria-estilos.md#Motion
+        - skills/beditor/scripts/hf.py#def aplicar_estilo
+        - skills/beditor/tests/test_hf_estilo.py#def test_imagem_gerada_carrega_a_materia_do_estilo
+      nota: Classes, rotas e densidade valem para qualquer vídeo com motion; o guia descreve o estilo em oito itens e cada cena num prompt de cinco, e o estilo de motion escolhido (vox, noturno ou techtok) troca paleta, acabamento e a matéria de toda imagem gerada.
+  - id: contexto
+    nome: Contexto semântico
+    pergunta: A imagem e o corte servem ao que a fala afirma?
+    base:
+      nivel: 3
+      evidencias:
+        - agents/diretor.md
+        - agents/enriquecedor.md#precisaDeFato
+        - skills/beditor/referencias/motion-editorial.md#Fala dirigida ao editor
+        - skills/beditor/scripts/validar.py#a fala nega
+        - skills/beditor/tests/test_validar.py#def test_fala_nega_e_tela_afirma
+      nota: Diretor lê o roteiro, enriquecedor confirma fato, validador pega imagem que contradiz a fala.
+  - id: legenda
+    nome: Legenda
+    pergunta: A legenda é legível, sincronizada e no estilo certo?
+    base:
+      nivel: 3
+      evidencias:
+        - skills/beditor/referencias/ritmo.md#2 a 4 palavras por página
+        - skills/beditor/referencias/galeria-estilos.md#Legenda
+        - skills/beditor/scripts/legenda_hf.py#def html_legenda
+        - skills/beditor/scripts/estilos.py#LEGENDA
+        - skills/beditor/tests/test_legenda_hf.py#class TestLegenda
+      falta: Nenhum teste confere sobreposição entre grupos nem palavras por página.
+  - id: hook
+    nome: Hook visual
+    pergunta: Os primeiros segundos prendem pela imagem, não só pela fala?
+    base:
+      nivel: 3
+      evidencias:
+        - skills/beditor/referencias/retencao.md#Freeze
+        - agents/diretor.md#Freeze
+        - skills/beditor/referencias/galeria-estilos.md#Hook
+        - skills/beditor/scripts/legenda_hf.py#def _hook_html
+        - skills/beditor/scripts/estilos.py#validar
+        - skills/beditor/tests/test_legenda_hf.py#class TestHook
+      falta: O validador confere o id do estilo, mas não se as linhas nomeiam a entrega.
+  - id: cortes
+    nome: Dinamismo de cortes
+    pergunta: O ritmo do corte segura a atenção sem mutilar a fala nem a sincronia?
+    base:
+      nivel: 3
+      evidencias:
+        - skills/beditor/referencias/sincronia.md
+        - skills/beditor/scripts/montar.py#PAUSA_MAX_MS
+        - skills/beditor/scripts/aplicar_decisoes.py
+        - skills/beditor/tests/test_montar.py#def test_pausa_longa_e_cortada_com_pad
+        - skills/beditor/tests/test_montar.py#def test_pausa_protegida_por_jcut_nao_e_cortada
+      falta: Ninguém mede cortes por minuto nem o tempo máximo de plano parado.
+  - id: transicao
+    nome: Transição e zoom
+    pergunta: Entradas, saídas, cortes de transição e zoom carregam sentido?
+    base:
+      nivel: 3
+      evidencias:
+        - skills/beditor/referencias/movimento.md#Saída
+        - skills/beditor/scripts/hf.py#push
+        - skills/beditor/scripts/validar.py#SAIDAS
+        - skills/beditor/tests/test_validar.py#def test_movimento_vazio
+        - skills/beditor/referencias/direcao-de-motion.md#cameraTransicao
+      falta: Não há punch-in, whip pan nem match cut no A-roll; só nos planos de motion.
+  - id: musica
+    nome: Música e SFX
+    pergunta: A trilha e os efeitos pontuam sem cobrir a voz?
+    base:
+      nivel: 3
+      evidencias:
+        - skills/beditor/referencias/ritmo.md
+        - skills/beditor/referencias/galeria-estilos.md#Música e SFX
+        - skills/beditor/scripts/trilha.py#musica.clima
+        - skills/beditor/scripts/estilos.py#MUSICA
+        - skills/beditor/tests/test_trilha.py#def test_envelope_vox_sobe_mais_rapido_que_editorial
+        - skills/beditor/referencias/direcao-de-motion.md#`som`
+      nota: A cama é sintética e testada, com dois estilos de envelope (vox/editorial); o SFX de cada cena é descrito na `cena.som`, mas nada o toca ainda — não há biblioteca de música nem de efeitos do editor.
+      falta: Ler a pasta de músicas e SFX do editor, escolher por clima e cortar na batida.
+
+formatos:
+  - id: dynamism
+    nome: Dinamismo
+    automacao: high
+    reconhecido: true
+    resumo: Cortes rápidos, rosto sustentando, ritmo acelerado.
+    celulas:
+      montagem:
+        desejado: Rosto do primeiro ao último segundo, sem motion; pele natural, sem grade de identidade.
+        nivel: 3
+        evidencias:
+          - "skills/beditor/referencias/formatos.md#Motion: nenhum"
+          - skills/beditor/scripts/sdr.py
+          - skills/beditor/tests/test_sdr.py#def test_trava_recusa_hdr_e_deixa_passar_sdr
+        falta: As entregas 05–07 saíram com o HLG sem converter; re-renderizar com sdr.py e aprovar.
+      contexto:
+        desejado: Decupagem tira erro, redundância e instrução ao editor; cada momento com porquê.
+        nivel: 4
+        evidencias:
+          - agents/diretor.md
+          - "skills/beditor/scripts/validar.py#sem `porque`"
+          - skills/beditor/tests/test_validar.py#def test_bom_passa
+          - "entrega:05 - *1080x1920.mp4"
+      legenda:
+        desejado: "Vox por padrão (Archivo Black, barra plana); editorial (Montserrat, sombra) disponível pela galeria — uma por vez, rodapé a 70%."
+        nivel: 3
+        evidencias:
+          - skills/beditor/referencias/galeria-estilos.md#Legenda
+          - skills/beditor/scripts/legenda_hf.py#def html_legenda
+          - skills/beditor/tests/test_legenda_hf.py#class TestLegenda
+        falta: Entregue nos 05–07 no preset antigo; sem teste de sobreposição entre grupos.
+      hook:
+        desejado: "Vox por padrão (Archivo Black, barra de cor); editorial (Fraunces) e minimal disponíveis pela galeria — três linhas escalonadas nos primeiros 4 s, nomeando o que o vídeo entrega."
+        nivel: 3
+        evidencias:
+          - "skills/beditor/referencias/formatos.md#Hook: tipografia"
+          - skills/beditor/referencias/galeria-estilos.md#Hook
+          - skills/beditor/scripts/legenda_hf.py#def _hook_html
+          - skills/beditor/tests/test_legenda_hf.py#class TestHook
+        falta: Checagem de que as linhas nomeiam a entrega.
+      cortes:
+        desejado: 18–25 cortes/min, plano parado ≤ 4 s, silêncio apertado, sem J-cut sobre o rosto.
+        nivel: 4
+        evidencias:
+          - "skills/beditor/referencias/formatos.md#Silêncio: apertado"
+          - skills/beditor/scripts/montar.py#PAUSA_MAX_MS
+          - skills/beditor/tests/test_montar.py#def test_pausa_longa_e_cortada_com_pad
+          - "entrega:06 - *1080x1920.mp4"
+        falta: Medir cortes/min e plano parado máximo contra o catálogo.
+      transicao:
+        desejado: "Catálogo: 70% corte seco, 15% whip pan, 10% zoom punch, 5% glitch."
+        nivel: 1
+        evidencias:
+          - skills/beditor/referencias/formatos.md#O que tira a monotonia
+        falta: Hoje só corte seco. Decidir e implementar o punch-in de A-roll (e o whip).
+      musica:
+        desejado: Trilha real da biblioteca do editor, corte na batida; nunca cama sintética em fala seca.
+        nivel: 1
+        evidencias:
+          - "skills/beditor/referencias/formatos.md#Música: nenhuma"
+        falta: Biblioteca de música/SFX e corte na batida; hoje o formato sai sem música.
+
+  - id: visual-storytelling
+    nome: Storytelling visual
+    automacao: high
+    reconhecido: true
+    resumo: Elementos visuais amplificam uma história falada. É o caminho padrão (noturno) sem `formato`.
+    celulas:
+      montagem:
+        desejado: Motion narrativo 40–60% no noturno, uma classe por ideia, continuidade por família.
+        nivel: 3
+        evidencias:
+          - skills/beditor/referencias/catalogo-visual.md
+          - skills/beditor/referencias/estilos.md#noturno
+          - skills/beditor/scripts/validar.py#familia
+          - skills/beditor/tests/test_validar.py#def test_familia_exige_estado
+      contexto:
+        desejado: Cada troca responde o que a imagem faz a fala significar; fato confirmado antes de desenhar.
+        nivel: 3
+        evidencias:
+          - skills/beditor/referencias/motion-editorial.md#Cada momento responde cinco perguntas
+          - skills/beditor/scripts/validar.py#a fala nega
+          - skills/beditor/tests/test_validar.py#def test_fala_nega_e_tela_afirma
+      cortes:
+        desejado: "Curva de ritmo: preparo 8–12 s, tensão 4–6 s, clímax 2–3 s, resolução 8–15 s; silêncio que significa fica."
+        nivel: 2
+        evidencias:
+          - skills/beditor/referencias/ritmo.md
+        falta: Nada mede a curva de duração por fase do arco.
+      transicao:
+        desejado: Saída que carrega sentido (varrer, empurrar, implodir), push-in 2–6%, reação segurada 0,5 s.
+        nivel: 3
+        evidencias:
+          - skills/beditor/referencias/movimento.md#Saída
+          - skills/beditor/scripts/hf.py#push
+          - skills/beditor/scripts/validar.py#SAIDAS
+          - skills/beditor/tests/test_validar.py#def test_movimento_vazio
+
+  - id: split-screen
+    nome: Tela dividida
+    automacao: high
+    reconhecido: false
+    resumo: Criador comenta conteúdo externo exibido simultaneamente.
+    celulas:
+      montagem:
+        desejado: Apoio 36–46% em cima, quem fala ≥ 54% embaixo, rosto rastreado, matte nas colisões, topo só footage fornecido.
+        nivel: 3
+        evidencias:
+          - skills/beditor/referencias/tela-dividida.md#enquadrar_rosto
+          - skills/beditor/scripts/enquadrar_rosto.py
+          - skills/beditor/tests/test_enquadrar_rosto.py#def test_rosto_grande_demais_marca_colisao_de_cabelo_e_guarda_o_queixo
+        falta: O montar.py não monta a divisão; o projeto 08 foi montado à mão no Codex.
+      contexto:
+        desejado: Cada apoio prova a frase do instante; texto queimado da origem sai; fato do produto confirmado.
+        nivel: 2
+        evidencias:
+          - skills/beditor/referencias/tela-dividida.md#Texto queimado sai
+      legenda:
+        desejado: Montserrat 700, até 4 palavras, acima da junção, nunca sobre o rosto nem durante o hook.
+        nivel: 2
+        evidencias:
+          - skills/beditor/referencias/tela-dividida.md#Legenda no fim da região de cima
+      hook:
+        desejado: Hook em Fraunces display atravessando a junção, sem linha visível entre os dois vídeos; abertura animada do objeto do vídeo.
+        nivel: 2
+        evidencias:
+          - skills/beditor/referencias/tela-dividida.md#O hook atravessa a junção
+      cortes:
+        desejado: Topo troca por unidade de sentido, imagem 4–7 quadros antes da palavra; quem fala contínuo; voz nunca adiantada.
+        nivel: 2
+        evidencias:
+          - skills/beditor/referencias/tela-dividida.md#4–7 quadros
+      transicao:
+        desejado: Footage limpo com push-in discreto; enquadramento de quem fala suave, sem salto.
+        nivel: 3
+        evidencias:
+          - skills/beditor/referencias/tela-dividida.md#Aplique os keyframes
+          - skills/beditor/scripts/enquadrar_rosto.py#def gsap
+          - skills/beditor/tests/test_enquadrar_rosto.py#def test_gsap_encadeia_os_keyframes
+      musica:
+        desejado: Voz como trilha principal; SFX só no abrir do hook, se ajudar.
+        nivel: 1
+        evidencias:
+          - skills/beditor/referencias/tela-dividida.md#Trilha opcional
+
+  - id: narrated
+    nome: Narrado
+    automacao: high
+    reconhecido: false
+    resumo: Voice-over conduz imagens, clips e texto como documentário curto. Hoje é a rota legada do plano.py.
+    celulas:
+      montagem:
+        desejado: 100% imagem sobre a voz; B-roll troca a cada 3–6 s; 10–18 cortes/min.
+        nivel: 2
+        evidencias:
+          - "skills/beditor/SKILL.md#áudio **sem** take"
+          - skills/beditor/scripts/plano.py
+      cortes:
+        desejado: Imagem a ±0,5 s da palavra; frase poética preservada; corte seco dominante.
+      transicao:
+        desejado: Corte seco dominante; push-in lento no B-roll.
+
+  - id: analysis
+    nome: Análise
+    automacao: high
+    resumo: Interpreta pessoa, marca, estratégia ou tendência com evidências visuais.
+    celulas:
+      montagem:
+        desejado: Evidência visual (arquivo, tela, dado) sustentando cada afirmação causal.
+      contexto:
+        desejado: "Estrutura conflito → resultados → razões → moral; toda afirmação com fonte."
+  - id: comparison
+    nome: Comparação
+    automacao: high
+    resumo: Opõe opções com critérios e evidências claras.
+    celulas:
+      montagem:
+        desejado: Os dois lados em layout espacial constante; diferença mostrada antes de explicada.
+      contexto:
+        desejado: Critério mensurável e conclusão inequívoca.
+  - id: pocket-lecture
+    nome: Palestrinha
+    automacao: high
+    resumo: Fala direta em forma de mini palestra com argumento claro.
+    celulas:
+      montagem:
+        desejado: Rosto conduz; cartela ou dado só onde o argumento precisa de prova.
+  - id: green-screen
+    nome: Tela verde
+    automacao: high
+    resumo: Fundo substituído participa diretamente da explicação.
+    celulas:
+      montagem:
+        desejado: Fundo troca a cada 20–40 s acompanhando o assunto; recorte limpo de quem fala.
+      cortes:
+        desejado: Cortes de fala a cada 5–8 s.
+      transicao:
+        desejado: Transição do fundo em 4–6 quadros.
+  - id: lo-fi
+    nome: Lo-Fi
+    automacao: high
+    resumo: Simplicidade e imperfeição intencionais criam proximidade.
+    celulas:
+      montagem:
+        desejado: Polimento baixo, imperfeição preservada, nenhum motion decorativo.
+      transicao:
+        desejado: Corte seco; nada de zoom sintético.
+  - id: analogy
+    nome: Analogia
+    automacao: conditional
+    resumo: Torna uma ideia abstrata visível por objeto, ação ou situação concreta.
+    celulas:
+      montagem:
+        desejado: Imagem concreta primeiro, conexão explícita depois (objeto-símbolo, cotidiano).
+  - id: behind-the-scenes
+    nome: Bastidores
+    automacao: conditional
+    resumo: Mostra processo real por trás de resultado, criação ou rotina.
+    celulas:
+      legenda:
+        desejado: Legenda discreta.
+      transicao:
+        desejado: 80% corte seco; imperfeição preservada.
+  - id: cine
+    nome: Cine
+    automacao: conditional
+    resumo: Mini-filme com planos compostos, trilha e cortes precisos.
+    celulas:
+      cortes:
+        desejado: Plano de estabelecimento de 5–8 s; silêncio que significa preservado.
+      transicao:
+        desejado: Só corte seco, dissolve, fade e match cut; nunca glitch nem wipe decorativo.
+      musica:
+        desejado: Trilha como elemento narrativo, não cama.
+  - id: bar-conversation
+    nome: Conversa de bar
+    automacao: conditional
+    resumo: Fala relaxada sem modo apresentador, geralmente fora da lente.
+    celulas:
+      cortes:
+        desejado: Ritmo relaxado; polimento contido.
+  - id: lazy-creative
+    nome: Criativo preguiçoso
+    automacao: conditional
+    resumo: Concentra energia visual nos primeiros 3–6 s e simplifica depois.
+    celulas:
+      hook:
+        desejado: Toda a energia visual nos primeiros 3–6 s.
+      montagem:
+        desejado: Complexidade baixa depois do hook.
+  - id: combined
+    nome: Formato combinado
+    automacao: conditional
+    resumo: Funde dois formatos, cada um com função estrutural identificável.
+    celulas:
+      contexto:
+        desejado: Pelo menos dois formatos, uma estrutura dominante declarada.
+  - id: the-office
+    nome: The Office
+    automacao: conditional
+    resumo: Mockumentary com câmera observacional e tom sério-irônico.
+  - id: trivial
+    nome: Trivial
+    automacao: conditional
+    resumo: Conversa íntima em contexto cotidiano reconhecível.
+    celulas:
+      montagem:
+        desejado: Polimento contido.
+  - id: vlog
+    nome: Vlog
+    automacao: conditional
+    resumo: Rotina ou processo real vira história por momentos e cenários.
+  - id: controversial-question
+    nome: Caixinha polêmica
+    automacao: performance-required
+    resumo: Responde pergunta provocativa exibida em uma caixinha nativa.
+    celulas:
+      hook:
+        desejado: A caixinha nativa visível no início.
+  - id: situational-conflict
+    nome: Conflito situacional
+    automacao: performance-required
+    resumo: Abre com conflito real forte e migra para explicação ou virada.
+  - id: dialogue
+    nome: Diálogo
+    automacao: performance-required
+    resumo: Dois personagens conversam para materializar conflito ou ensinamento.
+  - id: social-experiment
+    nome: Experimento social
+    automacao: performance-required
+    resumo: Documenta experimento real com pessoas e revela resultados.
+  - id: narrator-character
+    nome: Narrador
+    automacao: performance-required
+    resumo: Voz invisível provoca ou apresenta o personagem visível.
+
+# Etapas que valem para todo formato, fora da grade.
+etapas:
+  - id: publicacao
+    nome: Título, descrição, capa e agendamento
+    nivel: 3
+    evidencias:
+      - skills/beditor/referencias/publicacao.md#Um agendamento para todas as redes
+      - commands/publicar.md
+      - skills/beditor/scripts/publicacao.py#def payload_zernio
+      - skills/beditor/tests/test_publicacao.py#def test_um_post_para_todas_as_redes
+    falta: Nenhum agendamento real ainda; Zernio e Metricool não estão conectados nesta máquina.
