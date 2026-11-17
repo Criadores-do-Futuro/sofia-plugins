@@ -1,4 +1,0 @@
-interface:
-  display_name: Sofia Interna · Demandas
-  short_description: Console e rotinas da equipe
-  default_prompt: Use $demandas-e-reunioes para transformar a ata de uma reunião em demandas.
