@@ -1,3 +1,5 @@
+Lee [comportamiento](../../comportamiento.md). Estas reglas prevalecen si un paso de este flujo contradice el pedido directo del usuario.
+
 # Escribir Guion
 
 **Recuerda: sigue las reglas de `references/tono-de-voz.md`. Habla como persona, no como IA.**
@@ -34,7 +36,7 @@ Técnicas de los buenos guiones (consulta `references/como-escribir.md`):
 - Escalada progresiva: cada frase sube un peldaño
 - Conectar una historia lejana con la vida del público: "¿y tú?"
 - Cierre casual después del peso: "en fin, eso fue lo que pasó"
-- CTA coherente con el contenido, nunca genérico
+- Llamado a la acción coherente con el contenido, nunca genérico
 
 Prueba antes de cada frase:
 "¿Alguien diría esto mirando a la cámara?" Si no, reescríbela.
@@ -115,7 +117,7 @@ Consulta `references/estructuras-de-guion/` para elegir.
 
 ## Fase 3: Apertura
 
-Revisa en `references/formatos/<formato>.md` la sección "Tipo de hook que pide este formato", y varía los tipos de apertura entre las opciones que propongas.
+Revisa en `references/formatos/<formato>.md` la sección "Tipo de gancho que pide este formato", y varía los tipos de apertura entre las opciones que propongas.
 
 Crea de 3 a 5 opciones de apertura:
 
@@ -129,9 +131,9 @@ Apertura 2: "[frase]"
 
 > "¿Cuál te llamó más la atención? Puedes mezclar o pedirme otra."
 
-## Fase 4: Antes de escribir, confirma
+## Fase 4: Antes de escribir, resume el enfoque
 
-Antes de escribir el guion completo, confirma:
+Si todavía hay una decisión importante pendiente, resume lo que sabes; no pidas otra aprobación si el usuario ya solicitó el guion:
 
 > "Voy a escribir el guion con:
 > - Tema: [X]
@@ -142,26 +144,16 @@ Antes de escribir el guion completo, confirma:
 >
 > ¿Falta algún dato? ¿Tienes alguna cifra, caso real o ejemplo que quieras que use?"
 
-**Solo escribe cuando tengas material real.** Si falta, pide:
+**Usa los hechos disponibles.** Si falta algo imprescindible, pregunta o usa `[DATO REAL NECESARIO]` en un borrador solicitado:
 > "Para que esta parte quede sólida, necesito un ejemplo real. ¿Hay algún caso que te haya pasado a ti o a alguien que tu público conoce?"
 
 ## Fase 5: Guion
 
-Escribe 2 versiones con enfoques distintos.
+Escribe una versión completa, salvo que el usuario pida alternativas.
 
 Para cada una:
 > "**Versión 1** — Enfocada en: [qué la diferencia]"
 
-## Fase 6: Ofrece crítica
+## Fase 6: Revisa antes de entregar
 
-> "¿Quieres que te lo evalúe con honestidad? Te voy a decir si engancha o no."
-
-Si acepta:
-- ¿La apertura engancha? sí / más o menos / no
-- ¿Se ve hasta el final? sí / más o menos / no
-- ¿Lo compartirían? sí / más o menos / no
-- Problema más grande, en 1 frase
-- Qué está bien, en 1 frase
-- 2-3 sugerencias concretas
-
-> "¿Quieres que lo mejore? Contéstame [pregunta específica sobre lo que falta] para reescribirlo con más fuerza."
+Comprueba hechos, idioma, voz, progresión y resolución del gancho. No pronostiques reproducciones ni compartidos. Ofrece ajustar el momento que más lo necesite. Si piden solo las palabras habladas, entrega ese formato y separa las notas esenciales de fuentes o datos faltantes.

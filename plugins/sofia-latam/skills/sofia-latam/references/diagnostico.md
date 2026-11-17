@@ -20,11 +20,11 @@ Verificar: ¿pasa EN LA PANTALLA o EN LA CABEZA DEL PÚBLICO?
 - En la cabeza: el video contradice una creencia, activa memoria de conflicto
 - Si no pasa en ningún lado → sin emoción → sin retención
 
-### 4. ¿Dónde están los loops de curiosidad y cuándo se cierran?
-- Listar cada loop de curiosidad abierto
+### 4. ¿Dónde están los preguntas abiertas de curiosidad y cuándo se cierran?
+- Listar cada pregunta abierta de curiosidad abierto
 - Cuándo se cierra cada uno (¿demasiado pronto? ¿en el momento justo? ¿nunca se cierra?)
-- Los loops de dato concreto > los loops emocionales para el engagement
-- Un loop que no se cierra = engagement externo (comentarios)
+- Los preguntas abiertas de dato concreto > los preguntas abiertas emocionales para el participación
+- Un pregunta abierta que no se cierra = participación externo (comentarios)
 
 ### 5. ¿El aha llega después del costo justo?
 - Si llega demasiado pronto → satisface sin enganchar
@@ -42,9 +42,9 @@ La pregunta correcta ES: "¿Qué está cargando este video, y qué se podría am
 
 | Señal | Diagnóstico probable |
 |-------|---------------------|
-| El público no se detiene a ver | Hook sin loop de curiosidad ni familiaridad |
+| El público no se detiene a ver | Gancho sin pregunta abierta de curiosidad ni familiaridad |
 | Se detiene pero se va rápido | Tema chico o conflicto ausente |
 | Ve todo pero no interactúa | Sin debate mental / aha entregado sin costo |
-| Alta retención, bajo share | Falta familiaridad de identidad |
-| Muchos comentarios | Loop de dato concreto que no se cierra |
+| Alta retención, bajo compartidos | Falta familiaridad de identidad |
+| Muchos comentarios | Pregunta abierta de dato concreto que no se cierra |
 | Muchos shares | Familiaridad de identidad + moraleja fuerte |

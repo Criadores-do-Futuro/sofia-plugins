@@ -1,4 +1,4 @@
-# Psicología Cognitiva del Engagement
+# Psicología Cognitiva del Participación
 
 ## EL OBJETIVO ÚNICO
 
@@ -12,7 +12,7 @@ Si la idea no está clara antes de escribir, el video no tiene centro. Sin centr
 
 ## QUÉ HACE QUE UN VIDEO RETENGA Y SE VUELVA VIRAL
 
-La retención es lo que permite la distribución — sin ella el video no le llega a nadie. Pero la retención sola no viraliza. Lo que atraviesa burbujas y multiplica el alcance es el comportamiento externo generado por el debate mental: compartir, comentar, el loop de volver a ver.
+La retención es lo que permite la distribución — sin ella el video no le llega a nadie. Pero la retención sola no viraliza. Lo que atraviesa burbujas y multiplica el alcance es el comportamiento externo generado por el debate mental: compartir, comentar, el pregunta abierta de volver a ver.
 
 ---
 
@@ -66,15 +66,15 @@ La tercera forma es la más poderosa porque el video no necesita construir nada.
 
 ### 4. CURIOSIDAD Y DEBATE MENTAL
 
-La curiosidad es la brecha entre lo que el público sabe y lo que quiere saber. Cuando el cerebro detecta esa brecha, libera dopamina — no en la resolución, en la búsqueda. El loop de curiosidad se sostiene mientras la brecha existe. Cuando se cierra, el sistema se desactiva.
+La curiosidad es la brecha entre lo que el público sabe y lo que quiere saber. Cuando el cerebro detecta esa brecha, libera dopamina — no en la resolución, en la búsqueda. El pregunta abierta de curiosidad se sostiene mientras la brecha existe. Cuando se cierra, el sistema se desactiva.
 
 La brecha necesita información suficiente para existir. El público solo se pone curioso sobre lo que sabe que no sabe. Sin información suficiente, no hay brecha — hay confusión. Con demasiada información, no hay brecha — hay satisfacción prematura.
 
-El debate mental es el procesamiento activo que provoca la curiosidad. El cerebro anticipa, compara con su propia vida, forma opinión, toma partido, proyecta resultados. No es recepción pasiva — es trabajo cognitivo. Es el engagement real. Like, comentario y compartir son consecuencias del debate mental, no el debate en sí.
+El debate mental es el procesamiento activo que provoca la curiosidad. El cerebro anticipa, compara con su propia vida, forma opinión, toma partido, proyecta resultados. No es recepción pasiva — es trabajo cognitivo. Es el participación real. Like, comentario y compartir son consecuencias del debate mental, no el debate en sí.
 
 Cuanto más familiar el conflicto que generó la curiosidad, más intenso el debate mental — el cerebro tiene más material para simular.
 
-**Regla central:** el video que retiene es el que abre loops de curiosidad y los sostiene el tiempo justo. Un loop cerrado demasiado temprano mata el debate. Los loops de dato concreto — qué pasó, dónde, cuánto, con quién — son más poderosos que los loops emocionales para retención y engagement externo.
+**Regla central:** el video que retiene es el que abre preguntas abiertas de curiosidad y los sostiene el tiempo justo. Un pregunta abierta cerrado demasiado temprano mata el debate. Los preguntas abiertas de dato concreto — qué pasó, dónde, cuánto, con quién — son más poderosos que los preguntas abiertas emocionales para retención y participación externo.
 
 ---
 
@@ -84,11 +84,11 @@ El efecto aha es el placer de descubrir. Su intensidad es proporcional al costo 
 
 Dos caminos con funciones distintas:
 
-**Entregar el aha (payoff)** — en el momento justo, después de un costo real. Genera satisfacción que lleva a compartir y a volver a ver. El público recibió lo que invirtió. Cuando el hook plantó algo antes (planting), el payoff que lo cierra multiplica la recompensa.
+**Entregar el aha (resolución de la promesa)** — en el momento justo, después de un costo real. Genera satisfacción que lleva a compartir y a volver a ver. El público recibió lo que invirtió. Cuando el gancho plantó algo antes (preparación de la promesa), el resolución de la promesa que lo cierra multiplica la recompensa.
 
-**Negar el aha** — una brecha que deliberadamente no se cierra. El cerebro busca resolverla en otro lugar: en los comentarios, al compartir, en la conversación. Este es el mecanismo central del engagement externo a escala. La ausencia de aha no es una falla — es una decisión estratégica.
+**Negar el aha** — una brecha que deliberadamente no se cierra. El cerebro busca resolverla en otro lugar: en los comentarios, al compartir, en la conversación. Este es el mecanismo central del participación externo a escala. La ausencia de aha no es una falla — es una decisión estratégica.
 
-El Efecto Zeigarnik sostiene esto: el cerebro retiene las tareas incompletas con más fuerza que las tareas completas. Un loop abierto crea tensión cognitiva que el público necesita resolver — y la resuelve externalizándola.
+El Efecto Zeigarnik sostiene esto: el cerebro retiene las tareas incompletas con más fuerza que las tareas completas. Un pregunta abierta abierto crea tensión cognitiva que el público necesita resolver — y la resuelve externalizándola.
 
 ---
 
@@ -102,7 +102,7 @@ Antes de evaluar cualquier elemento técnico, responder en orden:
 
 3. **¿El conflicto y el cambio están pasando — en la pantalla o en la cabeza del público?** — Si no están pasando en ningún lado, no hay emoción y no hay retención.
 
-4. **¿Dónde están los loops de curiosidad y cuándo se cierran?** — Los loops que se cierran demasiado temprano matan el debate mental. Los loops concretos que no se cierran generan engagement externo.
+4. **¿Dónde están los preguntas abiertas de curiosidad y cuándo se cierran?** — Los preguntas abiertas que se cierran demasiado temprano matan el debate mental. Los preguntas abiertas concretos que no se cierran generan participación externo.
 
 5. **¿El aha llega después del costo justo?** — Demasiado temprano satisface sin enganchar. La ausencia deliberada externaliza el debate.
 

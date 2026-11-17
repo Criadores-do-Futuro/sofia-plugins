@@ -12,7 +12,7 @@ Registro de un pedazo de vida ocurriendo: rutina, ida a un lugar, backstage o pr
 ## Estructura que combina mejor
 IHC o Él, Yo, Tú, Futuro.
 
-## Tipo de hook que pide este formato
+## Tipo de gancho que pide este formato
 La promesa del recorrido: a dónde vas o qué va a pasar, ya en movimiento.
 
 ## Reglas de escritura

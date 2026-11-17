@@ -12,7 +12,7 @@ La persona habla predominantemente sin mirar al lente, como si conversara con al
 ## Estructura que combina mejor
 Él-Yo-Tú-Futuro o IHC confesional.
 
-## Tipo de hook que pide este formato
+## Tipo de gancho que pide este formato
 Arranca a mitad de un pensamiento, una pregunta o una confesión, como si la conversación ya estuviera en curso.
 
 ## Reglas de escritura

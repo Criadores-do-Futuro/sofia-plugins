@@ -10,7 +10,7 @@
 
 **Lo que vas a usar para captar la atención de tu audiencia.**
 
-El tema es la puerta de entrada. Es lo que hace que la persona deje de hacer scroll y preste atención.
+El tema es la puerta de entrada. Es lo que hace que la persona deje de hacer desplazamiento y preste atención.
 
 ### Moraleja de la Historia
 
@@ -34,7 +34,7 @@ Muchos creadores cometen el error de usar como tema el asunto técnico que quier
 
 ### Cómo funciona en la práctica (referencia interna)
 
-- Alguien quiere enseñar sobre storytelling → "storytelling" no es un tema interesante → usa "traición" (conflicto universal con mucha relevancia emocional) como tema para conducir hasta la moraleja
+- Alguien quiere enseñar sobre narrativa → "narrativa" no es un tema interesante → usa "traición" (conflicto universal con mucha relevancia emocional) como tema para conducir hasta la moraleja
 - Alguien quiere enseñar sobre finanzas de pareja → "finanzas de pareja" no tiene relevancia emocional → usa "que te mantenga tu pareja" (conflicto universal que genera debate fuerte) como tema para conducir hasta la moraleja
 
 ## La Relación Entre Tema y Moraleja

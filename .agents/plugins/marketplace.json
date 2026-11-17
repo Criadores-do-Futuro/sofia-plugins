@@ -1,0 +1,44 @@
+{
+  "name": "sofia-plugins",
+  "interface": {
+    "displayName": "Sofias — Criadores do Futuro"
+  },
+  "plugins": [
+    {
+      "name": "sofia-br",
+      "source": {
+        "source": "local",
+        "path": "./plugins/sofia-br"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Creativity"
+    },
+    {
+      "name": "sofia-latam",
+      "source": {
+        "source": "local",
+        "path": "./plugins/sofia-latam"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Creativity"
+    },
+    {
+      "name": "sofia-english",
+      "source": {
+        "source": "local",
+        "path": "./plugins/sofia-english"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Creativity"
+    }
+  ]
+}

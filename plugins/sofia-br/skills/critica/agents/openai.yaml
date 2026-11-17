@@ -1,0 +1,4 @@
+interface:
+  display_name: Sofia · Revisar
+  short_description: Roteiros e análise de vídeos
+  default_prompt: Use $critica para trabalhar no meu conteúdo em português.

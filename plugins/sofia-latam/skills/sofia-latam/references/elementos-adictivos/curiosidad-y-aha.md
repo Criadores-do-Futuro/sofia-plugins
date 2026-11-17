@@ -1,6 +1,6 @@
 # Curiosidad y Efecto AHA
 
-**La curiosidad abre un loop en la cabeza. El efecto AHA cierra el loop.**
+**La curiosidad abre un pregunta abierta en la cabeza. El efecto AHA cierra el pregunta abierta.**
 
 > IMPORTANTE: Los ejemplos de este documento son solo referencias internas para ilustrar el principio. NO deben usarse en conversaciones con el usuario ni reproducirse en guiones. Lo que guía la escritura y el análisis es el PRINCIPIO, no los ejemplos.
 
@@ -14,7 +14,7 @@ Mientras la respuesta no llega, la persona no puede dejar de pensar en eso.
 
 Es como una picazón que solo se calma cuando te rascas. El cerebro detecta un vacío de información y se siente incómodo hasta cerrar ese vacío.
 
-La curiosidad crea un **loop de curiosidad abierto** — una pregunta sin respuesta que atrapa la atención.
+La curiosidad crea un **pregunta abierta de curiosidad abierto** — una pregunta sin respuesta que atrapa la atención.
 
 ### Formas de generar curiosidad
 
@@ -30,7 +30,7 @@ La curiosidad crea un **loop de curiosidad abierto** — una pregunta sin respue
 
 ## El Principio: Efecto AHA
 
-Es cuando cierras el loop. Cuando por fin entregas la respuesta, llega la sensación de "Ahhh, ¡ahora entiendo!"
+Es cuando cierras el pregunta abierta. Cuando por fin entregas la respuesta, llega la sensación de "Ahhh, ¡ahora entiendo!"
 
 ### La relación entre los dos
 
@@ -41,7 +41,7 @@ Efecto AHA → cierra el loop → recompensa a la audiencia
 
 ### Regla fundamental
 
-**Sin efecto AHA, la persona se siente engañada.** Si abres curiosidad y nunca entregas la respuesta (o entregas una respuesta débil), la audiencia pierde la confianza — y ahí es donde un loop de curiosidad se convierte en simple clickbait.
+**Sin efecto AHA, la persona se siente engañada.** Si abres curiosidad y nunca entregas la respuesta (o entregas una respuesta débil), la audiencia pierde la confianza — y ahí es donde un pregunta abierta de curiosidad se convierte en simple clickbait.
 
 ## El equilibrio
 
@@ -51,33 +51,33 @@ Efecto AHA → cierra el loop → recompensa a la audiencia
 
 ## Cómo aplicarlo al escribir
 
-1. **Abre con curiosidad** — la primera frase debe crear una pregunta en la cabeza; ese es tu hook cognitivo
+1. **Abre con curiosidad** — la primera frase debe crear una pregunta en la cabeza; ese es tu gancho cognitivo
 2. **Guárdate la respuesta** — no entregues todo de una vez
 3. **Construye tensión** — agrega detalles que aumenten las ganas de saber
 4. **Cierra con AHA** — entrega la respuesta de forma clara y satisfactoria
-5. **Puede haber varios loops** — abre y cierra múltiples curiosidades a lo largo del guion
+5. **Puede haber varios preguntas abiertas** — abre y cierra múltiples curiosidades a lo largo del guion
 
 ## Cómo aplicarlo en el análisis
 
 Al analizar un video, identifica:
 
-1. ¿Dónde se abre la curiosidad? (por lo general en el hook)
+1. ¿Dónde se abre la curiosidad? (por lo general en el gancho)
 2. ¿Cuánto tiempo se guarda la respuesta?
 3. ¿El efecto AHA es satisfactorio? (¿la respuesta valió la espera?)
-4. ¿Hay múltiples loops de curiosidad a lo largo del video?
-5. ¿Quedó algún loop abierto sin cerrar? (frustración)
+4. ¿Hay múltiples preguntas abiertas de curiosidad a lo largo del video?
+5. ¿Quedó algún pregunta abierta abierto sin cerrar? (frustración)
 
 ## Errores comunes
 
 - Entregar la respuesta demasiado rápido (mata la curiosidad)
 - Prometer de más y entregar de menos (clickbait)
 - No abrir ninguna curiosidad (contenido que nadie se detiene a ver)
-- Abrir muchos loops y no cerrar ninguno (confunde a la audiencia)
+- Abrir muchos preguntas abiertas y no cerrar ninguno (confunde a la audiencia)
 
 ## Checklist para el agente
 
-- [ ] ¿El hook abre una curiosidad clara?
+- [ ] ¿El gancho abre una curiosidad clara?
 - [ ] ¿La respuesta se guarda el tiempo suficiente?
 - [ ] ¿El efecto AHA es satisfactorio y claro?
-- [ ] ¿No quedan loops abiertos sin cerrar?
+- [ ] ¿No quedan preguntas abiertas abiertos sin cerrar?
 - [ ] ¿El equilibrio curiosidad/AHA no se siente como clickbait?

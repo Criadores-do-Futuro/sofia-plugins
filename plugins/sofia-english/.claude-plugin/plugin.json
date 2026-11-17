@@ -1,11 +1,16 @@
 {
   "name": "sofia-english",
-  "description": "Sophia reviews, analyzes, writes and rewrites short-form video scripts in American English using the CDF method and the creator's own voice. The method content comes from the sofia-conteudo connector.",
-  "version": "1.0.4",
+  "description": "Analyzes short-form videos, writes and reviews scripts in American English, learns the creator’s voice and exports analyses. Uses bundled references and facts supplied by the user or verified with available tools. Local visual preparation requires FFmpeg and command execution; text analysis works without them. Optional external services use the user’s account and require authorization.",
+  "version": "1.1.0",
   "author": {
     "name": "Alef Marques"
   },
   "repository": "https://github.com/bento-dev-ia/sofia-plugins",
   "license": "LicenseRef-Proprietary",
-  "keywords": ["scripts", "CDF", "short-form video", "American English"]
+  "keywords": [
+    "scripts",
+    "video",
+    "analysis",
+    "English"
+  ]
 }

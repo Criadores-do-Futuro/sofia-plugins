@@ -11,7 +11,7 @@ La persona conversa en un contexto cotidiano e íntimo, con café, comida, maqui
 ## Estructura que combina mejor
 Él, Yo, Tú, Futuro o IHC corto.
 
-## Tipo de hook que pide este formato
+## Tipo de gancho que pide este formato
 Una observación íntima o una confesión en medio de la actividad cotidiana.
 
 ## Reglas de escritura

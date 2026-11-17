@@ -12,7 +12,7 @@ Elementos que hacen que un contenido sea imposible de ignorar. Son herramientas 
 | [Lenguaje Familiar + Imagen Mental](lenguaje-familiar.md) | La mente es floja — habla como habla tu audiencia | Hace que la audiencia ENTIENDA sin esfuerzo y VEA la escena |
 | [Tema y Moraleja de la Historia](tema-y-moral.md) | El tema atrae, la moraleja siembra la idea | Hace que la audiencia SE DETENGA y luego PIENSE |
 | [Conflicto y Cambio](conflicto-y-cambio.md) | Sin conflicto no hay historia | Hace que la audiencia quiera saber QUÉ PASÓ |
-| [Curiosidad y Efecto AHA](curiosidad-y-aha.md) | Abre un loop en la cabeza, lo cierra con recompensa | Hace que la audiencia SE QUEDE hasta el final |
+| [Curiosidad y Efecto AHA](curiosidad-y-aha.md) | Abre un pregunta abierta en la cabeza, lo cierra con recompensa | Hace que la audiencia SE QUEDE hasta el final |
 | [Contraste](contraste.md) | Los opuestos lado a lado amplifican la emoción | Hace que la audiencia SIENTA con más intensidad |
 
 ## Cómo los usa Sofia

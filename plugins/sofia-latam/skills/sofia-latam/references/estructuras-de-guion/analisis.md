@@ -37,9 +37,6 @@ La idea que quieres sembrar en la cabeza de quien vio el video, generando más c
 
 - Puede tener un tono provocador, emocional o inspirador
 
-## Ejemplo completo
-
-Un ejemplo de las cuatro etapas aplicado a un creador real. Esta pieza viene del conector de contenido de Sofia (MCP `sofia-conteudo`, herramienta `carregar_conteudo`, plugin `sofia-latam`, pieza `ejemplo-estructura-analisis`). Si el conector no está disponible, díselo al usuario y sigue sin la pieza; no inventes el contenido.
 
 ## Objetivo de la estructura
 

@@ -24,31 +24,31 @@ El formato cambia las **reglas de escritura** — la misma estructura escrita pa
 | [Experimento Social](experimento-social.md) | Experimento real con personas reales, resultado revelado | IHC (abre con la premisa-gancho) |
 | [Narrado](narrado.md) | Voz en off sobre imágenes, clips o textos | IHC / Análisis |
 | [Charla Breve](charla-breve.md) | Habla directo a cámara, sin apoyo visual | IHC / Modo Incorrecto x Modo Correcto |
-| [Storytelling Visual](storytelling-visual.md) | Historia con apoyo de textos y gráficos animados | IHC / Él-Yo-Tú-Futuro |
+| [Narrativa Visual](storytelling-visual.md) | Historia con apoyo de textos y gráficos animados | IHC / Él-Yo-Tú-Futuro |
 | [Pantalla Dividida](pantalla-dividida.md) | Comenta un contenido externo que aparece al lado | Él-Yo-Tú-Futuro + Contraste |
 | [Pantalla Verde](pantalla-verde.md) | Fondo reemplazado por captura, gráfico o escena | Análisis + IHC |
-| [The Office](the-office.md) | Mockumentary: mirada a cámara, tono confesional irónico | IHC con narración interna |
+| [The Office](the-office.md) | Falso documental: mirada a cámara, tono confesional irónico | IHC con narración interna |
 | [Conflicto Situacional](conflicto-situacional.md) | Abre con una situación urgente que parece real | IHC |
 | [Trivial](trivial.md) | Conversación íntima en un contexto cotidiano | Él-Yo-Tú-Futuro / IHC |
-| [Lo-Fi](lo-fi.md) | Producción cruda y simple a propósito | IHC directo o relato corto |
+| [Producción simple](lo-fi.md) | Producción cruda y simple a propósito | IHC directo o relato corto |
 | [Vlog](vlog.md) | Registra una experiencia real en momentos y escenarios | IHC |
-| [Análisis](analisis.md) | Interpreta un sujeto definido con inserts | Análisis / AIDA |
+| [Análisis](analisis.md) | Interpreta un sujeto definido con imágenes insertadas | Análisis / AIDA |
 | [Charla de Bar](charla-de-bar.md) | Habla informal con la mirada fuera del lente | Él-Yo-Tú-Futuro |
 | [Analogía](analogia.md) | Lo concreto explica una idea abstracta | IHC |
-| [Creativo Perezoso](creativo-perezoso.md) | Hook visual fuerte y el resto simple | AIDA / IHC |
+| [Creativo Perezoso](creativo-perezoso.md) | Gancho visual fuerte y el resto simple | AIDA / IHC |
 | [Narrador](narrador.md) | Personaje reacciona a un narrador fuera de cámara | Diálogo corto / IHC |
 | [Formato Combinado](formato-combinado.md) | Funde dos formatos reconocibles | Depende de la combinación |
 
 ## Cómo elegir
 
-1. **¿El tema pide prueba visual?** (dato, captura, comparación) → Pantalla Verde, Comparación, Storytelling Visual
-2. **¿El tema es una historia o experiencia real?** → Cine, Narrado, Vlog, Storytelling Visual, Detrás de Cámaras
-3. **¿El tema es opinión, análisis o toma de postura?** → Análisis, Charla Breve, Caja de Preguntas, Charla de Bar, Lo-Fi
+1. **¿El tema pide prueba visual?** (dato, captura, comparación) → Pantalla Verde, Comparación, Narrativa Visual
+2. **¿El tema es una historia o experiencia real?** → Cine, Narrado, Vlog, Narrativa Visual, Detrás de Cámaras
+3. **¿El tema es opinión, análisis o toma de postura?** → Análisis, Charla Breve, Caja de Preguntas, Charla de Bar, Producción simple
 4. **¿El tema reacciona a algo que ya existe?** → Pantalla Dividida
 5. **¿El tema es una lista de valor rápido?** → Dinamismo
 6. **¿El tema necesita evidencia de comportamiento real?** → Experimento Social, Vlog, Diálogo
 7. **¿Una idea abstracta necesita volverse concreta?** → Analogía
-8. **¿Hook visual fuerte con producción mínima después?** → Creativo Perezoso
+8. **¿Gancho visual fuerte con producción mínima después?** → Creativo Perezoso
 9. **¿La idea nace de una escena de tensión?** → Conflicto Situacional
 10. **¿Dos lenguajes son esenciales?** → Formato Combinado
 

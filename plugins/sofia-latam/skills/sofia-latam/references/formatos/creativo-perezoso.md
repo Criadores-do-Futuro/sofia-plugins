@@ -11,7 +11,7 @@ Toda la energía visual se concentra en los primeros 3–6 segundos: ángulo ext
 ## Estructura que combina mejor
 AIDA o IHC corto.
 
-## Tipo de hook que pide este formato
+## Tipo de gancho que pide este formato
 Ruptura visual en los primeros 3–6 segundos (ángulo extraño, close-up, objeto intrigante) con una frase que depende de esa imagen.
 
 ## Reglas de escritura
@@ -20,7 +20,7 @@ Ruptura visual en los primeros 3–6 segundos (ángulo extraño, close-up, objet
 3. Haz la transición rápido hacia el encuadre simple.
 4. Usa el resto del video para pagar la curiosidad.
 5. No mantengas el mismo estímulo todo el video.
-6. Retoma el elemento inicial en el payoff cuando sea útil.
+6. Retoma el elemento inicial en el resolución de la promesa cuando sea útil.
 
 ## No confundir
-Dinamismo mantiene el estímulo; Lo-Fi mantiene la simplicidad; un texto llamativo sin diferencia visual no califica.
+Dinamismo mantiene el estímulo; Producción simple mantiene la simplicidad; un texto llamativo sin diferencia visual no califica.

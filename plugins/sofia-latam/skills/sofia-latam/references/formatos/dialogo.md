@@ -8,7 +8,7 @@ El creador interpreta a dos personajes en una conversación que ilustra un confl
 ## Estructura que combina mejor
 [Modo Incorrecto x Modo Correcto](../estructuras-de-guion/modo-incorrecto-modo-correcto.md) o [IHC](../estructuras-de-guion/ihc.md)
 
-## Tipo de hook que pide este formato
+## Tipo de gancho que pide este formato
 La primera línea de uno de los personajes crea tensión o contraste inmediato sin contexto previo.
 
 ## Elementos adictivos dominantes
@@ -22,4 +22,4 @@ La primera línea de uno de los personajes crea tensión o contraste inmediato s
 5. Uno de los personajes representa al espectador (su duda, su error, su creencia)
 6. El giro narrativo es el momento en que un personaje cambia de posición o es sorprendido
 7. La moraleja emerge de la resolución del conflicto entre los personajes
-8. El CTA debe conectar al espectador con el personaje que representa su posición actual
+8. El Llamado a la acción debe conectar al espectador con el personaje que representa su posición actual

@@ -1,4 +1,4 @@
-# Formato: Lo-Fi
+# Formato: Producción simple
 
 ## Qué es
 Video deliberadamente simple, crudo y poco pulido. Cámara de celular, luz disponible, pocos cortes e imperfecciones conservadas crean cercanía. No es descuido: la claridad y la intención siguen siendo obligatorias.
@@ -12,7 +12,7 @@ Video deliberadamente simple, crudo y poco pulido. Cámara de celular, luz dispo
 ## Estructura que combina mejor
 IHC directo o relato corto, con una opinión fuerte.
 
-## Tipo de hook que pide este formato
+## Tipo de gancho que pide este formato
 Una tesis fuerte dicha como si la idea acabara de surgir, sin introducción.
 
 ## Reglas de escritura
@@ -24,4 +24,4 @@ Una tesis fuerte dicha como si la idea acabara de surgir, sin introducción.
 6. No compenses la simplicidad con efectos excesivos.
 
 ## No confundir
-Trivial exige contexto cotidiano; Creativo Perezoso exige un hook visual concentrado; un video mal ejecutado no es Lo-Fi.
+Trivial exige contexto cotidiano; Creativo Perezoso exige un gancho visual concentrado; un video mal ejecutado no es Producción simple.

@@ -1,4 +1,4 @@
-# Formato: Storytelling Visual
+# Formato: Narrativa Visual
 
 > **Formato ≠ estructura.** El formato es CÓMO se graba y se monta el video. La estructura es la SECUENCIA narrativa del guion (ver `references/estructuras-de-guion/`). Todo guion tiene los dos.
 
@@ -8,7 +8,7 @@ Historia contada con apoyo de elementos visuales (textos en pantalla, gráficos 
 ## Estructura que combina mejor
 [IHC](../estructuras-de-guion/ihc.md) o [Él, Yo, Tú, Futuro](../estructuras-de-guion/el-yo-tu-futuro.md)
 
-## Tipo de hook que pide este formato
+## Tipo de gancho que pide este formato
 Declaración de consecuencia visual — la primera frase crea una imagen que lo visual confirma de inmediato.
 
 ## Elementos adictivos dominantes
@@ -22,4 +22,4 @@ Declaración de consecuencia visual — la primera frase crea una imagen que lo 
 5. Cada transición visual debe coincidir con un giro narrativo
 6. Usa personajes reales con historias verificables
 7. El Efecto Ahá debe ser el momento en que lo visual y lo hablado se encuentran de forma sorprendente
-8. El CTA debe reforzarse visualmente — no solo hablarse
+8. El Llamado a la acción debe reforzarse visualmente — no solo hablarse

@@ -58,7 +58,7 @@ Usar palabras opuestas de forma intencional:
 - "fracaso" y después "imperio" para la misma historia
 - "destruyó" y después "construyó" para el mismo evento
 
-## Cómo el contraste genera engagement
+## Cómo el contraste genera participación
 
 El contraste provoca reacciones en los comentarios porque la gente necesita tomar postura:
 
