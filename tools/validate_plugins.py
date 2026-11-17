@@ -16,10 +16,10 @@ from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[1]
 NAMES = ("sofia-br", "sofia-latam", "sofia-english")
-# Plugins de uso interno da equipe: seguem o mesmo padrão de pacote e entram nos dois
-# catálogos, mas nunca vão para o diretório público (package_plugins.py só empacota NAMES)
-# e não precisam dos campos de listagem pública nem de execução local.
-INTERNAL = ("sofia-interna",)
+# Plugins de uso interno da equipe não ficam neste repositório público: a Sofia Interna
+# vive no repositório privado Criadores-do-Futuro/sofia-interna. A lista fica vazia de
+# propósito; os testes conferem que nenhum interno entra no pacote público.
+INTERNAL: tuple[str, ...] = ()
 # A Sofia Estrategista, a mais completa: além do método, edita vídeo, então leva scripts,
 # fontes e modelos que o diretório público não aceita de organização não verificada.
 # Ela é distribuída pelo próprio .zip (enviado em Personalizar > Plugins) e por este
@@ -311,7 +311,7 @@ def validate_all(root: Path = ROOT) -> list[dict]:
     claude = json.loads((root / ".claude-plugin/marketplace.json").read_text())
     codex = json.loads((root / ".agents/plugins/marketplace.json").read_text())
     if [p["name"] for p in claude["plugins"]] != list(ALL_NAMES) or [p["name"] for p in codex["plugins"]] != list(ALL_NAMES):
-        raise ValueError("Catálogos não contêm as identidades esperadas (três públicas, a interna e a completa)")
+        raise ValueError("Catálogos não contêm as identidades esperadas (três públicas e a completa)")
     for entry, other in zip(claude["plugins"], codex["plugins"]):
         folder = root / "plugins" / entry["name"]
         if entry["name"] in COMPLETE:

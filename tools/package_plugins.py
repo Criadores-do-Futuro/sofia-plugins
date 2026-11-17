@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
-"""Gera um ZIP por plugin público e inspeciona o conteúdo final.
-
-Plugins internos (INTERNAL em validate_plugins.py, como a sofia-interna) nunca entram aqui.
-"""
+"""Gera um ZIP por plugin e inspeciona o conteúdo final."""
 
 import argparse
 import hashlib
@@ -22,8 +19,7 @@ def package(output: Path, require_submission: bool = False) -> list[dict]:
         raise ValueError("Listagem incompleta; consulte tools/validate_plugins.py --submission")
     output.mkdir(parents=True, exist_ok=True)
     inventory = []
-    # reports traz as públicas (NAMES) e depois as internas: só as públicas viram ZIP.
-    for name, report in zip(NAMES, reports[:len(NAMES)]):
+    for name, report in zip(NAMES, reports):
         folder = ROOT / "plugins" / name
         if output.resolve().is_relative_to(folder.resolve()):
             raise ValueError("O ZIP deve ficar fora da pasta do plugin")

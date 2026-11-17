@@ -42,16 +42,6 @@ As páginas `/sophia/` descrevem um GPT gratuito. As páginas `/sofia-editora/` 
 3. **Cobertura da oferta paga.** Confirmar que as condições de aquisição e acesso nos produtos Hotmart referenciam as versões certas e são coerentes com os termos publicados. Não inventar preço, prazo, política de cancelamento ou promessa de disponibilidade.
 4. **Portal das plataformas.** Identidade e domínio verificados, elegibilidade para execução local quando aplicável, verificações do diretório e declarações feitas pelo desenvolvedor autorizado. Upload, revisão e publicação são ações distintas; nenhuma foi executada.
 
-## Sofia Interna fica fora da publicação pública
-
-A `sofia-interna` é de uso da equipe e nunca é enviada ao diretório da Anthropic nem ao da OpenAI. Ela está nos dois catálogos do repositório privado (para a equipe instalar) e passa pelas mesmas checagens de pacote, mas:
-
-- `tools/package_plugins.py` só gera ZIP dos plugins em `NAMES` (as três públicas); os plugins em `INTERNAL`, em `tools/validate_plugins.py`, não entram em `dist/` nem no inventário. Um teste (`test_internal_plugins_follow_the_package_standard_but_never_ship_publicly`) trava isso.
-- O validador não cobra dela execução local nem os campos de listagem pública (`websiteURL` e as páginas de termos, privacidade e suporte), então `--submission` e `--require-submission-ready` não dependem dela.
-- Para publicar uma Sofia nova em diretório público, ela entra em `NAMES`; nunca mova a `sofia-interna` para lá.
-
-O aviso `PRIVACY_URL_MISSING` do `claude plugin validate` para a Sofia Interna (ela usa um MCP remoto) é uma checagem do diretório público e não se aplica a um plugin que não vai para ele.
-
 ## Verificações e limites
 
 Execute `python3 tools/validate_plugins.py` para o contrato estrutural e `--submission` para os campos de listagem. O segundo falha enquanto faltar `websiteURL`. Mesmo com todos os campos presentes, conteúdo e acesso dos endereços precisam ser verificados; o validador não certifica conformidade legal ou aprovação.

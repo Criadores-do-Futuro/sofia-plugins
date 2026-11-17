@@ -1,4 +1,0 @@
-interface:
-  display_name: Sofia Interna · Insights
-  short_description: Console e rotinas da equipe
-  default_prompt: Use $insights-do-discord para fazer os insights da semana.
