@@ -31,6 +31,12 @@ O plugin não tem servidor próprio e não guarda nada fora do computador da pes
   - YouTube, Instagram e TikTok, pelo `yt-dlp`, para baixar um vídeo público autorizado ou seus metadados e comentários;
   - Apify, YouTube Data API e Gemini, apenas pelo conector oficial que a pessoa instalou, com a conta e a cobrança dela.
 
+## Privacidade, termos e suporte
+
+- [Privacy — política de privacidade](https://plataforma.academiacriadoresdofuturo.com.br/sofia/privacidade)
+- [Terms — termos de uso](https://plataforma.academiacriadoresdofuturo.com.br/sofia/termos)
+- [Support — suporte](https://plataforma.academiacriadoresdofuturo.com.br/sofia/suporte)
+
 ## Distribuição e atendimento
 
 Publicador pretendido: Alef Marques. Compras de assinaturas, comunidades ou cursos ocorrem na Hotmart; este plugin não processa pagamentos nem controla acesso. A verificação de publicador e as declarações legais são feitas no portal.

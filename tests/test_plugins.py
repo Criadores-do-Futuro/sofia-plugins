@@ -71,12 +71,14 @@ class PackageContractTests(unittest.TestCase):
             (dest / "package.json").write_text("{}")
             shutil.copy(dest / "assets/icon.png", dest / ".claude-plugin/icon.png")
             (dest / "setup.md").write_text("Read `GEMINI_API_KEY` from the environment.")
+            readme = dest / "README.md"
+            readme.write_text(readme.read_text().replace("[Privacy]", "[Privacidade]"))
             skill = dest / "skills/sofia-english/SKILL.md"
             text = skill.read_text()
             skill.write_text(text.replace("description: ", "description: wrapped\n  ", 1))
             found = "\n".join(portal_issues(dest))
             for expected in ("plugin.json agent-plugins", "prepare.py", "dashboard.html", "package.json",
-                             ".claude-plugin/icon.png", "setup.md", "Frontmatter"):
+                             ".claude-plugin/icon.png", "setup.md", "Frontmatter", "Privacy"):
                 with self.subTest(expected=expected):
                     self.assertIn(expected, found)
             self.assertTrue(autofix(dest))

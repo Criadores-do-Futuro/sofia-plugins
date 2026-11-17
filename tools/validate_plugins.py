@@ -77,6 +77,9 @@ def portal_issues(folder: Path) -> list[str]:
     issues: list[str] = []
     if (folder / "plugin.json").exists():
         issues.append("plugin.json agent-plugins na raiz do pacote (o portal avisa e o ignora)")
+    readme = folder / "README.md"
+    if not readme.exists() or not re.search(r"\[[^\]]*Privacy[^\]]*\]\(https://[^)]+\)", readme.read_text()):
+        issues.append("README sem link \"Privacy\" (o portal não lê o link de privacidade de outro lugar)")
     files = [p for p in folder.rglob("*") if p.is_file()]
     texts = {p: p.read_text(errors="replace") for p in files if p.suffix in {".md", ".json", ".yaml", ".yml", ".txt"}}
     corpus = "\n".join(texts.values())

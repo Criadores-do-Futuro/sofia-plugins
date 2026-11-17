@@ -29,6 +29,12 @@ El plugin no tiene servidor propio y no guarda nada fuera de la computadora de l
   - YouTube, Instagram y TikTok, mediante `yt-dlp`, para descargar un video público autorizado o sus metadatos y comentarios;
   - Apify, YouTube Data API y Gemini, solo mediante el conector oficial que la persona instaló, con su cuenta y su facturación.
 
+## Privacidad, términos y soporte
+
+- [Privacy — política de privacidad](https://plataforma.academiacriadoresdofuturo.com.br/sofia-latam/privacidad)
+- [Terms — términos de uso](https://plataforma.academiacriadoresdofuturo.com.br/sofia-latam/terminos)
+- [Support — soporte](https://plataforma.academiacriadoresdofuturo.com.br/sofia-latam/soporte)
+
 ## Distribución y soporte
 
 Publicador previsto: Alef Marques. Las compras de suscripciones, comunidades o cursos se realizan en Hotmart. El plugin no procesa pagos ni controla el acceso. La identidad y las declaraciones legales se verifican en el portal.
