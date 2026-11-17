@@ -11,7 +11,7 @@ sys.dont_write_bytecode = True
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
-from validate_plugins import NAMES, validate_all, validate_plugin
+from validate_plugins import INTERNAL, NAMES, validate_all, validate_plugin
 from package_plugins import package
 
 # O diretório da Anthropic só aceita texto e imagens de organizações não verificadas.
@@ -88,6 +88,23 @@ class PackageContractTests(unittest.TestCase):
                 folder = ROOT / "plugins" / name
                 self.assertFalse((folder / "plugin.json").exists())
                 self.assertFalse((folder / ".claude-plugin/icon.png").exists())
+
+    def test_internal_plugins_follow_the_package_standard_but_never_ship_publicly(self):
+        reports = {report["plugin"]: report for report in validate_all()}
+        for name in INTERNAL:
+            with self.subTest(plugin=name):
+                self.assertNotIn(name, NAMES)
+                self.assertEqual(reports[name]["errors"], [])
+                self.assertTrue(reports[name]["skills"])
+                self.assertEqual(reports[name]["missing_listing_fields"], [])
+                folder = ROOT / "plugins" / name
+                self.assertFalse((folder / "plugin.json").exists())
+                self.assertTrue((folder / ".mcp.json").exists())
+        with tempfile.TemporaryDirectory() as temp:
+            inventory = package(Path(temp))
+            self.assertEqual([row["plugin"] for row in inventory], list(NAMES))
+            produced = {path.name for path in Path(temp).glob("*.zip")}
+            self.assertFalse(any(name in zipped for name in INTERNAL for zipped in produced))
 
     def test_every_plugin_shows_the_same_name_to_people(self):
         import json
