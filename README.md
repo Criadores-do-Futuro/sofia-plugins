@@ -8,6 +8,7 @@ vídeos curtos, em três idiomas.
 | `sofia` | Português | Pesquisa vídeos virais, analisa e escreve ou melhora roteiros. |
 | `sofia-latam` | Espanhol | Analisa vídeos de TikTok, Instagram e YouTube e cria ou melhora roteiros. |
 | `sofia-english` | Inglês americano | Revisa, analisa, escreve e reescreve roteiros pelo método CDF. |
+| `cdf-equipe` | Português | A Sofia interna da equipe: liga o Claude ao console da plataforma de desafios (MCP) e traz as rotinas de gestão de comunidade. |
 
 ## Instalar
 

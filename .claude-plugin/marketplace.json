@@ -34,6 +34,16 @@
         "name": "Alef Marques"
       },
       "keywords": ["english", "scripts", "short-form video", "CDF"]
+    },
+    {
+      "name": "cdf-equipe",
+      "source": "./plugins/cdf-equipe",
+      "version": "0.1.0",
+      "description": "A Sofia interna da equipe da Criadores do Futuro: liga o Claude ao console da plataforma de desafios e traz as rotinas de gestão de comunidade (avisos, insights do Discord, demandas, depoimentos).",
+      "author": {
+        "name": "bento-dev-ia"
+      },
+      "keywords": ["equipe", "comunidade", "discord", "console", "CDF"]
     }
   ]
 }
