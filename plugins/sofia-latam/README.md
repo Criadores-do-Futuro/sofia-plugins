@@ -15,7 +15,7 @@ Pide analizar un video o una transcripción, escribir un guion, revisar un texto
 
 ## Recursos y límites
 
-La preparación visual local necesita Python 3.10 o posterior, FFmpeg y ffprobe, además de una herramienta para abrir imágenes. `scripts/prepare-visual-analysis.py` genera cuadros con tiempos y audio si existe; no transcribe ni reconoce efectos por sí solo. El trabajo de texto no requiere estos programas. Las descargas públicas necesitan autorización y `yt-dlp`; nunca uses cookies ni sesiones del navegador para saltar el inicio de sesión.
+La preparación visual local necesita FFmpeg y ffprobe, además de una herramienta para abrir imágenes. La referencia de análisis indica los comandos de `ffprobe` y `ffmpeg` que generan cuadros con tiempos, hojas de contacto y audio si existe; no transcriben ni reconocen efectos por sí solos. El plugin solo contiene texto: sin scripts ni ejecutables. El trabajo de texto no requiere estos programas. Las descargas públicas necesitan autorización y `yt-dlp`; nunca uses cookies ni sesiones del navegador para saltar el inicio de sesión.
 
 Lee [comportamiento](comportamiento.md). Instalar programas, gastar créditos o enviar medios a terceros requiere autorización. Los resultados y perfiles se guardan fuera de la instalación. No hay telemetría propia.
 

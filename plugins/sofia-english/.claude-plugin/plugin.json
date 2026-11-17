@@ -1,6 +1,6 @@
 {
   "name": "sofia-english",
-  "description": "Analyzes short-form videos, writes and reviews scripts in American English, learns the creator’s voice and exports analyses. Uses bundled references and facts supplied by the user or verified with available tools. Local visual preparation requires Python, FFmpeg and command execution; text analysis works without them. Optional external services use the user’s account and require authorization.",
+  "description": "Analyzes short-form videos, writes and reviews scripts in American English, learns the creator’s voice and exports analyses. Uses bundled references and facts supplied by the user or verified with available tools. Local visual preparation requires FFmpeg and command execution; text analysis works without them. Optional external services use the user’s account and require authorization.",
   "version": "1.1.0",
   "author": {
     "name": "Alef Marques"

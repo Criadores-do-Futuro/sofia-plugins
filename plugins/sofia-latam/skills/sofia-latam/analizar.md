@@ -12,15 +12,44 @@ Lee [comportamiento](../../comportamiento.md). Elige la ruta según las herramie
 
 ## Preparar el video
 
-Identifica la raíz absoluta del plugin que contiene `plugin.json`. Sustituye las rutas descriptivas del ejemplo antes de ejecutarlo. No dependas de variables específicas de Claude. Usa una carpeta de salida nueva y vacía.
+La preparación ejecuta `ffprobe` y `ffmpeg` directamente; no necesita clave, no transcribe palabras ni reconoce efectos automáticamente. Usa una carpeta de salida nueva y vacía en el espacio de trabajo del usuario, nunca dentro de la instalación del plugin. Sustituye las rutas del ejemplo y los valores en mayúsculas antes de ejecutar cada comando, y pon cada ruta entre comillas.
+
+1. Lee los datos técnicos y guárdalos:
+
+   ```sh
+   mkdir -p "/carpeta/del/usuario/analisis-01/frames" "/carpeta/del/usuario/analisis-01/contacts"
+   ffprobe -v error -show_entries format=duration:stream=codec_type,width,height,r_frame_rate -of json "/ruta/del/video.mp4" > "/carpeta/del/usuario/analisis-01/metadata.json"
+   ```
+
+2. Toma la duración `D` en segundos, elige `N` cuadros (80 como máximo) y calcula el intervalo `I = D / N`. Extrae los cuadros:
+
+   ```sh
+   ffmpeg -nostdin -hide_banner -loglevel error -i "/ruta/del/video.mp4" -vf "fps=1/I,scale='min(960,iw)':-2" -frames:v N -q:v 3 "/carpeta/del/usuario/analisis-01/frames/t-%05d.jpg"
+   ```
+
+   El cuadro `k` está cerca de `(k − 1) × I` segundos. Trata esos tiempos como aproximados, no como puntos exactos de corte.
+
+3. Solo si `metadata.json` muestra una pista de audio, extráela:
+
+   ```sh
+   ffmpeg -nostdin -hide_banner -loglevel error -i "/ruta/del/video.mp4" -vn -ac 1 -ar 16000 -c:a libmp3lame -b:a 64k "/carpeta/del/usuario/analisis-01/audio.mp3"
+   ```
+
+4. Arma hojas de contacto de 20 cuadros cada una:
+
+   ```sh
+   ffmpeg -nostdin -hide_banner -loglevel error -framerate 1 -i "/carpeta/del/usuario/analisis-01/frames/t-%05d.jpg" -vf "scale=240:-2,tile=5x4:padding=8:margin=8" "/carpeta/del/usuario/analisis-01/contacts/timeline-%03d.jpg"
+   ```
+
+Abre las hojas de contacto en orden y los cuadros individuales relevantes. Para texto pequeño o movimiento ambiguo, prepara otra carpeta vacía solo para ese tramo: agrega `-ss INICIO -to FIN` antes de `-i` en el paso 2 y usa un intervalo menor; los tiempos se cuentan desde `INICIO`. Una muestra no demuestra ausencia de cortes entre cuadros. Extraer audio no equivale a escucharlo o transcribirlo.
+
+Para una referencia pública cuyo uso fue autorizado, descárgala solo después de esa autorización, con su dirección HTTPS de YouTube, Instagram o TikTok; requiere `yt-dlp`:
 
 ```sh
-python3 "/ruta/absoluta/del/plugin/scripts/prepare-visual-analysis.py" "/ruta/del/video.mp4" --output "/carpeta/del/usuario/analisis-01" --max-frames 80
+yt-dlp --ignore-config --no-playlist --no-progress --write-auto-subs --write-subs --sub-format "vtt/best" --merge-output-format mp4 -f "bv*+ba/b" -o "/carpeta/del/usuario/analisis-01/video.%(ext)s" -- "https://www.youtube.com/watch?v=EJEMPLO"
 ```
 
-Necesitas Python 3.10 o posterior, `ffmpeg` y `ffprobe`. El preparador no necesita clave, no transcribe palabras ni reconoce efectos automáticamente. Para una referencia pública cuyo uso fue autorizado, agrega `--allow-download` y utiliza su dirección HTTPS; requiere `yt-dlp`. El descargador ignora configuraciones externas y no usa cookies. Si pide iniciar sesión, solicita el archivo, no un método para saltarlo.
-
-Lee `manifest.json`: sus campos técnicos indican archivo, intervalo, rutas y tiempos de cuadros decodificados. Abre las hojas de contacto en orden y los cuadros individuales relevantes. Para texto pequeño o movimiento ambiguo, prepara otra carpeta con `--start` y `--end`, aumentando la densidad solo en ese tramo. Una muestra no demuestra ausencia de cortes entre cuadros. Extraer audio no equivale a escucharlo o transcribirlo.
+El comando ignora configuraciones externas y no usa cookies. Si pide iniciar sesión, solicita el archivo, no un método para saltarlo.
 
 ## Analizar y entregar
 

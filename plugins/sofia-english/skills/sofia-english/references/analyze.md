@@ -12,15 +12,44 @@ Read [behavior](../../../behavior.md). Choose a route based on actual tools, not
 
 ## Prepare the video
 
-Find the absolute plugin root containing `plugin.json`. Replace the descriptive paths below before execution, without depending on Claude-specific variables. Use a new empty output directory.
+Preparation runs `ffprobe` and `ffmpeg` directly; it needs no key, does not transcribe speech and does not automatically identify effects. Use a new empty output directory in the user's workspace, never inside the plugin installation. Replace the example paths and the values in capitals before running each command, and quote every path.
+
+1. Read the technical data and save it:
+
+   ```sh
+   mkdir -p "/user/workspace/analysis-01/frames" "/user/workspace/analysis-01/contacts"
+   ffprobe -v error -show_entries format=duration:stream=codec_type,width,height,r_frame_rate -of json "/path/to/video.mp4" > "/user/workspace/analysis-01/metadata.json"
+   ```
+
+2. Take the duration `D` in seconds, choose `N` frames (80 at most) and compute the interval `I = D / N`. Sample the frames:
+
+   ```sh
+   ffmpeg -nostdin -hide_banner -loglevel error -i "/path/to/video.mp4" -vf "fps=1/I,scale='min(960,iw)':-2" -frames:v N -q:v 3 "/user/workspace/analysis-01/frames/t-%05d.jpg"
+   ```
+
+   Frame `k` sits at about `(k − 1) × I` seconds. Treat these times as approximate, not as exact cut points.
+
+3. Only when `metadata.json` lists an audio stream, extract it:
+
+   ```sh
+   ffmpeg -nostdin -hide_banner -loglevel error -i "/path/to/video.mp4" -vn -ac 1 -ar 16000 -c:a libmp3lame -b:a 64k "/user/workspace/analysis-01/audio.mp3"
+   ```
+
+4. Build contact sheets of 20 frames each:
+
+   ```sh
+   ffmpeg -nostdin -hide_banner -loglevel error -framerate 1 -i "/user/workspace/analysis-01/frames/t-%05d.jpg" -vf "scale=240:-2,tile=5x4:padding=8:margin=8" "/user/workspace/analysis-01/contacts/timeline-%03d.jpg"
+   ```
+
+Open the contact sheets in order and the relevant individual frames. For small text or ambiguous motion, prepare another empty directory for that stretch only: add `-ss START -to END` before `-i` in step 2 and use a shorter interval; times are then counted from `START`. Sampling cannot establish the absence of cuts between frames. Extracted audio does not mean speech was heard or transcribed.
+
+For a public reference the user is allowed to use, download it only after that authorization, with its HTTPS address from YouTube, Instagram or TikTok; this requires `yt-dlp`:
 
 ```sh
-python3 "/absolute/plugin/path/scripts/prepare-visual-analysis.py" "/path/to/video.mp4" --output "/user/workspace/analysis-01" --max-frames 80
+yt-dlp --ignore-config --no-playlist --no-progress --write-auto-subs --write-subs --sub-format "vtt/best" --merge-output-format mp4 -f "bv*+ba/b" -o "/user/workspace/analysis-01/video.%(ext)s" -- "https://www.youtube.com/watch?v=EXAMPLE"
 ```
 
-Preparation requires Python 3.10 or newer, `ffmpeg` and `ffprobe`. It needs no key, does not transcribe speech and does not automatically identify effects. For a public reference the user is allowed to use, add `--allow-download` and provide its HTTPS URL; this requires `yt-dlp`. The downloader ignores external configuration and does not use cookies. If sign-in is required, request the file instead of bypassing it.
-
-Read `manifest.json`: its technical fields identify the source, sampled window, paths and decoded frame timestamps. Open contact sheets in order and relevant individual frames. For small text or ambiguous motion, prepare another directory with `--start` and `--end`, increasing density only in that interval. Sampling cannot establish the absence of cuts between frames. Extracted audio does not mean speech was heard or transcribed.
+The command ignores external configuration and uses no cookies. If sign-in is required, request the file instead of bypassing it.
 
 ## Analyze and deliver
 

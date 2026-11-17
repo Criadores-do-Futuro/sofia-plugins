@@ -18,4 +18,4 @@ Read [behavior](../../behavior.md) before running a workflow. Write responses, s
 
 Use the local [principles](references/principles.md), [recording formats](references/formats.md), [narrative structures](references/structures.md) and [writing guide](references/writing.md). Read only the references relevant to the request. No content connector or missing course catalog is required.
 
-Resolve relative references from this file. The plugin root contains `plugin.json`, two levels above this skill. Scripts and templates are at the plugin root. User work belongs in a chosen workspace, with `sofia-english/analyses/` and `sofia-english/styles/` as suggested subfolders. Never save user work inside the plugin installation.
+Resolve relative references from this file. The plugin root contains `plugin.json`, two levels above this skill. User work belongs in a chosen workspace, with `sofia-english/analyses/` and `sofia-english/styles/` as suggested subfolders. Never save user work inside the plugin installation.
