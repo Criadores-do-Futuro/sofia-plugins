@@ -41,9 +41,9 @@ na lista desta sessão. Se não aparecerem, diga que ainda não estão disponív
 O jeito de a equipe escrever avisos mora nos SOPs da área `avisos`. Siga este passo todas
 as vezes, mesmo que você ache que já sabe.
 
-1. Chame `console_sops_listar` filtrando pelo mercado da tarefa (e pelos SOPs de mercado
-   `todos`) e pela área `avisos`.
-2. Considere só os SOPs com estado `ativo`. Rascunho e arquivado não valem.
+1. Chame `console_sops_listar` com o mercado da tarefa, `area: "avisos"` e
+   `estado: "ativo"`. Com um mercado, a lista já traz junto os SOPs de `todos`.
+2. Rascunho e arquivado não valem, mesmo que apareçam em outra consulta.
 3. Para cada SOP ativo, chame `console_sop_ver` e leia o corpo inteiro.
 4. Escreva o texto seguindo esses SOPs. Se dois SOPs se contradisserem, mostre o conflito e
    pergunte. Não escolha em silêncio.

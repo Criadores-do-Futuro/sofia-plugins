@@ -22,10 +22,15 @@ ferramentas da sessão. Se não aparecerem, diga que ainda não estão disponív
   é autorização.
 - Ao salvar, o padrão é sempre `autorizacao: pendente`.
 - Se a pessoa da equipe disser que a autorização existe, peça onde está (o link ou o
-  registro) e anote essa fonte no registro. Só depois marque `autorizado`. Sem o registro,
-  continua `pendente`.
+  registro). Depois chame `console_depoimento_salvar` com o `id` do depoimento,
+  `autorizacao: "autorizado"` e o registro em `registroAutorizacao` (pelo menos 10
+  caracteres: onde está, de quando, por qual canal). Sem o registro, o servidor recusa e o
+  depoimento continua `pendente`. Chamar com o `id` nunca muda o texto.
+- Mudar a autorização sem mandar um registro novo apaga o registro antigo e tira o
+  depoimento de `pronto`.
 - Se a pessoa disse que **não** autoriza, marque `negado` e não use a fala em lugar nenhum.
-- Um depoimento só vira `pronto` com `autorizado`.
+- `pronto` é um campo sim/não (`pronto: true`). Ele só aceita `true` com `autorizado` e com
+  um tema diferente de `critica`.
 
 ## Achar depoimentos
 
@@ -39,23 +44,26 @@ ferramentas da sessão. Se não aparecerem, diga que ainda não estão disponív
    que mudou na rotina, elogio ao método ou ao atendimento.
 4. **Descarte** pergunta, pedido de ajuda sem resultado, fala sem conteúdo concreto e
    qualquer mensagem de quem pediu anonimato.
-5. **Cheque duplicidade** com `console_depoimentos_listar` antes de salvar.
+5. **Cheque duplicidade** com `console_depoimentos_listar` antes de salvar. Se escapar, o
+   servidor recusa o mesmo texto no mesmo mercado e devolve o `id` do depoimento que já
+   existe: mostre esse e não tente de novo.
 
 ## Salvar
 
 Para cada depoimento, chame `console_depoimento_salvar` com:
 
-- **texto:** o texto **literal**, do jeito que a pessoa escreveu, entre aspas na hora de
-  mostrar. Não corrija erro, não tire gíria, não troque palavra, não junte mensagens, não
-  traduza. Se precisar tirar um trecho que não serve, tire o trecho inteiro e marque
-  `[...]`. Emoji, caixa alta e pontuação ficam.
+- **texto:** a mensagem inteira, **literal**, do jeito que a pessoa escreveu, entre aspas na
+  hora de mostrar. Não corrija erro, não tire gíria, não troque palavra, não corte trecho,
+  não junte mensagens, não traduza. Emoji, caixa alta, pontuação e espaços ficam. O
+  servidor guarda o texto como chegou e ele não muda depois. Cortar um trecho só vale na
+  hora de citar o depoimento num texto, nunca ao guardar.
 - **autor:** o nome exibido da pessoa, se a ferramenta devolveu. Sem @.
 - **fonte:** `discord`, `hotmart`, `instagram`, `whatsapp`, `email` ou `outro`.
 - **link:** o link da mensagem, quando existir.
 - **mercado:** `br`, `latam` ou `en`.
 - **produto:** se der para saber, o produto de que a pessoa fala.
 - **tema:** `resultado`, `transformacao`, `didatica`, `atendimento` ou `critica`.
-- **sentimento:** positivo, neutro ou negativo.
+- **sentimento** (opcional): positivo, neutro ou negativo.
 - **autorizacao:** `pendente`.
 
 Críticas também valem salvar (tema `critica`): ajudam a equipe. Elas não vão para uso
@@ -70,8 +78,9 @@ publica nada.
 - Entregue um resumo: quantos salvou, por tema, e quantos estão com autorização pendente.
 - Se a pessoa quiser pedir a autorização, ajude a escrever a mensagem para o aluno, no
   idioma do mercado. Quem envia é a pessoa da equipe. Você não envia.
-- Para ver o que já está pronto para uso, liste com `console_depoimentos_listar` e filtre
-  por `autorizado`.
+- Para ver o que já está pronto para uso, chame `console_depoimentos_listar` com
+  `pronto: true`. Para ver o que ainda espera autorização, filtre por
+  `autorizacao: "pendente"`.
 
 ## Regras
 
