@@ -7,8 +7,13 @@ Três plugins para Codex e superfícies compatíveis do Claude, com comportament
 | `sofia-br` | 3.11.0 | Português brasileiro | [Sofia](plugins/sofia-br/README.md) |
 | `sofia-latam` | 1.1.0 | Espanhol latinoamericano | [Sofia](plugins/sofia-latam/README.md) |
 | `sofia-english` | 1.1.0 | Inglês americano | [Sofia](plugins/sofia-english/README.md) |
+| `sofia-interna` | 0.2.0 | Português (uso interno) | [Sofia Interna](plugins/sofia-interna/README.md) |
 
-As três analisam referências, criam e revisam roteiros, aprendem a voz do criador e exportam resultados. Nenhuma depende de um conector de conteúdo ausente. As diferenças de escopo e os recursos opcionais estão nos documentos de cada plugin.
+As três primeiras (`sofia-br`, `sofia-latam` e `sofia-english`) analisam referências, criam e revisam roteiros, aprendem a voz do criador e exportam resultados. Nenhuma depende de um conector de conteúdo ausente. As diferenças de escopo e os recursos opcionais estão nos documentos de cada plugin.
+
+## Sofia Interna (uso da equipe)
+
+A `sofia-interna` é a Sofia da equipe da Criadores do Futuro: liga o Claude ao console da plataforma de desafios por MCP (com login) e traz as skills de gestão de comunidade. Ela vive aqui para que o MCP e as skills sejam atualizados juntos, num lugar só. Segue o mesmo padrão de pacote das outras, mas **nunca vai para o diretório público da Anthropic nem da OpenAI**: `tools/package_plugins.py` só gera ZIP das três públicas. Como instalar e como atualizar: [README da Sofia Interna](plugins/sofia-interna/README.md).
 
 ## Formatos de pacote
 
@@ -23,7 +28,7 @@ claude plugin install sofia-br@sofia-plugins
 
 Para Codex, adicione o repositório pelo gerenciador de plugins ou pelo comando `codex plugin marketplace add`, conforme as opções da versão instalada. O repositório é privado; acesso a ele não foi alterado.
 
-## Validar e gerar os três pacotes
+## Validar e gerar os pacotes públicos
 
 ```sh
 python3 -m pip install -r requirements-validation.txt
@@ -32,7 +37,7 @@ python3 -m unittest discover -s tests -v
 python3 tools/package_plugins.py
 ```
 
-Os ZIPs e seu inventário são gerados em `dist/`, fora do controle de versão. O empacotador extrai e valida cada ZIP final. Para conferir os requisitos de listagem pública:
+O validador confere as quatro Sofias (a interna sem os campos de listagem pública). Os ZIPs e seu inventário são gerados em `dist/`, fora do controle de versão, só para as três públicas. O empacotador extrai e valida cada ZIP final. Para conferir os requisitos de listagem pública:
 
 ```sh
 python3 tools/validate_plugins.py --submission

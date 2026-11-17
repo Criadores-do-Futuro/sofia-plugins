@@ -1,0 +1,4 @@
+interface:
+  display_name: Sofia Interna · Rotinas
+  short_description: Console e rotinas da equipe
+  default_prompt: Use $rotinas-agendadas para agendar uma rotina semanal da equipe.

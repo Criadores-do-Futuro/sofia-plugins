@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "sofia-interna": {
+      "type": "http",
+      "url": "https://plataforma.academiacreadoresdelfuturo.com/api/mcp"
+    }
+  }
+}

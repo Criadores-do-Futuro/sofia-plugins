@@ -16,6 +16,11 @@ from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[1]
 NAMES = ("sofia-br", "sofia-latam", "sofia-english")
+# Plugins de uso interno da equipe: seguem o mesmo padrão de pacote e entram nos dois
+# catálogos, mas nunca vão para o diretório público (package_plugins.py só empacota NAMES)
+# e não precisam dos campos de listagem pública nem de execução local.
+INTERNAL = ("sofia-interna",)
+ALL_NAMES = NAMES + INTERNAL
 SCHEMA = json.loads((ROOT / "tools/schemas/plugin.schema.json").read_text())
 CATEGORIES = {"Business & Operations", "Communication", "Creativity", "Data & Analytics",
               "Developer Tools", "Education & Research", "Entertainment", "Finance",
@@ -143,7 +148,9 @@ def validate_plugin(folder: Path) -> dict:
         check(0 < len(interface["shortDescription"]) <= 30, "Subtítulo inválido")
         check(0 < len(interface["longDescription"]) <= 4000, "Descrição longa inválida")
         check(interface["category"] in CATEGORIES, "Categoria não suportada")
-        check(ext.get("requires_local_executor") is True, "Execução local precisa ser declarada")
+        internal = folder.name in INTERNAL
+        if not internal:
+            check(ext.get("requires_local_executor") is True, "Execução local precisa ser declarada")
         prompts = interface["defaultPrompt"]
         check(isinstance(prompts, list) and 1 <= len(prompts) <= 3, "Quantidade de sugestões inválida")
         check(all(isinstance(p, str) and p.strip() and len(p) <= 128 and "\n" not in p for p in prompts),
@@ -160,7 +167,8 @@ def validate_plugin(folder: Path) -> dict:
         for field in URL_FIELDS:
             url = interface.get(field)
             if not url:
-                gaps.append(field)
+                if not internal:
+                    gaps.append(field)
             else:
                 check(url.startswith("https://") and len(url) <= 1024, f"Endereço inválido: {field}")
         for field in ("logo", "composerIcon"):
@@ -236,11 +244,11 @@ def validate_plugin(folder: Path) -> dict:
 
 
 def validate_all(root: Path = ROOT) -> list[dict]:
-    reports = [validate_plugin(root / "plugins" / name) for name in NAMES]
+    reports = [validate_plugin(root / "plugins" / name) for name in ALL_NAMES]
     claude = json.loads((root / ".claude-plugin/marketplace.json").read_text())
     codex = json.loads((root / ".agents/plugins/marketplace.json").read_text())
-    if [p["name"] for p in claude["plugins"]] != list(NAMES) or [p["name"] for p in codex["plugins"]] != list(NAMES):
-        raise ValueError("Catálogos não contêm as três identidades esperadas")
+    if [p["name"] for p in claude["plugins"]] != list(ALL_NAMES) or [p["name"] for p in codex["plugins"]] != list(ALL_NAMES):
+        raise ValueError("Catálogos não contêm as identidades esperadas (três públicas e a interna)")
     for entry, other in zip(claude["plugins"], codex["plugins"]):
         folder = root / "plugins" / entry["name"]
         manifest = listing(entry["name"])
@@ -257,7 +265,7 @@ if __name__ == "__main__":
     parser.add_argument("--fix", action="store_true", help="Aplica as correções seguras antes de validar")
     args = parser.parse_args()
     if args.fix:
-        for name in NAMES:
+        for name in ALL_NAMES:
             for change in autofix(ROOT / "plugins" / name):
                 print(f"[{name}] corrigido: {change}")
     reports = validate_all()

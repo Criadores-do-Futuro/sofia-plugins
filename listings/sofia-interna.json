@@ -1,0 +1,50 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "sofia-interna",
+  "description": "A Sofia interna da equipe da Criadores do Futuro. Liga o Claude ao console da plataforma de desafios (MCP, com login) e traz as rotinas de gestão de comunidade: avisos e tarefas, insights do Discord, demandas das reuniões, depoimentos e rotinas agendadas. Uso interno da equipe.",
+  "version": "0.2.0",
+  "author": {
+    "name": "bento-dev-ia"
+  },
+  "repository": "https://github.com/bento-dev-ia/sofia-plugins",
+  "license": "LicenseRef-Proprietary",
+  "keywords": [
+    "equipe",
+    "comunidade",
+    "discord",
+    "avisos",
+    "console",
+    "CDF"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Sofia Interna",
+        "shortDescription": "Console e rotinas da equipe",
+        "longDescription": "A Sofia interna da equipe da Criadores do Futuro. Liga o Claude ao console da plataforma de desafios (MCP, com login) e traz as rotinas de gestão de comunidade: avisos e tarefas, insights do Discord, demandas das reuniões, depoimentos e rotinas agendadas. Uso interno da equipe.",
+        "developerName": "bento-dev-ia",
+        "category": "Business & Operations",
+        "defaultPrompt": [
+          "Faça os insights da semana do Discord do mercado BR.",
+          "Transforme a ata desta reunião em demandas no quadro.",
+          "O que está agendado nos avisos e tarefas do console?"
+        ],
+        "logo": "./assets/icon.png",
+        "composerIcon": "./assets/icon.png"
+      },
+      "review": {
+        "prompts": [
+          "Faça os insights da semana do Discord do mercado BR.",
+          "Transforme a ata desta reunião em demandas no quadro.",
+          "O que está agendado nos avisos e tarefas do console?"
+        ],
+        "commerce": false,
+        "commerce_description": "Uso interno da equipe. O plugin não vende nada nem processa pagamentos."
+      },
+      "publication": {
+        "countries": [],
+        "release_notes": "Plugin interno da equipe, não publicado em diretório público."
+      }
+    }
+  }
+}
