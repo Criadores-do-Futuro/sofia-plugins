@@ -5,7 +5,7 @@ Analiza videos y transcripciones, escribe y revisa guiones, aprende la voz del c
 ## Instalar y usar
 
 ```sh
-claude plugin marketplace add bento-dev-ia/sofia-plugins
+claude plugin marketplace add Criadores-do-Futuro/sofia-plugins
 claude plugin install sofia-latam@sofia-plugins
 ```
 
@@ -39,6 +39,6 @@ El plugin no tiene servidor propio y no guarda nada fuera de la computadora de l
 
 Publicador previsto: Alef Marques. Las compras de suscripciones, comunidades o cursos se realizan en Hotmart. El plugin no procesa pagos ni controla el acceso. La identidad y las declaraciones legales se verifican en el portal.
 
-Los enlaces verificados de soporte, privacidad y términos del plugin Sofia están en el manifiesto, en español. Todavía falta una página pública de presentación de esta versión y actualizar el soporte para sus comandos actuales. Las páginas del GPT gratuito y de Sofia Estrategista Editora describen otros productos. El ZIP técnico no equivale a una aprobación para publicar. La ejecución local se declara en el manifiesto de OpenAI.
+Los enlaces verificados de soporte, privacidad y términos del plugin Sofia están en el manifiesto, en español. La ejecución local se declara en el manifiesto de OpenAI.
 
 Licencia propietaria: [licencia](LICENSE). La autoría original se conserva en el manifiesto.

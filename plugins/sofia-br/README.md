@@ -7,7 +7,7 @@ Analisa vídeos e transcrições, cria e revisa roteiros, aprende a voz do criad
 No Claude Code, adicione o catálogo e instale a versão portuguesa:
 
 ```sh
-claude plugin marketplace add bento-dev-ia/sofia-plugins
+claude plugin marketplace add Criadores-do-Futuro/sofia-plugins
 claude plugin install sofia-br@sofia-plugins
 ```
 
@@ -41,6 +41,6 @@ O plugin não tem servidor próprio e não guarda nada fora do computador da pes
 
 Publicador pretendido: Alef Marques. Compras de assinaturas, comunidades ou cursos ocorrem na Hotmart; este plugin não processa pagamentos nem controla acesso. A verificação de publicador e as declarações legais são feitas no portal.
 
-Os links confirmados estão em `.codex-plugin/plugin.json`. Uma página de apresentação e a revisão da cobertura dos termos pagos ainda são necessárias para a listagem pública. O relatório de publicação no repositório lista as pendências. Disponibilidade em Claude depende da superfície e de acesso a arquivos; no envio OpenAI, o pacote é marcado para execução local.
+Os links confirmados estão em `.codex-plugin/plugin.json`. Disponibilidade em Claude depende da superfície e de acesso a arquivos; no envio OpenAI, o pacote é marcado para execução local.
 
 Licença proprietária: [licença](LICENSE). A autoria original permanece no manifesto.

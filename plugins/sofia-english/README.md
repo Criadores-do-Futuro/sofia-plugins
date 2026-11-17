@@ -5,7 +5,7 @@ Analyze videos and transcripts, write and review scripts, learn the creator's vo
 ## Install and use
 
 ```sh
-claude plugin marketplace add bento-dev-ia/sofia-plugins
+claude plugin marketplace add Criadores-do-Futuro/sofia-plugins
 claude plugin install sofia-english@sofia-plugins
 ```
 
@@ -39,6 +39,6 @@ The plugin has no server of its own and keeps nothing outside the person's compu
 
 Intended publisher: Alef Marques. Purchases of subscriptions, community memberships or courses take place through Hotmart. This plugin does not process payments or enforce access. Publisher verification and legal declarations belong to the portal.
 
-Verified English support, privacy and terms links for the Sofia plugin are in the manifest. A public presentation page for this version and updated support instructions for its current commands are still needed. The free GPT and Sofia Estrategista Editora pages describe different products. A structurally valid ZIP is not publication approval. The OpenAI manifest declares local execution.
+Verified English support, privacy and terms links for the Sofia plugin are in the manifest. The OpenAI manifest declares local execution.
 
 Proprietary license: [license](LICENSE). Original authorship remains in the manifest.
