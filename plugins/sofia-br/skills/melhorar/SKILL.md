@@ -1,7 +1,6 @@
 ---
 name: melhorar
-description: Reescreve roteiros em português brasileiro corrigindo os trechos problemáticos
-  e preservando os fatos e a voz.
+description: Reescreve roteiros em português brasileiro corrigindo os trechos problemáticos e preservando os fatos e a voz.
 ---
 
 # Melhorar roteiro

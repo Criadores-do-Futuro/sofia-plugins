@@ -1,7 +1,6 @@
 ---
 name: critica
-description: Revisa roteiros próprios em português brasileiro com evidências do texto
-  e correções específicas, sem inventar falhas.
+description: Revisa roteiros próprios em português brasileiro com evidências do texto e correções específicas, sem inventar falhas.
 ---
 
 # Revisar roteiro

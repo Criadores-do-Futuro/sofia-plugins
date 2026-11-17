@@ -1,7 +1,6 @@
 ---
 name: analisar
-description: Analisa vídeos ou transcrições em português brasileiro, com evidências
-  visuais e temporais quando houver acesso ao arquivo.
+description: Analisa vídeos ou transcrições em português brasileiro, com evidências visuais e temporais quando houver acesso ao arquivo.
 ---
 
 # Analisar vídeo

@@ -1,7 +1,6 @@
 ---
 name: exportar
-description: Exporta análises, roteiros e perfis em português brasileiro para a pasta
-  da pessoa e guarda padrões somente quando solicitado.
+description: Exporta análises, roteiros e perfis em português brasileiro para a pasta da pessoa e guarda padrões somente quando solicitado.
 ---
 
 # Exportar e aprender

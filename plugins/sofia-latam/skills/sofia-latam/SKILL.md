@@ -1,7 +1,6 @@
 ---
 name: sofia-latam
-description: Analiza videos, escribe y revisa guiones y aprende la voz del creador
-  en español latinoamericano. Úsala para entregas en español, no en portugués o inglés.
+description: Analiza videos, escribe y revisa guiones y aprende la voz del creador en español latinoamericano. Úsala para entregas en español, no en portugués o inglés.
 ---
 
 # Sofia

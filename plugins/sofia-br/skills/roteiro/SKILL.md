@@ -1,7 +1,6 @@
 ---
 name: roteiro
-description: Cria roteiros em português brasileiro a partir de tema, público e fatos
-  reais, preservando a voz do criador.
+description: Cria roteiros em português brasileiro a partir de tema, público e fatos reais, preservando a voz do criador.
 ---
 
 # Escrever roteiro

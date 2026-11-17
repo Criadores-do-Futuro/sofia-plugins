@@ -1,7 +1,6 @@
 ---
 name: dashboard
-description: Organiza análises em um painel HTML em português brasileiro, consolidando
-  vários vídeos e preservando evidências e limites.
+description: Organiza análises em um painel HTML em português brasileiro, consolidando vários vídeos e preservando evidências e limites.
 ---
 
 # Criar painel

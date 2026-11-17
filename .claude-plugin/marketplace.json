@@ -2,7 +2,7 @@
   "name": "sofia-plugins",
   "description": "Sofia, a estrategista de roteiros para vídeos curtos, em português, espanhol e inglês.",
   "owner": {
-    "name": "bento-dev-ia"
+    "name": "Alef Marques"
   },
   "plugins": [
     {
@@ -11,7 +11,7 @@
       "version": "3.11.0",
       "description": "Pesquisa e analisa vídeos curtos, cria e revisa roteiros em português brasileiro, aprende a voz do criador e exporta análises. Usa referências incluídas no pacote e fatos fornecidos ou verificados. A preparação visual local exige FFmpeg e execução de comandos; a análise de texto funciona sem esses recursos. Serviços externos opcionais usam a conta da pessoa e só são acionados com autorização.",
       "author": {
-        "name": "bento-dev-ia"
+        "name": "Alef Marques"
       },
       "keywords": [
         "roteiro",
@@ -26,7 +26,7 @@
       "version": "1.1.0",
       "description": "Analiza videos cortos, escribe y revisa guiones en español latinoamericano, aprende la voz del creador y exporta análisis. Usa referencias incluidas y hechos proporcionados o verificados. La preparación visual local requiere FFmpeg y ejecución de comandos; el análisis de texto funciona sin esos recursos. Los servicios externos opcionales usan la cuenta de la persona y requieren autorización.",
       "author": {
-        "name": "srbentostk"
+        "name": "Alef Marques"
       },
       "keywords": [
         "guion",

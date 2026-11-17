@@ -1,7 +1,6 @@
 ---
 name: setup
-description: Configura a pasta de trabalho e verifica recursos locais da Sofia sem
-  instalar programas ou ativar serviços pagos sem autorização.
+description: Configura a pasta de trabalho e verifica recursos locais da Sofia sem instalar programas ou ativar serviços pagos sem autorização.
 ---
 
 # Preparar o ambiente

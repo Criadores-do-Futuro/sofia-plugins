@@ -1,7 +1,6 @@
 ---
 name: sofia-english
-description: Analyze short-form videos, write and review scripts, and learn the creator’s
-  voice in American English. Use for English deliverables, not Portuguese or Spanish.
+description: Analyze short-form videos, write and review scripts, and learn the creator’s voice in American English. Use for English deliverables, not Portuguese or Spanish.
 ---
 
 # Sofia
