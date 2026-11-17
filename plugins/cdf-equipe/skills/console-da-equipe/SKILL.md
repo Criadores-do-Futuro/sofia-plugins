@@ -33,13 +33,14 @@ chamada, então a negativa do servidor vale mais que qualquer palpite seu.
 
 | Cargo | O que alcança |
 |---|---|
-| `admin` | Tudo nos mercados em que é admin. Ser admin num mercado não dá admin em outro. Também vê quem tem qual cargo (`console_equipe_listar`). |
+| `admin` | Tudo nos mercados em que é admin. O admin vale por base: o admin do BR não é admin de LATAM e EN, e o contrário também vale. LATAM e EN dividem a base internacional, então quem é admin lá é admin dos dois. Também vê quem tem qual cargo (`console_equipe_listar`). |
 | `analista` | A fila de análise e o aprendizado da Sofia. |
 | `gestor_comunidade` | Eventos, tarefas agendadas, canais, insights do Discord, SOPs, demandas e depoimentos. |
 | `editor` | O catálogo de mídia e as demandas que vierem para edição (`console_demandas_listar` e `console_demanda_mover`, só as dele). |
 
-Quem tem cargo novo (gestor ou editor) só enxerga os mercados que foram dados a essa
-pessoa. Sem mercado, ela não enxerga nada. Nunca ofereça dado de um mercado que não
+Gestor e editor são dados mercado a mercado: a mesma pessoa pode ser gestora no LATAM e
+editora no EN, e cada cargo vale só no mercado em que foi dado. Sem cargo num mercado, ela
+não enxerga nada dele. Nunca ofereça dado de um mercado que não
 apareceu em `equipe_quem_sou`.
 
 ## Mercados
