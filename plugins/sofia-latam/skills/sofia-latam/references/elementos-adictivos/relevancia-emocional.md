@@ -32,7 +32,7 @@ Cuando la relevancia emocional está presente, los comentarios revelan:
 ## Cómo aplicarlo
 
 1. Elige un tema que toque un sentimiento que tu audiencia ya conoce
-2. La primera frase ya debe despertar algún sentimiento — ese es tu primer hook cognitivo
+2. La primera frase ya debe despertar algún sentimiento — ese es tu primer gancho cognitivo
 3. El sentimiento puede ser cualquiera — no tiene que ser triste ni dramático
 4. Lo importante es que la persona SIENTA algo al escuchar o leer
 

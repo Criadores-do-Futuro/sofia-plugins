@@ -11,7 +11,7 @@ El creador interpreta a una persona, marca, estrategia, tendencia o personaje re
 ## Estructura que combina mejor
 Estructura Análisis o AIDA.
 
-## Tipo de hook que pide este formato
+## Tipo de gancho que pide este formato
 Nombra al sujeto reconocible y promete un descubrimiento específico sobre él (por qué creció, qué hizo distinto).
 
 ## Reglas de escritura

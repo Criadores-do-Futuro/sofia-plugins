@@ -1,0 +1,4 @@
+interface:
+  display_name: Sofia · Analisar
+  short_description: Roteiros e análise de vídeos
+  default_prompt: Use $analisar para trabalhar no meu conteúdo em português.

@@ -29,9 +29,8 @@ elif [ -f "$HOME/.sofia/chaves.env" ] && grep -qE '^APIFY_TOKEN=.+' "$HOME/.sofi
 fi
 
 echo "--- INSTRUÇÃO PARA O AGENTE ---"
-echo "1. ANTES de chamar qualquer ator: diga à pessoa quantos vídeos, quais dados e a estimativa de custo,"
-echo "   e espere o OK. Estimativas observadas (podem mudar): ~US\$ 0,05 por vídeo com transcrição;"
-echo "   ~US\$ 0,025 por 20 comentários."
+echo "1. ANTES de chamar qualquer ator: confira o esquema e o preço atuais,"
+echo "   diga à pessoa quantos vídeos, quais dados e a estimativa total e espere a autorização."
 echo "2. Dos comentários, guarde só o texto literal, as curtidas e a data. Nada de @, nome ou foto de quem comentou."
 echo ""
 

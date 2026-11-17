@@ -1,7 +1,7 @@
 # Formato: Analogia
 
 ## O que é
-Uma situação física, objeto, cena cotidiana ou fábula torna visível uma ideia abstrata. A estrutura é concreto → conexão explícita → nova compreensão. O payoff é o momento em que as duas coisas se encaixam.
+Uma situação física, objeto, cena cotidiana ou fábula torna visível uma ideia abstrata. A estrutura é concreto → conexão explícita → nova compreensão. O entrega da promessa é o momento em que as duas coisas se encaixam.
 
 ## Assinatura visual
 - Objeto ou situação concreta ocupa papel central
@@ -23,4 +23,3 @@ IHC, com revelação no fechamento.
 - Metáfora rápida: uma comparação passageira não sustenta o formato.
 - Trivial: ter um objeto cotidiano não basta; é necessária a conexão abstrata explícita.
 - Tutorial: explica como usar o objeto, não uma ideia por meio dele.
-

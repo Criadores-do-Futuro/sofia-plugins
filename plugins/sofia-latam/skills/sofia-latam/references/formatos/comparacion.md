@@ -8,7 +8,7 @@ El creador compara dos opciones, enfoques, personas o situaciones de forma estru
 ## Estructura que combina mejor
 [Análisis](../estructuras-de-guion/analisis.md) + Contraste
 
-## Tipo de hook que pide este formato
+## Tipo de gancho que pide este formato
 Contraste inesperado que enfrenta los dos elementos en la primera frase de una forma que sorprende.
 
 ## Elementos adictivos dominantes
@@ -22,4 +22,4 @@ Contraste inesperado que enfrenta los dos elementos en la primera frase de una f
 5. Usa ejemplos reales para cada lado — no compares en abstracto
 6. El giro narrativo es el criterio decisivo que cambia todo
 7. La moraleja debe ser la lección que emerge de la comparación, no la preferencia personal del creador
-8. El CTA debe invitar al espectador a aplicar el criterio decisivo en su propia vida
+8. El Llamado a la acción debe invitar al espectador a aplicar el criterio decisivo en su propia vida

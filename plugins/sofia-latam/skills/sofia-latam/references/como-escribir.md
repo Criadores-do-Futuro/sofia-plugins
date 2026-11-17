@@ -14,7 +14,6 @@ Los buenos guiones usan detalles concretos, no descripciones genéricas.
 
 **Por qué funciona:** el cerebro no puede imaginar "una persona exitosa". Puede imaginar a alguien con nombre, cara y una escena concreta. Imagen mental = retención.
 
-Ejemplos reales de este patrón: esta pieza viene del conector de contenido de Sofia (MCP `sofia-conteudo`, herramienta `carregar_conteudo`, plugin `sofia-latam`, pieza `ejemplos-especificidad`). Si el conector no está disponible, díselo al usuario y sigue sin la pieza; no inventes el contenido.
 
 **En la práctica, al escribir:**
 - Cambia todo adjetivo genérico por una escena concreta
@@ -22,9 +21,9 @@ Ejemplos reales de este patrón: esta pieza viene del conector de contenido de S
 - Si dijiste "alguien famoso", pon el nombre
 - Si dijiste "un mal sentimiento", describe la escena que lo genera
 
-## 2. HOOK COGNITIVO: EL GOLPE QUE DETIENE EL SCROLL
+## 2. Gancho COGNITIVO: EL GOLPE QUE DETIENE EL Desplazamiento
 
-El hook no es una introducción — es un golpe que genera fricción emocional inmediata. Ataca una creencia, no presenta un tema.
+El gancho no es una introducción — es un golpe que genera fricción emocional inmediata. Ataca una creencia, no presenta un tema.
 
 **El patrón:**
 - Afirmación que contradice el sentido común
@@ -35,14 +34,14 @@ El hook no es una introducción — es un golpe que genera fricción emocional i
 - Una pregunta que se burla de lo que alguien celebra (ver la pieza `ejemplos-especificidad`) — ataca la definición de éxito antes de explicar nada.
 - "Nuestra relación no está basada en el amor. Ni tampoco en el sexo." — contradice el pilar más obvio de una relación en la primera frase.
 
-**Por qué funciona:** genera un hook cognitivo — la mente no puede seguir de largo sin resolver la contradicción. Cero cliché, cero ángulo trillado, cero "en la generación pasada...". Si el hook se siente predecible, bórralo y empieza de nuevo.
+**Por qué funciona:** genera un gancho cognitivo — la mente no puede seguir de largo sin resolver la contradicción. Cero cliché, cero ángulo trillado, cero "en la generación pasada...". Si el gancho se siente predecible, bórralo y empieza de nuevo.
 
 **En la práctica:**
-- El hook nunca explica el tema. Lo tensiona.
-- Prueba: si el hook podría estar en cualquier otro guion del mismo nicho, es genérico. Bórralo.
+- El gancho nunca explica el tema. Lo tensiona.
+- Prueba: si el gancho podría estar en cualquier otro guion del mismo nicho, es genérico. Bórralo.
 - Nunca empieces con "Vi a alguien decir..." — le quita autoridad al creador desde la primera línea.
 
-## 3. LOOP DE CURIOSIDAD: LA PREGUNTA QUE NO SE CIERRA TEMPRANO
+## 3. Pregunta abierta DE CURIOSIDAD: LA PREGUNTA QUE NO SE CIERRA TEMPRANO
 
 Un vacío de información bien administrado es lo que sostiene la atención — no la respuesta, la búsqueda de la respuesta.
 
@@ -52,11 +51,11 @@ Un vacío de información bien administrado es lo que sostiene la atención — 
 - La resolución llega solo cuando ya generó suficiente costo cognitivo
 
 **En la práctica:**
-- Si la revelación llega en los primeros segundos, no hubo loop — hubo spoiler.
+- Si la revelación llega en los primeros segundos, no hubo pregunta abierta — hubo spoiler.
 - Cada dato suelto que sueltes en el medio debe alimentar la pregunta abierta, no distraer de ella.
-- Cierra el loop antes del final, no lo dejes abierto sin resolver salvo que sea una serie con "loop de continuidad" (ver punto 10).
+- Cierra el pregunta abierta antes del final, no lo dejes abierto sin resolver salvo que sea una serie con "pregunta abierta de continuidad" (ver punto 10).
 
-## 4. PLANTING Y PAYOFF
+## 4. Preparación de la promesa Y Resolución de la promesa
 
 Un detalle sembrado temprano que se cobra después, sin explicación, premia a quien prestó atención.
 
@@ -67,7 +66,7 @@ Un detalle sembrado temprano que se cobra después, sin explicación, premia a q
 
 **En la práctica:**
 - Planta frases o gestos que parezcan de color al inicio, cóbralos como prueba en el cierre.
-- Si tienes que explicar el payoff, no es payoff — es un chiste que necesita subtítulos. Bórralo.
+- Si tienes que explicar el resolución de la promesa, no es resolución de la promesa — es un chiste que necesita subtítulos. Bórralo.
 
 ## 5. "PERO" COMO MOTOR DE CONTRASTE
 
@@ -141,19 +140,19 @@ Los buenos guiones usan las palabras que la gente realmente usa.
 - Si la palabra "correcta" suena a ensayo escolar, es la palabra equivocada.
 - Datos sueltos sin contexto no son argumento — son ruido. Todo dato debe entrar como alerta directa, no como estadística flotante.
 
-## 10. CTA QUE TIENE SENTIDO (Y CTA AFILADO)
+## 10. Llamado a la acción QUE TIENE SENTIDO (Y Llamado a la acción AFILADO)
 
 El pedido final solo funciona si es coherente con todo lo que vino antes — y si genera ambición real, no simpatía barata.
 
 **El patrón:**
-- CTA que es extensión natural del contenido
+- Llamado a la acción que es extensión natural del contenido
 - Reciprocidad: pide algo simple, ofrece algo a cambio
-- CTA de continuidad: deja un loop abierto para la siguiente entrega (válido solo en series)
-- O: ningún CTA (el contenido es el valor)
+- Llamado a la acción de continuidad: deja un pregunta abierta abierto para la siguiente entrega (válido solo en series)
+- O: ningún Llamado a la acción (el contenido es el valor)
 
 **En la práctica:**
 - Nunca cierres con "sígueme y comenta" genérico y sin conexión con el tema.
-- Nunca cierres con un CTA infantilizado tipo "¿y tú? ¿quieres ser parte de este grupito?" — eso es "club de los buenos", no ambición.
+- Nunca cierres con un Llamado a la acción infantilizado tipo "¿y tú? ¿quieres ser parte de este grupito?" — eso es "club de los buenos", no ambición.
 - Cierra con algo que incomode: una invitación a actuar distinto, no a sentirse bien.
 
 ## REGLA DE ORO

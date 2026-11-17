@@ -14,26 +14,23 @@ Criador aparece em frente a um fundo substituído por imagem, print, gráfico ou
 ## Estrutura que combina melhor
 [Análise](../estruturas-de-roteiro/analise.md) + [IHC](../estruturas-de-roteiro/ihc.md)
 
-## Tipo de hook que este formato pede
+## Tipo de abertura que este formato pede
 Declaração de consequência apontando diretamente para o elemento visual de fundo.
 
 ## Elementos viciantes dominantes
 [Curiosidade e Efeito AHA](../elementos-viciantes/curiosidade-e-aha.md), [Contraste](../elementos-viciantes/contraste.md), [Relevância Emocional](../elementos-viciantes/relevancia-emocional.md)
 
 ## Regras de escrita
-1. O hook deve mencionar ou apontar diretamente para o visual de fundo
+1. O abertura deve mencionar ou apontar diretamente para o visual de fundo
 2. Cada frase deve ser construída como se o visual fosse uma prova do que está sendo dito
 3. Use dados reais, prints verificáveis e nomes reconhecíveis
 4. Construa suspense antes de revelar o Efeito Ahá
 5. A virada narrativa deve ser o momento em que o visual e a fala se alinham
 6. A moral deve ser extraída do que o visual prova, não do que o criador opina
 7. Use linguagem analítica mas acessível, como um amigo explicando algo que descobriu
-8. O CTA deve conectar o insight visual com uma ação específica do espectador
+8. O Chamada para ação deve conectar o aprendizado visual com uma ação específica do espectador
 
 ## Não confundir
 - Tela Dividida: o conteúdo externo divide o quadro com o criador; na Tela Verde ele é o fundo.
-- Storytelling Visual: os gráficos contam a história sozinhos; na Tela Verde o criador está sempre em cena comentando.
+- Narrativa visual: os gráficos contam a história sozinhos; na Tela Verde o criador está sempre em cena comentando.
 - Palestrinha: se o fundo é o ambiente real e não carrega conteúdo, é Palestrinha.
-
-## Exemplo analisado
-Roteiro real deste formato, anotado frase a frase: esta peça vem do conector de conteúdo da Sofia (MCP `sofia-conteudo`, ferramenta `carregar_conteudo`, plugin `sofia`, peça `exemplos-analisados/tela-verde`). Se o conector não estiver disponível, diga isso ao usuário e siga sem a peça; não invente o conteúdo.

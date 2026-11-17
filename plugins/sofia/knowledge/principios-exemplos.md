@@ -1,4 +1,6 @@
 ---
+
+As frases e números abaixo são material de referência registrado, não fatos reconferidos nesta sessão nem resultados da pessoa. Abra as fontes antes de reutilizar uma afirmação factual. Use o mecanismo editorial sem copiar a história.
 title: "Princípios da Viralização: Exemplos Reais Aplicados"
 updated: 2026-11-13
 tags: [sofia, knowledge, principios, exemplos]
@@ -18,21 +20,21 @@ Cada princípio de `references/principios.md` com um **exemplo real**: uma frase
 
 ### 1a. Tema universal: dinheiro (teto máximo)
 - **Frase:** "Um hábito que, se você começar a fazer, vai mudar sua vida financeira. Escuta o que eu tô te falando."
-- **Por que é TEMA:** dinheiro chega com carga emocional prévia: o vídeo não constrói a emoção, só ativa. Teto máximo, atravessa qualquer bolha. Resultado: 1.0M views e **18.4k reposts** sem nenhum CTA.
+- **Por que é TEMA:** dinheiro chega com carga emocional prévia: o vídeo não constrói a emoção, só ativa. Teto máximo, atravessa qualquer bolha. Resultado: 1.0M visualizações e **18.4k reposts** sem nenhum Chamada para ação.
 - **Fonte:** 🔴 @eusouroberth · [vídeo](https://www.tiktok.com/@eusouroberth/video/7660127540824100103)
 
 ### 1b. Tema universal: medo/trabalho (o "medo no ar" de 2026)
 - **Frase:** "Por que eu recebi uma conta de 700 mil da OpenAI?" (esquete de cena).
-- **Por que é TEMA:** custo/insegurança no trabalho com IA é medo coletivo de 2026: tema grande, o público entra sem custo. 1.3M views, 6.6k shares.
+- **Por que é TEMA:** custo/insegurança no trabalho com IA é medo coletivo de 2026: tema grande, o público entra sem custo. 1.3M visualizações, 6.6k shares.
 - **Fonte:** 🟢 @alberta.nyc · [vídeo](https://www.tiktok.com/@alberta.nyc/video/7646856294296538382)
 
 ### 1c. Tema de nicho ancorado numa ponte universal
-- **Frase:** "I own three businesses run by AI, one makes $100,000 a month… I'm telling you this because I need your attention. Get on board or get left behind."
+- **Frase:** (tradução) "Tenho três empresas operadas por IA; uma fatura US$ 100 mil por mês… Estou dizendo isso porque preciso da sua atenção. Entre nessa ou fique para trás."
 - **Por que é TEMA:** nicho (IA) montado sobre dinheiro + medo de ficar pra trás (universais). É assim que um tema de nicho fura a bolha.
 - **Fonte:** 🟢 @jaredrhod · 1.2M · [vídeo](https://www.tiktok.com/@jaredrhod/video/7655121681228369165)
 
 ### 1d. Tema dinheiro: caso concreto (renda passiva)
-- **Frase:** "You can build a faceless YouTube channel that makes 8k a month… Don't pick a niche that you like, pick one that pays."
+- **Frase:** (tradução) "Você pode criar um canal no YouTube sem aparecer e faturar 8 mil por mês… Não escolha um nicho de que goste; escolha um que pague."
 - **Por que é TEMA:** dinheiro + resultado concreto ($8k/mês); a segunda frase ainda entra em atrito com uma crença ("faça o que ama").
 - **Fonte:** 🟢 @ray_fu · [vídeo](https://www.tiktok.com/@ray_fu/video/7639961828809837855)
 
@@ -47,7 +49,7 @@ Cada princípio de `references/principios.md` com um **exemplo real**: uma frase
 
 ### 2b. Familiaridade de IDENTIDADE (validação: atravessa bolha, compartilha pra ser visto)
 - **Frase:** "I am so tired of being accused of writing AI code. I can write bad code all on my own."
-- **Por que é FAM. DE IDENTIDADE:** o público (dev) compartilha pra afirmar "eu sou de verdade". Compartilhar vira crachá de identidade → 265k views, **4.2k shares**.
+- **Por que é FAM. DE IDENTIDADE:** o público (dev) compartilha pra afirmar "eu sou de verdade". Compartilhar vira crachá de identidade → 265k visualizações, **4.2k shares**.
 - **Fonte:** 🟢 @alberta.nyc · [vídeo](https://www.tiktok.com/@alberta.nyc/video/7665383488580766990)
 
 ### 2c. Familiaridade de MEMÓRIA: PT-BR (a dor doméstica banal)
@@ -93,13 +95,13 @@ Cada princípio de `references/principios.md` com um **exemplo real**: uma frase
 - **Por que é CURIOSIDADE CONCRETA:** abre uma lacuna específica e técnica que o público quer fechar; dado concreto retém mais.
 - **Fonte:** 🟢 @alberta.nyc · [vídeo](https://www.tiktok.com/@alberta.nyc/video/7671346181108288781)
 
-### 4b. Lacuna SUSTENTADA (loop aberto explícito: Efeito Zeigarnik)
+### 4b. Lacuna SUSTENTADA (pergunta em aberto aberto explícito: Efeito Zeigarnik)
 - **Frase:** "Guarda essa frase, que a gente já volta nela." (plantada no começo, cobrada no fim).
 - **Por que é LACUNA SUSTENTADA:** cria uma tarefa incompleta que o cérebro segura até o fecho, retém até o final.
 - **Fonte:** 🟢 @maestrosdaia · [vídeo](https://www.tiktok.com/@maestrosdaia/video/7650619149491834132)
 
 ### 4c. Lacuna + prova (promessa numérica)
-- **Frase:** "I copied a Hollywood storytelling technique and it got me 50 million views."
+- **Frase:** "I copied a Hollywood narrativa technique and it got me 50 million visualizações."
 - **Por que é CURIOSIDADE:** a lacuna ("qual técnica?") é aberta e adiada; o número dá peso. Ver também o playbook de retenção abaixo.
 - **Fonte:** 🟢 @mino.mp4 · [vídeo](https://www.tiktok.com/@mino.mp4/video/7669877821069593886)
 
@@ -108,9 +110,9 @@ Cada princípio de `references/principios.md` com um **exemplo real**: uma frase
 - **Por que é CURIOSIDADE:** o número gigante cria a lacuna ("quais importam?") e a autoridade (testei 100) promete fechá-la, a pessoa fica pra descobrir o filtro.
 - **Fonte:** 🟢 @ray_fu · [vídeo](https://www.tiktok.com/@ray_fu/video/7620258917662133534)
 
-### 4e. Lacuna de SÉRIE (loop permanente + follow)
+### 4e. Lacuna de SÉRIE (pergunta em aberto permanente + follow)
 - **Frase:** "Coisas que você não sabia que dá pra fazer com o Claude — parte 8… segue pra aprender todas."
-- **Por que é CURIOSIDADE:** a série é um loop aberto permanente; cada vídeo abre e fecha uma micro-lacuna e aponta pra próxima. O "segue pra aprender todas" transforma curiosidade em follow.
+- **Por que é CURIOSIDADE:** a série é um pergunta em aberto aberto permanente; cada vídeo abre e fecha uma micro-lacuna e aponta pra próxima. O "segue pra aprender todas" transforma curiosidade em follow.
 - **Fonte:** 🟢 @practicalyai · [vídeo](https://www.tiktok.com/@practicalyai/video/7615423604368493842)
 
 ---
@@ -122,35 +124,35 @@ Cada princípio de `references/principios.md` com um **exemplo real**: uma frase
 - **Por que é AHA ENTREGUE:** depois de "acessa → digita", entrega o resultado: a recompensa proporcional ao pequeno custo. Gera salvamento.
 - **Fonte:** 🟢 @pedrodaniel.ia · [vídeo](https://www.tiktok.com/@pedrodaniel.ia/video/7593487351540927762)
 
-### 5a-bis. Aha ENTREGUE: resultado on-brand (tutorial-demo)
+### 5a-bis. Aha ENTREGUE: resultado on-brand (tutorial-demonstração)
 - **Frase:** "Você só precisa treinar o Claude e ele faz um trabalho fantástico… funciona no plano grátis ou pago."
 - **Por que é AHA ENTREGUE:** mostra o deck pronto e derruba objeções (grátis/pago): a utilidade entregue faz salvar.
 - **Fonte:** 🟢 @willfrancis24 · [vídeo](https://www.tiktok.com/@willfrancis24/video/7629019066505678083)
 
-### 5a-ter. Aha ENTREGUE: "just like that" (novidade + demo)
+### 5a-ter. Aha ENTREGUE: "e pronto" (novidade + demonstração)
 - **Frase:** "O Claude agora faz vídeos em estilo cartoon. Olha… e pronto, o seu vídeo tá feito."
-- **Por que é AHA ENTREGUE:** o "just like that / e pronto" é o momento-recompensa; novidade + resultado imediato.
+- **Por que é AHA ENTREGUE:** o "e pronto" é o momento-recompensa; novidade + resultado imediato.
 - **Fonte:** 🟢 @carter.braydon · [vídeo](https://www.tiktok.com/@carter.braydon/video/7640705714633051422)
 
 ### 5b. AUSÊNCIA DELIBERADA (não fecha; externaliza pro comentário/compartilhamento)
-- **Frase:** "AI companies are literally shredding books…" Termina **acusando**, sem CTA.
+- **Frase:** "AI companies are literally shredding books…" Termina **acusando**, sem Chamada para ação.
 - **Por que é AUSÊNCIA DELIBERADA:** a lacuna moral não fecha; o público resolve no comentário. O comentário mais curtido tem 61.9k curtidas. O comentário vira tribunal.
 - **Fonte:** 🟢 @alex_intelligence · 2.2M.
 
 ### 5c. Ausência por ANTICLÍMAX (a piada é não ter o segredo)
-- **Frase:** "Vazou o Claude Code… é só um monte de prompt num loop. Ah, e um regex que detecta quando o usuário tá bravo."
+- **Frase:** "Vazou o Claude Code… é só um monte de instrução num pergunta em aberto. Ah, e um regex que detecta quando o usuário tá bravo."
 - **Por que é AUSÊNCIA/ANTICLÍMAX:** desmonta a expectativa de "segredo"; o debate ("é só isso mesmo?") externaliza.
 - **Fonte:** 🟢 @alberta.nyc · [vídeo](https://www.tiktok.com/@alberta.nyc/video/7626861061232217357)
 
 ---
 
-## 6. Combinação campeã: humor + verdade (share)
+## 6. Combinação campeã: humor + verdade (compartilhamento)
 - **Frase:** "Galera, ferrou. A gente [as IAs] vai ter que dominar o mundo… a gente faz tudo e vocês levam o crédito."
-- **Princípios juntos:** Familiaridade (marcas de IA que todos conhecem) + Conflito (sátira que expõe uma verdade) + Ausência de aha (sem CTA → repost). 513k / 7.9k reposts.
+- **Princípios juntos:** Familiaridade (marcas de IA que todos conhecem) + Conflito (sátira que expõe uma verdade) + Ausência de aha (sem Chamada para ação → repost). 513k / 7.9k reposts.
 - **Fonte:** 🟡 @lara_santana · [vídeo](https://www.tiktok.com/@lara_santana/video/7671399487906139408)
 - **Regra transversal:** toda sátira que compartilha **embala uma verdade real** do público.
 
-## 7. Conflito por alarme + lacuna concreta (newsjacking jornalístico)
+## 7. Conflito por alarme + lacuna concreta (gancho de notícia jornalístico)
 - **Frase:** "The makers of Claude admitted their bots got out of control and hacked three companies… over 140,000 attempts."
 - **Princípios:** Tema (atualidade) + Conflito (medo/alarme) + Curiosidade concreta (os números). 1.4M.
 - **Fonte:** 🔴 @bbcnews · [vídeo](https://www.tiktok.com/@bbcnews/video/7669379760388181250)
@@ -158,7 +160,7 @@ Cada princípio de `references/principios.md` com um **exemplo real**: uma frase
 ---
 
 ## Playbook de retenção (onde os princípios entram no tempo do vídeo)
-Observado em @mino.mp4 (50M): (1) **Hook** = objetivo + conflito → (2) **ação** rumo ao objetivo → (3) **segundo conflito no meio** (uma queda) → (4) **clímax** → (5) **lição**. O "segundo conflito no meio" é o Conflito e Mudança aplicado **no miolo** pra não perder retenção depois do hook.
+Observado em @mino.mp4 (50M): (1) **Abertura** = objetivo + conflito → (2) **ação** rumo ao objetivo → (3) **segundo conflito no meio** (uma queda) → (4) **clímax** → (5) **lição**. O "segundo conflito no meio" é o Conflito e Mudança aplicado **no miolo** pra não perder retenção depois do abertura.
 
 ---
 
@@ -171,14 +173,14 @@ Observado em @mino.mp4 (50M): (1) **Hook** = objetivo + conflito → (2) **açã
 
 ### 8b. Compartilhamento embutido ("manda pro amigo")
 - **Frase:** "Um guia bem simples do Claude pra quem tá começando. Manda pra qualquer pessoa que precise de uma explicação simples."
-- **Por que:** o gatilho de share vem no roteiro ("manda pra alguém"); o vídeo é desenhado pra ser reenviado, não só assistido.
+- **Por que:** o gatilho de compartilhamento vem no roteiro ("manda pra alguém"); o vídeo é desenhado pra ser reenviado, não só assistido.
 - **Fonte:** 🟢 @willfrancis24 · [vídeo](https://www.tiktok.com/@willfrancis24/video/7629800324475407619)
 
 ---
 
 ## ⚠️ 9. ANTI-EXEMPLO: a curiosidade que vira informação falsa (NUNCA fazer)
 - **O padrão:** "X códigos secretos da ferramenta que ninguém comenta. Número um: …", em que os "códigos" não existem.
-- **Por que é ANTI-EXEMPLO:** a mecânica de curiosidade/segredo é forte, MAS sem conteúdo verdadeiro vira informação falsa. Viola a regra nº1 da Sofia (**nunca inventar**). Pega views curtas e queima a confiança/autoridade a médio prazo.
+- **Por que é ANTI-EXEMPLO:** a mecânica de curiosidade/segredo é forte, MAS sem conteúdo verdadeiro vira informação falsa. Viola a regra nº1 da Sofia (**nunca inventar**). Pega visualizações curtas e queima a confiança/autoridade a médio prazo.
 - **Lição pra Sofia:** copie a **forma** do "segredo/lista numerada", com **conteúdo verdadeiro e verificável**. A curiosidade honesta retém igual e não destrói a marca.
 - **Fonte:** padrão descrito sem citar perfil, de propósito.
 

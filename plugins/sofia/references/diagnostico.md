@@ -42,9 +42,9 @@ A pergunta correta É: "O que está carregando esse vídeo, e o que poderia ser 
 
 | Sinal | Diagnóstico provável |
 |-------|---------------------|
-| Público não para pra ver | Hook sem lacuna/familiaridade |
+| Público não para pra ver | Abertura sem lacuna/familiaridade |
 | Para mas sai rápido | Tema pequeno ou conflito ausente |
 | Assiste tudo mas não engaja | Sem debate mental / aha entregue sem custo |
-| Alta retenção, baixo share | Falta familiaridade de identidade |
+| Alta retenção, baixo compartilhamento | Falta familiaridade de identidade |
 | Muitos comentários | Lacuna de dado concreto que não fecha |
 | Muitos shares | Familiaridade de identidade + moral forte |

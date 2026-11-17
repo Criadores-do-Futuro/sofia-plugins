@@ -24,4 +24,3 @@ Diálogo dramático curto ou IHC com tensão entre narrador e personagem.
 - Narrado: voz sobre imagens/B-roll sem personagem reagindo.
 - Diálogo: os dois interlocutores aparecem ou são personagens em cena.
 - Duas vozes independentes: sem interação, não há formato Narrador.
-

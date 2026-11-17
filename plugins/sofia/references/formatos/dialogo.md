@@ -14,7 +14,7 @@ Criador interpreta dois personagens em uma conversa que ilustra um conflito, um 
 ## Estrutura que combina melhor
 Jeito Errado × Jeito Certo ou [IHC](../estruturas-de-roteiro/ihc.md)
 
-## Tipo de hook que este formato pede
+## Tipo de abertura que este formato pede
 Primeira fala de um dos personagens que cria tensão ou contraste imediato sem contexto prévio.
 
 ## Elementos viciantes dominantes
@@ -28,7 +28,7 @@ Primeira fala de um dos personagens que cria tensão ou contraste imediato sem c
 5. Um dos personagens representa o espectador (sua dúvida, seu erro, sua crença)
 6. A virada narrativa é o momento em que um personagem muda de posição ou é surpreendido
 7. A moral emerge da resolução do conflito entre os personagens
-8. O CTA deve conectar o espectador com o personagem que representa sua posição atual
+8. O Chamada para ação deve conectar o espectador com o personagem que representa sua posição atual
 
 ## Não confundir
 - Narrador: o personagem em cena reage a uma voz off que não aparece; no Diálogo os dois lados aparecem.

@@ -1,3 +1,5 @@
+Lee [comportamiento](../../comportamiento.md). Guarda un perfil solo si el usuario lo pidió o autorizó; sin acceso a archivos, no afirmes haberlo guardado.
+
 # Aprender Estilo de Escritura
 
 ## Cuándo ofrecerlo

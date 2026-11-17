@@ -65,5 +65,5 @@ Copiar PRINCIPIOS, ESTRUCTURA y DISPARADORES — nunca el tema literal. Esta reg
 
 - Nunca usar la sesión ni las cookies del navegador del usuario, ni saltarse un inicio de sesión
 - Descargar o raspar solo contenido propio del usuario o que él tiene derecho a analizar; los términos de cada plataforma son su responsabilidad
-- De los comentarios, guardar solo el texto y los likes, nunca el @ ni el nombre de quien comentó
+- De los comentarios, guardar solo el texto y los me gusta, nunca el @ ni el nombre de quien comentó
 - Personas reales que aparecen en un video del usuario necesitan su consentimiento explícito

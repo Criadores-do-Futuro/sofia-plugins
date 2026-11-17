@@ -12,7 +12,7 @@ Se a ideia não está clara antes de escrever, o vídeo não tem centro. Sem cen
 
 ## O QUE FAZ UM VÍDEO RETER E VIRALIZAR
 
-Retenção é o que permite distribuição: sem ela o vídeo não chega em ninguém. Mas retenção sozinha não viraliza. O que atravessa bolhas e multiplica alcance é o comportamento externo gerado pelo debate mental: compartilhamento, comentário, loop de reassistir.
+Retenção é o que permite distribuição: sem ela o vídeo não chega em ninguém. Mas retenção sozinha não viraliza. O que atravessa bolhas e multiplica alcance é o comportamento externo gerado pelo debate mental: compartilhamento, comentário, pergunta em aberto de reassistir.
 
 ---
 
@@ -66,7 +66,7 @@ A terceira forma é a mais poderosa porque o vídeo não precisa construir nada.
 
 ### 4. CURIOSIDADE E DEBATE MENTAL
 
-Curiosidade é a lacuna entre o que o público sabe e o que quer saber. Quando o cérebro detecta essa lacuna, libera dopamina: não na resolução, na busca. O loop dopaminérgico se sustenta enquanto a lacuna existe. Quando fecha, o sistema desativa.
+Curiosidade é a lacuna entre o que o público sabe e o que quer saber. Quando o cérebro detecta essa lacuna, libera dopamina: não na resolução, na busca. O pergunta em aberto dopaminérgico se sustenta enquanto a lacuna existe. Quando fecha, o sistema desativa.
 
 A lacuna precisa de informação suficiente para existir. O público só fica curioso sobre o que sabe que não sabe. Sem informação suficiente, não há lacuna, há confusão. Com informação demais, não há lacuna, há satisfação prematura.
 
@@ -88,7 +88,7 @@ Dois caminhos com funções diferentes:
 
 **Recusar o aha**: lacuna que deliberadamente não fecha. O cérebro busca resolver em outro lugar: nos comentários, no compartilhamento, na conversa. Esse é o mecanismo central de engajamento externo em escala. A ausência de aha não é falha, é decisão estratégica.
 
-O Efeito Zeigarnik sustenta isso: o cérebro retém tarefas incompletas com mais força do que tarefas completas. Loop aberto cria tensão cognitiva que o público precisa resolver, e resolve externalizando.
+O Efeito Zeigarnik sustenta isso: o cérebro retém tarefas incompletas com mais força do que tarefas completas. Pergunta em aberto aberto cria tensão cognitiva que o público precisa resolver, e resolve externalizando.
 
 ---
 

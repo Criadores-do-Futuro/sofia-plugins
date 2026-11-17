@@ -34,7 +34,7 @@ Muitos criadores cometem o erro de usar como tema o assunto técnico que querem 
 
 ### Como funciona na prática (referência interna)
 
-- Alguém quer ensinar sobre storytelling → "storytelling" não é tema interessante → usa "traição" (conflito universal com muita relevância emocional) como tema para conduzir até a moral
+- Alguém quer ensinar sobre narrativa → "narrativa" não é tema interessante → usa "traição" (conflito universal com muita relevância emocional) como tema para conduzir até a moral
 - Alguém quer ensinar sobre pró-labore → "pró-labore" não tem relevância emocional → usa "ser bancada por homem" (conflito universal que gera debate forte) como tema para conduzir até a moral
 
 ## A Relação Entre Tema e Moral

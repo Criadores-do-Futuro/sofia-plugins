@@ -14,7 +14,7 @@ Vídeo com cortes rápidos, movimentação de câmera, mudanças de enquadrament
 ## Estrutura que combina melhor
 [AIDA](../estruturas-de-roteiro/aida.md) ou [Análise](../estruturas-de-roteiro/analise.md) (em formato de lista)
 
-## Tipo de hook que este formato pede
+## Tipo de abertura que este formato pede
 Declaração direta de benefício ou resultado em 1 frase, seguida de corte imediato para o primeiro ponto.
 
 ## Elementos viciantes dominantes
@@ -28,12 +28,12 @@ Declaração direta de benefício ou resultado em 1 frase, seguida de corte imed
 5. Varie o tipo de informação: estatística → exemplo → pergunta → afirmação
 6. Evite conectivos longos: use cortes para fazer a transição
 7. O Efeito Ahá deve ser o ponto mais forte: posicione no clímax do ritmo
-8. O CTA deve ser entregue no pico da energia: não desacelere antes de terminar
+8. O Chamada para ação deve ser entregue no pico da energia: não desacelere antes de terminar
 
 ## Não confundir
 - Cine: corta para construir cena; Dinamismo corta para manter a energia alta.
 - Palestrinha com edição acelerada: se os cortes só tiram pausas e o plano é sempre o mesmo, é Palestrinha.
-- Criativo Preguiçoso: a energia fica só no hook; no Dinamismo ela se mantém até o fim.
+- Criativo Preguiçoso: a energia fica só no abertura; no Dinamismo ela se mantém até o fim.
 
 ## Exemplo analisado
 Ainda não há roteiro deste formato anotado na base da Sofia. Quando um vídeo deste formato for analisado com `/sofia:analisar`, o **aprendiz** pode guardar o exemplo na pasta de dados da pessoa, `~/.sofia/exemplos-analisados/`.

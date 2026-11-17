@@ -1,45 +1,56 @@
-# Sofia — plugins
+# Sofias — Criadores do Futuro
 
-Marketplace privado de plugins do Claude Code com a Sofia, a estrategista de roteiros para
-vídeos curtos, em três idiomas.
+Três plugins para Codex e superfícies compatíveis do Claude, com comportamento equivalente e conteúdo próprio de cada idioma.
 
-| Plugin | Idioma | O que faz |
-|---|---|---|
-| `sofia` | Português | Pesquisa vídeos virais, analisa e escreve ou melhora roteiros. |
-| `sofia-latam` | Espanhol | Analisa vídeos de TikTok, Instagram e YouTube e cria ou melhora roteiros. |
-| `sofia-english` | Inglês americano | Revisa, analisa, escreve e reescreve roteiros pelo método CDF. |
+| Plugin | Versão | Idioma | Documentação |
+|---|---|---|---|
+| `sofia` | 3.11.0 | Português brasileiro | [Sofia Português](plugins/sofia/README.md) |
+| `sofia-latam` | 1.1.0 | Espanhol latinoamericano | [Sofia LATAM](plugins/sofia-latam/README.md) |
+| `sofia-english` | 1.1.0 | Inglês americano | [Sophia English](plugins/sofia-english/README.md) |
 
-## Instalar
+As três analisam referências, criam e revisam roteiros, aprendem a voz do criador e exportam resultados. Nenhuma depende de um conector de conteúdo ausente. As diferenças de escopo e os recursos opcionais estão nos documentos de cada plugin.
 
-O repositório é privado: a sua conta do GitHub precisa ter sido convidada.
+## Formatos de pacote
 
+Cada plugin possui manifesto portátil Agent Plugins 1.0 em `plugin.json`, compatibilidade Codex em `.codex-plugin/plugin.json` e manifesto Claude em `.claude-plugin/plugin.json`. As identidades, versões e descrições são sincronizadas. Habilidades ficam em `skills/<nome>/SKILL.md`; recursos e referências são contidos no próprio plugin.
+
+O catálogo Claude fica em `.claude-plugin/marketplace.json`. O catálogo Codex fica em `.agents/plugins/marketplace.json`, com caminhos relativos à raiz do repositório.
+
+```sh
+claude plugin marketplace add bento-dev-ia/sofia-plugins
+claude plugin install sofia@sofia-plugins
 ```
-/plugin marketplace add bento-dev-ia/sofia-plugins
-/plugin install sofia@sofia-plugins
+
+Para Codex, adicione o repositório pelo gerenciador de plugins ou pelo comando `codex plugin marketplace add`, conforme as opções da versão instalada. O repositório é privado; acesso a ele não foi alterado.
+
+## Validar e gerar os três pacotes
+
+```sh
+python3 -m pip install -r requirements-validation.txt
+python3 tools/validate_plugins.py
+python3 -m unittest discover -s tests -v
+python3 tools/package_plugins.py
 ```
 
-Para as outras versões, troque `sofia` por `sofia-latam` ou `sofia-english`.
+Os ZIPs e seu inventário são gerados em `dist/`, fora do controle de versão. O empacotador extrai e valida cada ZIP final. Para conferir os requisitos de listagem pública:
 
-## Conteúdo pelo conector
+```sh
+python3 tools/validate_plugins.py --submission
+python3 tools/package_plugins.py --require-submission-ready
+```
 
-Parte do conteúdo de cada Sofia, como a lista de módulos e aulas e as bases de
-conhecimento, não fica nos plugins. Esse conteúdo vem do conector MCP `sofia-conteudo`.
-Sem o conector, a Sofia avisa e trabalha com menos material. O contrato está em
-[docs/conteudo-no-mcp.md](docs/conteudo-no-mcp.md). O que ficou para depois está em
-[docs/pendencias.md](docs/pendencias.md).
+Esses dois comandos falham quando falta um campo obrigatório de publicação; não confundem estrutura válida com autorização para publicar. As verificações cobrem estrutura, scripts, referências, catálogos e preparo real de vídeo local. O modelo para GitHub Actions está em `docs/workflows/validate.yml`; ainda não está ativado porque a credencial de envio não tem permissão `workflow`. Os testes não executam chamadas pagas nem afirmam avaliar respostas de um modelo.
 
-## O que a Sofia pede antes de fazer
+## Regras comuns
 
-A Sofia pede o seu OK antes de:
+Cada versão mantém textos e entregas em seu idioma, preservando identificadores técnicos e avisos legais obrigatórios. Todas exigem fontes para fatos externos, preservam frases boas, não inventam resultados, separam observação de hipótese e declaram os limites de acesso. Instalações, serviços pagos e envio de mídia a terceiros exigem autorização correspondente. Dados da pessoa ficam fora da instalação.
 
-- instalar qualquer programa;
-- gastar créditos de serviços pagos, como o Apify.
+## Publicação
 
-Ela também:
+Publicador pretendido: Alef Marques. Compras de assinaturas, comunidades ou cursos ocorrem na Hotmart. Distribuição pretendida: todos os países disponíveis. Os pacotes não implementam cobrança nem controle de acesso.
 
-- não usa os cookies do seu navegador e não contorna login;
-- guarda o que aprende na sua pasta de trabalho, não na pasta do plugin.
+As páginas de termos, privacidade e suporte do plugin Sofia foram verificadas nos três idiomas. Falta a página pública de apresentação para preencher `websiteURL`; as páginas de apresentação estão preparadas em `docs/site/`. Há ajustes necessários nas instruções antigas de suporte. Veja o [relatório de publicação](docs/publicacao.md) e os [cenários comportamentais](docs/cenarios.md).
 
-## Licença
+Nenhum pacote foi enviado para revisão ou publicado. Validação técnica não substitui verificação do publicador, declarações legais ou revisão das plataformas.
 
-Todos os direitos reservados. Veja [LICENSE](LICENSE).
+Licença proprietária: [licença](LICENSE). Avisos de terceiros permanecem nos arquivos correspondentes.

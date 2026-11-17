@@ -14,7 +14,7 @@ Vídeo com estética cinematográfica: planos bem compostos, trilha sonora, narr
 ## Estrutura que combina melhor
 [IHC](../estruturas-de-roteiro/ihc.md) com abertura de cena imersiva
 
-## Tipo de hook que este formato pede
+## Tipo de abertura que este formato pede
 Cena imersiva que coloca o espectador dentro de um momento específico antes de qualquer contexto.
 
 ## Elementos viciantes dominantes
@@ -28,10 +28,10 @@ Cena imersiva que coloca o espectador dentro de um momento específico antes de 
 5. A virada deve ser um momento visual claro, não só uma frase
 6. A moral nunca é dita explicitamente: emerge da última cena
 7. O ritmo do texto deve refletir o ritmo do corte (frases curtas = cortes rápidos)
-8. O CTA, se houver, deve ser integrado naturalmente ao final da cena
+8. O Chamada para ação, se houver, deve ser integrado naturalmente ao final da cena
 
 ## Não confundir
-- Storytelling Visual: conta a história com textos e gráficos na tela; Cine conta com planos e atuação.
+- Narrativa visual: conta a história com textos e gráficos na tela; Cine conta com planos e atuação.
 - Dinamismo: também corta muito, mas por energia; Cine corta para construir cena e emoção.
 - Vlog bem filmado: registra o que aconteceu; Cine encena um momento roteirizado.
 

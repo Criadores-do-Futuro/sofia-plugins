@@ -25,4 +25,3 @@ Depende dos dois formatos. Escolha uma estrutura narrativa dominante e adapte as
 - Um formato com variação de cenário ou um insert breve continua sendo um formato só.
 - Mistura caótica sem dois padrões reconhecíveis não é combinação.
 - Um segundo formato presente por poucos segundos e sem função estrutural é apenas recurso pontual.
-

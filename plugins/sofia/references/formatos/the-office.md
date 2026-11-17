@@ -14,7 +14,7 @@ Vídeo com estética de mockumentary: câmera fixa ou levemente instável, criad
 ## Estrutura que combina melhor
 [IHC](../estruturas-de-roteiro/ihc.md) com narração interna (olhar para a câmera como confissão)
 
-## Tipo de hook que este formato pede
+## Tipo de abertura que este formato pede
 Declaração direta para a câmera que cria intimidade e estranheza ao mesmo tempo.
 
 ## Elementos viciantes dominantes
@@ -28,7 +28,7 @@ Declaração direta para a câmera que cria intimidade e estranheza ao mesmo tem
 5. A situação narrada deve ser reconhecível e universalmente embaraçosa ou verdadeira
 6. A moral emerge como uma confissão, não como um ensinamento
 7. Use pausas e silêncios estratégicos: o ritmo do the-office é o que cria o humor
-8. O CTA deve ser entregue com o mesmo tom confessional do restante do vídeo
+8. O Chamada para ação deve ser entregue com o mesmo tom confessional do restante do vídeo
 
 ## Não confundir
 - Diálogo: os personagens falam entre si sem quebrar a quarta parede; The Office quebra de propósito.

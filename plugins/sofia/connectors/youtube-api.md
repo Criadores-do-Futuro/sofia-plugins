@@ -1,70 +1,9 @@
-# Conector: YouTube
+# Serviço opcional: YouTube
 
-## Estratégia econômica
+Leia [comportamento](../comportamento.md). Para analisar uma referência, prefira o arquivo ou a transcrição fornecida. Dados públicos podem ser coletados com `yt-dlp` apenas para material cujo uso foi autorizado; o programa deve ignorar configurações externas e não usar cookies nem sessão do navegador.
 
-### Prioridade 1: yt-dlp (GRÁTIS)
-Para a maioria dos casos, yt-dlp resolve sem precisar de API key:
-- Extrai transcrição (legendas automáticas/manuais)
-- Extrai metadados (título, canal, views, likes, data)
-- Extrai comentários (com --write-comments)
+O preparador visual está em `scripts/prepare-visual-analysis.py`. A coleta de metadados e comentários sem dados do autor está em `scripts/collect-public.py`. Ambos recebem argumentos por lista, recusam endereços não permitidos e exigem `--allow-download` para coleta pela rede. Os atalhos de extração antigos encaminham para esses programas; use as opções indicadas em `--help`, não um argumento posicional de idioma.
 
-### Prioridade 2: YouTube Data API v3 (grátis com quota)
-Apenas se yt-dlp não conseguir extrair comentários ordenados:
-- 10.000 unidades/dia grátis
-- `commentThreads.list` com `order=relevance`: 1 unidade por request
-- Suficiente para ~200+ análises/dia
+A YouTube Data API é uma alternativa opcional quando houver uma ferramenta autorizada disponível. Confira as cotas e os custos atuais na documentação do provedor; não prometa acesso gratuito ilimitado nem uma quantidade fixa de análises. A ordem por relevância não é a mesma que uma ordenação estrita por curtidas.
 
-## Instalação do yt-dlp
-
-A Sofia só instala com o OK da pessoa (ver `/sofia:setup`). Comando que pede senha de administrador ou aceite de termos a pessoa roda ela mesma.
-
-### macOS
-```bash
-brew install yt-dlp
-```
-
-### Linux
-```bash
-python3 -m pip install --user yt-dlp
-```
-
-### Windows (a pessoa roda no terminal)
-```bash
-winget install yt-dlp.yt-dlp
-```
-
-### Verificar
-```bash
-yt-dlp --version
-```
-
-## YouTube Data API (opcional)
-
-### Como ativar
-1. Acesse https://console.cloud.google.com
-2. Crie novo projeto ou selecione existente
-3. APIs & Services → Enable APIs → YouTube Data API v3
-4. Credentials → Create API Key
-5. Copie a key
-
-### Configurar na Sofia
-A chave nunca vai para dentro da pasta do plugin e nunca é colada no chat. A pessoa escolhe um caminho e faz ela mesma:
-- Variável de ambiente `YOUTUBE_API_KEY` (macOS/Linux: `echo 'export YOUTUBE_API_KEY="COLE_SUA_CHAVE_AQUI"' >> ~/.zshrc`; Windows: `setx YOUTUBE_API_KEY "COLE_SUA_CHAVE_AQUI"`), ou
-- Linha `YOUTUBE_API_KEY=COLE_SUA_CHAVE_AQUI` em `~/.sofia/chaves.env`, protegido com `chmod 600`
-
-### Uso para comentários
-```bash
-curl "https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&videoId=VIDEO_ID&order=relevance&maxResults=20&key=$YOUTUBE_API_KEY"
-```
-
-Guarde só o texto literal, as curtidas e a data de cada comentário. Nunca o nome, o @ ou a foto de quem comentou.
-
-## Quando usar cada um
-
-| Necessidade | Ferramenta | Custo |
-|-------------|-----------|-------|
-| Transcrição | yt-dlp | Grátis |
-| Metadados | yt-dlp | Grátis |
-| Comentários (básico) | yt-dlp | Grátis |
-| Comentários (ordenados por relevância) | YouTube API | Grátis (quota) |
-| Thumbnail | yt-dlp ou API | Grátis |
+A pessoa configura a credencial no provedor ou no ambiente. Nunca a peça na conversa, imprima ou salve no plugin. Retenha somente os campos necessários à análise; dos comentários, apenas texto literal e curtidas. Não transforme um erro de acesso em resultado vazio ou transcrição inventada.

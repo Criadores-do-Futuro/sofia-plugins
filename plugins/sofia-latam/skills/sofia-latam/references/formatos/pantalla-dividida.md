@@ -8,7 +8,7 @@ El creador narra o comenta un contenido externo (video de otra persona, escena r
 ## Estructura que combina mejor
 [Él, Yo, Tú, Futuro](../estructuras-de-guion/el-yo-tu-futuro.md) + Contraste
 
-## Tipo de hook que pide este formato
+## Tipo de gancho que pide este formato
 Declaración de consecuencia curiosa o escena inmersiva en segunda persona.
 
 ## Elementos adictivos dominantes
@@ -19,7 +19,7 @@ Declaración de consecuencia curiosa o escena inmersiva en segunda persona.
 2. Usa "pero" como recurso técnico de contraste
 3. Mete al espectador dentro de la escena con "tú" y "tu"
 4. Cada tramo debe intensificar el conflicto del anterior
-5. El Efecto Ahá es el payoff del loop — nunca lo reveles antes de construir tensión
+5. El Efecto Ahá es el resolución de la promesa del pregunta abierta — nunca lo reveles antes de construir tensión
 6. La moraleja debe voltear la cámara hacia el espectador
 7. Usa marcas, programas y nombres reales y verificables
-8. El CTA debe ser consecuencia natural de la moraleja
+8. El Llamado a la acción debe ser consecuencia natural de la moraleja

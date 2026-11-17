@@ -4,9 +4,9 @@ Verificar antes de entregar resultado de análise de vídeo ao usuário.
 
 ## Extração de dados
 - [ ] Transcrição extraída completamente?
-- [ ] Hook separado do resto?
-- [ ] Comentários top 20 extraídos?
-- [ ] Métricas coletadas (views, likes, comments)?
+- [ ] Abertura separado do resto?
+- [ ] Comentários principais 20 extraídos?
+- [ ] Métricas coletadas (visualizações, curtidas, comments)?
 - [ ] Nome do criador/canal identificado?
 - [ ] Data de publicação registrada?
 
@@ -23,8 +23,8 @@ Verificar antes de entregar resultado de análise de vídeo ao usuário.
 - [ ] Princípios AUSENTES identificados?
 - [ ] Formato segue padrão: \[Princípio: explicação\] + frase?
 
-## Hook (análise especial)
-- [ ] Quais princípios o hook usa?
+## Abertura (análise especial)
+- [ ] Quais princípios o abertura usa?
 - [ ] Que lacuna de curiosidade abre?
 - [ ] Que emoção dispara?
 - [ ] Que familiaridade usa?
@@ -35,16 +35,16 @@ Verificar antes de entregar resultado de análise de vídeo ao usuário.
 - [ ] 2. Tema + tamanho do mundo?
 - [ ] 3. Conflito: na tela ou na cabeça?
 - [ ] 4. Lacunas: onde e quando fecham?
-- [ ] 5. Aha: timing correto?
+- [ ] 5. Aha: momento correto?
 
-## Insights de comentários
+## Aprendizados de comentários
 - [ ] Comentários agrupados por tema/emoção?
 - [ ] Debate mental revelado identificado?
 - [ ] Padrões de reação dominantes?
 
-## Output gerado
+## Saída gerado
 - [ ] roteiro-anotado.md criado?
-- [ ] hook.md criado?
+- [ ] abertura.md criado?
 - [ ] comentarios.md criado?
 - [ ] metricas.md criado?
 - [ ] aprendizados.md criado?
@@ -52,5 +52,5 @@ Verificar antes de entregar resultado de análise de vídeo ao usuário.
 
 ## Entrega ao usuário
 - [ ] Resumo de 3-5 linhas apresentado?
-- [ ] Top insights destacados?
+- [ ] Principais aprendizados destacados?
 - [ ] Próximos passos oferecidos?

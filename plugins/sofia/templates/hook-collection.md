@@ -1,36 +1,36 @@
 ---
-title: Coleção de Hooks
+title: Coleção de Aberturas
 updated: "{{data}}"
-tags: [sofia, hooks, referencia]
+tags: [sofia, aberturas, referencia]
 ---
 
-# Hooks que Funcionam
+# Aberturas que Funcionam
 
 ## Por princípio dominante
 
 ### Conflito Universal + Curiosidade
-| Hook | Fonte | Views | Por que funciona |
+| Abertura | Fonte | Visualizações | Por que funciona |
 |------|-------|-------|-----------------|
 | | | | |
 
-### Familiaridade + Loop
-| Hook | Fonte | Views | Por que funciona |
+### Familiaridade + Pergunta em aberto
+| Abertura | Fonte | Visualizações | Por que funciona |
 |------|-------|-------|-----------------|
 | | | | |
 
 ### Contraste/Polêmica
-| Hook | Fonte | Views | Por que funciona |
+| Abertura | Fonte | Visualizações | Por que funciona |
 |------|-------|-------|-----------------|
 | | | | |
 
 ### Aha Antecipado
-| Hook | Fonte | Views | Por que funciona |
+| Abertura | Fonte | Visualizações | Por que funciona |
 |------|-------|-------|-----------------|
 | | | | |
 
 ---
 
-## Padrões de hook identificados
+## Padrões de abertura identificados
 
 1. **Padrão "Rótulo + Resultado"** — "Esse [rótulo negativo] fez [resultado surpreendente]"
 2. **Padrão "Familiaridade + Lacuna"** — "Você viu o [pessoa famosa] falando de [assunto]?"
@@ -41,6 +41,6 @@ tags: [sofia, hooks, referencia]
 
 ## Notas de aprendizado
 
-- Hooks com DADO CONCRETO (número, nome, fato) retêm mais que hooks emocionais puros
-- Hooks que abrem lacuna de "quem/como/quanto" são mais poderosos que "por quê"
-- Hooks com familiaridade (pessoa/marca conhecida) reduzem atrito de entrada
+- Aberturas com DADO CONCRETO (número, nome, fato) retêm mais que aberturas emocionais puros
+- Aberturas que abrem lacuna de "quem/como/quanto" são mais poderosos que "por quê"
+- Aberturas com familiaridade (pessoa/marca conhecida) reduzem atrito de entrada

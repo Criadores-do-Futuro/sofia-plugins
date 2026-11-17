@@ -8,32 +8,47 @@
     {
       "name": "sofia",
       "source": "./plugins/sofia",
-      "version": "3.10.1",
-      "description": "Plugin inteligente para pesquisa de vídeos virais e escrita de roteiros, guiado por princípios de Psicologia Cognitiva do Engajamento.",
+      "version": "3.11.0",
+      "description": "Pesquisa e analisa vídeos curtos, cria e revisa roteiros em português brasileiro, aprende a voz do criador e exporta análises. Usa referências incluídas no pacote e fatos fornecidos ou verificados. A preparação visual local exige Python, FFmpeg e execução de comandos; a análise de texto funciona sem esses recursos. Serviços externos opcionais usam a conta da pessoa e só são acionados com autorização.",
       "author": {
-        "name": "srbentostk"
+        "name": "bento-dev-ia"
       },
-      "keywords": ["português", "roteiro", "viral", "video"]
+      "keywords": [
+        "roteiro",
+        "vídeo",
+        "análise",
+        "português"
+      ]
     },
     {
       "name": "sofia-latam",
       "source": "./plugins/sofia-latam",
-      "version": "1.0.0",
-      "description": "Analiza videos de TikTok, Instagram y YouTube, explica por qué funcionan y crea o mejora guiones.",
+      "version": "1.1.0",
+      "description": "Analiza videos cortos, escribe y revisa guiones en español latinoamericano, aprende la voz del creador y exporta análisis. Usa referencias incluidas y hechos proporcionados o verificados. La preparación visual local requiere Python, FFmpeg y ejecución de comandos; el análisis de texto funciona sin esos recursos. Los servicios externos opcionales usan la cuenta de la persona y requieren autorización.",
       "author": {
         "name": "srbentostk"
       },
-      "keywords": ["español", "guion", "viral", "video"]
+      "keywords": [
+        "guion",
+        "video",
+        "análisis",
+        "español"
+      ]
     },
     {
       "name": "sofia-english",
       "source": "./plugins/sofia-english",
-      "version": "1.0.4",
-      "description": "Sophia reviews, analyzes, writes and rewrites short-form video scripts in American English using the CDF method and the creator's own voice.",
+      "version": "1.1.0",
+      "description": "Analyzes short-form videos, writes and reviews scripts in American English, learns the creator’s voice and exports analyses. Uses bundled references and facts supplied by the user or verified with available tools. Local visual preparation requires Python, FFmpeg and command execution; text analysis works without them. Optional external services use the user’s account and require authorization.",
       "author": {
         "name": "Alef Marques"
       },
-      "keywords": ["english", "scripts", "short-form video", "CDF"]
+      "keywords": [
+        "scripts",
+        "video",
+        "analysis",
+        "English"
+      ]
     }
   ]
 }

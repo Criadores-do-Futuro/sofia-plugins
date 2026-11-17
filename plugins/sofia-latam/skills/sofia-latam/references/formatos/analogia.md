@@ -11,7 +11,7 @@ Una situación física, un objeto, una escena cotidiana o una fábula vuelve vis
 ## Estructura que combina mejor
 IHC, con revelación en el cierre.
 
-## Tipo de hook que pide este formato
+## Tipo de gancho que pide este formato
 Una situación u objeto concreto que todavía no se entiende por qué está ahí; la conexión con la idea queda pendiente.
 
 ## Reglas de escritura

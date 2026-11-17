@@ -2,7 +2,7 @@
 
 **Conflito > Resultados > 3 Motivos > Moral da História**
 
-Na prática, em 10 blocos: Clipe-gancho do analisado > Rótulo exagerado > Credencial > Promessa > Princípio 1 > Princípio 2 > Princípio 3 (o pilar do seu método) > Virada para o espectador > CTA.
+Na prática, em 10 blocos: Clipe-gancho do analisado > Rótulo exagerado > Credencial > Promessa > Princípio 1 > Princípio 2 > Princípio 3 (o pilar do seu método) > Virada para o espectador > Chamada para ação.
 
 ## Visão Geral
 
@@ -30,13 +30,13 @@ Virada explícita: "A verdade é que…". O rótulo é sobre algo **inofensivo**
 
 ### 2. Resultados: nome + credencial (10–26 s)
 
-Nome falado + **seguidores** (arredondados para baixo, com "mais de", "quase", "e contando") + **média ou pico de views** + **um detalhe singular** que transforma número em história ("só esse ano", "posta menos de uma vez por semana", "funciona em 5 nichos").
+Nome falado + **seguidores** (arredondados para baixo, com "mais de", "quase", "e contando") + **média ou pico de visualizações** + **um detalhe singular** que transforma número em história ("só esse ano", "posta menos de uma vez por semana", "funciona em 5 nichos").
 
-- "Ganhou mais de [N] seguidores só esse ano. Uma média de [M] de views."
-- "[Nome] tem [N] de seguidores, vídeos com quase [M] de views, e posta menos de [frequência]." (grande → maior → contraste)
-- Loop aberto opcional: "E alguns truques invisíveis pra te deixar viciado em tudo que [ela] posta."
+- "Ganhou mais de [N] seguidores só esse ano. Uma média de [M] de visualizações."
+- "[Nome] tem [N] de seguidores, vídeos com quase [M] de visualizações, e posta menos de [frequência]." (grande → maior → contraste)
+- Pergunta em aberto aberto opcional: "E alguns truques invisíveis pra te deixar viciado em tudo que [ela] posta."
 
-Evite: credencial sem seguidores, número em escala de nicho ("o mais legal entre os corretores"), número chutado, métrica só em likes.
+Evite: credencial sem seguidores, número em escala de nicho ("o mais legal entre os corretores"), número chutado, métrica só em curtidas.
 
 **Promessa (19–26 s):** o contrato, com o **analisado como sujeito**:
 > "Por isso hoje a gente vai analisar os três princípios que [nome] usa pra [dominar a internet brasileira / resultado do nicho]."
@@ -46,13 +46,13 @@ Evite: credencial sem seguidores, número em escala de nicho ("o mais legal entr
 ### 3. Os 3 Motivos: princípios (25–40 s cada)
 
 Cada princípio, sempre nesta ordem:
-1. **Nome** (2–5 palavras) com o número falado ("Número um…", "Dois…", "E três…"). Pelo menos um princípio deve ter **nome tirado do próprio analisado** (o apelido do formato dele: "Formato criativo Telecurso 2000", "arrume-se comigo", "o FDP é um CDF"). Termos de manual ("storytelling", "autenticidade") sozinhos marcam os vídeos fracos.
-2. **Prova:** lista de 3 fatos com o 3o item em **anticlímax cômico** ("política, filosofia e putaria") + um clipe de até 7 s em que o princípio **acontece sozinho**. Setup de quem apresenta → punch do analisado → reação.
+1. **Nome** (2–5 palavras) com o número falado ("Número um…", "Dois…", "E três…"). Pelo menos um princípio deve ter **nome tirado do próprio analisado** (o apelido do formato dele: "Formato criativo Telecurso 2000", "arrume-se comigo", "o FDP é um CDF"). Termos de manual ("narrativa", "autenticidade") sozinhos marcam os vídeos fracos.
+2. **Prova:** lista de 3 fatos com o 3o item em **anticlímax cômico** ("política, filosofia e putaria") + um clipe de até 7 s em que o princípio **acontece sozinho**. Configuração de quem apresenta → virada do analisado → reação.
 3. **Mecânica** (por que prende): "a mente humana é viciada em…", "o que eu chamo de…", fonte nomeada quando houver (Hebb 1949, McKee, Loewenstein).
 4. **Lição imperativa para "você":** "Então para de ser chato falando só do seu produto. E conecta isso com…". Lição descritiva ("ele faz isso…") enfraquece.
 5. **Ponte encadeada:** "O que já se conecta com o pilar número 2".
 
-**O Princípio 3 é o pilar do seu método** (nos 13 vídeos de referência: "formato criativo: encontrar um padrão que funciona e repetir, repetir, repetir… e é assim que [nome] e os maiores criadores do país [resultado]"). O analisado vira prova viva do que você vende. Se o pilar vier em P1, a ponte para o CTA some.
+**O Princípio 3 é o pilar do seu método** (nos 13 vídeos de referência: "formato criativo: encontrar um padrão que funciona e repetir, repetir, repetir… e é assim que [nome] e os maiores criadores do país [resultado]"). O analisado vira prova viva do que você vende. Se o pilar vier em P1, a ponte para o Chamada para ação some.
 
 Um respiro de desmentido no vídeo inteiro, logo após um exagero: "Tô brincando, só pra não pesar o clima."
 
@@ -65,23 +65,23 @@ Moldes fortes para o corpo:
 - Cadeia causal que termina em dinheiro: "Compartilhar [X] faz as pessoas confiarem em você. Torcer como melhores amigos. E comprar qualquer coisa que você vender."
 - Metalinguagem: "Tipo eu aqui [usando o princípio agora] pra te ensinar sem você nem perceber."
 
-### 4. Moral da História: virada + CTA
+### 4. Moral da História: virada + Chamada para ação
 
 **Virada para o espectador (6–13 s):** a análise vira diagnóstico:
 - Pergunta-espelho: "Será que não é [pilar] que tá faltando no seu conteúdo?"
 - Bronca: "Não faz sentido! Você tá criando conteúdo em [ano] sem…"
 - Objeção dramatizada: "Ai, [seu nome], mas pra mim é muito difícil…" → "Era exatamente isso que eu sentia também. Mas de tanto observar os maiores…"
 
-**CTA (3–14 s)**, do mais forte ao mais fraco:
+**Chamada para ação (3–14 s)**, do mais forte ao mais fraco:
 - Callback do analisado: "É realmente uma pena que [nome] não ensine a [o que você vende]. Mas eu ensino. Quer aprender comigo? É só tocar no link da minha bio."
 - Prova social em escada: "Nas últimas semanas eu ajudei centenas de pessoas a bater 10, 30, 50, até 100 mil seguidores usando essa estratégia." + oferta
 - Relativização humilde: "Esse é o formato que funciona pra ela. Mas se você quer ajuda pra encontrar o que funciona pra você…"
-- Fraco: CTA seco sem virada, ou para algo que o público não conhece.
+- Fraco: Chamada para ação seco sem virada, ou para algo que o público não conhece.
 
 ## Pesquisa mínima antes de escrever
 
 - Clipes: 3–5 candidatos a gancho (autossuficientes, até 4 s) + 1 clipe-prova por princípio, com timecode.
-- Números: seguidores, pico e média de views da grade, crescimento em janela curta, frequência de postagem, monetização visível.
+- Números: seguidores, pico e média de visualizações da grade, crescimento em janela curta, frequência de postagem, monetização visível.
 - Narrativa: origem, queda com número, volta por cima, evento pessoal recente, vilão/contraste, fatos que exagerados viram notícia falsa cômica.
 - Formato: o padrão que se repete em 5+ vídeos, **de um apelido** (vira nome de princípio); bordões; elenco recorrente; temas em lista de 3.
 - Público: apelidos e piadas dos comentários, o erro que o espectador comete (vira a bronca), a objeção dele (vira a objeção dramatizada).
@@ -107,12 +107,12 @@ Serve também para marca (gancho = comercial mais absurdo; credencial = faturame
 
 - [ ] O gancho é um clipe do analisado que se entende sozinho em até 4 s?
 - [ ] O rótulo é exagerado, engraçado e não ofende quem assiste?
-- [ ] Seguidores + views + detalhe singular, antes da promessa?
+- [ ] Seguidores + visualizações + detalhe singular, antes da promessa?
 - [ ] A promessa cai entre 19 e 26 s, com o **analisado** como sujeito?
 - [ ] Três princípios, cada um com nome → prova → mecânica → lição → ponte?
 - [ ] Pelo menos um princípio batizado com algo do próprio analisado?
 - [ ] O último princípio é o pilar do seu método/produto?
 - [ ] Quem apresenta só fala de si no fechamento?
-- [ ] Virada para o espectador antes do CTA?
+- [ ] Virada para o espectador antes do Chamada para ação?
 - [ ] Clipes do analisado somam 8–16 % do tempo, cada um até 7 s, punchline no fim?
 - [ ] Palavrão só na boca do analisado, e nenhum em tema sensível?

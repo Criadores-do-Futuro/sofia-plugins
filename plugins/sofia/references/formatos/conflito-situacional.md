@@ -24,5 +24,4 @@ IHC: impacto visual, história/conflito e conclusão/revelação.
 ## Não confundir
 - Diálogo: pode ter discordância, mas não exige uma situação urgente que pareça real.
 - Experimento Social: registra reações reais de desconhecidos; aqui o conflito pode ser encenado.
-- Hook verbal agressivo diante da câmera: conflito de ideia, não conflito situacional.
-
+- Abertura verbal agressivo diante da câmera: conflito de ideia, não conflito situacional.

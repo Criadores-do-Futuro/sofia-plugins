@@ -12,7 +12,7 @@ Una voz en off presenta o provoca al personaje visible, que reacciona, está de 
 ## Estructura que combina mejor
 Diálogo dramático corto o IHC.
 
-## Tipo de hook que pide este formato
+## Tipo de gancho que pide este formato
 La voz en off presenta, provoca o contradice al personaje, y él reacciona de inmediato.
 
 ## Reglas de escritura

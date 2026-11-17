@@ -23,3 +23,10 @@ output/
 
 # Sistema
 .DS_Store
+
+# Dependências e artefatos de validação
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+dist/

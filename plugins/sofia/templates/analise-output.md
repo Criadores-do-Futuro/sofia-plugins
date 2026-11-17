@@ -4,8 +4,8 @@ criador: "{{criador}}"
 plataforma: "{{plataforma}}"
 data_analise: "{{data}}"
 url: "{{url}}"
-views: {{views}}
-likes: {{likes}}
+visualizações: {{visualizações}}
+curtidas: {{curtidas}}
 comments: {{comments}}
 tags: [sofia, analise, {{plataforma}}]
 ---
@@ -15,15 +15,15 @@ tags: [sofia, analise, {{plataforma}}]
 **Criador:** {{criador}}
 **Plataforma:** {{plataforma}}
 **Data:** {{data_publicacao}}
-**Métricas:** {{views}} views | {{likes}} likes | {{comments}} comments
+**Métricas:** {{visualizações}} visualizações | {{curtidas}} curtidas | {{comments}} comments
 
 ---
 
-## Hook
+## Abertura
 
-> "{{hook}}"
+> "{{abertura}}"
 
-### Análise do Hook
+### Análise do Abertura
 - **Princípios:** {{principios_hook}}
 - **Lacuna aberta:** {{lacuna_hook}}
 - **Emoção disparada:** {{emocao_hook}}
@@ -46,14 +46,14 @@ tags: [sofia, analise, {{plataforma}}]
 | Tema + tamanho | {{tema}} |
 | Conflito: onde? | {{conflito}} |
 | Lacunas | {{lacunas}} |
-| Aha: timing | {{aha}} |
+| Aha: momento | {{aha}} |
 
 **O que está carregando:** {{carregando}}
 **O que poderia amplificar:** {{amplificar}}
 
 ---
 
-## Top Comentários + Insights
+## Principais Comentários + Aprendizados
 
 {{comentarios_insights}}
 

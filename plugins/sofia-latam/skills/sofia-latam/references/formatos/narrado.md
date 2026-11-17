@@ -8,7 +8,7 @@ El creador narra en voz en off mientras imágenes, clips o textos aparecen en pa
 ## Estructura que combina mejor
 [IHC](../estructuras-de-guion/ihc.md) o [Análisis](../estructuras-de-guion/analisis.md)
 
-## Tipo de hook que pide este formato
+## Tipo de gancho que pide este formato
 Escena inmersiva o declaración de consecuencia que crea una imagen mental fuerte en la primera frase.
 
 ## Elementos adictivos dominantes
@@ -22,4 +22,4 @@ Escena inmersiva o declaración de consecuencia que crea una imagen mental fuert
 5. Evita las abstracciones — todo debe poder traducirse en imagen
 6. Usa tiempo presente para crear inmersión ("entra", no "entró")
 7. El Efecto Ahá debe entregarse en el momento exacto en que lo visual confirma el argumento
-8. El CTA debe hablarse como consecuencia inevitable de lo que se acaba de mostrar
+8. El Llamado a la acción debe hablarse como consecuencia inevitable de lo que se acaba de mostrar

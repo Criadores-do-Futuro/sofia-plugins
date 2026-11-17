@@ -14,7 +14,7 @@ Vídeo que mostra o processo real por trás de um resultado, criação ou rotina
 ## Estrutura que combina melhor
 [IHC](../estruturas-de-roteiro/ihc.md) com abertura de resultado antes do processo
 
-## Tipo de hook que este formato pede
+## Tipo de abertura que este formato pede
 Declaração do resultado surpreendente antes de revelar o processo ("fiz X em Y tempo: aqui está o que ninguém mostra").
 
 ## Elementos viciantes dominantes
@@ -28,11 +28,11 @@ Declaração do resultado surpreendente antes de revelar o processo ("fiz X em Y
 5. A virada narrativa é o momento em que algo deu errado (ou muito certo) inesperadamente
 6. O Efeito Ahá é a revelação do que realmente importou no processo
 7. A moral deve ser uma lição aprendida no processo, não uma teoria prévia
-8. O CTA deve convidar o espectador a tentar o mesmo processo ou a seguir para ver mais bastidores
+8. O Chamada para ação deve convidar o espectador a tentar o mesmo processo ou a seguir para ver mais bastidores
 
 ## Não confundir
 - Vlog: registra um dia ou uma experiência; Bastidores registra o processo de UM resultado específico.
-- Lo-Fi: é sobre a produção crua; Bastidores pode ser bem produzido, o que define é mostrar o processo.
+- Produção simples: é sobre a produção crua; Bastidores pode ser bem produzido, o que define é mostrar o processo.
 - Tela Verde: se o processo aparece só como print atrás do criador, é Tela Verde, não Bastidores.
 
 ## Exemplo analisado

@@ -1,63 +1,15 @@
 ---
 name: exportar
-description: Exporta análises e aprendizados como arquivos .md ou guarda os aprendizados na pasta de dados da pessoa (~/.sofia/) para melhorar a escrita futura.
+description: Exporta análises, roteiros e perfis em português brasileiro para a pasta
+  da pessoa e guarda padrões somente quando solicitado.
 ---
 
-# Exportar e Aprender
+# Exportar e aprender
 
-## Trigger
+Leia [comportamento](../../comportamento.md). Identifique o escopo pedido: última análise, roteiro, perfil de voz ou conjunto de aprendizados da pessoa. Não transforme exportar um resultado em exportar todo o pacote.
 
-Usuário pede para exportar resultados ou pede para a Sofia "aprender" com uma análise.
+Confirme a pasta apenas se ainda não estiver definida. Salve em Markdown, JSON ou HTML conforme o pedido; nomes das seções e textos ficam em português, com identificadores técnicos preservados. Não escreva dentro da instalação e não sobrescreva arquivo existente sem preservar os dados ou confirmar a substituição quando houver perda.
 
-## Onde gravar
+Para aprender padrões, separe observações recorrentes de hipótese, registre a evidência e mostre o que será salvo. Só declare aprendizagem persistente depois de verificar o arquivo. Sem acesso ao disco, entregue o conteúdo copiável e diga que não foi salvo. Não exporte chaves, comentários com autor, transcrições integrais de terceiros nem conteúdo fora do escopo autorizado.
 
-A pasta do plugin é trocada a cada atualização, então **nada é gravado dentro dela**. Os aprendizados vão para a pasta de dados da pessoa, `~/.sofia/` (no Windows, `%USERPROFILE%\.sofia\`), e as exportações vão para a pasta de saída (`output_path` em `~/.sofia/config.yaml`).
-
-## Modos
-
-### Modo 1: Exportar como .md
-Gerar arquivo(s) markdown com:
-- Análise completa formatada
-- Hooks coletados
-- Insights de comentários (texto literal, sem @ ou nome de quem comentou)
-- Padrões identificados
-
-Output em pasta escolhida pelo usuário ou `{output_path}/Exports/`.
-
-### Modo 2: Aprender (guardar na base da pessoa)
-Ativar agente `aprendiz` para:
-1. Extrair padrões da análise recente
-2. Adicionar hooks à coleção
-3. Identificar novos elementos viciantes
-4. Gravar em `~/.sofia/aprendizados/` (hooks, padrões, insights de comentários)
-5. Sugerir melhorias de método, com confirmação, como nota em `~/.sofia/aprendizados/sugestoes.md`
-
-### Modo 3: Exportar base completa
-Gerar arquivo único com toda a base de conhecimento da pessoa:
-- A base inicial do plugin (`knowledge/`) somada aos aprendizados de `~/.sofia/aprendizados/`
-- Todos os hooks coletados
-- Todos os padrões aprendidos
-- Todas as métricas agregadas
-- Útil para backup ou migração
-
-## Fluxo
-
-1. Perguntar: "O que quer fazer?"
-   - Exportar última análise como .md
-   - Aprender com a última análise (guardar na sua base)
-   - Exportar toda a base de conhecimento
-   - Anotar sugestões de melhoria do método
-
-2. Executar modo escolhido
-
-3. Confirmar:
-   - Se exportar: mostrar caminho do arquivo
-   - Se aprender: mostrar o que foi adicionado/atualizado
-   - Se anotar sugestões: mostrar o texto e pedir confirmação antes de gravar
-
-## Regras
-
-- Nunca modificar arquivos da pasta do plugin (`agents/`, `skills/`, `references/`, `knowledge/`)
-- Sempre mostrar o que vai ser gravado antes de gravar
-- Exportações não afetam a base de conhecimento
-- Aprendizados são aditivos (não sobrescrevem, adicionam)
+Se a pasta escolhida for um cofre do Obsidian, siga [organização opcional](../../connectors/obsidian-vault.md), preservando a estrutura existente.

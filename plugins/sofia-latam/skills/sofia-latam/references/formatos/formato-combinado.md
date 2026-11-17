@@ -12,7 +12,7 @@ Dos formatos reconocibles se funden de forma deliberada y generan un lenguaje co
 ## Estructura que combina mejor
 Elige una estructura narrativa dominante y adapta las reglas visuales de los dos formatos.
 
-## Tipo de hook que pide este formato
+## Tipo de gancho que pide este formato
 El del formato que conduce; la otra capa entra después para ampliar.
 
 ## Reglas de escritura

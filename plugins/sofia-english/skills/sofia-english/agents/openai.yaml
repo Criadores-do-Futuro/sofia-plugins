@@ -1,0 +1,4 @@
+interface:
+  display_name: Sophia English · sofia-english
+  short_description: Short video scripts and review
+  default_prompt: Use $sofia-english to work on my content in English.

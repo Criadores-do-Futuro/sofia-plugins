@@ -8,7 +8,7 @@ Este é o eixo **"COMO se grava"** do modelo de 4 eixos da Sofia. Até aqui ele 
 |---|---|---|
 | **Princípios da viralização** | POR QUE funciona | [`../principios.md`](../principios.md): é a lei; tudo passa por aqui |
 | **Estrutura de roteiro** | COMO o argumento se organiza | [`../estruturas-de-roteiro/`](../estruturas-de-roteiro/README.md), as 5: AIDA, IHC, Jeito Errado × Jeito Certo, Ele/Eu/Você/Futuro, Análise |
-| **Arquétipo de conteúdo** | QUAL ângulo já provou pegar | [`../../knowledge/arquetipos-nichos-bolhas.md`](../../knowledge/arquetipos-nichos-bolhas.md): A1 a A15 (série, newsjacking, listicle, esquete, hot-take...) |
+| **Arquétipo de conteúdo** | QUAL ângulo já provou pegar | [`../../knowledge/arquetipos-nichos-bolhas.md`](../../knowledge/arquetipos-nichos-bolhas.md): A1 a A15 (série, gancho de notícia, lista, esquete, opinião provocadora...) |
 | **Formato de gravação** (ESTA pasta) | COMO se grava e monta | Tela dividida, narrado, cine, palestrinha... |
 
 Os elementos que prendem em **cada frase** (contraste, conflito, curiosidade) vivem em [`../elementos-viciantes/`](../elementos-viciantes/README.md) e atravessam os quatro eixos.
@@ -28,33 +28,33 @@ Um roteiro tem os quatro ao mesmo tempo. O formato é o que muda as **regras de 
 | [Experimento Social](experimento-social.md) | Experimento real com pessoas reais, resultado revelado | IHC (abre pela premissa-gancho) |
 | [Narrado](narrado.md) | Voz off sobre imagens, clips ou textos | IHC / Análise |
 | [Palestrinha](palestrinha.md) | Fala direto pra câmera, sem apoio visual | IHC / Jeito Errado × Jeito Certo |
-| [Storytelling Visual](storytelling-visual.md) | História com apoio de textos e gráficos animados | IHC / Ele-Eu-Você-Futuro |
+| [Narrativa visual](storytelling-visual.md) | História com apoio de textos e gráficos animados | IHC / Ele-Eu-Você-Futuro |
 | [Tela Dividida](tela-dividida.md) | Comenta conteúdo externo que aparece ao lado | Ele-Eu-Você-Futuro + Contraste |
 | [Tela Verde](tela-verde.md) | Fundo substituído por print, gráfico ou cena | Análise + IHC |
 | [The Office](the-office.md) | Mockumentary: olhar pra câmera, tom confessional irônico | IHC com narração interna |
 | [Conflito Situacional](conflito-situacional.md) | Abre com situação urgente que parece real | IHC |
 | [Trivial](trivial.md) | Conversa íntima em contexto cotidiano | Ele-Eu-Você-Futuro / IHC |
-| [Lo-Fi](lo-fi.md) | Produção crua e simples de propósito | IHC / hot-take |
+| [Produção simples](lo-fi.md) | Produção crua e simples de propósito | IHC / opinião provocadora |
 | [Vlog](vlog.md) | Registra experiência real em momentos e cenários | IHC |
-| [Análise](analise.md) | Interpreta sujeito definido usando inserts como evidência | Análise / AIDA |
+| [Análise](analise.md) | Interpreta sujeito definido usando imagens inseridas como evidência | Análise / AIDA |
 | [Conversa de Bar](conversa-de-bar.md) | Fala informal com olhar fora da lente | Ele-Eu-Você-Futuro |
 | [Analogia](analogia.md) | Usa situação concreta para explicar ideia abstrata | IHC |
-| [Criativo Preguiçoso](criativo-preguicoso.md) | Hook visual forte seguido de gravação simples | AIDA / IHC |
-| [Narrador](narrador.md) | Personagem em cena reage a narrador off-screen | Diálogo curto / IHC |
+| [Criativo Preguiçoso](criativo-preguicoso.md) | Abertura visual forte seguido de gravação simples | AIDA / IHC |
+| [Narrador](narrador.md) | Personagem em cena reage a narrador off-tela | Diálogo curto / IHC |
 | [Formato Combinado](formato-combinado.md) | Funde dois formatos reconhecíveis com intenção | Depende da combinação |
 
 > Nota honesta, no mesmo espírito de `arquetipos-nichos-bolhas.md`: as 5 estruturas da Sofia são de monólogo/narração. Nos formatos de esquete/diálogo (**Diálogo**, **The Office**) a estrutura sugerida é aproximação: nesses, aplique os princípios direto.
 
 ## Como escolher
 
-1. **O tema pede prova visual?** (dado, print, comparação) → Tela Verde, Comparação, Storytelling Visual
-2. **O tema é uma história ou experiência real?** → Cine, Narrado, Vlog, Storytelling Visual, Bastidores
-3. **O tema é opinião, análise ou posicionamento?** → Análise, Palestrinha, Caixinha Polêmica, Conversa de Bar, Lo-Fi
+1. **O tema pede prova visual?** (dado, print, comparação) → Tela Verde, Comparação, Narrativa visual
+2. **O tema é uma história ou experiência real?** → Cine, Narrado, Vlog, Narrativa visual, Bastidores
+3. **O tema é opinião, análise ou posicionamento?** → Análise, Palestrinha, Caixinha Polêmica, Conversa de Bar, Produção simples
 4. **O tema reage a algo que já existe?** → Tela Dividida
 5. **O tema é uma lista de valor rápido?** → Dinamismo
 6. **O tema precisa de evidência de comportamento real?** → Experimento Social, Vlog, Diálogo
 7. **Existe uma ideia abstrata que precisa ficar concreta?** → Analogia
-8. **O hook precisa parar pelo visual com produção mínima depois?** → Criativo Preguiçoso
+8. **O abertura precisa parar pelo visual com produção mínima depois?** → Criativo Preguiçoso
 9. **A ideia nasce de uma cena de tensão?** → Conflito Situacional
 10. **Duas linguagens são essenciais, não decorativas?** → Formato Combinado
 
@@ -67,13 +67,13 @@ O arquétipo (o ângulo) e o formato (a gravação) são escolhas independentes 
 | Arquétipo | Formato que costuma acompanhar |
 |---|---|
 | A1 série numerada | Dinamismo, Palestrinha |
-| A2 newsjacking | Tela Verde, Tela Dividida |
-| A3 listicle | Dinamismo, Tela Verde |
+| A2 gancho de notícia | Tela Verde, Tela Dividida |
+| A3 lista | Dinamismo, Tela Verde |
 | A4 prova de renda / caso real | Palestrinha, Bastidores |
-| A6 tutorial-demo | Tela Verde, Narrado |
+| A6 tutorial-demonstração | Tela Verde, Narrado |
 | A8 polêmica | Caixinha Polêmica, Palestrinha |
 | A14 esquete de cena | Diálogo, The Office |
-| A15 hot-take | Palestrinha, The Office |
+| A15 opinião provocadora | Palestrinha, The Office |
 
 ## Como os agentes usam
 

@@ -4,7 +4,7 @@
 
 ## Visão Geral
 
-Seu vídeo precisa chamar Atenção, gerar Interesse, gerar Desejo pela ideia que você quer vender e levar o público a uma Ação (seu CTA).
+Seu vídeo precisa chamar Atenção, gerar Interesse, gerar Desejo pela ideia que você quer vender e levar o público a uma Ação (seu Chamada para ação).
 
 ## Etapas
 
@@ -13,7 +13,7 @@ Seu vídeo precisa chamar Atenção, gerar Interesse, gerar Desejo pela ideia qu
 Defina um Tema Interessante. Para chamar atenção no início, una o tema com uma **CURIOSIDADE** do tema ou um **CONFLITO** do tema.
 
 - O tema define o teto de alcance
-- A curiosidade ou conflito funcionam como hook
+- A curiosidade ou conflito funcionam como abertura
 
 ### 2. Interesse
 
@@ -39,10 +39,10 @@ O desejo é o momento emocional: a pessoa precisa SENTIR algo.
 
 ### 4. Ação
 
-É o seu CTA (Call to Action). Duas formas:
+É o seu Chamada para ação (Call to Action). Duas formas:
 
-- **CTA direto:** Pede explicitamente para seguir, comentar, curtir
-- **CTA indireto:** Não fala diretamente, mas fica subentendido (mais elegante)
+- **Chamada para ação direto:** Pede explicitamente para seguir, comentar, curtir
+- **Chamada para ação indireto:** Não fala diretamente, mas fica subentendido (mais elegante)
 
 ## Quando usar
 
@@ -56,4 +56,4 @@ O desejo é o momento emocional: a pessoa precisa SENTIR algo.
 - [ ] A abertura tem curiosidade ou conflito?
 - [ ] O meio prova o ponto com história/dados/ensino?
 - [ ] A moral gera desejo emocional?
-- [ ] O CTA está presente (direto ou indireto)?
+- [ ] O Chamada para ação está presente (direto ou indireto)?

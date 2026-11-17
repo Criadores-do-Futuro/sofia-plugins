@@ -1,0 +1,59 @@
+{
+  "date": "2026-11-17",
+  "portable_package_validation": [
+    {
+      "plugin": "sofia",
+      "errors": [],
+      "missing_listing_fields": [
+        "websiteURL"
+      ],
+      "skills": [
+        "analisar",
+        "critica",
+        "dashboard",
+        "exportar",
+        "melhorar",
+        "roteiro",
+        "setup"
+      ],
+      "structure_valid": true,
+      "submission_metadata_complete": false
+    },
+    {
+      "plugin": "sofia-latam",
+      "errors": [],
+      "missing_listing_fields": [
+        "websiteURL"
+      ],
+      "skills": [
+        "sofia-latam"
+      ],
+      "structure_valid": true,
+      "submission_metadata_complete": false
+    },
+    {
+      "plugin": "sofia-english",
+      "errors": [],
+      "missing_listing_fields": [
+        "websiteURL"
+      ],
+      "skills": [
+        "sofia-english"
+      ],
+      "structure_valid": true,
+      "submission_metadata_complete": false
+    }
+  ],
+  "claude_directory_validation": {
+    "sofia": true,
+    "sofia-latam": true,
+    "sofia-english": true,
+    "marketplace": true
+  },
+  "skill_creator_validated_skills": 9,
+  "local_tests_passed": 11,
+  "model_behavior_evaluation": "not run",
+  "paid_integrations": "not run",
+  "portal_upload": "not performed",
+  "github_actions": "prepared template; activation blocked by missing workflow scope"
+}

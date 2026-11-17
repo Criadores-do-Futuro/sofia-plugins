@@ -14,7 +14,7 @@ Criador narra ou comenta um conteúdo externo (vídeo de outra pessoa, cena real
 ## Estrutura que combina melhor
 [Ele-Eu-Você-Futuro](../estruturas-de-roteiro/ele-eu-voce-futuro.md) + Contraste
 
-## Tipo de hook que este formato pede
+## Tipo de abertura que este formato pede
 Declaração de consequência curiosa ou cena imersiva em segunda pessoa.
 
 ## Elementos viciantes dominantes
@@ -25,15 +25,12 @@ Declaração de consequência curiosa ou cena imersiva em segunda pessoa.
 2. Use "mas" como dispositivo técnico de contraste
 3. Coloque o espectador dentro da cena com "você" e "seu"
 4. Cada trecho deve intensificar o conflito do anterior
-5. O Efeito Ahá é o payoff do loop: nunca revele antes de construir tensão
+5. O Efeito Ahá é o entrega da promessa do pergunta em aberto: nunca revele antes de construir tensão
 6. A moral deve virar a câmera para o espectador
 7. Use marcas, programas e nomes reais e verificáveis
-8. O CTA deve ser consequência natural da moral
+8. O Chamada para ação deve ser consequência natural da moral
 
 ## Não confundir
 - Comparação: os dois lados são opções sendo comparadas; na Tela Dividida um lado é o conteúdo comentado e o outro é o criador.
 - Tela Verde: o conteúdo externo aparece ATRÁS do criador, como fundo; na Tela Dividida ele divide o quadro.
-- Análise: interpreta um sujeito com inserts intercalados; se o conteúdo externo fica na tela junto do criador, é Tela Dividida.
-
-## Exemplo analisado
-Roteiro real deste formato, anotado frase a frase: esta peça vem do conector de conteúdo da Sofia (MCP `sofia-conteudo`, ferramenta `carregar_conteudo`, plugin `sofia`, peça `exemplos-analisados/tela-dividida`). Se o conector não estiver disponível, diga isso ao usuário e siga sem a peça; não invente o conteúdo.
+- Análise: interpreta um sujeito com imagens inseridas intercalados; se o conteúdo externo fica na tela junto do criador, é Tela Dividida.

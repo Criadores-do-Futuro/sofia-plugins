@@ -23,4 +23,3 @@ Ele-Eu-Você-Futuro ou IHC curto.
 - Vlog: exige sequência de momentos ou cenários e narrativa de experiência.
 - Tutorial: o foco é ensinar a atividade ou técnica.
 - Conversa de Bar: é definida principalmente pelo olhar fora da lente; Trivial é definido pelo contexto cotidiano.
-

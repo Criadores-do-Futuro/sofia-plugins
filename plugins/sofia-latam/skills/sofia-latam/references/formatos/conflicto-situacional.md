@@ -12,7 +12,7 @@ El video abre con un conflicto fuerte que parece real — discusión, amenaza, a
 ## Estructura que combina mejor
 IHC: impacto, conflicto y conclusión/revelación.
 
-## Tipo de hook que pide este formato
+## Tipo de gancho que pide este formato
 Acción o tensión en curso desde el primer segundo (discusión, urgencia, confrontación), sin explicación previa.
 
 ## Reglas de escritura

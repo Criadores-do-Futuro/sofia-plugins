@@ -1,17 +1,17 @@
 ---
-title: "Insights — {{titulo}}"
+title: "Aprendizados — {{titulo}}"
 criador: "{{criador}}"
 data: "{{data}}"
-tags: [sofia, comentarios, insights]
+tags: [sofia, comentarios, aprendizados]
 ---
 
-# Insights dos Comentários: {{titulo}}
+# Aprendizados dos Comentários: {{titulo}}
 
 ## Métricas de engajamento
 - Total de comentários: {{total_comments}}
-- Analisados (top por likes): {{analisados}}
+- Analisados (principais por curtidas): {{analisados}}
 
-## Top comentários
+## Principais comentários
 
 {{lista_comentarios}}
 
@@ -34,7 +34,7 @@ tags: [sofia, comentarios, insights]
 O que os comentários mostram que o público estava PENSANDO:
 - {{debate_mental_revelado}}
 
-## Insights para roteiro
+## Aprendizados para roteiro
 
 O que aprender desses comentários para escrever melhor:
 1. {{insight_1}}

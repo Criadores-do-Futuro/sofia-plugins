@@ -1,0 +1,58 @@
+{
+  "name": "sofia-latam",
+  "description": "Analiza videos cortos, escribe y revisa guiones en español latinoamericano, aprende la voz del creador y exporta análisis. Usa referencias incluidas y hechos proporcionados o verificados. La preparación visual local requiere Python, FFmpeg y ejecución de comandos; el análisis de texto funciona sin esos recursos. Los servicios externos opcionales usan la cuenta de la persona y requieren autorización.",
+  "version": "1.1.0",
+  "author": {
+    "name": "srbentostk"
+  },
+  "license": "LicenseRef-Proprietary",
+  "repository": "https://github.com/bento-dev-ia/sofia-plugins",
+  "keywords": [
+    "guion",
+    "video",
+    "análisis",
+    "español"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Sofia LATAM",
+    "shortDescription": "Guiones y análisis de videos",
+    "longDescription": "Analiza videos cortos, escribe y revisa guiones en español latinoamericano, aprende la voz del creador y exporta análisis. Usa referencias incluidas y hechos proporcionados o verificados. La preparación visual local requiere Python, FFmpeg y ejecución de comandos; el análisis de texto funciona sin esos recursos. Los servicios externos opcionales usan la cuenta de la persona y requieren autorización.",
+    "developerName": "Alef Marques",
+    "category": "Creativity",
+    "defaultPrompt": [
+      "Ayúdame a escribir un guion de 45 segundos con mi experiencia real.",
+      "Revisa mi guion y conserva las frases que ya funcionan.",
+      "Analiza el video adjunto sin inventar imágenes, palabras ni métricas."
+    ],
+    "logo": "./assets/icon.png",
+    "composerIcon": "./assets/icon.png",
+    "privacyPolicyURL": "https://plataforma.academiacriadoresdofuturo.com.br/sofia/privacidad",
+    "termsOfServiceURL": "https://plataforma.academiacriadoresdofuturo.com.br/sofia/terminos",
+    "supportURL": "https://plataforma.academiacriadoresdofuturo.com.br/sofia/soporte"
+  },
+  "requires_local_executor": true,
+  "extensions": {
+    "com.openai": {
+      "review": {
+        "prompts": [
+          "Ayúdame a escribir un guion de 45 segundos con mi experiencia real.",
+          "Revisa mi guion y conserva las frases que ya funcionan.",
+          "Analiza el video adjunto sin inventar imágenes, palabras ni métricas."
+        ],
+        "commerce": true,
+        "commerce_description": "Las compras son de suscripciones, comunidades o cursos, con pago en Hotmart. Este plugin no procesa pagos ni valida compras."
+      },
+      "publication": {
+        "countries": [],
+        "release_notes": "Comportamiento e idioma coherentes, referencias locales, rutas portátiles y preparación visual con evidencias y límites explícitos.",
+        "translations": {
+          "es-419": {
+            "subtitle": "Guiones y análisis de videos",
+            "description": "Analiza videos cortos, escribe y revisa guiones en español latinoamericano, aprende la voz del creador y exporta análisis. Usa referencias incluidas y hechos proporcionados o verificados. La preparación visual local requiere Python, FFmpeg y ejecución de comandos; el análisis de texto funciona sin esos recursos. Los servicios externos opcionales usan la cuenta de la persona y requieren autorización."
+          }
+        }
+      }
+    }
+  }
+}

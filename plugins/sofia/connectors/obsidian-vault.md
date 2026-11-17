@@ -1,77 +1,11 @@
-# Conector: Obsidian Vault
+# Organização opcional no Obsidian
 
-## Estrutura de output
+Leia [comportamento](../comportamento.md). Obsidian é opcional: qualquer pasta escolhida pela pessoa pode receber os arquivos Markdown. Não procure um cofre em toda a pasta pessoal nem altere sua organização sem necessidade para o pedido.
 
-Todo output do Sofia 2.0 é salvo como arquivos Markdown com frontmatter YAML, compatíveis com Obsidian. O Obsidian é opcional: a pasta de saída pode ser qualquer pasta da pessoa.
+Se a configuração existir em `~/.sofia/config.yaml`, a pasta está em `sofia.output_path`, conforme [modelo](../knowledge/config.exemplo.yaml). Se não existir, use a pasta informada no pedido ou pergunte onde salvar. Preserve arquivos e metadados preexistentes.
 
-## Organização de pastas
+Uma organização sugerida é `Pesquisas/`, `Roteiros/`, `Analises/` e `Exportacoes/`; adapte à estrutura já adotada pela pessoa. Perfis e aprendizados persistentes podem ficar em `~/.sofia/`, fora da instalação. Use nomes descritivos em português, datas no formato `AAAA-MM-DD` e campos YAML que o cofre já utiliza. Não traduza campos que sejam identificadores de integrações existentes.
 
-A pasta de saída é `output_path`, definida em `~/.sofia/config.yaml` (no Windows, `%USERPROFILE%\.sofia\config.yaml`).
+Quando um roteiro estiver pronto para gravar, ou pedirem essa lista, mostre a pasta uma vez e o nome exato de cada arquivo sem `.md`, para abrir no seletor rápido com `Cmd+O`. Ordene primeiro notícias cujo contexto pode vencer, depois materiais ligados ao objetivo comercial atual e por fim conteúdos atemporais. Para notícias, confira a data real e avise quando os fatos precisam de atualização; não invente uma prioridade comercial desconhecida.
 
-```
-{output_path}/
-├── Pesquisas/
-│   └── {nome-do-criador}/
-│       └── {titulo-do-video}/
-│           ├── roteiro-anotado.md
-│           ├── hook.md
-│           ├── comentarios.md
-│           ├── metricas.md
-│           └── aprendizados.md
-│
-├── Roteiros/
-│   └── {YYYY-MM-DD}-{titulo}/
-│       ├── roteiro-v1.md
-│       ├── roteiro-v2.md
-│       ├── critica.md
-│       └── versao-final.md
-│
-├── Analises/
-│   └── dashboard.html
-│
-└── Exports/
-```
-
-Os aprendizados (hooks, padrões, insights de comentários, estilos) não ficam aqui: ficam na pasta de dados da Sofia, `~/.sofia/` (ver `/sofia:setup`).
-
-## Configuração
-
-### Achar o vault
-Primeiro pergunte à pessoa onde fica o vault. Só procure no computador se ela autorizar a busca na pasta pessoal:
-```bash
-find ~ -name ".obsidian" -maxdepth 4 -type d 2>/dev/null
-```
-Mostre o que encontrou e confirme antes de usar.
-
-### Manual
-Definir em `~/.sofia/config.yaml`:
-```yaml
-output_path: "/caminho/completo/para/seu/vault/Sofia"
-```
-
-## Convenções de nomenclatura
-
-- **Criadores:** slug do nome (minúsculas, hifens): `nome-do-criador`
-- **Títulos:** primeiras 5-6 palavras em slug: `empresario-mentiroso-faturou-bilhoes`
-- **Datas:** formato ISO: `2026-05-14`
-
-## Frontmatter padrão
-
-Todos os arquivos incluem:
-```yaml
----
-title: ""
-tags: [sofia, ...]
-created: "YYYY-MM-DD"
----
-```
-
-## Comentários
-Arquivos de comentários guardam o texto literal, as curtidas e a data. Nunca o @, o nome ou a foto de quem comentou.
-
-## Integração com Obsidian
-
-- Tags permitem filtrar por tipo (analise, roteiro, hook, insight)
-- Wikilinks conectam análises a roteiros inspirados nelas
-- Dataview pode agregar dados dos frontmatters
-- Graph view mostra conexões entre análises e roteiros
+Exportar um resultado não autoriza reorganizar o cofre nem publicar seus arquivos. Guarde comentários sem identificadores de autor e não copie transcrições integrais de terceiros para uma base redistribuível.

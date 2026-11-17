@@ -14,7 +14,7 @@ Criador narra em voz off enquanto imagens, clips ou textos aparecem na tela. O r
 ## Estrutura que combina melhor
 [IHC](../estruturas-de-roteiro/ihc.md) ou [Análise](../estruturas-de-roteiro/analise.md)
 
-## Tipo de hook que este formato pede
+## Tipo de abertura que este formato pede
 Cena imersiva ou declaração de consequência que cria imagem mental forte na primeira frase.
 
 ## Elementos viciantes dominantes
@@ -28,12 +28,12 @@ Cena imersiva ou declaração de consequência que cria imagem mental forte na p
 5. Evite abstrações: tudo deve ser traduzível em imagem
 6. Use tempo verbal presente para criar imersão ("ele entra", não "ele entrou")
 7. O Efeito Ahá deve ser entregue no exato momento em que o visual confirma o argumento
-8. O CTA deve ser falado como consequência inevitável do que acabou de ser mostrado
+8. O Chamada para ação deve ser falado como consequência inevitável do que acabou de ser mostrado
 
 ## Não confundir
 - Narrador: um personagem em cena REAGE à voz off; no Narrado a voz conduz e as imagens ilustram.
-- Storytelling Visual: a história é contada principalmente por textos e gráficos animados; no Narrado quem conta é a voz.
-- Análise: usa inserts como evidência com o criador aparecendo e interpretando; se a voz é off do começo ao fim, é Narrado.
+- Narrativa visual: a história é contada principalmente por textos e gráficos animados; no Narrado quem conta é a voz.
+- Análise: usa imagens inseridas como evidência com o criador aparecendo e interpretando; se a voz é off do começo ao fim, é Narrado.
 
 ## Exemplo analisado
 Ainda não há roteiro deste formato anotado na base da Sofia. Quando um vídeo deste formato for analisado com `/sofia:analisar`, o **aprendiz** pode guardar o exemplo na pasta de dados da pessoa, `~/.sofia/exemplos-analisados/`.

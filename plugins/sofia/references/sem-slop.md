@@ -1,6 +1,6 @@
 # Sem slop: tirar marca de IA do texto
 
-Regras obrigatórias para qualquer texto escrito pela sofia: roteiro, hook, legenda, copy, análise.
+Regras obrigatórias para qualquer texto escrito pela sofia: roteiro, abertura, legenda, texto publicitário, análise.
 Adaptado de [stop-slop](https://github.com/hardikpandya/stop-slop), de Hardik Pandya (MIT), para
 português do Brasil e para texto falado.
 

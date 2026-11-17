@@ -24,4 +24,3 @@ IHC ou Ele-Eu-Você-Futuro.
 - Trivial: geralmente permanece num contexto cotidiano único, sem jornada.
 - Dinamismo: muda posição para dar ritmo, mas não necessariamente registra uma experiência real.
 - Narrado: pode usar muitos B-rolls, porém não exige que sejam etapas de uma vivência com arco.
-

@@ -44,10 +44,10 @@ La historia necesita tener:
 
 Ahora que capturaste la atención y generaste emoción, es momento de sembrar la idea. Puedes:
 
-- Dar un insight ("el problema nunca fuiste tú — fue la forma en la que te lo enseñaron")
+- Dar un aprendizaje ("el problema nunca fuiste tú — fue la forma en la que te lo enseñaron")
 - Dar un consejo práctico
 - Hacer una provocación
-- Hacer un CTA disimulado ("Y por eso enseño estructura de guion con tanta pasión dentro de mi comunidad.")
+- Hacer un Llamado a la acción disimulado ("Y por eso enseño estructura de guion con tanta pasión dentro de mi comunidad.")
 
 **Importante:** el contenido no necesita ser técnico. Necesita ser emocionalmente relevante para el nicho que estás tratando de conquistar. La moraleja de la historia es la semilla que quieres plantar en la cabeza de quien la vio.
 

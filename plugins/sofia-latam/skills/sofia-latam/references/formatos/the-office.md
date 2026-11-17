@@ -3,12 +3,12 @@
 > **Formato ≠ estructura.** El formato es CÓMO se graba y se monta el video. La estructura es la SECUENCIA narrativa del guion (ver `references/estructuras-de-guion/`). Todo guion tiene los dos.
 
 ## Qué es
-Video con estética de mockumentary: cámara fija o levemente inestable, el creador mira a cámara como si fuera una entrevista de documental, tono entre serio e irónico.
+Video con estética de falso documental: cámara fija o levemente inestable, el creador mira a cámara como si fuera una entrevista de documental, tono entre serio e irónico.
 
 ## Estructura que combina mejor
 [IHC](../estructuras-de-guion/ihc.md) con narración interna (mirar a cámara como confesión)
 
-## Tipo de hook que pide este formato
+## Tipo de gancho que pide este formato
 Declaración directa a cámara que crea intimidad y extrañeza al mismo tiempo.
 
 ## Elementos adictivos dominantes
@@ -22,4 +22,4 @@ Declaración directa a cámara que crea intimidad y extrañeza al mismo tiempo.
 5. La situación narrada debe ser reconocible y universalmente incómoda o verdadera
 6. La moraleja emerge como una confesión, no como una enseñanza
 7. Usa pausas y silencios estratégicos — el ritmo de the-office es lo que crea el humor
-8. El CTA debe entregarse con el mismo tono confesional del resto del video
+8. El Llamado a la acción debe entregarse con el mismo tono confesional del resto del video

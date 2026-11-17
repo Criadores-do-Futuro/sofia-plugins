@@ -1,7 +1,7 @@
-# Formato: Lo-Fi
+# Formato: Produção simples
 
 ## O que é
-Vídeo deliberadamente simples, cru e pouco polido. A sensação de espontaneidade vem de câmera de celular, luz disponível, poucos cortes e imperfeições mantidas. Lo-Fi não significa descuido: a baixa produção é uma escolha para aumentar proximidade e credibilidade.
+Vídeo deliberadamente simples, cru e pouco polido. A sensação de espontaneidade vem de câmera de celular, luz disponível, poucos cortes e imperfeições mantidas. Produção simples não significa descuido: a baixa produção é uma escolha para aumentar proximidade e credibilidade.
 
 ## Assinatura visual
 - Luz e ambiente naturais, sem aparência de set
@@ -10,7 +10,7 @@ Vídeo deliberadamente simples, cru e pouco polido. A sensação de espontaneida
 - Hesitações ou ruídos leves preservados sem impedir compreensão
 
 ## Estrutura que combina melhor
-IHC direto, hot-take ou relato curto.
+IHC direto, opinião provocadora ou relato curto.
 
 ## Regras de escrita
 1. Comece rápido, como se a ideia tivesse acabado de surgir.
@@ -21,7 +21,6 @@ IHC direto, hot-take ou relato curto.
 6. Não tente compensar a simplicidade com excesso de efeitos na edição.
 
 ## Não confundir
-- Trivial: precisa de contexto/objeto cotidiano reconhecível; Lo-Fi pode ocorrer em qualquer lugar.
-- Criativo Preguiçoso: concentra um hook visual elaborado no começo; Lo-Fi mantém simplicidade coerente.
-- Vídeo mal executado: Lo-Fi preserva clareza de áudio, intenção e ponto de vista.
-
+- Trivial: precisa de contexto/objeto cotidiano reconhecível; Produção simples pode ocorrer em qualquer lugar.
+- Criativo Preguiçoso: concentra um abertura visual elaborado no começo; Produção simples mantém simplicidade coerente.
+- Vídeo mal executado: Produção simples preserva clareza de áudio, intenção e ponto de vista.

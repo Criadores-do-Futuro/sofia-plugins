@@ -1,0 +1,58 @@
+{
+  "name": "sofia",
+  "description": "Pesquisa e analisa vídeos curtos, cria e revisa roteiros em português brasileiro, aprende a voz do criador e exporta análises. Usa referências incluídas no pacote e fatos fornecidos ou verificados. A preparação visual local exige Python, FFmpeg e execução de comandos; a análise de texto funciona sem esses recursos. Serviços externos opcionais usam a conta da pessoa e só são acionados com autorização.",
+  "version": "3.11.0",
+  "author": {
+    "name": "bento-dev-ia"
+  },
+  "repository": "https://github.com/bento-dev-ia/sofia-plugins",
+  "license": "LicenseRef-Proprietary",
+  "keywords": [
+    "roteiro",
+    "vídeo",
+    "análise",
+    "português"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Sofia Português",
+    "shortDescription": "Roteiros e análise de vídeos",
+    "longDescription": "Pesquisa e analisa vídeos curtos, cria e revisa roteiros em português brasileiro, aprende a voz do criador e exporta análises. Usa referências incluídas no pacote e fatos fornecidos ou verificados. A preparação visual local exige Python, FFmpeg e execução de comandos; a análise de texto funciona sem esses recursos. Serviços externos opcionais usam a conta da pessoa e só são acionados com autorização.",
+    "developerName": "Alef Marques",
+    "category": "Creativity",
+    "defaultPrompt": [
+      "Ajude-me a escrever um roteiro de 45 segundos usando minha experiência real.",
+      "Revise meu roteiro e preserve as frases que já funcionam.",
+      "Analise o vídeo enviado sem inventar imagens, falas ou métricas."
+    ],
+    "logo": "./assets/icon.png",
+    "composerIcon": "./assets/icon.png",
+    "supportURL": "https://plataforma.academiacriadoresdofuturo.com.br/sofia/suporte",
+    "privacyPolicyURL": "https://plataforma.academiacriadoresdofuturo.com.br/sofia/privacidade",
+    "termsOfServiceURL": "https://plataforma.academiacriadoresdofuturo.com.br/sofia/termos"
+  },
+  "requires_local_executor": true,
+  "extensions": {
+    "com.openai": {
+      "review": {
+        "prompts": [
+          "Ajude-me a escrever um roteiro de 45 segundos usando minha experiência real.",
+          "Revise meu roteiro e preserve as frases que já funcionam.",
+          "Analise o vídeo enviado sem inventar imagens, falas ou métricas."
+        ],
+        "commerce": true,
+        "commerce_description": "As compras são de assinaturas, comunidades ou cursos, com pagamento na Hotmart. Este plugin não processa pagamentos nem valida compras."
+      },
+      "publication": {
+        "countries": [],
+        "release_notes": "Padronização de comportamento e idioma, referências locais, caminhos portáteis e preparação visual com evidências e limites explícitos.",
+        "translations": {
+          "pt-BR": {
+            "subtitle": "Roteiros e análise de vídeos",
+            "description": "Pesquisa e analisa vídeos curtos, cria e revisa roteiros em português brasileiro, aprende a voz do criador e exporta análises. Usa referências incluídas no pacote e fatos fornecidos ou verificados. A preparação visual local exige Python, FFmpeg e execução de comandos; a análise de texto funciona sem esses recursos. Serviços externos opcionais usam a conta da pessoa e só são acionados com autorização."
+          }
+        }
+      }
+    }
+  }
+}

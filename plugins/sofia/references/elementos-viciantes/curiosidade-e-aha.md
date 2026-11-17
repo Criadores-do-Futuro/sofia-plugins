@@ -1,6 +1,6 @@
 # Curiosidade e Efeito AHA
 
-**Curiosidade abre um loop na cabeça. Efeito AHA fecha o loop.**
+**Curiosidade abre um pergunta em aberto na cabeça. Efeito AHA fecha o pergunta em aberto.**
 
 > IMPORTANTE: Os exemplos neste documento são apenas referências internas para ilustrar o princípio. NÃO devem ser usados em conversas com o usuário nem reproduzidos em roteiros. O que guia a escrita e a análise é o PRINCÍPIO, não os exemplos.
 
@@ -14,7 +14,7 @@ Enquanto a resposta não vem, a pessoa não consegue parar de pensar nisso.
 
 É como uma coceira que só passa quando você coça. O cérebro detecta uma lacuna de informação e fica desconfortável até fechar essa lacuna.
 
-A curiosidade cria um **loop aberto**: uma pergunta sem resposta que prende a atenção.
+A curiosidade cria um **pergunta em aberto aberto**: uma pergunta sem resposta que prende a atenção.
 
 ### Formas de gerar curiosidade
 
@@ -30,7 +30,7 @@ A curiosidade cria um **loop aberto**: uma pergunta sem resposta que prende a at
 
 ## O Princípio: Efeito AHA
 
-É quando você fecha o loop. Quando finalmente entrega a resposta, vem a sensação de "Ahhh, agora entendi!"
+É quando você fecha o pergunta em aberto. Quando finalmente entrega a resposta, vem a sensação de "Ahhh, agora entendi!"
 
 ### A relação entre os dois
 
@@ -55,29 +55,29 @@ Efeito AHA → fecha o loop → recompensa o público
 2. **Segure a resposta:** não entregue tudo de uma vez
 3. **Construa tensão:** adicione detalhes que aumentem a vontade de saber
 4. **Feche com AHA:** entregue a resposta de forma clara e satisfatória
-5. **Pode ter vários loops:** abra e feche múltiplas curiosidades ao longo do roteiro
+5. **Pode ter vários perguntas em aberto:** abra e feche múltiplas curiosidades ao longo do roteiro
 
 ## Como aplicar na análise
 
 Ao analisar um vídeo, identifique:
 
-1. Onde a curiosidade é aberta? (geralmente no hook)
+1. Onde a curiosidade é aberta? (geralmente no abertura)
 2. Quanto tempo a resposta é segurada?
 3. O efeito AHA é satisfatório? (a resposta valeu a espera?)
-4. Há múltiplos loops de curiosidade ao longo do vídeo?
-5. Algum loop ficou aberto sem fechar? (frustração)
+4. Há múltiplos perguntas em aberto de curiosidade ao longo do vídeo?
+5. Algum pergunta em aberto ficou aberto sem fechar? (frustração)
 
 ## Erros comuns
 
 - Entregar a resposta rápido demais (mata a curiosidade)
 - Prometer demais e entregar de menos (clickbait)
 - Não abrir nenhuma curiosidade (conteúdo que ninguém para pra ver)
-- Abrir muitos loops e não fechar nenhum (confunde o público)
+- Abrir muitos perguntas em aberto e não fechar nenhum (confunde o público)
 
 ## Checklist para o agente
 
-- [ ] O hook abre curiosidade clara?
+- [ ] O abertura abre curiosidade clara?
 - [ ] A resposta é segurada tempo suficiente?
 - [ ] O efeito AHA é satisfatório e claro?
-- [ ] Não há loops abertos sem fechamento?
+- [ ] Não há perguntas em aberto abertos sem fechamento?
 - [ ] O equilíbrio curiosidade/AHA não parece clickbait?

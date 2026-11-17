@@ -13,11 +13,11 @@ Verificar DEPOIS de escrever o roteiro, antes de entregar.
 - [ ] **Aha:** Chega no momento certo? (não cedo demais)
 - [ ] **Moral:** Conecta com a vida de quem assiste?
 
-## Hook (primeiros 3 segundos)
+## Abertura (primeiros 3 segundos)
 - [ ] Abre lacuna de curiosidade?
 - [ ] Usa familiaridade para reduzir custo de entrada?
 - [ ] Gera emoção imediata?
-- [ ] Daria pra scrollar sem parar? (Se sim, hook fraco)
+- [ ] Daria pra scrollar sem parar? (Se sim, abertura fraco)
 
 ## Qualidade geral
 - [ ] Não é redundante? (mesma ideia repetida)
@@ -35,4 +35,4 @@ Verificar DEPOIS de escrever o roteiro, antes de entregar.
 ## Engajamento externo
 - [ ] O público COMENTARIA algo? (debate mental forte)
 - [ ] O público COMPARTILHARIA? (familiaridade de identidade)
-- [ ] O público REASSISTIRIA? (aha satisfatório ou loop)
+- [ ] O público REASSISTIRIA? (aha satisfatório ou pergunta em aberto)

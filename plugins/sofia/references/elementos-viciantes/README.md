@@ -12,7 +12,7 @@ Elementos que tornam um conteúdo impossível de ignorar. São ferramentas que p
 | [Linguagem Familiar + Imagem Mental](linguagem-familiar.md) | A mente é preguiçosa: fale como seu público fala | Faz o público ENTENDER sem esforço e VER a cena |
 | [Tema e Moral da História](tema-e-moral.md) | Tema atrai, moral planta a ideia | Faz o público PARAR e depois PENSAR |
 | [Conflito e Mudança](conflito-e-mudanca.md) | Sem conflito não tem história | Faz o público querer saber O QUE ACONTECEU |
-| [Curiosidade e Efeito AHA](curiosidade-e-aha.md) | Abre loop na cabeça, fecha com recompensa | Faz o público FICAR até o final |
+| [Curiosidade e Efeito AHA](curiosidade-e-aha.md) | Abre pergunta em aberto na cabeça, fecha com recompensa | Faz o público FICAR até o final |
 | [Contraste](contraste.md) | Opostos lado a lado amplificam emoção | Faz o público SENTIR mais intensamente |
 
 ## Como os agentes usam estes elementos

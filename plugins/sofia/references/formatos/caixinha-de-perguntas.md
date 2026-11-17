@@ -3,7 +3,7 @@
 **ID oficial:** `caixinha-de-perguntas`
 
 ## O que é
-Resposta a uma pergunta provocativa exibida na caixinha nativa do Instagram. A pergunta visível é a premissa e o hook; não é resposta a comentário nem apenas texto digitado sobre o vídeo.
+Resposta a uma pergunta provocativa exibida na caixinha nativa do Instagram. A pergunta visível é a premissa e o abertura; não é resposta a comentário nem apenas texto digitado sobre o vídeo.
 
 ## Assinatura visual
 - Sticker nativo de perguntas visível, com a pergunta escrita
@@ -23,6 +23,5 @@ Jeito Errado × Jeito Certo ou Ele-Eu-Você-Futuro.
 
 ## Não confundir
 - Resposta a comentário: não é Caixinha Polêmica.
-- Pergunta criada como texto comum: pode ser palestrinha ou hot-take, mas não este formato.
+- Pergunta criada como texto comum: pode ser palestrinha ou opinião provocadora, mas não este formato.
 - Pergunta neutra sem potencial de debate: usa a interface, mas não executa bem o formato.
-

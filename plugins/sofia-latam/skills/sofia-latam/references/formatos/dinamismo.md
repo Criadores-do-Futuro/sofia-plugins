@@ -8,7 +8,7 @@ Video con cortes rápidos, movimiento de cámara, cambios de encuadre y ritmo ac
 ## Estructura que combina mejor
 [AIDA](../estructuras-de-guion/aida.md) o [Análisis](../estructuras-de-guion/analisis.md) (en formato de lista)
 
-## Tipo de hook que pide este formato
+## Tipo de gancho que pide este formato
 Declaración directa de beneficio o resultado en 1 frase, seguida de un corte inmediato al primer punto.
 
 ## Elementos adictivos dominantes
@@ -22,4 +22,4 @@ Declaración directa de beneficio o resultado en 1 frase, seguida de un corte in
 5. Varía el tipo de información: estadística → ejemplo → pregunta → afirmación
 6. Evita conectores largos — usa los cortes para hacer la transición
 7. El Efecto Ahá debe ser el punto más fuerte — colócalo en el clímax del ritmo
-8. El CTA debe entregarse en el pico de energía — no desaceleres antes de terminar
+8. El Llamado a la acción debe entregarse en el pico de energía — no desaceleres antes de terminar

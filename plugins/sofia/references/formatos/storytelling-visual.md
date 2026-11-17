@@ -1,4 +1,4 @@
-# Formato: Storytelling Visual
+# Formato: Narrativa visual
 
 > Eixo **formato de gravação** (COMO se grava). Não confundir com a **estrutura** (a sequência do argumento: `references/estruturas-de-roteiro/`) nem com o **arquétipo** (o ângulo: `knowledge/arquetipos-nichos-bolhas.md`). Um roteiro tem os três.
 
@@ -14,7 +14,7 @@ História contada com apoio de elementos visuais (textos na tela, gráficos anim
 ## Estrutura que combina melhor
 [IHC](../estruturas-de-roteiro/ihc.md) ou [Ele-Eu-Você-Futuro](../estruturas-de-roteiro/ele-eu-voce-futuro.md)
 
-## Tipo de hook que este formato pede
+## Tipo de abertura que este formato pede
 Declaração de consequência visual: a primeira frase cria uma imagem que o visual confirma imediatamente.
 
 ## Elementos viciantes dominantes
@@ -24,16 +24,13 @@ Declaração de consequência visual: a primeira frase cria uma imagem que o vis
 1. O roteiro deve indicar quais elementos visuais aparecem em cada trecho
 2. Fala e visual devem trabalhar juntos: nunca dupliquem a mesma informação
 3. Use o visual para provar o que a fala argumenta
-4. A história deve ter arco completo: setup → conflito → virada → resolução
+4. A história deve ter arco completo: configuração → conflito → virada → resolução
 5. Cada transição visual deve coincidir com uma virada narrativa
 6. Use personagens reais com histórias verificáveis
 7. O Efeito Ahá deve ser o momento em que visual e fala se encontram de forma surpreendente
-8. O CTA deve ser reforçado visualmente, não apenas falado
+8. O Chamada para ação deve ser reforçado visualmente, não apenas falado
 
 ## Não confundir
-- Narrado: quem conta é a voz off; no Storytelling Visual quem conta são os textos e gráficos.
-- Cine: conta com planos e atuação; Storytelling Visual conta com elementos gráficos.
-- Tela Verde: um print atrás do criador é apoio pontual; no Storytelling Visual os gráficos são a espinha da história.
-
-## Exemplo analisado
-Roteiro real deste formato, anotado frase a frase: esta peça vem do conector de conteúdo da Sofia (MCP `sofia-conteudo`, ferramenta `carregar_conteudo`, plugin `sofia`, peça `exemplos-analisados/storytelling-visual`; há também a peça `exemplos-analisados/storytelling-pessoa`, um storytelling sobre uma pessoa real). Se o conector não estiver disponível, diga isso ao usuário e siga sem a peça; não invente o conteúdo.
+- Narrado: quem conta é a voz off; no Narrativa visual quem conta são os textos e gráficos.
+- Cine: conta com planos e atuação; Narrativa visual conta com elementos gráficos.
+- Tela Verde: um print atrás do criador é apoio pontual; no Narrativa visual os gráficos são a espinha da história.

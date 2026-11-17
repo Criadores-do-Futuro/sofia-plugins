@@ -15,7 +15,7 @@ Base evolutiva de padrões identificados em vídeos virais.
 - Desenvolve a história com conflito crescente
 - Revela twist (não era o que parecia)
 - Moral conecta com a vida do público
-- **Onde funciona:** Tela dividida, Storytelling visual
+- **Onde funciona:** Tela dividida, Narrativa visual
 
 ### 2. "Medo → Desconstrução → Verdade"
 - Abre com dado assustador (ingrediente perigoso, estatística alarmante)
@@ -26,8 +26,8 @@ Base evolutiva de padrões identificados em vídeos virais.
 ### 3. "Identificação → Conflito → Mudança pessoal"
 - Situação universal que gera identificação imediata
 - Conflito que o público reconhece da própria vida
-- Mudança/insight que transforma a perspectiva
-- **Onde funciona:** Câmera direta, Storytelling pessoal
+- Mudança/aprendizado que transforma a perspectiva
+- **Onde funciona:** Câmera direta, Narrativa pessoal
 
 ## Padrões de engajamento externo
 
@@ -39,11 +39,11 @@ Base evolutiva de padrões identificados em vídeos virais.
 ## Padrões que NÃO funcionam
 
 - Roteiro puramente informativo sem conflito
-- Hook que entrega a resposta na própria frase
+- Abertura que entrega a resposta na própria frase
 - Tema de nicho restrito sem ponte universal
 - Aha entregue antes de construir custo cognitivo
 
 ## Notas
 
 Esta é a base inicial, que vem com o plugin e é trocada a cada atualização. O agente `aprendiz` não escreve aqui: os padrões novos de cada pessoa vão para `~/.sofia/aprendizados/padroes-aprendidos.md`, fora da pasta do plugin. Ao consultar, leia os dois arquivos.
-Para remover padrões que estão piorando resultados, use /sofia:dashboard.
+Para remover padrões que estão piorando resultados, use /sofia:painel.

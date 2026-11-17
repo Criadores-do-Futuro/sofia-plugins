@@ -14,7 +14,7 @@ Criador compara duas opções, abordagens, pessoas ou situações de forma estru
 ## Estrutura que combina melhor
 [Análise](../estruturas-de-roteiro/analise.md) + Contraste
 
-## Tipo de hook que este formato pede
+## Tipo de abertura que este formato pede
 Contraste inesperado que opõe os dois elementos na primeira frase de forma que surpreende.
 
 ## Elementos viciantes dominantes
@@ -28,7 +28,7 @@ Contraste inesperado que opõe os dois elementos na primeira frase de forma que 
 5. Use exemplos reais para cada lado: não compare no abstrato
 6. A virada narrativa é o critério decisivo que muda tudo
 7. A moral deve ser a lição que emerge da comparação, não a preferência pessoal do criador
-8. O CTA deve convidar o espectador a aplicar o critério decisivo na própria vida
+8. O Chamada para ação deve convidar o espectador a aplicar o critério decisivo na própria vida
 
 ## Não confundir
 - Tela Dividida: a tela partida mostra conteúdo externo sendo comentado; na Comparação os dois lados são as opções comparadas.

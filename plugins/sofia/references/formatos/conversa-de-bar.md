@@ -24,4 +24,3 @@ Ele-Eu-Você-Futuro ou IHC confessional.
 - Teleprompter lateral: olhar desviado mecânico, sem espontaneidade.
 - Trivial: é definido pelo contexto cotidiano, não pela direção do olhar.
 - Dinamismo: cortes e posições frequentes quebram a sensação de conversa contínua.
-

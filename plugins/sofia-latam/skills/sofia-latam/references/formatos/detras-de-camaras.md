@@ -8,7 +8,7 @@ Video que muestra el proceso real detrás de un resultado, creación o rutina. G
 ## Estructura que combina mejor
 [IHC](../estructuras-de-guion/ihc.md) abriendo con el resultado antes que con el proceso
 
-## Tipo de hook que pide este formato
+## Tipo de gancho que pide este formato
 Declaración del resultado sorprendente antes de revelar el proceso ("hice X en Y tiempo — esto es lo que nadie muestra").
 
 ## Elementos adictivos dominantes
@@ -22,4 +22,4 @@ Declaración del resultado sorprendente antes de revelar el proceso ("hice X en 
 5. El giro narrativo es el momento en que algo salió mal (o muy bien) de forma inesperada
 6. El Efecto Ahá es la revelación de lo que realmente importó en el proceso
 7. La moraleja debe ser una lección aprendida en el proceso, no una teoría previa
-8. El CTA debe invitar al espectador a intentar el mismo proceso o a seguir viendo más detrás de cámaras
+8. El Llamado a la acción debe invitar al espectador a intentar el mismo proceso o a seguir viendo más detrás de cámaras

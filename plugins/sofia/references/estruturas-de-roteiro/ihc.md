@@ -44,10 +44,10 @@ A história precisa ter:
 
 Agora que você capturou atenção e gerou emoção, é hora de plantar a semente. Você pode:
 
-- Dar um insight ("o problema nunca foi você, foi a forma que te ensinaram")
+- Dar um aprendizado ("o problema nunca foi você, foi a forma que te ensinaram")
 - Dar uma dica prática
 - Fazer uma provocação
-- Fazer um CTA escondido ("E é por isso que eu ensino estrutura de roteiro com tanta paixão dentro da minha comunidade.")
+- Fazer um Chamada para ação escondido ("E é por isso que eu ensino estrutura de roteiro com tanta paixão dentro da minha comunidade.")
 
 **Importante:** O conteúdo não precisa ser técnico. Precisa ser emocionalmente relevante para a bolha que você está tentando furar. A moral da história é a semente que você quer plantar na cabeça de quem assistiu.
 

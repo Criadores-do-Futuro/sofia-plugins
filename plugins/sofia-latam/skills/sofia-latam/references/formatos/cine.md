@@ -8,7 +8,7 @@ Video con estética cinematográfica: planos bien compuestos, banda sonora, narr
 ## Estructura que combina mejor
 [IHC](../estructuras-de-guion/ihc.md) con apertura de escena inmersiva
 
-## Tipo de hook que pide este formato
+## Tipo de gancho que pide este formato
 Escena inmersiva que coloca al espectador dentro de un momento específico antes de cualquier contexto.
 
 ## Elementos adictivos dominantes
@@ -22,4 +22,4 @@ Escena inmersiva que coloca al espectador dentro de un momento específico antes
 5. El giro debe ser un momento visual claro — no solo una frase
 6. La moraleja nunca se dice explícitamente — emerge de la última escena
 7. El ritmo del texto debe reflejar el ritmo del corte (frases cortas = cortes rápidos)
-8. El CTA, si lo hay, debe integrarse con naturalidad al final de la escena
+8. El Llamado a la acción, si lo hay, debe integrarse con naturalidad al final de la escena
