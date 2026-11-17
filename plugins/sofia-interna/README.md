@@ -37,3 +37,52 @@ nacional, LATAM e EN no internacional), e o console lê cada uma com as permiss�
 | `rotinas-agendadas` | Deixar uma rotina do Claude agendada, e quando usar uma tarefa do console. |
 
 As ferramentas que cada pessoa enxerga dependem do cargo e dos mercados dela.
+
+## Só para a equipe
+
+Este plugin é de uso interno. Ele fica no repositório privado `sofia-plugins` (a sua conta
+do GitHub precisa ter sido convidada) e nunca é enviado ao diretório público da Anthropic
+nem ao da OpenAI.
+
+## Como atualizar
+
+As ferramentas do MCP moram em outro repositório, o `desafiocdf-internacional`, na pasta
+`lib/mcp/console`. Este plugin guarda só o conector (`.mcp.json`) e as skills que ensinam a
+usar essas ferramentas. Por isso, quando uma ferramenta mudar lá (nome, campos, regra de
+cargo ou de mercado), a skill daqui precisa mudar junto.
+
+**Quem mantém o plugin:**
+
+1. Atualize as skills em `plugins/sofia-interna/skills/` para refletir as ferramentas novas.
+2. Suba a versão, com o mesmo número, nestes quatro lugares:
+   - `plugins/sofia-interna/.claude-plugin/plugin.json`;
+   - `plugins/sofia-interna/.codex-plugin/plugin.json`;
+   - `listings/sofia-interna.json`;
+   - a entrada `sofia-interna` do `.claude-plugin/marketplace.json`.
+3. Rode o validador e os testes, a partir da raiz do repositório:
+
+   ```
+   python3 -m pip install -r requirements-validation.txt
+   python3 tools/validate_plugins.py
+   python3 -m unittest discover -s tests -v
+   ```
+
+4. Abra um PR. Sem versão nova, quem já instalou não recebe a mudança.
+
+**Quem usa o plugin (já instalado):**
+
+```
+/plugin marketplace update sofia-plugins
+```
+
+Isso atualiza a lista do marketplace. Depois, atualize o plugin pelo `/plugin` (aba
+**Installed**, **Update now**) ou no terminal com
+`claude plugin update sofia-interna@sofia-plugins`, e rode `/reload-plugins` (ou abra uma
+sessão nova) para usar a versão nova. Se a versão não subiu, não há nada a atualizar.
+
+Para instalar pela primeira vez:
+
+```
+/plugin marketplace add bento-dev-ia/sofia-plugins
+/plugin install sofia-interna@sofia-plugins
+```
