@@ -1,7 +1,7 @@
 {
   "name": "sofia-interna",
   "description": "A Sofia interna da equipe da Criadores do Futuro. Liga o Claude ao console da plataforma de desafios (MCP, com login) e traz as rotinas de gestão de comunidade: avisos e tarefas, insights do Discord, demandas das reuniões, depoimentos e rotinas agendadas. Uso interno da equipe.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": {
     "name": "bento-dev-ia"
   },
