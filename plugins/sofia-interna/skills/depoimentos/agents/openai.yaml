@@ -1,0 +1,4 @@
+interface:
+  display_name: Sofia Interna · Depoimentos
+  short_description: Console e rotinas da equipe
+  default_prompt: Use $depoimentos para achar os depoimentos da semana.

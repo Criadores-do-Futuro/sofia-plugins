@@ -1,0 +1,4 @@
+interface:
+  display_name: Sofia Interna · Avisos
+  short_description: Console e rotinas da equipe
+  default_prompt: Use $avisos-e-tarefas para mostrar o que está agendado no console.
