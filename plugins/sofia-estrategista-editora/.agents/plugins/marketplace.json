@@ -1,0 +1,12 @@
+{
+  "name": "sofia-editora-local",
+  "interface": {"displayName": "Sofia Estrategista"},
+  "plugins": [
+    {
+      "name": "sofia-estrategista-editora",
+      "source": {"source": "local", "path": "./"},
+      "policy": {"installation": "AVAILABLE", "authentication": "ON_INSTALL"},
+      "category": "Productivity"
+    }
+  ]
+}

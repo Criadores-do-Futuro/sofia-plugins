@@ -1,0 +1,447 @@
+<title>Manual do bEditor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* Paleta: cinzas com viés frio de ardósia, acento petróleo. Os três estados da
+     checklist (ok / falta / opcional) têm cor própria e também um rótulo em texto,
+     para quem não distingue cor. */
+  :root {
+    --fundo: #eef0f4;
+    --papel: #f9fafc;
+    --papel-2: #e4e7ee;
+    --linha: #cfd4de;
+    --tinta: #1b1f28;
+    --tinta-2: #4a5160;
+    --tinta-3: #6f778a;
+    --acento: #1d6a74;
+    --acento-tinta: #0f4a52;
+    --acento-fundo: #d7e9eb;
+    --ok: #2f7a4d;      --ok-fundo: #dcefe2;
+    --falta: #a83a2c;   --falta-fundo: #f4ddd8;
+    --opcional: #8a6a12;--opcional-fundo: #f3e8c6;
+    --raio: 10px;
+    --display: "Bricolage Grotesque", "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+    --texto: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+    --mono: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --fundo: #14171d; --papel: #1c2028; --papel-2: #242935; --linha: #343a48;
+      --tinta: #e8eaf0; --tinta-2: #b4bac8; --tinta-3: #8891a3;
+      --acento: #6fc3cc; --acento-tinta: #9adbe1; --acento-fundo: #1b3a3f;
+      --ok: #7fcf9a; --ok-fundo: #1d3a29;
+      --falta: #f0917f; --falta-fundo: #46231d;
+      --opcional: #e2c060; --opcional-fundo: #3d3418;
+    }
+  }
+  :root[data-theme="dark"] {
+    --fundo: #14171d; --papel: #1c2028; --papel-2: #242935; --linha: #343a48;
+    --tinta: #e8eaf0; --tinta-2: #b4bac8; --tinta-3: #8891a3;
+    --acento: #6fc3cc; --acento-tinta: #9adbe1; --acento-fundo: #1b3a3f;
+    --ok: #7fcf9a; --ok-fundo: #1d3a29;
+    --falta: #f0917f; --falta-fundo: #46231d;
+    --opcional: #e2c060; --opcional-fundo: #3d3418;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--fundo); color: var(--tinta);
+    font-family: var(--texto); font-size: 15px; line-height: 1.55;
+    padding-inline: clamp(16px, 4vw, 40px); padding-block: 0 48px;
+  }
+  a { color: var(--acento); }
+  code, pre, .cmd { font-family: var(--mono); font-size: 0.92em; }
+  code { background: var(--papel-2); padding: 1px 5px; border-radius: 4px; }
+  h1, h2, h3 { font-family: var(--display); font-weight: 700; letter-spacing: -0.01em; margin: 0; }
+  h1 { font-size: clamp(30px, 5vw, 46px); line-height: 1.05; }
+  h2 { font-size: 22px; margin-block: 28px 10px; }
+  h3 { font-size: 17px; margin-block: 18px 6px; }
+  p { margin: 0 0 10px; }
+  .max { max-width: 960px; margin: 0 auto; }
+
+  header { padding-block: 34px 18px; display: flex; flex-wrap: wrap; align-items: end; gap: 12px 24px; }
+  header .sub { color: var(--tinta-2); max-width: 560px; }
+  header .meta { margin-left: auto; color: var(--tinta-3); font-size: 13px; font-family: var(--mono); text-align: right; }
+
+  nav.abas { display: flex; flex-wrap: wrap; gap: 6px; border-bottom: 1px solid var(--linha); padding-bottom: 10px; position: sticky; top: 0; background: var(--fundo); z-index: 2; padding-top: 8px; }
+  nav.abas button {
+    font: 500 14px var(--texto); color: var(--tinta-2); background: transparent; border: 1px solid transparent;
+    padding: 7px 12px; border-radius: 999px; cursor: pointer;
+  }
+  nav.abas button:hover { background: var(--papel-2); }
+  nav.abas button[aria-selected="true"] { background: var(--acento-fundo); color: var(--acento-tinta); border-color: var(--acento); }
+
+  section[role="tabpanel"] { padding-top: 10px; }
+  .cartao { background: var(--papel); border: 1px solid var(--linha); border-radius: var(--raio); padding: 16px 18px; }
+  .grade { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+  .grade .cartao h3 { margin-top: 0; }
+  .aviso { border-left: 4px solid var(--opcional); background: var(--opcional-fundo); padding: 10px 14px; border-radius: 6px; margin-block: 14px; }
+  .vazio { color: var(--tinta-3); font-style: italic; }
+
+  ol.passos { list-style: none; counter-reset: passo; padding: 0; margin: 0; }
+  ol.passos > li { counter-increment: passo; display: grid; grid-template-columns: 34px 1fr; gap: 10px; padding-block: 12px; border-top: 1px solid var(--linha); }
+  ol.passos > li:first-child { border-top: 0; }
+  ol.passos > li::before { content: counter(passo); font-family: var(--display); font-weight: 700; color: var(--acento); font-size: 20px; line-height: 1.2; }
+  ol.passos b { font-weight: 600; }
+
+  .cmd { display: flex; align-items: stretch; gap: 8px; margin-block: 6px; }
+  .cmd pre { flex: 1; margin: 0; background: var(--papel-2); border: 1px solid var(--linha); border-radius: 6px; padding: 8px 10px; white-space: pre-wrap; word-break: break-word; overflow-x: auto; }
+  .cmd button { font: 500 12px var(--texto); color: var(--acento-tinta); background: var(--acento-fundo); border: 1px solid var(--acento); border-radius: 6px; padding: 0 10px; cursor: pointer; white-space: nowrap; }
+  .cmd button:active { transform: translateY(1px); }
+
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .rolagem { overflow-x: auto; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--linha); vertical-align: top; }
+  th { color: var(--tinta-3); font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .estado { display: inline-block; font: 500 12px var(--mono); padding: 2px 8px; border-radius: 999px; white-space: nowrap; }
+  .estado.ok { color: var(--ok); background: var(--ok-fundo); }
+  .estado.falta { color: var(--falta); background: var(--falta-fundo); }
+  .estado.opcional { color: var(--opcional); background: var(--opcional-fundo); }
+  .detalhe { color: var(--tinta-2); }
+  .instalar { font-family: var(--mono); font-size: 12.5px; color: var(--tinta-2); word-break: break-word; }
+
+  dl.glossario dt { font-family: var(--display); font-weight: 700; font-size: 16px; margin-top: 14px; }
+  dl.glossario dd { margin: 2px 0 0; color: var(--tinta-2); }
+
+  .resumo { display: flex; flex-wrap: wrap; gap: 10px; margin-block: 8px 16px; }
+  .resumo .n { background: var(--papel); border: 1px solid var(--linha); border-radius: var(--raio); padding: 10px 14px; min-width: 110px; }
+  .resumo .n b { display: block; font-family: var(--display); font-size: 24px; line-height: 1; }
+  .resumo .n span { font-size: 12px; color: var(--tinta-3); }
+
+  @media (max-width: 520px) {
+    header .meta { margin-left: 0; text-align: left; }
+    ol.passos > li { grid-template-columns: 26px 1fr; }
+    .cmd { flex-direction: column; }
+    .cmd button { padding: 6px 10px; }
+  }
+</style>
+
+<div class="max">
+<header>
+  <div>
+    <h1>Manual do bEditor</h1>
+    <p class="sub">Plugin do Claude Code que edita vídeo vertical 9:16 a partir de um take ou de fala com timestamp: decupagem, guia de edição, motion graphics, legenda e master, com a voz em sincronia com a boca.</p>
+  </div>
+  <div class="meta" id="meta"></div>
+</header>
+
+<nav class="abas" role="tablist" aria-label="Seções do manual">
+  <button role="tab" data-aba="comecar">Começar</button>
+  <button role="tab" data-aba="saude">Saúde da máquina</button>
+  <button role="tab" data-aba="fluxos">Fluxos</button>
+  <button role="tab" data-aba="comandos">Comandos</button>
+  <button role="tab" data-aba="pastas">Pastas e biblioteca</button>
+  <button role="tab" data-aba="referencias">Referências</button>
+  <button role="tab" data-aba="glossario">Glossário</button>
+</nav>
+
+<!-- ============================ Começar ============================ -->
+<section role="tabpanel" id="aba-comecar">
+  <h2>O que é</h2>
+  <p>O bEditor recebe um take (ou uma transcrição com tempos) e devolve o vídeo vertical editado: corte de silêncio, guia de edição aprovado por você, motion graphics quando o formato pede, legenda queimada e master medido. Cada etapa é um script do plugin em uma chamada, com cache pelo conteúdo: repetir uma etapa que não mudou custa quase nada.</p>
+
+  <h2>Instalar em cinco passos</h2>
+  <ol class="passos">
+    <li><div><b>Adicione o marketplace</b> da Sofia Estrategista. Para mexer no código, clone o repositório fora de <code>~/Documents</code> e da Mesa (iCloud tira arquivos grandes do disco e o render trava esperando).
+      <div class="cmd"><pre>claude plugin marketplace add bento-dev-ia/sofia-estrategista-editora</pre><button data-copiar>copiar</button></div></div></li>
+    <li><div><b>Instale o plugin.</b> Ou, num clone, passe a pasta ao abrir o Claude.
+      <div class="cmd"><pre>claude plugin install sofia-estrategista-editora@sofia-editora</pre><button data-copiar>copiar</button></div>
+      <div class="cmd"><pre>claude --plugin-dir CAMINHO_DO_CLONE</pre><button data-copiar>copiar</button></div></div></li>
+    <li><div><b>Rode o setup</b> dentro do Claude. Ele verifica dependências, pergunta onde ficam as suas pastas, grava <code>~/.config/beditor/config.json</code> e gera este manual com o estado da sua máquina.
+      <div class="cmd"><pre>/sofia-estrategista-editora:setup</pre><button data-copiar>copiar</button></div>
+      <p class="detalhe">Sem o Claude, o mesmo por linha de comando:</p>
+      <div class="cmd"><pre>python3 ~/beditor/skills/beditor/scripts/setup.py --verificar
+python3 ~/beditor/skills/beditor/scripts/setup.py --pastas projetos=/Volumes/SSD/Projetos entregas=/Volumes/SSD/Entregas --criar
+python3 ~/beditor/skills/beditor/scripts/setup.py --manual</pre><button data-copiar>copiar</button></div></div></li>
+    <li><div><b>Conecte o disco</b> onde ficam projetos, entregas e a oficina de render. Se uma pasta configurada não estiver montada, os scripts param e dizem qual, em vez de criar uma cópia no disco interno.
+      <div class="cmd"><pre>python3 ~/beditor/skills/beditor/scripts/setup.py --verificar</pre><button data-copiar>copiar</button></div></div></li>
+    <li><div><b>Primeiro vídeo.</b> Para um take de câmera, comece pelo corte; para um vídeo de comentário sobre a peça de outra pessoa, use o formato <code>analise</code>.
+      <div class="cmd"><pre>/sofia-estrategista-editora:cortar take.mov</pre><button data-copiar>copiar</button></div>
+      <div class="cmd"><pre>/sofia-estrategista-editora:editar-analise "Projetos/01 - Nome do vídeo/"</pre><button data-copiar>copiar</button></div>
+      <p class="detalhe">A aba <a href="#fluxos">Fluxos</a> mostra cada passo e o comando que ele roda.</p></div></li>
+  </ol>
+</section>
+
+<!-- ============================ Saúde ============================ -->
+<section role="tabpanel" id="aba-saude" hidden>
+  <h2>Saúde da máquina</h2>
+  <div id="saude-resumo" class="resumo"></div>
+  <div class="rolagem"><table id="saude-tabela"></table></div>
+  <h2>Pastas configuradas</h2>
+  <div class="rolagem"><table id="saude-pastas"></table></div>
+</section>
+
+<!-- ============================ Fluxos ============================ -->
+<section role="tabpanel" id="aba-fluxos" hidden>
+  <p class="detalhe">Cada fluxo é uma sequência de comandos do plugin. Os comandos abaixo saem de <code>commands/*.md</code>; substitua <code>$PLUGIN</code> pela pasta do plugin (dentro do Claude é <code>${CLAUDE_PLUGIN_ROOT}</code>).</p>
+
+  <h2>Formato <code>analise</code> — comentário sobre o vídeo de outra pessoa</h2>
+  <p class="detalhe"><code>/sofia-estrategista-editora:editar-analise &lt;pasta do projeto&gt;</code>. Quatro chamadas com cache; um ajuste refaz só o que tocou. Leia antes <code>referencias/formato-analise.md</code> e <code>eficiencia.md</code>.</p>
+  <ol class="passos">
+    <li><div><b>Transcrever</b>, uma vez por conteúdo de áudio; rodar de novo é grátis.
+      <div class="cmd"><pre>python3 $PLUGIN/skills/beditor/scripts/transcrever.py edicao/oficina/transcricao take1.mov take2.mov --contexto "nomes próprios que aparecem na fala"</pre><button data-copiar>copiar</button></div></div></li>
+    <li><div><b>Decupar e cortar.</b> As decisões do diretor (momentos, recusas, cortes internos, correções de grafia) vão para <code>edicao/dados.json</code>; <code>silencio.py</code> carimba a tabela do corte (cabeça, miolo, cauda, folga).
+      <div class="cmd"><pre>python3 $PLUGIN/skills/beditor/scripts/silencio.py edicao/dados.json edicao/oficina/transcricao/take1.wav</pre><button data-copiar>copiar</button></div></div></li>
+    <li><div><b>Renderizar.</b> <code>edicao/plano.json</code> tem fontes, cartões, marcadores, hook e cama. A primeira rodada paga tudo; as seguintes refazem só o que mudou, e <code>edicao/oficina/manifesto.json</code> diz o quê.
+      <div class="cmd"><pre>python3 $PLUGIN/skills/beditor/scripts/render_analise.py "Projetos/01 - Nome/" --revisao</pre><button data-copiar>copiar</button></div></div></li>
+    <li><div><b>Medir.</b> Cinco números; imagem só se um número reprovar. Depois de um ajuste, <code>--comparar</code> prova que o resto não mudou; <code>--folha</code> gera a folha de contato em 1 568 px.
+      <div class="cmd"><pre>python3 $PLUGIN/skills/beditor/scripts/qa_analise.py "Projetos/01 - Nome/" [--comparar edicao/master-aprovado.mp4] [--folha]</pre><button data-copiar>copiar</button></div></div></li>
+    <li><div><b>Entregar e publicar.</b> Escolhido o quadro limpo da capa (N) e escrito <code>publicacao.json</code>, o master final sai sem recodificar o corpo. Publicar segue <code>referencias/publicacao.md</code>, nunca sem o sim explícito na conversa.
+      <div class="cmd"><pre>python3 $PLUGIN/skills/beditor/scripts/render_analise.py "Projetos/01 - Nome/" --entrega N</pre><button data-copiar>copiar</button></div></div></li>
+  </ol>
+
+  <h2>Take de câmera em quatro etapas — cortar, motion, finalizar, publicar</h2>
+  <p class="detalhe">Cada etapa entrega algo para você aprovar antes da seguinte; a aprovação é um arquivo em <code>edicao/aprovado/</code>. O guia (<code>guia/guia.json</code>) nasce em <code>/sofia-estrategista-editora:dirigir</code>.</p>
+  <ol class="passos">
+    <li><div><b>Dirigir</b> (<code>/sofia-estrategista-editora:dirigir &lt;take&gt;</code>): converte HLG para SDR, gera as folhas de contato, o agente <code>diretor</code> escreve o guia, o validador confere, <code>GUIA.md</code> sai para leitura. Nada é renderizado antes de você ler o guia.
+      <div class="cmd"><pre>python3 $PLUGIN/skills/beditor/scripts/sdr.py take.mov
+python3 $PLUGIN/skills/beditor/scripts/contato.py --take take.mov --falas take.whisper.json --out guia/
+python3 $PLUGIN/skills/beditor/scripts/validar.py guia/guia.json --contato guia/contato.json
+python3 $PLUGIN/skills/beditor/scripts/gerar_guia_md.py guia/guia.json --out guia/GUIA.md</pre><button data-copiar>copiar</button></div></div></li>
+    <li><div><b>Etapa 1, cortar</b> (<code>/sofia-estrategista-editora:cortar &lt;take&gt;</code>): a decupagem, entregue em <code>edicao/corte-revisao.mp4</code> para revisão na mesa de decupagem. Aprovado: <code>touch edicao/aprovado/corte</code>.
+      <div class="cmd"><pre>python3 $PLUGIN/skills/beditor/scripts/montar.py --etapa corte --guia guia/guia.json --take take.mov --falas take.whisper.json --projeto edicao/motion --edicao edicao</pre><button data-copiar>copiar</button></div></div></li>
+    <li><div><b>Etapa 2, motion graphics</b> (<code>/sofia-estrategista-editora:motion-graficos &lt;take&gt;</code>): sobre o corte aprovado, sem música, legenda nem grade; você julga a ideia e o timing. Antes, o agente <code>enriquecedor</code> confirma os fatos em <code>guia/fatos.json</code>. Aprovado: <code>touch edicao/aprovado/motion</code>.
+      <div class="cmd"><pre>python3 $PLUGIN/skills/beditor/scripts/montar.py --etapa motion --guia guia/guia.json --fatos guia/fatos.json --take take.mov --falas take.whisper.json --projeto edicao/motion --edicao edicao</pre><button data-copiar>copiar</button></div></div></li>
+    <li><div><b>Etapa 3, finalizar</b> (<code>/sofia-estrategista-editora:finalizar &lt;take&gt;</code>): cama musical, legenda, grade e medição (<code>medir.py</code>: preto, cobertura, loudness, separação da cama). O render vai para a pasta de entregas com nome e lugar previsíveis.
+      <div class="cmd"><pre>python3 $PLUGIN/skills/beditor/scripts/montar.py --etapa final --guia guia/guia.json --fatos guia/fatos.json --take take.mov --falas take.whisper.json --projeto edicao/motion --edicao edicao
+python3 $PLUGIN/skills/beditor/scripts/entregar.py --arquivo edicao/motion/out/preview.mp4 --projeto "01 - Nome" --etapa preview</pre><button data-copiar>copiar</button></div></div></li>
+    <li><div><b>Etapa 4, publicar</b> (<code>/sofia-estrategista-editora:publicar</code>): título, descrição e capa a partir do guia e do transcript; um agendamento só para todas as redes (Zernio ou Metricool). Nada é publicado sem o seu sim.
+      <div class="cmd"><pre>python3 $PLUGIN/skills/beditor/scripts/publicacao.py entrega/publicacao.json --capa</pre><button data-copiar>copiar</button></div></div></li>
+  </ol>
+
+  <h2>Fluxo <code>motion</code> — do transcript ao MP4 em Remotion</h2>
+  <p class="detalhe"><code>/sofia-estrategista-editora:motion &lt;arquivo .srt/.json&gt; [pasta]</code> roda o fluxo inteiro; <code>/sofia-estrategista-editora:plano</code> para no plano revisado, sem render. Precisa de <code>node</code>/<code>npx</code>.</p>
+  <ol class="passos">
+    <li><div><b>Ritmo</b>: o transcript vira <code>plano.json</code>. Revise cada plano (tipo, texto de 2 a 4 palavras, câmera, prompt) antes de seguir; o script só propõe.
+      <div class="cmd"><pre>python3 $PLUGIN/skills/beditor/scripts/plano.py --falas falas.srt --out motion/</pre><button data-copiar>copiar</button></div></div></li>
+    <li><div><b>Enriquecimento</b>: o agente <code>enriquecedor</code> pesquisa o mundo real e dirige o movimento; a resposta entra no plano.
+      <div class="cmd"><pre>python3 $PLUGIN/skills/beditor/scripts/aplicar.py --projeto motion/ --enriquecimento enriquecimento.json</pre><button data-copiar>copiar</button></div></div></li>
+    <li><div><b>Assets</b>: gera o que precisa de imagem; sem <code>GEMINI_API_KEY</code> escreve os prompts prontos em <code>PROMPTS.md</code>.
+      <div class="cmd"><pre>python3 $PLUGIN/skills/beditor/scripts/assets.py --projeto motion/</pre><button data-copiar>copiar</button></div></div></li>
+    <li><div><b>Composição e render</b> em Remotion.
+      <div class="cmd"><pre>bash $PLUGIN/skills/beditor/scripts/projeto.sh motion/
+cd motion &amp;&amp; npx remotion render Video out/master.mp4</pre><button data-copiar>copiar</button></div></div></li>
+    <li><div><b>Validação</b> (<code>/sofia-estrategista-editora:qa out/master.mp4</code>): os seis testes sobre o MP4.</div></li>
+  </ol>
+
+  <h2>Outros comandos</h2>
+  <ul>
+    <li><code>/sofia-estrategista-editora:aprender-motion &lt;pasta&gt; &lt;nome&gt;</code> aprende um estilo a partir de frames ou vídeos (<code>aprender.py</code> e o agente <code>analista-de-estilo</code>), e termina com o comando pronto: <code>plano.py --estilo estilos/&lt;nome&gt;/medicoes.json</code>.</li>
+    <li><code>/sofia-estrategista-editora:branding</code> define o padrão visual do canal situação por situação e escreve <code>referencias/branding-usuario.md</code>.</li>
+    <li><code>/sofia-estrategista-editora:painel</code> lê a fila do painel (pedidos, conversa, fontes de B-roll) e executa só o pedaço pedido.</li>
+    <li>O formato <code>dinamismo</code> não leva motion, música nem cor; o que muda em cada formato está em <code>referencias/formatos.md</code>.</li>
+  </ul>
+</section>
+
+<!-- ============================ Comandos ============================ -->
+<section role="tabpanel" id="aba-comandos" hidden>
+  <h2>Comandos do plugin</h2>
+  <p class="detalhe">Lidos do frontmatter de <code>commands/*.md</code> na hora em que o manual foi gerado.</p>
+  <div id="comandos" class="grade"></div>
+</section>
+
+<!-- ============================ Pastas ============================ -->
+<section role="tabpanel" id="aba-pastas" hidden>
+  <h2>Pastas configuradas</h2>
+  <p>Os caminhos saem de <code>~/.config/beditor/config.json</code> (escrito por <code>/sofia-estrategista-editora:setup</code>, lido por <code>oficina.config()</code> e <code>oficina.pasta()</code>). Nenhum script tem caminho de máquina escrito no código: se uma pasta não está configurada, ele para e pede o setup.</p>
+  <div class="rolagem"><table id="pastas-tabela"></table></div>
+
+  <h2>A regra</h2>
+  <p><b>O que a skill lê vai para o repositório; o que ela produz vai para o SSD.</b> Referências, medições e folhas de leitura são pequenas e ficam versionadas. Takes, renders, cache e masters são dezenas de GB por vídeo e ficam nas pastas configuradas. Nunca em <code>~/Documents</code> nem na Mesa: as duas sincronizam com o iCloud, que tira do disco o que é grande e não foi aberto há pouco. O arquivo continua listado com o tamanho certo, mas ocupa 0 B, e qualquer <code>open()</code> nele espera o download sem erro e sem CPU, por minutos. A aba Saúde conta esses arquivos (<code>dataless</code>) na pasta de projetos.</p>
+  <div class="cmd"><pre>find "&lt;pasta do projeto&gt;" -type f -flags +dataless</pre><button data-copiar>copiar</button></div>
+
+  <h2>Biblioteca e licença</h2>
+  <div class="aviso">As músicas da biblioteca podem ser versões instrumentais de obras protegidas. O catálogo (<code>biblioteca.py catalogar</code>) marca isso em cada trilha, e o <code>provas.json</code> de cada projeto registra a procedência de toda trilha, SFX e insert que entrou no master. Usar uma faixa marcada é decisão sua, tomada com o registro na mão; o plugin não a esconde.</div>
+  <ul>
+    <li><b>Músicas</b>, por clima (a pasta de cada clima é o que o plano cita como <code>cama</code>).</li>
+    <li><b>SFX</b>: efeitos curtos, nomeados pelo que fazem.</li>
+    <li><b>Overlays</b>: grão, texturas e vinhetas em vídeo.</li>
+    <li><b>Logos</b>: marcas citadas, PNG com alpha; entram só com a licença registrada no plano.</li>
+  </ul>
+</section>
+
+<!-- ============================ Referências ============================ -->
+<section role="tabpanel" id="aba-referencias" hidden>
+  <h2>Referências</h2>
+  <p class="detalhe"><code>skills/beditor/referencias/*.md</code>, com a primeira linha de cada uma. <code>SKILL.md</code> diz quando ler qual.</p>
+  <div class="rolagem"><table id="referencias"></table></div>
+</section>
+
+<!-- ============================ Glossário ============================ -->
+<section role="tabpanel" id="aba-glossario" hidden>
+  <h2>Glossário</h2>
+  <dl class="glossario">
+    <dt>take</dt><dd>Uma gravação contínua de câmera, o material bruto de um vídeo. No formato <code>analise</code> é câmera fixa, 1080×1920, olho na lente; um projeto pode ter vários.</dd>
+    <dt>momento</dt><dd>Um trecho do take com uma decisão do diretor: fica, sai, vira A-roll, recebe cartão ou motion. É a unidade do guia e do cache: o que muda num momento refaz só aquele momento.</dd>
+    <dt>split edit</dt><dd>A emenda em que imagem e som trocam em instantes diferentes (o áudio da fala seguinte entra antes da imagem, ou depois). Resolve o corte sem efeito de transição, e é medido pela folga nos 600 ms antes da voz que entra.</dd>
+    <dt>cartão (modos 1 a 4)</dt><dd>O post ou vídeo analisado, dentro de uma moldura no quadro. A regra-mãe: quem tem a voz manda no tamanho. Modo 1, <b>atrás</b> do personagem (ilustração, o autor fala); modo 2, <b>sobreposto</b> (citação, o autor cala e o fundo vira preto e branco desfocado); modo 3, <b>máximo</b> (a prova longa, o autor fora de quadro, raro); modo 4, <b>janela</b> (toma a tela com transição de abrir e minimizar).</dd>
+    <dt>hook</dt><dd>As linhas grandes que abrem o vídeo, tipografia por cima da primeira fala. No <code>analise</code> dura 3 s e é a provocação que o vídeo vai desmontar, casada palavra por palavra com a fala; não é motion e não ocupa momento.</dd>
+    <dt>cama</dt><dd>A música de fundo sob a fala, com ganho por momento (sobe, desce, mantém, some), medida em dB abaixo da voz. O plano escolhe a faixa; o <code>provas.json</code> registra de onde ela veio.</dd>
+    <dt>manifesto</dt><dd><code>edicao/oficina/manifesto.json</code>: o que foi refeito nesta rodada, o que veio da cache e quanto tempo levou. É o que responde «o que este ajuste custou?» sem ler log; se ele diz que refez tudo, alguma chave de cache está errada.</dd>
+    <dt>identidade / cache por conteúdo</dt><dd>Toda peça reaproveitável tem nome derivado do conteúdo que a gerou (tamanho mais cabeça e cauda do arquivo, hash da receita, hash do código que desenha), nunca da posição no vídeo ou do nome do slot. Chave por posição não é cache, é um erro adiado.</dd>
+    <dt>folha de contato</dt><dd>Uma grade de quadros do vídeo em uma imagem só, já nascida em 1 568 px (o teto em que o modelo a lê). É como o diretor e o QA olham o vídeo sem assistir; número antes de imagem, uma imagem por pergunta.</dd>
+    <dt>provas.json</dt><dd>O registro de procedência do projeto: para cada trilha, SFX e insert, de onde veio, com que direito e por decisão de quem. Se o plano e o master discordam, é ele que acusa.</dd>
+  </dl>
+</section>
+</div>
+
+<script>
+  // O setup.py troca o marcador abaixo pelo JSON desta máquina. Sem setup, o
+  // objeto fica vazio e cada bloco diz como preenchê-lo.
+  var DADOS = /*__DADOS__*/{};
+
+  (function () {
+    var ABAS = ["comecar", "saude", "fluxos", "comandos", "pastas", "referencias", "glossario"];
+    var DICA = 'rode <code>setup.py --manual</code> para preencher';
+
+    function el(tag, attrs, filhos) {
+      var e = document.createElement(tag);
+      for (var k in (attrs || {})) {
+        if (k === "html") e.innerHTML = attrs[k];
+        else if (k === "text") e.textContent = attrs[k];
+        else e.setAttribute(k, attrs[k]);
+      }
+      (filhos || []).forEach(function (f) { if (f) e.appendChild(typeof f === "string" ? document.createTextNode(f) : f); });
+      return e;
+    }
+    function esc(s) { return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+    function vazio(alvo) { alvo.innerHTML = '<tr><td class="vazio">' + DICA + '</td></tr>'; }
+
+    // ---- abas: estado na URL (#saude), `hidden` como único mecanismo -----
+    function mostrar(nome) {
+      if (ABAS.indexOf(nome) < 0) nome = ABAS[0];
+      ABAS.forEach(function (a) {
+        document.getElementById("aba-" + a).hidden = (a !== nome);
+      });
+      document.querySelectorAll("nav.abas button").forEach(function (b) {
+        b.setAttribute("aria-selected", b.getAttribute("data-aba") === nome ? "true" : "false");
+      });
+    }
+    document.querySelectorAll("nav.abas button").forEach(function (b) {
+      b.addEventListener("click", function () {
+        var nome = b.getAttribute("data-aba");
+        if (history.replaceState) history.replaceState(null, "", "#" + nome); else location.hash = nome;
+        mostrar(nome);
+      });
+    });
+    window.addEventListener("hashchange", function () { mostrar(location.hash.slice(1)); });
+    document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+      a.addEventListener("click", function (ev) {
+        var nome = a.getAttribute("href").slice(1);
+        if (ABAS.indexOf(nome) >= 0) { ev.preventDefault(); location.hash = nome; }
+      });
+    });
+    mostrar(location.hash.slice(1));
+
+    // ---- copiar: clipboard quando o navegador deixa (https ou file:// em
+    // alguns), textarea escondida como plano B -------------------------------
+    function copiar(texto, botao) {
+      function feito(ok) {
+        var antes = botao.textContent;
+        botao.textContent = ok ? "copiado" : "selecione e copie";
+        setTimeout(function () { botao.textContent = antes; }, 1600);
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(texto).then(function () { feito(true); }, function () { plano(); });
+      } else plano();
+      function plano() {
+        var ta = document.createElement("textarea");
+        ta.value = texto; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.left = "-9999px";
+        document.body.appendChild(ta); ta.select();
+        var ok = false;
+        try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+        document.body.removeChild(ta); feito(ok);
+      }
+    }
+    document.querySelectorAll("[data-copiar]").forEach(function (b) {
+      b.addEventListener("click", function () {
+        var pre = b.parentNode.querySelector("pre");
+        copiar(pre ? pre.textContent : "", b);
+      });
+    });
+
+    // ---- cabeçalho -----------------------------------------------------
+    var plugin = DADOS.plugin || {};
+    var meta = [];
+    if (plugin.versao) meta.push("v" + plugin.versao);
+    if (plugin.commit) meta.push(plugin.commit);
+    if (DADOS.gerado_em) meta.push("gerado " + DADOS.gerado_em.replace("T", " "));
+    document.getElementById("meta").innerHTML = meta.length ? esc(meta.join(" · ")) : DICA;
+
+    // ---- saúde ----------------------------------------------------------
+    var v = DADOS.verificacao || {};
+    var itens = v.itens || [];
+    var resumo = document.getElementById("saude-resumo");
+    var tabela = document.getElementById("saude-tabela");
+    if (!itens.length) {
+      resumo.innerHTML = '<p class="vazio">' + DICA + '</p>';
+      vazio(tabela);
+    } else {
+      var r = v.resumo || {};
+      [["ok", r.ok], ["faltando", r.falta], ["opcionais", r.opcional]].forEach(function (par) {
+        resumo.appendChild(el("div", { "class": "n" }, [el("b", { text: par[1] == null ? "–" : par[1] }), el("span", { text: par[0] })]));
+      });
+      if (v.sistema) resumo.appendChild(el("div", { "class": "n" }, [el("b", { text: v.sistema, style: "font-size:15px;padding-top:6px" }), el("span", { text: v.quando ? "verificado " + v.quando.replace("T", " ") : "" })]));
+      var linhas = ['<thead><tr><th>estado</th><th>item</th><th>detalhe</th><th>como resolver</th></tr></thead><tbody>'];
+      var grupo = null;
+      itens.forEach(function (i) {
+        if (i.grupo !== grupo) { grupo = i.grupo; linhas.push('<tr><th colspan="4">' + esc(grupo) + '</th></tr>'); }
+        linhas.push('<tr><td><span class="estado ' + esc(i.estado) + '">' + esc(i.estado) + '</span></td><td>' + esc(i.nome) +
+          '</td><td class="detalhe">' + esc(i.detalhe) + '</td><td class="instalar">' + (i.estado !== "ok" ? esc(i.instalar) : "") + '</td></tr>');
+      });
+      tabela.innerHTML = linhas.join("") + "</tbody>";
+    }
+    var pastasV = v.pastas || [];
+    var tp = document.getElementById("saude-pastas");
+    if (!pastasV.length) vazio(tp);
+    else {
+      var lp = ['<thead><tr><th>pasta</th><th>caminho</th><th>estado</th><th>livre</th><th>dataless</th></tr></thead><tbody>'];
+      pastasV.forEach(function (p) {
+        var estado = !p.configurada ? '<span class="estado falta">não configurada</span>' :
+          p.existe ? '<span class="estado ok">existe</span>' : '<span class="estado falta">não existe</span>';
+        var dl = p.dataless == null ? "" : (p.dataless ? '<span class="estado falta">' + p.dataless + ' arquivo(s)</span>' : '<span class="estado ok">0</span>');
+        lp.push('<tr><td>' + esc(p.nome) + '</td><td class="instalar">' + esc(p.caminho) + '</td><td>' + estado + '</td><td>' +
+          (p.livre_gb == null ? "" : esc(p.livre_gb) + " GB") + '</td><td>' + dl + '</td></tr>');
+      });
+      tp.innerHTML = lp.join("") + "</tbody>";
+    }
+
+    // ---- comandos --------------------------------------------------------
+    var cmds = DADOS.comandos || [];
+    var gc = document.getElementById("comandos");
+    if (!cmds.length) gc.innerHTML = '<p class="vazio">' + DICA + '</p>';
+    else cmds.forEach(function (c) {
+      gc.appendChild(el("div", { "class": "cartao" }, [
+        el("h3", { html: "/sofia-estrategista-editora:" + esc(c.nome) + (c.argumentos ? ' <span class="detalhe" style="font-weight:400;font-size:14px;font-family:var(--mono)">' + esc(c.argumentos) + "</span>" : "") }),
+        el("p", { "class": "detalhe", text: c.descricao || "" })
+      ]));
+    });
+
+    // ---- pastas (aba própria) ------------------------------------------
+    var cfg = DADOS.config || {};
+    var pastasCfg = cfg.pastas || {};
+    var desc = DADOS.descricao_pastas || {};
+    var ordem = ["projetos", "entregas", "musicas", "sfx", "overlays", "logos", "render", "treinamento"];
+    var tpp = document.getElementById("pastas-tabela");
+    var temAlguma = ordem.some(function (n) { return pastasCfg[n]; }) || Object.keys(desc).length;
+    if (!temAlguma) vazio(tpp);
+    else {
+      var l2 = ['<thead><tr><th>pasta</th><th>o que vai nela</th><th>nesta máquina</th></tr></thead><tbody>'];
+      ordem.forEach(function (n) {
+        l2.push('<tr><td><b>' + n + '</b></td><td class="detalhe">' + esc(desc[n] || "") + '</td><td class="instalar">' + (pastasCfg[n] ? esc(pastasCfg[n]) : '<span class="vazio">não configurada</span>') + '</td></tr>');
+      });
+      tpp.innerHTML = l2.join("") + "</tbody>";
+    }
+
+    // ---- referências ------------------------------------------------------
+    var refs = DADOS.referencias || [];
+    var tr = document.getElementById("referencias");
+    if (!refs.length) vazio(tr);
+    else {
+      var l3 = ['<thead><tr><th>arquivo</th><th>título</th></tr></thead><tbody>'];
+      refs.forEach(function (x) { l3.push('<tr><td class="instalar">' + esc(x.arquivo) + '</td><td>' + esc(x.titulo) + '</td></tr>'); });
+      tr.innerHTML = l3.join("") + "</tbody>";
+    }
+  })();
+</script>

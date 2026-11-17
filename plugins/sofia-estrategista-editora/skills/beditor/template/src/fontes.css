@@ -1,0 +1,8 @@
+/* copiadas por projeto.sh de skills/motion-vox/fontes, dentro do plugin (todas OFL/Apache) */
+@font-face { font-family: 'Inter';          src: url('../public/fontes/Inter.ttf') format('truetype'); font-weight: 100 900; }
+@font-face { font-family: 'Archivo Narrow'; src: url('../public/fontes/ArchivoNarrow.ttf') format('truetype'); font-weight: 400 700; }
+@font-face { font-family: 'Archivo Black';  src: url('../public/fontes/ArchivoBlack-Regular.ttf') format('truetype'); }
+@font-face { font-family: 'Anton';          src: url('../public/fontes/Anton-Regular.ttf') format('truetype'); }
+@font-face { font-family: 'Fraunces';       src: url('../public/fontes/Fraunces.ttf') format('truetype'); font-weight: 100 900; }
+@font-face { font-family: 'IBM Plex Mono';  src: url('../public/fontes/IBMPlexMono-Medium.ttf') format('truetype'); }
+@font-face { font-family: 'Permanent Marker'; src: url('../public/fontes/PermanentMarker-Regular.ttf') format('truetype'); }

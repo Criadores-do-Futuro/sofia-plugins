@@ -1,0 +1,4 @@
+# Opcional: cliente para a ponte MCP local Desktop; não instala o plugin oficial.
+mcp>=2.3,<3
+# Piso de segurança: < 4.14.2 tem GHSA-82r6-8w77-94w6 (TLS, crítica) e GHSA-5p39-cfhj-2xmp.
+anyio>=4.14.2

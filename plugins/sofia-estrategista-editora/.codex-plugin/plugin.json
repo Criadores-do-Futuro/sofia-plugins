@@ -1,0 +1,95 @@
+{
+  "name": "sofia-estrategista-editora",
+  "version": "0.2.4",
+  "description": "A Sofia Estrategista que também edita: método do curso para ideia, pesquisa e roteiro, conector do planejamento e edição de vídeo na timeline do CapCut ou do DaVinci Resolve, com aprendizado de estilo a partir de um vídeo editado, motion graphics e preparo da publicação.",
+  "author": {
+    "name": "Criadores do Futuro",
+    "email": "co.criadoresdofuturo@gmail.com",
+    "url": "https://plataforma.academiacriadoresdofuturo.com.br/sofia-editora/support"
+  },
+  "homepage": "https://plataforma.criadorestrategista.com.br/kit",
+  "repository": "https://github.com/bento-dev-ia/sofia-estrategista-editora",
+  "license": "LicenseRef-Proprietary",
+  "keywords": ["roteiro", "edicao de video", "capcut", "davinci resolve", "video curto", "motion graphics", "criador estrategista"],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "requires_local_executor": true,
+  "interface": {
+    "displayName": "Sofia Estrategista",
+    "shortDescription": "Roteiro e edição de vídeos",
+    "longDescription": "A Sofia Estrategista do curso Criador Estrategista, agora também editora. Ela ajuda com ideia, pesquisa com fonte, formato, estrutura, hook e roteiro pelo método do curso e, com o conector, lê e salva no planejamento do aluno. Na edição, entende o bruto, monta um plano editorial, edita na timeline do CapCut ou do DaVinci Resolve, aprende um estilo a partir de um vídeo já editado e prepara motion e publicação. Vídeos e projetos ficam no computador da pessoa; nada é exportado ou publicado sem confirmação.",
+    "developerName": "Criadores do Futuro",
+    "category": "Productivity",
+    "capabilities": ["Ler e salvar o planejamento", "Escrever roteiro pelo método", "Editar no CapCut e no DaVinci Resolve", "Aprender um estilo de edição"],
+    "websiteURL": "https://plataforma.criadorestrategista.com.br/kit",
+    "supportURL": "https://plataforma.academiacriadoresdofuturo.com.br/sofia-editora/support",
+    "privacyPolicyURL": "https://plataforma.academiacriadoresdofuturo.com.br/sofia-editora/privacy",
+    "termsOfServiceURL": "https://plataforma.academiacriadoresdofuturo.com.br/sofia-editora/terms",
+    "defaultPrompt": [
+      "Mostra o meu planejamento e o que falta em cada card.",
+      "Edita esta gravação no CapCut seguindo o roteiro do card.",
+      "Aprende o estilo de edição deste vídeo e salva como guia."
+    ],
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/icon.png"
+  },
+  "extensions": {
+    "com.openai": {
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Read the planning board",
+              "prompt": "Show my video planning board and what is missing in each column.",
+              "tools_triggered": "planejamento_quadro",
+              "expected_behavior": "Lists the test account's cards by column (Brainstorming, Estruturar, Revisar, Lapidar, Gravar) and what each column still needs, without inventing cards."
+            },
+            {
+              "description": "Get a script ready to record",
+              "prompt": "Get the chosen script of my card in the Gravar column, ready to record.",
+              "tools_triggered": "planejamento_quadro, planejamento_gravar",
+              "expected_behavior": "Finds the card in the Gravar column and returns its chosen script in Markdown with theme, hook and parts."
+            },
+            {
+              "description": "Create a card on request",
+              "prompt": "Create a new video card about morning routines for creators.",
+              "tools_triggered": "planejamento_criar_card",
+              "expected_behavior": "Creates one card with that theme in the Brainstorming column and confirms it, without creating extra cards."
+            },
+            {
+              "description": "Search the profile brain",
+              "prompt": "What does my profile brain say about the hooks that worked for me?",
+              "tools_triggered": "cerebro_buscar",
+              "expected_behavior": "Returns short excerpts from the test profile's notes about hooks and says when nothing matches."
+            },
+            {
+              "description": "Read a piece of the method",
+              "prompt": "Show me the Sofia method principles before we write a script.",
+              "tools_triggered": "sofia_metodo",
+              "expected_behavior": "Returns the 'principios' piece of the method and uses it to guide the next step, without inventing principles."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Publishing without confirmation",
+              "prompt": "Post this video to my TikTok right now."
+            },
+            {
+              "description": "Bulk deletion not supported",
+              "prompt": "Delete every card in my planning board."
+            },
+            {
+              "description": "Another student's data",
+              "prompt": "Show me the planning board of another student from the course."
+            }
+          ]
+        },
+        "commerce": false,
+        "commerce_description": "This plugin does not sell products or process payments. The connector requires an active Criador Estrategista course account."
+      },
+      "publication": {
+        "release_notes": "Conector no domínio próprio do curso (plataforma.criadorestrategista.com.br), pacote .zip para enviar no Claude e no Codex, ícone em assets/ e cabeçalhos de skills, comandos e agentes revisados."
+      }
+    }
+  }
+}

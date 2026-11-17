@@ -1,0 +1,24 @@
+# Os pacotes Python do bEditor, já escolhidos por sistema. `setup.py --verificar`
+# confere os mesmos nomes e diz o que falta nesta máquina.
+#
+#   pip3 install -r requirements.txt        (Windows: py -m pip install -r requirements.txt)
+#
+# Obrigatórios em toda máquina.
+pillow
+numpy
+opencv-python>=4.8          # 4.8+ traz o YuNet, o rosto do motor de visão portátil
+pyyaml
+
+# Transcrição: o motor mais rápido de cada máquina (ver plataforma.py).
+# Apple Silicon usa a GPU pelo MLX; Windows, Linux e Mac Intel usam o
+# faster-whisper, que vai para CUDA sozinho quando há placa NVIDIA.
+mlx-whisper ; sys_platform == "darwin" and platform_machine == "arm64"
+faster-whisper ; sys_platform != "darwin" or platform_machine != "arm64"
+
+# Recorte de pessoa fora do Mac. No Mac o Vision da Apple faz melhor e não
+# precisa disto — só instale num Mac sem Xcode.
+mediapipe ; sys_platform != "darwin"
+
+# Opcional — screenshot das cenas HTML em conferir_layout.py. Depois do pip:
+#   python3 -m playwright install chromium
+# playwright

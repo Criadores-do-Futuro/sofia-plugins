@@ -1,0 +1,271 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://beditor.local/schemas/plano-editorial.v1.schema.json",
+  "title": "Plano editorial e timeline bEditor, versão 1",
+  "description": "Contrato neutro: tempos em milissegundos, intervalos semiabertos e reprodução em velocidade normal. Não é um payload nativo de editor.",
+  "type": "object",
+  "required": [
+    "version",
+    "project",
+    "assets",
+    "protected_speech",
+    "clips"
+  ],
+  "properties": {
+    "version": {
+      "const": "1.0"
+    },
+    "project": {
+      "type": "object",
+      "required": [
+        "title",
+        "editor",
+        "creative_format"
+      ],
+      "properties": {
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "editor": {
+          "enum": [
+            "capcut",
+            "davinci",
+            "undecided"
+          ]
+        },
+        "creative_format": {
+          "type": "string",
+          "minLength": 1
+        },
+        "format_source": {
+          "type": "string"
+        },
+        "format_confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "audience": {
+          "type": "string"
+        },
+        "idea": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "assets": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/asset"
+      }
+    },
+    "protected_speech": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/speech"
+      }
+    },
+    "clips": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/clip"
+      }
+    },
+    "text_layers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/text_layer"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "interval": {
+      "type": "object",
+      "required": [
+        "start_ms",
+        "end_ms"
+      ],
+      "properties": {
+        "start_ms": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "end_ms": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "asset": {
+      "type": "object",
+      "required": [
+        "id",
+        "kind",
+        "duration_ms"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "enum": [
+            "video",
+            "audio",
+            "image"
+          ]
+        },
+        "duration_ms": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "uri": {
+          "type": "string"
+        },
+        "provenance": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "speech": {
+      "type": "object",
+      "required": [
+        "id",
+        "asset_id",
+        "source"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "asset_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source": {
+          "$ref": "#/$defs/interval"
+        },
+        "text": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "clip": {
+      "type": "object",
+      "required": [
+        "id",
+        "asset_id",
+        "track",
+        "kind",
+        "source",
+        "timeline"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "asset_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "track": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "enum": [
+            "video",
+            "audio"
+          ]
+        },
+        "source": {
+          "$ref": "#/$defs/interval"
+        },
+        "timeline": {
+          "$ref": "#/$defs/interval"
+        },
+        "speaker_visible": {
+          "type": "boolean"
+        },
+        "carries_source_audio": {
+          "type": "boolean"
+        },
+        "purpose": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "text_layer": {
+      "type": "object",
+      "required": [
+        "id",
+        "type",
+        "track",
+        "text",
+        "timeline"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "enum": [
+            "caption",
+            "lettering"
+          ]
+        },
+        "track": {
+          "type": "string",
+          "minLength": 1
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "timeline": {
+          "$ref": "#/$defs/interval"
+        },
+        "speech_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "style": {
+          "type": "object",
+          "properties": {
+            "font": {
+              "type": "string"
+            },
+            "size": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "color": {
+              "type": "string"
+            },
+            "shadow": {
+              "type": "string"
+            },
+            "animation": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
