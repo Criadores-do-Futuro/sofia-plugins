@@ -6,8 +6,13 @@ description: "Explica o console da equipe da Criadores do Futuro, os cargos (adm
 # Console da equipe
 
 O console é o lugar único da equipe da Criadores do Futuro para operar as comunidades de
-três mercados. Fica dentro da plataforma de desafios e usa o mesmo login. Você acessa o
-console pelo MCP `cdf-equipe`, com as mesmas regras que a pessoa teria na tela.
+três mercados. Você acessa o console pelo MCP `cdf-equipe`, com as mesmas regras que a
+pessoa teria na tela.
+
+Cada mercado tem a sua base. O BR fica no Firebase nacional; LATAM e EN, no internacional.
+As bases não se misturam. O cargo de alguém num mercado vem da base daquele mercado. Se
+uma ferramenta responder que a fonte de um mercado não está configurada, diga isso em uma
+linha e siga com os outros mercados.
 
 ## Comece sempre por `equipe_quem_sou`
 
@@ -28,7 +33,7 @@ chamada, então a negativa do servidor vale mais que qualquer palpite seu.
 
 | Cargo | O que alcança |
 |---|---|
-| `admin` | Tudo, em todos os mercados. Também vê quem tem qual cargo (`console_equipe_listar`). |
+| `admin` | Tudo nos mercados em que é admin. Ser admin num mercado não dá admin em outro. Também vê quem tem qual cargo (`console_equipe_listar`). |
 | `analista` | A fila de análise e o aprendizado da Sofia. |
 | `gestor_comunidade` | Eventos, tarefas agendadas, canais, insights do Discord, SOPs, demandas e depoimentos. |
 | `editor` | O catálogo de mídia e as demandas que vierem para edição (`console_demandas_listar` e `console_demanda_mover`, só as dele). |
