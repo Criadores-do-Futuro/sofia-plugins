@@ -15,7 +15,7 @@ Ask to analyze a video or transcript, write a script, review or rewrite a draft,
 
 ## Requirements and limits
 
-Local visual preparation requires Python 3.10 or newer, FFmpeg, ffprobe and an image-viewing tool. `scripts/prepare-visual-analysis.py` generates timestamped frames and audio when available; it does not transcribe speech or identify effects on its own. Text work does not require these programs. Public downloads require authorization and `yt-dlp`; never use browser cookies or sessions to bypass sign-in.
+Local visual preparation requires FFmpeg, ffprobe and an image-viewing tool. The analysis reference lists the `ffprobe` and `ffmpeg` commands that generate timestamped frames, contact sheets and audio when available; they do not transcribe speech or identify effects on their own. The plugin ships text only: no scripts or executables. Text work does not require these programs. Public downloads require authorization and `yt-dlp`; never use browser cookies or sessions to bypass sign-in.
 
 Read [behavior](behavior.md). Installing programs, using paid services or sending media to third parties requires authorization. Save results and voice profiles outside the installation. There is no built-in telemetry.
 

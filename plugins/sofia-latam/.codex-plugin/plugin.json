@@ -1,6 +1,6 @@
 {
   "name": "sofia-latam",
-  "description": "Analiza videos cortos, escribe y revisa guiones en español latinoamericano, aprende la voz del creador y exporta análisis. Usa referencias incluidas y hechos proporcionados o verificados. La preparación visual local requiere Python, FFmpeg y ejecución de comandos; el análisis de texto funciona sin esos recursos. Los servicios externos opcionales usan la cuenta de la persona y requieren autorización.",
+  "description": "Analiza videos cortos, escribe y revisa guiones en español latinoamericano, aprende la voz del creador y exporta análisis. Usa referencias incluidas y hechos proporcionados o verificados. La preparación visual local requiere FFmpeg y ejecución de comandos; el análisis de texto funciona sin esos recursos. Los servicios externos opcionales usan la cuenta de la persona y requieren autorización.",
   "version": "1.1.0",
   "author": {
     "name": "srbentostk"
@@ -17,7 +17,7 @@
   "interface": {
     "displayName": "Sofia LATAM",
     "shortDescription": "Guiones y análisis de videos",
-    "longDescription": "Analiza videos cortos, escribe y revisa guiones en español latinoamericano, aprende la voz del creador y exporta análisis. Usa referencias incluidas y hechos proporcionados o verificados. La preparación visual local requiere Python, FFmpeg y ejecución de comandos; el análisis de texto funciona sin esos recursos. Los servicios externos opcionales usan la cuenta de la persona y requieren autorización.",
+    "longDescription": "Analiza videos cortos, escribe y revisa guiones en español latinoamericano, aprende la voz del creador y exporta análisis. Usa referencias incluidas y hechos proporcionados o verificados. La preparación visual local requiere FFmpeg y ejecución de comandos; el análisis de texto funciona sin esos recursos. Los servicios externos opcionales usan la cuenta de la persona y requieren autorización.",
     "developerName": "Alef Marques",
     "category": "Creativity",
     "defaultPrompt": [
@@ -49,7 +49,7 @@
         "translations": {
           "es-419": {
             "subtitle": "Guiones y análisis de videos",
-            "description": "Analiza videos cortos, escribe y revisa guiones en español latinoamericano, aprende la voz del creador y exporta análisis. Usa referencias incluidas y hechos proporcionados o verificados. La preparación visual local requiere Python, FFmpeg y ejecución de comandos; el análisis de texto funciona sin esos recursos. Los servicios externos opcionales usan la cuenta de la persona y requieren autorización."
+            "description": "Analiza videos cortos, escribe y revisa guiones en español latinoamericano, aprende la voz del creador y exporta análisis. Usa referencias incluidas y hechos proporcionados o verificados. La preparación visual local requiere FFmpeg y ejecución de comandos; el análisis de texto funciona sin esos recursos. Los servicios externos opcionales usan la cuenta de la persona y requieren autorización."
           }
         }
       }

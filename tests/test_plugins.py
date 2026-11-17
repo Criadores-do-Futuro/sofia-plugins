@@ -16,6 +16,13 @@ sys.path.insert(0, str(ROOT / "tools"))
 from validate_plugins import NAMES, validate_all, validate_plugin
 from package_plugins import package
 
+# O diretório da Anthropic só aceita texto e imagens de organizações não verificadas.
+TEXT_ONLY = ("sofia-latam", "sofia-english")
+ALLOWED_SUFFIXES = {".md", ".txt", ".json", ".yaml", ".yml", ".png", ".jpg", ".jpeg", ".gif", ".webp", ".ico"}
+ALLOWED_NAMES = {"LICENSE", ".gitignore"}
+# Sofias que ainda trazem o preparador visual em Python.
+SCRIPTED = tuple(n for n in NAMES if (ROOT / "plugins" / n / "scripts/prepare-visual-analysis.py").is_file())
+
 
 class PackageContractTests(unittest.TestCase):
     def test_all_packages_have_valid_structure_and_matching_catalogs(self):
@@ -45,6 +52,15 @@ class PackageContractTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp:
             with self.assertRaisesRegex(ValueError, "Listagem incompleta"):
                 package(Path(temp), require_submission=True)
+
+    def test_text_only_plugins_ship_no_scripts_or_html(self):
+        for name in TEXT_ONLY:
+            for path in (ROOT / "plugins" / name).rglob("*"):
+                if not path.is_file() or path.name in ALLOWED_NAMES:
+                    continue
+                with self.subTest(plugin=name, path=str(path.relative_to(ROOT))):
+                    self.assertIn(path.suffix.lower(), ALLOWED_SUFFIXES)
+                    self.assertNotEqual(path.read_bytes()[:2], b"#!")
 
     def test_comment_data_does_not_keep_author_identifiers(self):
         path = ROOT / "plugins/sofia/scripts/collect-public.py"
@@ -97,7 +113,7 @@ class VideoPreparationTests(unittest.TestCase):
         return subprocess.run([sys.executable, str(script), *map(str, args)], capture_output=True, text=True)
 
     def test_each_locale_respects_budget_window_and_actual_media(self):
-        for name in NAMES:
+        for name in SCRIPTED:
             with self.subTest(plugin=name):
                 dest = self.root / (name + "-silent")
                 result = self.run_script(name, self.silent, "--output", dest,
@@ -116,7 +132,7 @@ class VideoPreparationTests(unittest.TestCase):
 
     def test_audio_is_only_reported_when_created(self):
         dest = self.root / "audio-output"
-        result = self.run_script("sofia-english", self.voiced, "--output", dest, "--max-frames", 2)
+        result = self.run_script("sofia", self.voiced, "--output", dest, "--max-frames", 2)
         self.assertEqual(result.returncode, 0, result.stderr)
         data = json.loads((dest / "manifest.json").read_text())
         self.assertTrue(Path(data["audio"]).is_file())
@@ -133,7 +149,7 @@ class VideoPreparationTests(unittest.TestCase):
         self.assertFalse((dest / "manifest.json").exists())
 
     def test_refuses_saving_user_data_inside_installation(self):
-        for name in NAMES:
+        for name in SCRIPTED:
             with self.subTest(plugin=name):
                 dest = ROOT / "plugins" / name / "must-not-be-created"
                 result = self.run_script(name, self.silent, "--output", dest)
@@ -148,7 +164,7 @@ class VideoPreparationTests(unittest.TestCase):
             ["https://www.youtube.com/watch?v=example"],
             ["https://youtube.com.evil.invalid/watch?v=example", "--allow-download"],
         ]
-        for name in NAMES:
+        for name in SCRIPTED:
             for args in cases:
                 with self.subTest(plugin=name, args=args):
                     result = self.run_script(name, *args)
