@@ -17,7 +17,7 @@
   "extensions": {
     "com.openai": {
       "interface": {
-        "displayName": "Sofia LATAM",
+        "displayName": "Sofia",
         "shortDescription": "Guiones y análisis de videos",
         "longDescription": "Analiza videos cortos, escribe y revisa guiones en español latinoamericano, aprende la voz del creador y exporta análisis. Usa referencias incluidas y hechos proporcionados o verificados. La preparación visual local requiere FFmpeg y ejecución de comandos; el análisis de texto funciona sin esos recursos. Los servicios externos opcionales usan la cuenta de la persona y requieren autorización.",
         "developerName": "Alef Marques",

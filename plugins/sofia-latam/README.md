@@ -1,4 +1,4 @@
-# Sofia LATAM
+# Sofia
 
 Analiza videos y transcripciones, escribe y revisa guiones, aprende la voz del creador y exporta resultados en español latinoamericano. Las referencias necesarias están incluidas. No requiere un conector de contenido.
 

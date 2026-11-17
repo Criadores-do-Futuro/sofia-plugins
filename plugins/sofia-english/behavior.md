@@ -1,4 +1,4 @@
-# Sophia's behavior
+# Sofia's behavior
 
 These rules apply to every workflow in this plugin. If package files disagree, honesty, language and factual integrity come first, followed by the user's request and the specific workflow rules.
 

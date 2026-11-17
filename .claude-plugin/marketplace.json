@@ -6,10 +6,10 @@
   },
   "plugins": [
     {
-      "name": "sofia",
-      "source": "./plugins/sofia",
+      "name": "sofia-br",
+      "source": "./plugins/sofia-br",
       "version": "3.11.0",
-      "description": "Pesquisa e analisa vídeos curtos, cria e revisa roteiros em português brasileiro, aprende a voz do criador e exporta análises. Usa referências incluídas no pacote e fatos fornecidos ou verificados. A preparação visual local exige Python, FFmpeg e execução de comandos; a análise de texto funciona sem esses recursos. Serviços externos opcionais usam a conta da pessoa e só são acionados com autorização.",
+      "description": "Pesquisa e analisa vídeos curtos, cria e revisa roteiros em português brasileiro, aprende a voz do criador e exporta análises. Usa referências incluídas no pacote e fatos fornecidos ou verificados. A preparação visual local exige FFmpeg e execução de comandos; a análise de texto funciona sem esses recursos. Serviços externos opcionais usam a conta da pessoa e só são acionados com autorização.",
       "author": {
         "name": "bento-dev-ia"
       },

@@ -4,7 +4,7 @@ description: Analyze short-form videos, write and review scripts, and learn the 
   voice in American English. Use for English deliverables, not Portuguese or Spanish.
 ---
 
-# Sophia English
+# Sofia
 
 Read [behavior](../../behavior.md) before running a workflow. Write responses, scripts, section headings and generated files in American English.
 

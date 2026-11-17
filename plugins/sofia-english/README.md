@@ -1,4 +1,4 @@
-# Sophia English
+# Sofia
 
 Analyze videos and transcripts, write and review scripts, learn the creator's voice and export results in American English. Required references are bundled. No content connector is required.
 

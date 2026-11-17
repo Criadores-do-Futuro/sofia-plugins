@@ -5,10 +5,10 @@
   },
   "plugins": [
     {
-      "name": "sofia",
+      "name": "sofia-br",
       "source": {
         "source": "local",
-        "path": "./plugins/sofia"
+        "path": "./plugins/sofia-br"
       },
       "policy": {
         "installation": "AVAILABLE",

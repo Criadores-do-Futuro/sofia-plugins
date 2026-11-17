@@ -1,4 +1,4 @@
 interface:
-  display_name: Sofia LATAM · sofia-latam
+  display_name: Sofia
   short_description: Guiones y análisis de videos
   default_prompt: Usa $sofia-latam para trabajar en mi contenido en español.
