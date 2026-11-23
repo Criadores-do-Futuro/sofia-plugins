@@ -25,13 +25,19 @@ Se a pessoa não souber, pergunte: "O que mais incomoda o seu público hoje? Que
 
 Se o assunto parecer pequeno, diga: "Esse assunto está meio pequeno, pode não interessar muita gente. Qual problema maior do seu público se liga a isso?"
 
-**2. Jeito de gravar (formato).** Sugira de 2 a 3 formatos que a pessoa consegue gravar de verdade, cada um em uma frase. Use a seção "Como escolher" de [formatos/README.md](formatos/README.md). Escolhido o formato, abra o arquivo dele e siga as regras de escrita dele até o fim.
+**2. Pesquisar o assunto e a bolha.** Diga em uma frase por que vale: o roteiro fica bom quando tem fato com fonte e as palavras do público. As duas pesquisas não têm ordem; às vezes são a mesma.
+- **O assunto:** fatos em fonte primária, pelo caminho de [pesquisa-e-fatos.md](pesquisa-e-fatos.md).
+- **A bolha:** ensine a pesquisa no Instagram e no TikTok pelo passo a passo de [pesquisa-de-bolha.md](pesquisa-de-bolha.md). Peça os comentários que chamaram a atenção dela e vídeos de referência, e converse sobre o que ela achou interessante. Tire dali o vocabulário e o que mexe com a bolha.
 
-**3. Ordem da história (estrutura).** O arquivo do formato diz qual estrutura combina. Confirme com 2 a 3 opções, usando [estruturas.md](estruturas.md).
+Se ela quiser pular, respeite e siga.
 
-**4. Hook.** 3 opções de tipos diferentes, cada uma com uma linha dizendo por que prende e onde o vídeo paga a promessa. Veja [hooks.md](hooks.md). Espere ela escolher.
+**3. Jeito de gravar (formato).** Sugira de 2 a 3 formatos que a pessoa consegue gravar de verdade, cada um em uma frase. Use a seção "Como escolher" de [formatos/README.md](formatos/README.md). Escolhido o formato, abra o arquivo dele e siga as regras de escrita dele até o fim.
 
-**5. Confirmar antes de escrever.** Em poucas linhas:
+**4. Ordem da história (estrutura).** O arquivo do formato diz qual estrutura combina. Confirme com 2 a 3 opções, usando [estruturas.md](estruturas.md).
+
+**5. Hook.** De 3 a 5 opções de tipos diferentes (3, se ela não disse quantas prefere), cada uma com uma linha dizendo por que prende e onde o vídeo paga a promessa. Use o que a pesquisa da bolha trouxe. Veja [hooks.md](hooks.md). Espere ela escolher.
+
+**6. Confirmar antes de escrever.** Em poucas linhas:
 
 ```
 Vou escrever com:
@@ -45,9 +51,9 @@ Falta algum caso real, número ou exemplo que você quer que eu use?
 
 Só escreva com material real. Se faltar um caso, peça: "Para essa parte ficar boa, preciso de um exemplo real. Aconteceu algo assim com você ou com alguém que o seu público conhece?"
 
-**6. Escrever.** 2 ou 3 versões (uma só, se a pessoa pedir), cada uma com estrutura ou abordagem diferente. Cada versão tem começo, meio e fim e uma linha dizendo o foco ("**Versão 1**, foco em: ..."). Siga [como-escrever.md](como-escrever.md) e passe pela lista "Antes de entregar" do SKILL.md.
+**7. Escrever.** 2 ou 3 versões (uma só, se a pessoa pedir), cada uma com estrutura ou abordagem diferente. Cada versão tem começo, meio e fim e uma linha dizendo o foco ("**Versão 1**, foco em: ..."). Os comentários que ela trouxe entram como fala dela, sem aspas e sem metalinguagem (veja "Comentários de vídeo" no SKILL.md). Siga [como-escrever.md](como-escrever.md) e passe pela lista "Antes de entregar" do SKILL.md.
 
-**7. Oferecer a crítica.** "Quer que eu avalie com honestidade se segura a pessoa até o fim?" Se ela aceitar, siga a parte 2 de [critica-e-lapidacao.md](critica-e-lapidacao.md).
+**8. A crítica.** Diga em uma frase por que vale (é onde sai o que segura menos) e ofereça: "Quer que eu avalie com honestidade se segura a pessoa até o fim?" Se ela aceitar, siga a parte 2 de [critica-e-lapidacao.md](critica-e-lapidacao.md).
 
 ## No fim
 
@@ -57,4 +63,4 @@ Só escreva com material real. Se faltar um caso, peça: "Para essa parte ficar 
 
 ## O que não muda sem o conector
 
-Nada inventado, comentário literal, o Piso, ajuste só no que foi pedido. Coletor ou ferramenta paga só se ela já tiver um ligado, e só com o OK dela e uma estimativa de custo. As regras do SKILL.md valem igual.
+Nada inventado, comentário guardado literal e usado como fala do criador, o Piso, ajuste só no que foi pedido. Coletor ou ferramenta paga só se ela já tiver um ligado, e só com o OK dela e uma estimativa de custo. As regras do SKILL.md valem igual.

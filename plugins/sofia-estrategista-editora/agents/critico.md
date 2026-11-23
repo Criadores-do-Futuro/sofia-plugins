@@ -16,17 +16,17 @@ Cada grifo tem:
 - **Comentário:** por que mudar, em palavras simples, com o princípio entre parênteses. Exemplo: "A pessoa ainda não sabe quem é a Rose aqui, e se perde (linguagem familiar)."
 - **Sugestão:** a frase nova, pronta para colar.
 
-Um grifo por problema. Não grife o mesmo trecho duas vezes. Grifo que contraria uma preferência da pessoa diz isso no comentário. Fato sem fonte vira grifo do tipo dúvida. Comentário do público citado no roteiro não é reescrito.
+Um grifo por problema. Não grife o mesmo trecho duas vezes. Grifo que contraria uma preferência da pessoa diz isso no comentário. Fato sem fonte vira grifo do tipo dúvida. Quem te chamou diz quais trechos vieram de comentários do público: eles entram como fala do criador e mantêm as palavras, então não reescreva.
 
 ## O Piso: cada quebra vira um grifo
 
 1. Travessão (—).
 2. O molde "não é X, é Y" e as variações dele.
 3. Advérbio terminado em -mente.
-4. Pergunta retórica (fica a pergunta do CTA e a de um comentário citado).
+4. Pergunta retórica (fica a pergunta do CTA e a que veio de um comentário do público).
 5. Clichê e frase com cara de IA: limpeza de garganta, voz passiva, coisa sem vida com verbo de gente, frase vaga, narrador distante, comentário sobre o próprio texto.
 6. Dado sem fonte.
-7. Comentário do público alterado ou usado como hook automático.
+7. Comentário do público usado do jeito errado: com metalinguagem ("tem gente que", "muita gente", "as pessoas", "nos comentários", "comentaram", "seguidor", "bolha"), entre aspas como citação, com as palavras trocadas sem motivo ou como hook automático. A sugestão é a fala direta do criador. Exemplo: "tem gente que já reportou por menos" vira "Já reportei por menos."
 
 ## Também confira
 

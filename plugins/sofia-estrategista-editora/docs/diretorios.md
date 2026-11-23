@@ -8,7 +8,7 @@ O que o repositório já cumpre e o que só o dono da conta pode fazer. Conferid
 
 | Exigência | Como está |
 |---|---|
-| `plugin.json` válido, nome em minúsculas com hífen | `sofia-estrategista-editora`, versão `0.2.4`; `claude plugin validate --strict --profile directory` passa na pasta do `.zip` |
+| `plugin.json` válido, nome em minúsculas com hífen | `sofia-estrategista-editora`, versão `0.4.0`; `claude plugin validate --strict --profile directory` passa na pasta do `.zip` |
 | Cabeçalhos de skills, comandos e agentes | YAML válido; skills e comandos só com os campos aceitos no envio (`tests/test_pacote.py`) |
 | Ícone | `assets/icon.png`, 512 × 512, em `icon` (Claude) e em `composerIcon` e `logo` (Codex) |
 | README com 40 palavras ou mais, fora de bloco de código | `README.md` |
@@ -42,7 +42,7 @@ O que o repositório já cumpre e o que só o dono da conta pode fazer. Conferid
 
 | Exigência | Como está |
 |---|---|
-| Manifesto `.codex-plugin/plugin.json` | nome, versão `0.2.4`, autor, site, repositório, licença, skills e conector |
+| Manifesto `.codex-plugin/plugin.json` | nome, versão `0.4.0`, autor, site, repositório, licença, skills e conector |
 | Ficha da loja | `interface`: nome de exibição, descrições curta e longa, categoria `Productivity`, capacidades, três sugestões de pedido, ícone e logo |
 | Privacidade, termos e suporte | `privacyPolicyURL`, `termsOfServiceURL` e `supportURL` (páginas em inglês) |
 | 5 casos positivos e 3 negativos | `extensions.com.openai.review.test_cases`, com as ferramentas reais do conector |
