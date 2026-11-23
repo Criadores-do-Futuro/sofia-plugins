@@ -10,9 +10,9 @@ Com o conector ligado, leia antes a peça `instrucoes/critica` do `sofia_metodo`
 
 ## 1. Lapidar com grifos
 
-Quando a pessoa pede para lapidar, ou para jogar o card em Lapidar, o trabalho é grifar. Não reescreva o roteiro inteiro.
+Lapidar faz parte do caminho: quando a pessoa escolhe a versão do roteiro, diga em uma frase por que vale e ofereça começar. Se ela quiser pular, respeite. Quando ela aceitar, pedir para lapidar ou jogar o card em Lapidar, o trabalho é grifar. Não reescreva o roteiro inteiro.
 
-Antes do primeiro grifo, chame `sofia_preparar_escrita` com `tipo: "critica"`. O pacote traz a versão escolhida, as regras e o que a pessoa já recusou. Sem esse pacote pedido há pouco, `sofia_grifos` não grava os seus grifos e devolve o pacote. Mover o card para Lapidar sem grifos também não move: devolve o pacote da crítica.
+Antes do primeiro grifo, chame `sofia_preparar_escrita` com `tipo: "critica"`. O pacote traz a versão escolhida, as regras e o que a pessoa já recusou, e termina com um selo. Mande esse selo no campo `selo` de `sofia_grifos`. Sem ele, `sofia_grifos` não grava os seus grifos e devolve o pacote. Mover o card para Lapidar sem grifos também não move: devolve o pacote da crítica. Se a conversa já tem partes de um pacote anterior deste card (o método, o perfil, o cérebro, a pesquisa, a base), diga quais em `ja_tenho` e mande o selo desse pacote: elas não voltam, a não ser que tenham mudado, e as regras da crítica vêm sempre.
 
 **Cada grifo tem:**
 - **Trecho:** o pedaço exato do roteiro, copiado letra por letra, para o site achar e marcar.
@@ -27,6 +27,7 @@ Antes do primeiro grifo, chame `sofia_preparar_escrita` com `tipo: "critica"`. O
 - Respeite o que a pessoa já aprovou e o "faça" e o "evite" dela. Grifo que contraria uma preferência guardada precisa dizer isso no comentário.
 - Use o método inteiro: formato, estrutura, princípios, elementos viciantes e a lista "Antes de entregar" do SKILL.md. Cada item do Piso que o roteiro quebra vira um grifo.
 - Fato sem fonte vira grifo do tipo dúvida.
+- Trecho que veio de comentário é fala da pessoa: mantenha as palavras e só grife se ficar incoerente. Ao chamar o ajudante `critico`, diga quais são esses trechos.
 
 **Como mostrar:** salve com `sofia_grifos` e mostre numa tabela, para a pessoa ver tudo de uma vez.
 
@@ -45,7 +46,7 @@ Depois da tabela, diga em uma linha como responder: "Me diz quais você aceita, 
 A pessoa também grifa: no site, em qualquer etapa do card, ou ditando para você. O grifo dela é um pedido (cortar, trocar ou só comentar) e não recebe aceito nem recusado. Em `sofia_video` eles vêm numa lista separada, "Grifos do aluno".
 
 - **Ela dita os grifos:** salve com `sofia_grifos` e `doAluno: true`. O trecho é copiado do texto da versão, e o comentário vai nas palavras dela, sem reescrever.
-- **Ela pede a versão nova com os grifos dela** ("use os meus grifos da versão 3"): chame `sofia_preparar_escrita` (ajuste), escreva a versão aplicando cada pedido, mostre e salve com `sofia_salvar` (parte roteiro) e `nasceuDe` igual ao número da versão grifada. Pedido que você não seguiu, diga qual e por quê em uma linha.
+- **Ela pede a versão nova com os grifos dela** ("use os meus grifos da versão 3"): chame `sofia_preparar_escrita` (ajuste), escreva a versão aplicando cada pedido, mostre e salve com `sofia_salvar` (parte roteiro), `nasceuDe` igual ao número da versão grifada e o selo do pacote do ajuste. Pedido que você não seguiu, diga qual e por quê em uma linha.
 - Não confunda com os seus grifos: os da pessoa não entram na tabela de aceito e recusado.
 - Ao ir para Gravar, o corte e a troca que ela grifou já entram na versão que vai. Comentário sozinho não muda o texto.
 
@@ -81,7 +82,7 @@ Ajuste mexe pouco, no lugar certo.
 
 - Mude só o trecho pedido. O resto fica palavra por palavra, inclusive o que você mudaria se fosse seu.
 - Nunca encurte nem resuma o roteiro sem pedido. Se achar que está longo, diga em uma linha e pergunte.
-- Antes de mexer, chame `sofia_preparar_escrita` com `tipo: "ajuste"`.
+- Antes de mexer, chame `sofia_preparar_escrita` com `tipo: "ajuste"`. Salve a versão nova com o selo do fim desse pacote.
 - Mostre só o que mudou, no formato "antes → depois", com o número do bloco.
 - Se o ajuste mexe em outra parte (trocou um nome no hook, e o nome aparece de novo no fim), avise e ajuste as duas, mostrando as duas.
 - Salve como versão nova: `sofia_salvar` com `nasceuDe` igual ao número da versão de origem. Versão que perde mais de 30% das palavras só é salva com `pediuCorte: true`, quando ela pediu o corte. Diga qual versão é a escolhida agora. Cada versão precisa ser rastreável: o que mudou e por quê.

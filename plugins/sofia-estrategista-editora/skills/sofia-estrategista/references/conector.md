@@ -19,8 +19,8 @@ Sobre como usar cada ferramenta (nome, campos, ordem das chamadas), a descriçã
 | Ferramenta | O que faz | Quando |
 |---|---|---|
 | `sofia_meus_videos` | Os vídeos em andamento, a etapa de cada um, se a voz está salva e o próximo passo sugerido | Começo de toda conversa de conteúdo |
-| `sofia_preparar_escrita` | Devolve o pacote da escrita: as regras, como trabalhar com esta pessoa neste perfil, o que ela já recusou, a versão atual (no ajuste e na crítica), o público, o cérebro, o método, a pesquisa e o card | Antes de sugerir ideias, escrever hooks, escrever ou ajustar o roteiro e criticar |
-| `sofia_metodo` | Devolve uma peça do método | Quando o pacote não trouxe a peça, ou sem card |
+| `sofia_preparar_escrita` | Devolve o pacote da escrita: as regras, como trabalhar com esta pessoa neste perfil, o que ela já recusou, a versão atual (no ajuste e na crítica), o público, o cérebro, o método, a pesquisa, a base de conhecimento do assunto, o card e, no fim, o selo do pacote | Uma vez por etapa do card: antes de sugerir ideias, escrever hooks, escrever ou ajustar o roteiro e criticar |
+| `sofia_metodo` | Devolve uma peça do método | As peças que o passo pede além do pacote, uma vez por conversa, enquanto ainda estiverem nela (depois de um resumo da conversa, de novo); fora isso, só o formato, a estrutura ou o elemento que a pessoa citar e o pacote não trouxe, ou sem card |
 | `sofia_video` | O vídeo inteiro: ficha, pesquisa, estrutura, roteiros com os grifos numerados, lista de gravação e os ids | Ver versões anteriores, referências ligadas, antes de gravar |
 | `sofia_salvar` | Salva a parte `roteiro` (cada versão) ou a parte `gravacao` (cenas e teleprompter) | Logo depois de escrever |
 | `sofia_grifos` | Salva grifos numa versão, ou registra aceito e recusado pelo número | Lapidar |
@@ -32,7 +32,10 @@ Sobre como usar cada ferramenta (nome, campos, ordem das chamadas), a descriçã
 
 **Detalhes do `sofia_preparar_escrita`:**
 - Recebe o `videoId` (o id do card) e o `tipo`: `ideia`, `hook`, `roteiro`, `ajuste` ou `critica`.
-- `sofia_salvar` (roteiro), `sofia_grifos` (grifos novos da Sofia) e `planejamento_mover_card` (hook e estilo) só gravam com o pacote do tipo certo pedido há pouco. Sem ele, devolvem o pacote no lugar de gravar.
+- **Um pacote por etapa.** Cada etapa (ideia, hook, roteiro, ajuste, crítica) pede o seu pacote. Não peça o pacote de novo só para gravar: o selo basta. Peça de novo, com `ja_tenho` e o selo, para registrar uma recusa (`recusou`), para trazer novas opções ou se partes do pacote saíram da conversa.
+- **O selo.** O pacote termina com um selo. Ao gravar o que saiu dele, mande o selo, como veio, no campo `selo` de `sofia_salvar` (roteiro), `sofia_grifos` (grifos novos da Sofia) ou `planejamento_mover_card` (hook e estilo). Essas três só gravam com o selo de um pacote do tipo certo deste card: use o do pacote mais recente do tipo que vai gravar. Se o pacote não terminar com um selo, grave sem ele logo depois do pacote. Sem ele, ou com o selo vencido ou de outro card, devolvem o pacote no lugar de gravar: leia, confira o texto com ele e chame de novo com o selo novo. As 2 ou 3 versões da primeira escrita usam o mesmo selo.
+- **`ja_tenho`.** No pacote seguinte do mesmo card, diga em `ja_tenho` o que do pacote anterior ainda está na conversa (`metodo`, `perfil`, `cerebro`, `pesquisa`, `base`; `[]` quando nada) e mande o selo dele em `selo`. Essas partes não voltam, a não ser que tenham mudado depois do selo: o que mudou volta sozinho. As regras delas continuam valendo. Parte que saiu da conversa (por exemplo, depois de um resumo da conversa) não entra em `ja_tenho`. Sem o selo, o pacote vem inteiro.
+- As regras e o método de cada escrita vêm sempre, mesmo com `ja_tenho`.
 - `tipo: "roteiro"` num card em Brainstorming ou Estruturar, sem hook e estilo escolhidos, vira pacote de hook.
 - `ajuste` e `critica` precisam de um roteiro salvo. Sem roteiro, a ferramenta dá erro.
 - Em `recusou`, guarde o que a pessoa recusou neste card: `hooks`, `estilos` e `ideias` (até 10 de cada) e `modoDeVoz` (`true` quando ela não quis ouvir o roteiro pelo modo de voz). O que foi recusado não volta.
@@ -51,7 +54,7 @@ Sobre como usar cada ferramenta (nome, campos, ordem das chamadas), a descriçã
 
 **Detalhes do `sofia_grifos`:**
 - Cada grifo leva: o trecho exato do roteiro (que só aparece num lugar), o tipo (`cortar`, `trocar`, `reforcar` ou `duvida`), o comentário em palavras simples com o princípio entre parênteses e a sugestão (vazia em cortar, a pergunta em dúvida).
-- Grifos novos da Sofia precisam do pacote da crítica pedido há pouco (`sofia_preparar_escrita` com `tipo: "critica"`).
+- Grifos novos da Sofia vão com o selo do pacote da crítica (`sofia_preparar_escrita` com `tipo: "critica"`) no campo `selo`.
 - **Grifos da pessoa:** com `doAluno: true`, o comentário vai nas palavras dela e o tipo é cortar, trocar ou dúvida. Não há aceito nem recusado: são os pedidos dela. Para escrever a versão nova a partir deles, chame `sofia_preparar_escrita` (ajuste) e salve com `nasceuDe` da versão grifada.
 - Respostas vão pelo número do grifo. Sem grifos nem respostas, a ferramenta lista os grifos da versão.
 - Com todos respondidos, o servidor monta e salva a versão nova.
@@ -71,12 +74,13 @@ O quadro tem as colunas Brainstorming, Estruturar, Revisar, Lapidar e Gravar. Ca
 |---|---|---|
 | `planejamento_quadro` | Os cards e a coluna de cada um | A pessoa fala dos cards |
 | `planejamento_criar_card` | Cria um card | Ideia aprovada |
-| `planejamento_salvar_pesquisa` | Salva a pesquisa nos grupos: fatos-chave, contexto, crenças erradas, curiosidades, casos reais, citações, comentários da bolha. Também guarda outras ideias de vídeo e leva os achados com fonte para o cérebro do perfil (conte isso, com a linha que a ferramenta devolve) | Depois de pesquisar |
+| `planejamento_salvar_pesquisa` | Salva a pesquisa nos grupos: fatos-chave, contexto, crenças erradas, curiosidades, casos reais, citações, comentários da bolha. Também guarda outras ideias de vídeo. No card de um perfil, o achado com fonte conferida vai também para a peça de conhecimento do assunto, que outros cards do mesmo assunto reaproveitam. O comentário da bolha vai para a peça da bolha, no card ligado a uma, ou para a do assunto, no card sem bolha (conte isso, com a linha que a ferramenta devolve) | Depois de pesquisar |
 | `planejamento_estruturar_card` | Grava o que entra em cada bloco da estrutura, em tópicos curtos ligados aos achados | Em Estruturar, sem texto falado |
 | `planejamento_mover_card` | Move o card de coluna | Quando a coluna nova tem o que pede |
 | `planejamento_editar_card` | Atualiza campos: tema, notas, ideia, paraQuem, formato, estrutura, elementos, princípios, hook, estilo, roteiroEscolhido, statusDeGravacao e outros | Trocar a versão escolhida, corrigir um campo |
 | `planejamento_gravar` | O roteiro escolhido pronto para gravar, com a situação da gravação | Card em Gravar |
-| `planejamento_postado` | Grava o link, os números e se funcionou. Se funcionou, também guarda o resultado no cérebro do perfil (conte isso) | Só a pedido, depois de postar |
+| `planejamento_postado` | Grava o link, os números e se funcionou. Se funcionou, também guarda o resultado no cérebro do perfil (conte isso) e sugere consolidar o card | Só a pedido, depois de postar |
+| `planejamento_consolidar_card` | Leva ao cérebro o que o card ensinou, só o que a pessoa aprovar. Sem `itens`, mostra a proposta sem gravar nada; com `itens`, depois do OK, grava | A pessoa elogia o card, o vídeo virou post ou o post funcionou |
 | `planejamento_guardar_card` | Guarda o card inteiro no cérebro, em Cards guardados | A pessoa quer guardar para depois |
 | `planejamento_reusar_card` | Cria um card novo a partir de um guardado ou de um que funcionou | Repetir o que deu certo |
 | `planejamento_dividir_card` | Divide um card em 2 a 6 | Uma estrutura rende mais de um vídeo |
@@ -89,10 +93,16 @@ O quadro tem as colunas Brainstorming, Estruturar, Revisar, Lapidar e Gravar. Ca
 - `ressalva`: o cuidado ao usar, em uma frase (até 300 caracteres). Por exemplo: "a empresa nega".
 - `substitui`: o id de um achado deste card que a informação nova corrige. O antigo fica guardado e sai da escrita.
 
+Campos do card inteiro:
+- `assunto`: o assunto amplo do card, em poucas palavras (por exemplo, "GTA 6" ou "golpe do Pix"). É o nome da peça de conhecimento onde a pesquisa entra, a mesma para todos os cards do assunto, e fica gravado no card. Sem ele, vale o assunto que o card já tem, depois o da peça de onde o card copiou itens (`daBase`), depois o Para quem, depois o tema.
+- `daBase`: os ids (`kb-…`) de itens da peça de conhecimento para copiar para a pesquisa deste card, com texto, fonte e data, sem redigitar. Os ids vêm no pacote da escrita (parte `## Base de conhecimento`) e no `cerebro_ler` da peça. Antes de pesquisar de novo, veja se a base já tem o fato.
+
+O card é a memória curta. A pesquisa fica no card e na peça do assunto; ela não vira nota "Sobre o perfil" sozinha. O que o card ensinou só sobe para o cérebro pelo `planejamento_consolidar_card`, com o OK da pessoa.
+
 O servidor avisa quando há acusação (diga quem acusa e que não há condenação, se não houver) e quando há fonte só com link (não diga que viu ou leu, e abra antes de usar).
 
 **Detalhes do `planejamento_mover_card`:**
-- **Para Revisar:** o card precisa do hook e do estilo escolhidos pela pessoa e do pacote de hook pedido há pouco (`sofia_preparar_escrita` com `tipo: "hook"`). Mande `escolhidoPeloAluno: true` só depois da resposta dela. Escolha só do hook ou só do estilo fica salva e o card não anda.
+- **Para Revisar:** o card precisa do hook e do estilo escolhidos pela pessoa e do selo do pacote de hook (`sofia_preparar_escrita` com `tipo: "hook"`) no campo `selo`. Mande `escolhidoPeloAluno: true` só depois da resposta dela. Escolha só do hook ou só do estilo fica salva e o card não anda.
 - **Em Revisar sem roteiro:** o card anda e a resposta traz o pacote do roteiro.
 - **Para Lapidar sem grifos:** o card não anda e a resposta traz o pacote da crítica.
 - **Para Gravar:** os grifos precisam estar todos respondidos. O servidor monta a versão com os grifos aceitos. O card nunca é marcado como gravado sozinho.
@@ -104,17 +114,29 @@ O servidor avisa quando há acusação (diga quem acusa e que não há condenaç
 
 **Detalhes do `planejamento_postado`:** sem resultado informado, o servidor compara as views com o normal do perfil. De 1,25 vez o normal para cima funcionou, abaixo de 0,8 vez não funcionou. Nunca invente número.
 
+**Detalhes do `planejamento_consolidar_card`:**
+- **Quando:** a pessoa elogia o card ou diz que ele ficou bom, o vídeo virou post, ou o `planejamento_postado` avisa que o post funcionou.
+- **Sem `itens`:** devolve a proposta, sem gravar nada: os achados com fonte e as citações (pelo id), o hook, a estrutura, o formato e o estilo do card, trechos do roteiro e o resultado do post.
+- **Mostre a proposta separada em dois lados:** "Sobre o perfil" (o que vale a longo prazo sobre o perfil: temas, dores, bolhas, crenças, o que funcionou) e "Para reaproveitar" (o que serve a outros vídeos: hooks, trechos, estilos, achados, citações). A pessoa escolhe o que aprova.
+- **Com `itens`:** só depois do OK. Grava os achados escolhidos pelo id e as notas de aprendizado (camada, título, resumo, texto), e marca o card como consolidado. Avise em uma linha o que foi guardado e onde.
+- O card sem perfil não tem cérebro: não há o que consolidar.
+
 ## 3. Cérebro do perfil
 
-O cérebro guarda, por perfil, o que a Sofia aprende. As camadas incluem: `como-trabalhar`, `o-que-funcionou`, `o-que-nao-funcionou`, `temas`, `dores`, `bolhas`, `crencas`, `historias`, `vocabulario`, `achados`, `citacoes`, `ideias-guardadas`, `cards-guardados`, `roteiros`, `formatos`, `estruturas`, `estilos`, `produtos`.
+O cérebro guarda, por perfil, o que já se provou. O card é a memória curta: o trabalho de um vídeo fica nele, e só sobe para o cérebro com o OK da pessoa (`planejamento_consolidar_card`, `cerebro_guardar` ou `cerebro_preferencia`). As camadas incluem: `como-trabalhar`, `o-que-funcionou`, `o-que-nao-funcionou`, `temas`, `dores`, `bolhas`, `crencas`, `historias`, `vocabulario`, `achados`, `citacoes`, `ideias-guardadas`, `cards-guardados`, `roteiros`, `formatos`, `estruturas`, `estilos`, `produtos` e `conhecimento`.
+
+**Peças de conhecimento (`conhecimento`):** uma peça por assunto amplo, montada pelo próprio site com o que a pesquisa dos cards trouxe. O primeiro parágrafo é o resumo. As seções são Fatos com fonte, O que acham × o que é real, Casos atuais, Comentários da bolha (literais, sem @), Citações, Contexto e Curiosidades. Cada item tem um id estável (`kb-…`), a fonte, a data e o card de onde veio. O pacote da escrita traz a peça do assunto do card; um card novo do mesmo assunto copia itens dela com `daBase`. Se a pessoa editou a peça, o texto dela fica como está e só entram itens novos.
+
+**Peças da bolha (`bolhas`):** uma peça por bolha do perfil, a mesma para todos os cards que falam com ela. O primeiro parágrafo é o resumo. As seções são Vocabulário, O que mexe com ela, Comentários bem curtidos (literais, sem @, com as curtidas) e Referências. O card ligado a uma bolha leva o nome dela, e o pacote da escrita traz a peça inteira na parte do público. Se a pessoa editou a peça, o texto dela fica como está e só entram itens novos.
 
 | Ferramenta | O que faz | Quando |
 |---|---|---|
 | `cerebro_indice` | O que existe em cada camada | Antes de buscar |
-| `cerebro_buscar` | Busca por `consulta`, nas `camadas` escolhidas, com `limite` | Ideias, pesquisa, antes de escrever |
+| `cerebro_buscar` | Busca por `consulta`, nas `camadas` escolhidas, com `limite` | Ideias e pesquisa, também com card; nas escritas com pacote, o pacote já traz o cérebro |
 | `cerebro_ler` | Lê um item inteiro | Item achado na busca |
 | `cerebro_guardar` | Guarda algo que vale para os próximos vídeos | A pessoa conta algo duradouro e diz que pode guardar; avise em uma linha o que guardou |
 | `cerebro_preferencia` | Guarda em `como-trabalhar` o que a pessoa elogiou (faça) ou reclamou (evite), com a frase dela e a data | Depois do elogio ou da bronca, quando ela disser que pode guardar. O OK vale para aquela anotação |
+| `cerebro_bolha` | Lista as bolhas do perfil, liga o card a uma delas, cria uma nova ou acrescenta vocabulário, o que mexe com ela, comentários e referências | Na pesquisa da bolha. Grave só o que a pessoa pediu ou confirmou |
 | `cerebro_esquecer` | Tira um item | Só a pedido |
 | `cerebro_desfazer` | Desfaz a última mudança | Só a pedido |
 

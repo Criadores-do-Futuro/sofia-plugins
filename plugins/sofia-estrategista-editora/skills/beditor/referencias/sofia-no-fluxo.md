@@ -11,7 +11,12 @@ para transformar o método em decisões de montagem.
 
 O método vem no próprio plugin, na skill `sofia-estrategista`
 (`skills/sofia-estrategista/references/`). Com o conector ligado, `sofia_metodo`
-devolve a versão do site, que vale mais. `scripts/localizar_sofia.py FORMATO`, na
+devolve a versão do site, que vale mais. Peça só as peças da lista abaixo que a
+etapa usa, uma vez por conversa, enquanto ainda estiverem nela (depois de um
+resumo da conversa, peça de novo). Se o card já passou pelo
+`sofia_preparar_escrita` nesta conversa, o pacote trouxe o formato, a estrutura
+e os elementos do card, e não é preciso pedir essas de novo. O resumo de uma
+peça não substitui a peça inteira. `scripts/localizar_sofia.py FORMATO`, na
 raiz do plugin, devolve o caminho da ficha e dos princípios. Os caminhos abaixo
 seguem o plugin Sofia antigo; procure o mesmo arquivo em
 `skills/sofia-estrategista/references/`.

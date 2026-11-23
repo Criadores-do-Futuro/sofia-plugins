@@ -43,11 +43,18 @@ Registre também:
 
 ## Comentários da bolha
 
-Comentário de vídeo é a voz real do público. Guarde como foi escrito, com gíria, erro, caixa alta, pontuação e emoji, sem @ e sem nome de quem escreveu. No TikTok, os comentários pedem login: peça para a pessoa colar os mais curtidos ou usar uma ferramenta que ela já tenha ligado. Coletor pago só se ela já tiver um ligado, e só com o OK dela: antes, diga qual coletor vai usar, quantos comentários vai buscar e quanto deve custar. Nunca contorne o login e nunca peça senha.
+Comentário de vídeo é a voz real do público. Guarde como foi escrito, com gíria, erro, caixa alta, pontuação e emoji, sem @ e sem nome de quem escreveu. O número de curtidas, quando aparecer, nunca entra no texto do comentário: na referência e na bolha, ele vai no campo `curtidas` de cada comentário; no card, ele serve para escolher quais comentários guardar. No TikTok, os comentários pedem login: peça para a pessoa colar os mais curtidos ou usar uma ferramenta que ela já tenha ligado. Coletor pago só se ela já tiver um ligado, e só com o OK dela: antes, diga qual coletor vai usar, quantos comentários vai buscar e quanto deve custar. Nunca contorne o login e nunca peça senha.
+
+O passo a passo da pesquisa no Instagram e no TikTok, com o vocabulário, o que mexe com a bolha e as referências, está em [pesquisa-de-bolha.md](pesquisa-de-bolha.md). No roteiro, o comentário vira fala do próprio criador, sem aspas e sem metalinguagem (veja "Comentários de vídeo" no SKILL.md).
 
 ## Onde salvar
 
-Com o conector: `planejamento_salvar_pesquisa` no card, separando em fatos-chave, contexto, crenças erradas, curiosidades, casos reais, citações e comentários da bolha. Cada achado com o link da fonte. Achado sem link fica em "Não verificado" e não entra no roteiro. A ferramenta já guarda no cérebro do perfil os achados com fonte e diz quantos na resposta: conte isso junto com o aviso de que salvou. Não chame `cerebro_guardar` para os mesmos achados.
+Com o conector: `planejamento_salvar_pesquisa` no card, separando em fatos-chave, contexto, crenças erradas, curiosidades, casos reais, citações e comentários da bolha. Cada achado com o link da fonte. Achado sem link fica em "Não verificado" e não entra no roteiro. Mande também o `assunto` amplo do card, em poucas palavras ("GTA 6", "golpe do Pix").
+
+- **A base do assunto.** No card de um perfil, a ferramenta leva o achado com fonte conferida para a peça de conhecimento do assunto (camada `conhecimento` do cérebro) e diz o que entrou na resposta: conte isso junto com o aviso de que salvou. Não chame `cerebro_guardar` para os mesmos achados.
+- **A bolha.** No card ligado a uma bolha, o comentário da bolha vai para a peça da bolha (camada `bolhas`), que todos os cards dela leem. No card sem bolha, ele vai para a peça do assunto, e a resposta sugere ligar o card a uma bolha com `cerebro_bolha`.
+- **Antes de pesquisar de novo,** veja se a base já tem o fato: a peça vem no pacote da escrita (`## Base de conhecimento`, com o id `kb-…` de cada item) ou em `cerebro_buscar` na camada `conhecimento`, com `cerebro_ler` da peça para ver os ids. O item que serve vai para o card pelo id, com `daBase`, sem redigitar. Fato que pode ter mudado desde a data do item é conferido de novo.
+- **O card é a memória curta.** A pesquisa não vira nota "Sobre o perfil" sozinha. O que o card ensinou só sobe para o cérebro pelo `planejamento_consolidar_card`, com o OK da pessoa.
 
 Sem o conector: entregue a pesquisa no chat com duas listas no fim, "Fontes" (com links) e "Não verificado".
 

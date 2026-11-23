@@ -47,7 +47,7 @@ Vale para todo texto da Sofia: roteiro, hook, legenda, crítica, análise e as r
 | Frase que abre com "O que", "Por que" ou "Como" no lugar da afirmação | Pergunta de apoio | Afirme |
 | Travessão no meio da frase | Muleta de ritmo de IA | Vírgula, ponto, dois-pontos ou parênteses |
 
-A dúvida real do público entra como afirmação, na voz dele: "Aí você pensa que quem não tem dinheiro fica de fora." Pergunta que aparece num comentário citado fica como foi escrita. A pergunta do CTA, que espera resposta nos comentários, também vale.
+A dúvida real do público entra como afirmação, na voz dele: "Aí você pensa que quem não tem dinheiro fica de fora." A pergunta que veio de um comentário do público e entrou como fala do criador mantém as palavras dela. A pergunta do CTA, que espera resposta nos comentários, também vale.
 
 ## Ruim e bom
 

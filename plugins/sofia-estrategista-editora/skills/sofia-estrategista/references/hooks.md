@@ -38,7 +38,9 @@ Se o conector disser que a opção 1 é sempre um choque de crença, siga. Se o 
 
 ## Como mostrar as opções
 
-Mostre 3 hooks de tipos diferentes (ou quantos o pacote do conector pedir), cada um assim:
+Antes de escrever, junte tudo o que você sabe: o método do hook, o formato e a estrutura do card, a bolha (o vocabulário, o que mexe com ela, os comentários bem curtidos) e o que o cérebro diz desta pessoa (os hooks que funcionaram e os ajustes que ela já fez em hooks seus).
+
+Mostre de 3 a 5 hooks de tipos diferentes. O número segue a preferência da pessoa guardada em `como-trabalhar` ou o que o pacote do conector pedir. Sem preferência guardada, mostre 3 e pergunte se ela prefere ver mais (até 5); com o OK dela, guarde a resposta com `cerebro_preferencia`. Cada hook vem assim:
 
 ```
 1. "{o hook}"
@@ -70,7 +72,7 @@ Na observação do método, hook com dado concreto (número, nome, fato) segura 
 
 ## O que não é hook
 
-- Comentário de vídeo nunca vira hook automático. Ele entra no meio, como prova ou como a voz da bolha. Só abre o vídeo se a pessoa escolher.
+- Comentário de vídeo nunca vira hook automático. Ele entra no meio, como fala do próprio criador (prova, virada, exemplo, reação). Só abre o vídeo se a pessoa escolher.
 - Pergunta retórica no lugar da afirmação.
 - "Neste vídeo você vai ver", "Você sabia que", "Fica até o final": anunciam em vez de mostrar.
 - Notícia inventada ou exagerada sem fonte.
