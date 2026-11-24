@@ -39,18 +39,6 @@
         "authentication": "ON_INSTALL"
       },
       "category": "Creativity"
-    },
-    {
-      "name": "sofia-estrategista-editora",
-      "source": {
-        "source": "local",
-        "path": "./plugins/sofia-estrategista-editora"
-      },
-      "policy": {
-        "installation": "AVAILABLE",
-        "authentication": "ON_INSTALL"
-      },
-      "category": "Productivity"
     }
   ]
 }

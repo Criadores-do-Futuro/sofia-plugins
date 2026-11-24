@@ -7,28 +7,21 @@ Três plugins para Codex e superfícies compatíveis do Claude, com comportament
 | `sofia-br` | 3.11.0 | Português brasileiro | [Sofia](plugins/sofia-br/README.md) |
 | `sofia-latam` | 1.1.0 | Espanhol latinoamericano | [Sofia](plugins/sofia-latam/README.md) |
 | `sofia-english` | 1.1.0 | Inglês americano | [Sofia](plugins/sofia-english/README.md) |
-| `sofia-estrategista-editora` | 0.4.0 | Português brasileiro | [Sofia Estrategista](plugins/sofia-estrategista-editora/README.md) |
 
-As três primeiras (`sofia-br`, `sofia-latam` e `sofia-english`) analisam referências, criam e revisam roteiros, aprendem a voz do criador e exportam resultados. Nenhuma depende de um conector de conteúdo ausente. As diferenças de escopo e os recursos opcionais estão nos documentos de cada plugin.
+As três (`sofia-br`, `sofia-latam` e `sofia-english`) analisam referências, criam e revisam roteiros, aprendem a voz do criador e exportam resultados. Nenhuma depende de um conector de conteúdo ausente. As diferenças de escopo e os recursos opcionais estão nos documentos de cada plugin.
 
-## Sofia Estrategista (a mais completa)
+## A Sofia Estrategista mais atual fica em outro marketplace
 
-A `sofia-estrategista-editora` aparece para as pessoas como **Sofia Estrategista**. É a Sofia do curso Criador Estrategista: faz ideia, pesquisa, roteiro e análise pelo método do curso e também edita vídeo (CapCut, DaVinci Resolve, motion, finalização e publicação).
-
-- **O que é restrito vem pelo conector.** O núcleo do método que está nos arquivos é o mesmo das Sofias públicas. Os exemplos analisados, as instruções completas de roteiro e crítica, o planejamento, o cérebro e a voz de cada aluno só chegam pelo MCP `sofia_metodo` e pelas outras ferramentas do conector, com login de aluno. A skill lê o conector primeiro e segue a descrição que vem do servidor.
-- **Fora do diretório público.** Ela leva scripts, fontes e modelos de motion que o diretório da Anthropic recusa de organização não verificada. Por isso o validador a confere à parte (`validate_complete`) e `tools/package_plugins.py` não gera ZIP dela. O ZIP para enviar em Personalizar › Plugins sai do repositório de origem (`scripts/empacotar.sh`) e fica na página Conector do site do curso.
-- **A cópia daqui não é editada aqui.** O repositório de origem é `bento-dev-ia/sofia-estrategista-editora`. Para atualizar esta pasta, use o comando abaixo e depois atualize a versão nos dois catálogos. Ele copia os mesmos arquivos que o ZIP leva.
+A **Sofia Estrategista**, a do curso Criador Estrategista (método do curso, conector do planejamento e edição de vídeo numa Sofia só), fica no marketplace `criadores-do-futuro`, no repositório [Criadores-do-Futuro/sofia-estrategista](https://github.com/Criadores-do-Futuro/sofia-estrategista). Ela saiu daqui na versão 2.0.0; as Sofias desta página continuam aqui, como estão.
 
 ```sh
-tools/sincronizar_estrategista.sh CAMINHO_DO_CLONE_DE_SOFIA_ESTRATEGISTA_EDITORA
+claude plugin marketplace add Criadores-do-Futuro/sofia-estrategista
+claude plugin install sofia-estrategista@criadores-do-futuro
 ```
 
-Para instalar pelo Claude Code:
+No Codex: `codex plugin marketplace add Criadores-do-Futuro/sofia-estrategista` e `codex plugin add sofia-estrategista@criadores-do-futuro`.
 
-```sh
-claude plugin marketplace add bento-dev-ia/sofia-plugins
-claude plugin install sofia-estrategista-editora@sofia-plugins
-```
+Quem instalou a `sofia-estrategista-editora` por este marketplace troca uma vez, pelo prompt de migração do [README de lá](https://github.com/Criadores-do-Futuro/sofia-estrategista#já-tem-uma-sofia-instalada). Ele desinstala a antiga e instala a nova, com o OK da pessoa. O conector da conta não muda.
 
 ## Formatos de pacote
 
@@ -37,7 +30,7 @@ Cada plugin possui manifesto portátil Agent Plugins 1.0 em `plugin.json`, compa
 O catálogo Claude fica em `.claude-plugin/marketplace.json`. O catálogo Codex fica em `.agents/plugins/marketplace.json`, com caminhos relativos à raiz do repositório.
 
 ```sh
-claude plugin marketplace add bento-dev-ia/sofia-plugins
+claude plugin marketplace add Criadores-do-Futuro/sofia-plugins
 claude plugin install sofia-br@sofia-plugins
 ```
 
@@ -52,7 +45,7 @@ python3 -m unittest discover -s tests -v
 python3 tools/package_plugins.py
 ```
 
-O validador confere as quatro Sofias, a Sofia Estrategista com as checagens próprias dela. Os ZIPs e seu inventário são gerados em `dist/`, fora do controle de versão, só para as três públicas. O empacotador extrai e valida cada ZIP final. Para conferir os requisitos de listagem pública:
+O validador confere as três Sofias. Os ZIPs e seu inventário são gerados em `dist/`, fora do controle de versão, só para as três públicas. O empacotador extrai e valida cada ZIP final. Para conferir os requisitos de listagem pública:
 
 ```sh
 python3 tools/validate_plugins.py --submission

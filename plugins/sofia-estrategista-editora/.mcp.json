@@ -1,8 +1,0 @@
-{
-  "mcpServers": {
-    "sofia-estrategista": {
-      "type": "http",
-      "url": "https://plataforma.criadorestrategista.com.br/api/mcp"
-    }
-  }
-}

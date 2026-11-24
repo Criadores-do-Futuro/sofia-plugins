@@ -20,12 +20,11 @@ NAMES = ("sofia-br", "sofia-latam", "sofia-english")
 # vive no repositório privado Criadores-do-Futuro/sofia-interna. A lista fica vazia de
 # propósito; os testes conferem que nenhum interno entra no pacote público.
 INTERNAL: tuple[str, ...] = ()
-# A Sofia Estrategista, a mais completa: além do método, edita vídeo, então leva scripts,
-# fontes e modelos que o diretório público não aceita de organização não verificada.
-# Ela é distribuída pelo próprio .zip (enviado em Personalizar > Plugins) e por este
-# marketplace. A cópia vem do repositório de origem por tools/sincronizar_estrategista.sh;
-# o conteúdo restrito do método fica no conector (MCP), não nos arquivos.
-COMPLETE = ("sofia-estrategista-editora",)
+# Sofias completas (com scripts, fontes e modelos que o diretório público não aceita de
+# organização não verificada), conferidas por validate_complete. A Sofia Estrategista era a
+# única e saiu deste repositório: desde a 2.0.0 ela fica no marketplace criadores-do-futuro,
+# no repositório Criadores-do-Futuro/sofia-estrategista. A lista fica vazia de propósito.
+COMPLETE: tuple[str, ...] = ()
 ALL_NAMES = NAMES + INTERNAL + COMPLETE
 # O envio de plugin no claude.ai recusa o .zip inteiro se um caminho tiver outro caractere.
 PATH_CHARS = re.compile(r"[A-Za-z0-9._/-]+")
@@ -311,7 +310,7 @@ def validate_all(root: Path = ROOT) -> list[dict]:
     claude = json.loads((root / ".claude-plugin/marketplace.json").read_text())
     codex = json.loads((root / ".agents/plugins/marketplace.json").read_text())
     if [p["name"] for p in claude["plugins"]] != list(ALL_NAMES) or [p["name"] for p in codex["plugins"]] != list(ALL_NAMES):
-        raise ValueError("Catálogos não contêm as identidades esperadas (três públicas e a completa)")
+        raise ValueError("Catálogos não contêm as identidades esperadas (as três públicas)")
     for entry, other in zip(claude["plugins"], codex["plugins"]):
         folder = root / "plugins" / entry["name"]
         if entry["name"] in COMPLETE:

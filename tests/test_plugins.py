@@ -108,22 +108,29 @@ class PackageContractTests(unittest.TestCase):
             produced = {path.name for path in Path(temp).glob("*.zip")}
             self.assertFalse(any(name in zipped for name in INTERNAL for zipped in produced))
 
-    def test_complete_sofia_is_in_the_catalogs_but_not_in_the_public_directory_package(self):
-        reports = {report["plugin"]: report for report in validate_all()}
-        for name in COMPLETE:
-            with self.subTest(plugin=name):
-                self.assertNotIn(name, NAMES)
-                self.assertEqual(reports[name]["errors"], [])
-                self.assertIn("sofia-estrategista", reports[name]["skills"])
-                self.assertTrue((ROOT / "plugins" / name / ".mcp.json").exists())
-        with tempfile.TemporaryDirectory() as temp:
-            inventory = package(Path(temp))
-            self.assertFalse(any(row["plugin"] in COMPLETE for row in inventory))
+    def test_sofia_estrategista_lives_in_the_criadores_do_futuro_marketplace(self):
+        # Desde a 2.0.0 a Sofia Estrategista fica em Criadores-do-Futuro/sofia-estrategista
+        # (marketplace criadores-do-futuro). Aqui fica só a referência para lá.
+        import json
+        self.assertEqual(COMPLETE, ())
+        claude = json.loads((ROOT / ".claude-plugin/marketplace.json").read_text(encoding="utf-8"))
+        codex = json.loads((ROOT / ".agents/plugins/marketplace.json").read_text(encoding="utf-8"))
+        for catalog in (claude, codex):
+            self.assertFalse(any(p["name"].startswith("sofia-estrategista") for p in catalog["plugins"]))
+        self.assertFalse(list((ROOT / "plugins").glob("sofia-estrategista*")))
+        self.assertIn("Criadores-do-Futuro/sofia-estrategista", claude["description"])
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        for snippet in ("claude plugin marketplace add Criadores-do-Futuro/sofia-estrategista",
+                        "claude plugin install sofia-estrategista@criadores-do-futuro"):
+            with self.subTest(snippet=snippet):
+                self.assertIn(snippet, readme)
 
-    def test_complete_sofia_rejects_a_path_the_upload_refuses(self):
+    def test_complete_check_rejects_a_path_the_upload_refuses(self):
         with tempfile.TemporaryDirectory() as temp:
-            dest = Path(temp) / COMPLETE[0]
-            shutil.copytree(ROOT / "plugins" / COMPLETE[0], dest)
+            dest = Path(temp) / "sofia-english"
+            shutil.copytree(ROOT / "plugins/sofia-english", dest)
+            # Uma Sofia completa traz o conector; a cópia de exemplo ganha um para a checagem chegar aos caminhos.
+            (dest / ".mcp.json").write_text('{"mcpServers": {"exemplo": {"url": "https://example.com/mcp"}}}')
             (dest / "assets/Fonte[wght].ttf").write_bytes(b"x")
             report = validate_complete(dest)
             self.assertTrue(any("Fonte[wght].ttf" in e for e in report["errors"]))
