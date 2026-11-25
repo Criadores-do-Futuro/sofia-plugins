@@ -1,57 +1,54 @@
 {
   "name": "sofia-latam",
-  "description": "Analiza videos cortos, escribe y revisa guiones en español latinoamericano, aprende la voz del creador y exporta análisis. Usa referencias incluidas y hechos proporcionados o verificados. La preparación visual local requiere FFmpeg y ejecución de comandos; el análisis de texto funciona sin esos recursos. Los servicios externos opcionales usan la cuenta de la persona y requieren autorización.",
-  "version": "1.1.0",
+  "description": "Writes, reviews and critiques short-form video scripts in Latin American Spanish using Sofia’s creator method: recording formats, script structures, hooks, attention elements and plain-language rules. Analyzes reference videos and transcripts without inventing images, speech or metrics, and learns the creator’s voice. Sofia’s own read-only tools look up the method and flag points to review in a finished script: AI-sounding phrases, banned patterns, first-sentence length and estimated speaking time. Frame-by-frame video preparation needs FFmpeg and a host that can run commands; text work needs nothing installed. Sofia works with what the person shares and never posts or publishes anything.",
+  "version": "2.0.0",
   "author": {
-    "name": "Alef Marques"
+    "name": "Action Criação Digital Ltda"
   },
+  "homepage": "https://plataforma.academiacriadoresdofuturo.com.br/sofia-latam",
+  "repository": "https://github.com/Criadores-do-Futuro/sofia-plugins",
   "license": "LicenseRef-Proprietary",
-  "repository": "https://github.com/bento-dev-ia/sofia-plugins",
   "keywords": [
-    "guion",
+    "scripts",
     "video",
-    "análisis",
-    "español"
+    "Spanish",
+    "guion"
   ],
   "skills": "./skills/",
   "interface": {
     "displayName": "Sofia",
-    "shortDescription": "Guiones y análisis de videos",
-    "longDescription": "Analiza videos cortos, escribe y revisa guiones en español latinoamericano, aprende la voz del creador y exporta análisis. Usa referencias incluidas y hechos proporcionados o verificados. La preparación visual local requiere FFmpeg y ejecución de comandos; el análisis de texto funciona sin esos recursos. Los servicios externos opcionales usan la cuenta de la persona y requieren autorización.",
-    "developerName": "Alef Marques",
+    "shortDescription": "Spanish short video scripts",
+    "longDescription": "Writes, reviews and critiques short-form video scripts in Latin American Spanish using Sofia’s creator method: recording formats, script structures, hooks, attention elements and plain-language rules. Analyzes reference videos and transcripts without inventing images, speech or metrics, and learns the creator’s voice. Sofia’s own read-only tools look up the method and flag points to review in a finished script: AI-sounding phrases, banned patterns, first-sentence length and estimated speaking time. Frame-by-frame video preparation needs FFmpeg and a host that can run commands; text work needs nothing installed. Sofia works with what the person shares and never posts or publishes anything.",
+    "developerName": "Action Criação Digital Ltda",
     "category": "Creativity",
+    "capabilities": [
+      "Write short-form video scripts",
+      "Review and rewrite scripts",
+      "Analyze reference videos and transcripts",
+      "Flag AI-sounding phrases and speaking time",
+      "Look up recording formats, structures and hooks"
+    ],
     "defaultPrompt": [
-      "Ayúdame a escribir un guion de 45 segundos con mi experiencia real.",
-      "Revisa mi guion y conserva las frases que ya funcionan.",
-      "Analiza el video adjunto sin inventar imágenes, palabras ni métricas."
+      "Help me write a 45-second script in Latin American Spanish using my real experience.",
+      "Review my Spanish script and preserve the lines that already work.",
+      "Analyze this attached video without inventing images, speech or metrics."
     ],
     "logo": "./assets/icon.png",
     "composerIcon": "./assets/icon.png",
+    "websiteURL": "https://plataforma.academiacriadoresdofuturo.com.br/sofia-latam",
     "privacyPolicyURL": "https://plataforma.academiacriadoresdofuturo.com.br/sofia-latam/privacidad",
     "termsOfServiceURL": "https://plataforma.academiacriadoresdofuturo.com.br/sofia-latam/terminos",
     "supportURL": "https://plataforma.academiacriadoresdofuturo.com.br/sofia-latam/soporte"
   },
-  "requires_local_executor": true,
   "extensions": {
     "com.openai": {
       "review": {
-        "prompts": [
-          "Ayúdame a escribir un guion de 45 segundos con mi experiencia real.",
-          "Revisa mi guion y conserva las frases que ya funcionan.",
-          "Analiza el video adjunto sin inventar imágenes, palabras ni métricas."
-        ],
-        "commerce": true,
-        "commerce_description": "Las compras son de suscripciones, comunidades o cursos, con pago en Hotmart. Este plugin no procesa pagos ni valida compras."
+        "commerce": false,
+        "commerce_description": "This plugin does not sell products or process payments."
       },
       "publication": {
         "countries": [],
-        "release_notes": "Comportamiento e idioma coherentes, referencias locales, rutas portátiles y preparación visual con evidencias y límites explícitos.",
-        "translations": {
-          "es-419": {
-            "subtitle": "Guiones y análisis de videos",
-            "description": "Analiza videos cortos, escribe y revisa guiones en español latinoamericano, aprende la voz del creador y exporta análisis. Usa referencias incluidas y hechos proporcionados o verificados. La preparación visual local requiere FFmpeg y ejecución de comandos; el análisis de texto funciona sin esos recursos. Los servicios externos opcionales usan la cuenta de la persona y requieren autorización."
-          }
-        }
+        "release_notes": "Sofia’s full creator method in the bundled references, specialist agents in Claude Code, and Sofia’s own read-only MCP tools to look up the method and flag points to review in finished scripts: AI-sounding phrases, first-sentence length and speaking time."
       }
     }
   }

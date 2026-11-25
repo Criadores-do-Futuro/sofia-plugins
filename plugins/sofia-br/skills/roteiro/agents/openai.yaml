@@ -1,4 +1,0 @@
-interface:
-  display_name: Sofia · Roteiro
-  short_description: Roteiros e análise de vídeos
-  default_prompt: Use $roteiro para trabalhar no meu conteúdo em português.

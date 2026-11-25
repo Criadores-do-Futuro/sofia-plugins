@@ -1,16 +1,17 @@
 {
   "name": "sofia-latam",
-  "description": "Analiza videos cortos, escribe y revisa guiones en español latinoamericano, aprende la voz del creador y exporta análisis. Usa referencias incluidas y hechos proporcionados o verificados. La preparación visual local requiere FFmpeg y ejecución de comandos; el análisis de texto funciona sin esos recursos. Los servicios externos opcionales usan la cuenta de la persona y requieren autorización.",
-  "version": "1.1.0",
+  "description": "Writes, reviews and critiques short-form video scripts in Latin American Spanish using Sofia’s creator method: recording formats, script structures, hooks, attention elements and plain-language rules. Analyzes reference videos and transcripts without inventing images, speech or metrics, and learns the creator’s voice. Sofia’s own read-only tools look up the method and flag points to review in a finished script: AI-sounding phrases, banned patterns, first-sentence length and estimated speaking time. Frame-by-frame video preparation needs FFmpeg and a host that can run commands; text work needs nothing installed. Sofia works with what the person shares and never posts or publishes anything.",
+  "version": "2.0.0",
   "author": {
-    "name": "Alef Marques"
+    "name": "Action Criação Digital Ltda"
   },
+  "homepage": "https://plataforma.academiacriadoresdofuturo.com.br/sofia-latam",
+  "repository": "https://github.com/Criadores-do-Futuro/sofia-plugins",
   "license": "LicenseRef-Proprietary",
-  "repository": "https://github.com/bento-dev-ia/sofia-plugins",
   "keywords": [
-    "guion",
+    "scripts",
     "video",
-    "análisis",
-    "español"
+    "Spanish",
+    "guion"
   ]
 }

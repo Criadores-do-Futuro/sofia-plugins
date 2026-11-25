@@ -1,0 +1,7 @@
+interface:
+  display_name: Sofia
+  short_description: Roteiro e hook de vídeo curto
+  default_prompt: Use $sofia-br para me ajudar com a ideia, o hook e o roteiro do meu próximo vídeo curto.
+
+policy:
+  allow_implicit_invocation: true

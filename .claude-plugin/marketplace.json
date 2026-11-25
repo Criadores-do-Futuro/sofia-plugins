@@ -2,46 +2,46 @@
   "name": "sofia-plugins",
   "description": "Sofia, a estrategista de roteiros para vídeos curtos, em português, espanhol e inglês. A Sofia Estrategista mais atual, a do curso Criador Estrategista, fica no marketplace criadores-do-futuro: Criadores-do-Futuro/sofia-estrategista (claude plugin marketplace add Criadores-do-Futuro/sofia-estrategista).",
   "owner": {
-    "name": "Alef Marques"
+    "name": "Action Criação Digital Ltda"
   },
   "plugins": [
     {
       "name": "sofia-br",
       "source": "./plugins/sofia-br",
-      "version": "3.11.0",
-      "description": "Pesquisa e analisa vídeos curtos, cria e revisa roteiros em português brasileiro, aprende a voz do criador e exporta análises. Usa referências incluídas no pacote e fatos fornecidos ou verificados. A preparação visual local exige FFmpeg e execução de comandos; a análise de texto funciona sem esses recursos. Serviços externos opcionais usam a conta da pessoa e só são acionados com autorização.",
+      "version": "4.0.0",
+      "description": "Writes, reviews and critiques short-form video scripts in Brazilian Portuguese using Sofia’s creator method: recording formats, script structures, hooks, attention elements and plain-language rules. Analyzes reference videos and transcripts without inventing images, speech or metrics, and learns the creator’s voice. Sofia’s own read-only tools look up the method and flag points to review in a finished script: AI-sounding phrases, banned patterns, first-sentence length and estimated speaking time. Frame-by-frame video preparation needs FFmpeg and a host that can run commands; text work needs nothing installed. Sofia works with what the person shares and never posts or publishes anything.",
       "author": {
-        "name": "Alef Marques"
+        "name": "Action Criação Digital Ltda"
       },
       "keywords": [
-        "roteiro",
-        "vídeo",
-        "análise",
-        "português"
+        "scripts",
+        "video",
+        "Portuguese",
+        "roteiro"
       ]
     },
     {
       "name": "sofia-latam",
       "source": "./plugins/sofia-latam",
-      "version": "1.1.0",
-      "description": "Analiza videos cortos, escribe y revisa guiones en español latinoamericano, aprende la voz del creador y exporta análisis. Usa referencias incluidas y hechos proporcionados o verificados. La preparación visual local requiere FFmpeg y ejecución de comandos; el análisis de texto funciona sin esos recursos. Los servicios externos opcionales usan la cuenta de la persona y requieren autorización.",
+      "version": "2.0.0",
+      "description": "Writes, reviews and critiques short-form video scripts in Latin American Spanish using Sofia’s creator method: recording formats, script structures, hooks, attention elements and plain-language rules. Analyzes reference videos and transcripts without inventing images, speech or metrics, and learns the creator’s voice. Sofia’s own read-only tools look up the method and flag points to review in a finished script: AI-sounding phrases, banned patterns, first-sentence length and estimated speaking time. Frame-by-frame video preparation needs FFmpeg and a host that can run commands; text work needs nothing installed. Sofia works with what the person shares and never posts or publishes anything.",
       "author": {
-        "name": "Alef Marques"
+        "name": "Action Criação Digital Ltda"
       },
       "keywords": [
-        "guion",
+        "scripts",
         "video",
-        "análisis",
-        "español"
+        "Spanish",
+        "guion"
       ]
     },
     {
       "name": "sofia-english",
       "source": "./plugins/sofia-english",
-      "version": "1.1.0",
-      "description": "Analyzes short-form videos, writes and reviews scripts in American English, learns the creator’s voice and exports analyses. Uses bundled references and facts supplied by the user or verified with available tools. Local visual preparation requires FFmpeg and command execution; text analysis works without them. Optional external services use the user’s account and require authorization.",
+      "version": "2.0.0",
+      "description": "Writes, reviews and critiques short-form video scripts in American English using Sofia’s creator method: recording formats, script structures, hooks, attention elements and plain-language rules. Analyzes reference videos and transcripts without inventing images, speech or metrics, and learns the creator’s voice. Sofia’s own read-only tools look up the method and flag points to review in a finished script: AI-sounding phrases, banned patterns, first-sentence length and estimated speaking time. Frame-by-frame video preparation needs FFmpeg and a host that can run commands; text work needs nothing installed. Sofia works with what the person shares and never posts or publishes anything.",
       "author": {
-        "name": "Alef Marques"
+        "name": "Action Criação Digital Ltda"
       },
       "keywords": [
         "scripts",

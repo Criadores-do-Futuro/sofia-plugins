@@ -1,0 +1,409 @@
+{
+  "language": "en-US",
+  "speech_words_per_minute": 160,
+  "hook": {
+    "max_words": 15,
+    "message": "The subject and the stake may arrive too late. The 15 words are this tool's reference for the first sentence, not a rule of the method.",
+    "fix": "The method asks for a hook of one to three short sentences: see if the first one can say the subject and what the viewer gets in fewer words."
+  },
+  "rules": [
+    {
+      "id": "em-dash",
+      "kind": "regex",
+      "match": "\u2014|\\s\u2013\\s",
+      "message": "Em dash used as a pause, a common AI rhythm crutch (Floor FL1).",
+      "fix": "Use a comma, period, colon or parentheses."
+    },
+    {
+      "id": "filler-ly-adverb",
+      "kind": "regex",
+      "match": "\\b(?:really|literally|basically|simply|actually|honestly|totally|completely|definitely|truly|clearly|obviously|absolutely|essentially|seriously|incredibly)\\b",
+      "flags": "i",
+      "message": "Filler -ly adverb that pads or intensifies (Floor FL3).",
+      "fix": "Cut it; the sentence is almost always stronger without it."
+    },
+    {
+      "id": "not-x-its-y",
+      "kind": "regex",
+      "match": "\\b(?:it|this|that)(?:\\s+is\\s+not|\\s+isn['\u2019]t|['\u2019]s\\s+not)\\b[^.!?\\n]{1,80}[,;:.!]\\s*(?:but\\s+)?(?:it|this|that)(?:['\u2019]s|\\s+is)\\b",
+      "flags": "i",
+      "message": "\"It's not X, it's Y\" template: a telegraphed twist (Floor FL2).",
+      "fix": "State Y directly."
+    },
+    {
+      "id": "the-problem-isnt",
+      "kind": "regex",
+      "match": "\\bthe\\s+(?:real\\s+)?(?:problem|issue|secret|point|truth|reason)\\s+(?:isn['\u2019]t|is\\s+not)\\b[^.!?\\n]{1,80}?(?:[,;:][ \\t]*|[.!?][ \\t]+)(?:it['\u2019]s|it\\s+is|that['\u2019]s)\\b",
+      "flags": "i",
+      "message": "\"The problem isn't X, it's Y\" sets up a binary contrast (Floor FL2).",
+      "fix": "Say what the problem is, directly."
+    },
+    {
+      "id": "x-isnt-the-problem",
+      "kind": "regex",
+      "match": "\\b(?:isn['\u2019]t|is\\s+not|aren['\u2019]t|are\\s+not)\\s+the\\s+(?:problem|issue|enemy|point|secret)\\b",
+      "flags": "i",
+      "message": "\"X isn't the problem, Y is\" template (Floor FL2).",
+      "fix": "Name Y and state it."
+    },
+    {
+      "id": "not-just-x",
+      "kind": "regex",
+      "match": "\\b(?:it['\u2019]s|it\\s+is|this\\s+is|that['\u2019]s|that\\s+is)\\s+not\\s+(?:just|only)\\b|\\bnot\\s+(?:just|only)\\s+[^.!?\\n]{1,40},\\s*(?:but|it['\u2019]s)\\b",
+      "flags": "i",
+      "message": "\"Not just X, but Y\" sits on the fence.",
+      "fix": "Pick one and say it."
+    },
+    {
+      "id": "looks-like-actually",
+      "kind": "regex",
+      "match": "\\b(?:it|this|that)\\s+(?:looks|seems|sounds)\\s+like\\b[^.!?\\n]{1,60}[.,;]\\s*(?:but\\s+)?(?:it['\u2019]s|it\\s+is)\\s+(?:actually|really)\\b",
+      "flags": "i",
+      "message": "\"It looks like X, it's actually Y\" is a textbook reveal.",
+      "fix": "Say what it is."
+    },
+    {
+      "id": "stops-being-becomes",
+      "kind": "regex",
+      "match": "\\bstops?\\s+being\\b[^.!?\\n]{1,40}\\band\\s+(?:becomes?|turns\\s+into)\\b",
+      "flags": "i",
+      "message": "\"Stops being X and becomes Y\" is a textbook transformation.",
+      "fix": "Tell what changed, with the concrete detail."
+    },
+    {
+      "id": "thats-it-emphasis",
+      "kind": "regex",
+      "match": "\\bthat['\u2019]s\\s+(?:it|all)[.!]\\s+(?:that['\u2019]s|it['\u2019]s)\\s+(?:it|all|the\\s+secret)\\b",
+      "flags": "i",
+      "message": "\"That's it. That's all.\" is emphasis with no content.",
+      "fix": "Write one complete sentence that carries information."
+    },
+    {
+      "id": "and-thats-okay",
+      "kind": "regex",
+      "match": "\\band\\s+that['\u2019]s\\s+(?:okay|ok|fine)\\b",
+      "flags": "i",
+      "message": "\"And that's okay\" gives permission nobody asked for.",
+      "fix": "Cut it."
+    },
+    {
+      "id": "setup-colon",
+      "kind": "regex",
+      "match": "\\b(?:think\\s+about\\s+it(?:\\s+with\\s+me)?|check\\s+this\\s+out|listen\\s+to\\s+this|here['\u2019]s\\s+the\\s+deal)\\s*:",
+      "flags": "i",
+      "message": "A setup line that leads nowhere.",
+      "fix": "Cut the setup and say the thing."
+    },
+    {
+      "id": "inanimate-agent",
+      "kind": "regex",
+      "match": "\\bthe\\s+algorithm\\s+(?:punishes|hates|loves|wants|decides|rewards|likes)\\b",
+      "flags": "i",
+      "message": "A lifeless thing acting like a person.",
+      "fix": "Say who acts and what they do."
+    },
+    {
+      "id": "lets-dive-in",
+      "kind": "phrase",
+      "match": "let's dive in",
+      "message": "AI cliché that announces instead of starting.",
+      "fix": "Start with the first fact or the scene."
+    },
+    {
+      "id": "deep-dive",
+      "kind": "regex",
+      "match": "\\b(?:deep[- ]dive|dive\\s+deep(?:er)?|let['\u2019]s\\s+dive\\s+into)\\b",
+      "flags": "i",
+      "message": "\"Deep dive\" is corporate filler.",
+      "fix": "Say what you will show, or just show it."
+    },
+    {
+      "id": "game-changer",
+      "kind": "regex",
+      "match": "\\bgame[- ]?changer\\b|\\bgame[- ]?changing\\b",
+      "flags": "i",
+      "message": "\"Game-changer\" is an empty superlative.",
+      "fix": "Say what changed and by how much, with a source."
+    },
+    {
+      "id": "fast-paced-world",
+      "kind": "regex",
+      "match": "\\bin\\s+(?:today['\u2019]s|this|our)\\s+(?:fast[- ]paced|ever[- ]changing|modern|digital|busy)\\s+world\\b",
+      "flags": "i",
+      "message": "\"In today's fast-paced world\" is padding.",
+      "fix": "Put the viewer in a concrete scene instead."
+    },
+    {
+      "id": "in-a-world-where",
+      "kind": "phrase",
+      "match": "in a world where",
+      "message": "Movie-trailer padding.",
+      "fix": "Start with the fact."
+    },
+    {
+      "id": "the-truth-is",
+      "kind": "phrase",
+      "match": "the truth is",
+      "message": "Throat-clearing before the point.",
+      "fix": "Delete it and state the point."
+    },
+    {
+      "id": "let-me-tell-you",
+      "kind": "regex",
+      "match": "\\blet\\s+me\\s+(?:tell\\s+you|be\\s+honest|be\\s+real)\\b",
+      "flags": "i",
+      "message": "Throat-clearing before the point.",
+      "fix": "Cut it and go straight in."
+    },
+    {
+      "id": "to-be-honest",
+      "kind": "regex",
+      "match": "\\b(?:to\\s+be\\s+(?:honest|fair)|I['\u2019]ll\\s+be\\s+honest|I['\u2019]m\\s+(?:gonna|going\\s+to)\\s+be\\s+honest)\\b",
+      "flags": "i",
+      "message": "Announcing honesty is throat-clearing.",
+      "fix": "Cut it and say the honest thing."
+    },
+    {
+      "id": "heres-the-thing",
+      "kind": "regex",
+      "match": "\\bhere['\u2019]s\\s+the\\s+(?:thing|kicker)\\b",
+      "flags": "i",
+      "message": "Setup phrase that delays the point.",
+      "fix": "Cut it and say the thing."
+    },
+    {
+      "id": "it-turns-out",
+      "kind": "phrase",
+      "match": "it turns out",
+      "message": "Filler transition.",
+      "fix": "State the fact directly."
+    },
+    {
+      "id": "at-the-end-of-the-day",
+      "kind": "phrase",
+      "match": "at the end of the day",
+      "message": "Padding cliché.",
+      "fix": "Cut it."
+    },
+    {
+      "id": "important-to-note",
+      "kind": "regex",
+      "match": "\\bit['\u2019]s\\s+(?:important|worth)\\s+(?:to\\s+note|noting|mentioning|remembering|highlighting)\\b",
+      "flags": "i",
+      "message": "Announces importance instead of showing it.",
+      "fix": "Say the thing; if it needs a caveat, put the caveat inside the story."
+    },
+    {
+      "id": "when-it-comes-to",
+      "kind": "phrase",
+      "match": "when it comes to",
+      "message": "Padding before the subject.",
+      "fix": "Name the subject directly."
+    },
+    {
+      "id": "corporate-jargon",
+      "kind": "regex",
+      "match": "\\b(?:unlock(?:s|ed|ing)?|leverag(?:e|es|ed|ing)|next\\s+level|synerg(?:y|ies)|move\\s+the\\s+needle|circle\\s+back|on\\s+the\\s+same\\s+page|paradigm\\s+shift)\\b",
+      "flags": "i",
+      "message": "Corporate jargon the audience doesn't speak.",
+      "fix": "Use the everyday words the bubble uses."
+    },
+    {
+      "id": "box-and-comfort-zone",
+      "kind": "regex",
+      "match": "\\b(?:outside\\s+(?:of\\s+)?the\\s+box|comfort\\s+zone)\\b",
+      "flags": "i",
+      "message": "Worn-out cliché.",
+      "fix": "Describe the concrete action instead."
+    },
+    {
+      "id": "changed-my-life",
+      "kind": "regex",
+      "match": "\\b(?:changed\\s+my\\s+life|life[- ]changing)\\b",
+      "flags": "i",
+      "message": "Vague transformation claim.",
+      "fix": "Say what changed, when and by how much."
+    },
+    {
+      "id": "the-secret-is",
+      "kind": "phrase",
+      "match": "the secret is",
+      "message": "Clickbait crutch.",
+      "fix": "State the method or fact plainly."
+    },
+    {
+      "id": "believe-in-yourself",
+      "kind": "phrase",
+      "match": "believe in yourself",
+      "message": "Generic motivational cliché.",
+      "fix": "Replace it with a concrete action or a real case."
+    },
+    {
+      "id": "journey",
+      "kind": "regex",
+      "match": "\\b(?:(?:my|your|our|their|his|her|this|whole|entire|personal|healing|growth)\\s+journey|journey\\s+(?:of|to)\\s+(?:self|success|growth|healing)|embark(?:s|ed|ing)?\\s+on|buckle\\s+up)\\b",
+      "flags": "i",
+      "message": "Cliché framing (\"journey\", \"embark\", \"buckle up\").",
+      "fix": "Say what happened, step by step."
+    },
+    {
+      "id": "ai-vocabulary",
+      "kind": "regex",
+      "match": "\\b(?:delve|tapestry|testament\\s+to|realm|navigate\\s+the\\s+(?:complexities|landscape|world)|ever[- ]evolving\\s+landscape|elevate\\s+your|unleash|harness\\s+the\\s+power|revolutionary|transformative)\\b",
+      "flags": "i",
+      "message": "Vocabulary that reads as machine-written.",
+      "fix": "Use the plain word the creator would say out loud."
+    },
+    {
+      "id": "documentary-words",
+      "kind": "regex",
+      "match": "\\b(?:fascinating|remarkable|furthermore|moreover|additionally|in\\s+conclusion|in\\s+summary|to\\s+sum\\s+up)\\b",
+      "flags": "i",
+      "message": "Documentary or essay words that break the spoken tone.",
+      "fix": "Use \"and\", \"so\", \"but\" or a concrete detail."
+    },
+    {
+      "id": "emphasis-crutch",
+      "kind": "regex",
+      "match": "\\blet\\s+that\\s+sink\\s+in\\b|\\bmake\\s+no\\s+mistake\\b|\\bfull\\s+stop\\b|(?:^|[.!?]\\s+)period[.!]",
+      "flags": "i",
+      "message": "Emphasis crutch with no content.",
+      "fix": "Delete it; let the fact carry the weight."
+    },
+    {
+      "id": "self-reference",
+      "kind": "regex",
+      "match": "\\b(?:a\\s+(?:topic|story)\\s+for\\s+another\\s+(?:video|day)|as\\s+I\\s+(?:said|mentioned)\\s+(?:earlier|before)|let['\u2019]s\\s+break\\s+it\\s+down|first\\s+things\\s+first|spoiler\\s+alert|pro\\s+tip|without\\s+further\\s+ado)\\b",
+      "flags": "i",
+      "message": "The text comments on itself instead of moving forward.",
+      "fix": "Delete the comment and keep the content."
+    },
+    {
+      "id": "rhetorical-question",
+      "kind": "regex",
+      "match": "(?:^|[.!?]\\s+)(?:and\\s+|so\\s+)?(?:what|why|how)\\b[^.!?\\n]{0,80}\\?\\s*(?:because|well|simple|easy|here['\u2019]s)\\b",
+      "flags": "i",
+      "message": "Rhetorical question answered right away (Floor FL4).",
+      "fix": "State the answer as a sentence, with its consequence."
+    },
+    {
+      "id": "passive-voice",
+      "kind": "regex",
+      "match": "\\b(?:was|were|is|are|been|being)\\s+(?:\\w+ly\\s+)?\\w+ed\\s+by\\b",
+      "flags": "i",
+      "message": "Passive voice hides who acts (warning).",
+      "fix": "Make the person who acts the subject of the sentence."
+    },
+    {
+      "id": "stats-term",
+      "kind": "regex",
+      "match": "\\b(?:median|standard\\s+deviation|percentile|(?:above|below)\\s+(?:the\\s+)?average|average\\s+(?:views|engagement|reach))\\b",
+      "flags": "i",
+      "message": "Statistics term for a video result.",
+      "fix": "Compare with the profile's normal: \"3x the profile's normal\", \"close to normal\"."
+    },
+    {
+      "id": "vague-claim",
+      "kind": "regex",
+      "match": "\\bthe\\s+(?:implications|consequences|impact)\\s+(?:are|is)\\s+(?:huge|enormous|massive|significant|profound)\\b",
+      "flags": "i",
+      "message": "Vague claim with no content.",
+      "fix": "Say what the implication is, concretely."
+    },
+    {
+      "id": "distant-narrator",
+      "kind": "regex",
+      "match": "\\b(?:people\\s+(?:these\\s+days|nowadays|today)|nowadays,?\\s+people|in\\s+this\\s+day\\s+and\\s+age)\\b",
+      "flags": "i",
+      "message": "Distant narrator talking about \"people\".",
+      "fix": "Put the viewer in the scene with \"you\"."
+    },
+    {
+      "id": "doubt-words",
+      "kind": "regex",
+      "match": "\\b(?:supposedly|allegedly|it\\s+seems\\s+that|it\\s+appears\\s+that)\\b",
+      "flags": "i",
+      "message": "Doubt word that makes the viewer doubt everything (warning).",
+      "fix": "Keep doubt only where it is real, once, saying who makes the claim."
+    },
+    {
+      "id": "result-promise",
+      "kind": "regex",
+      "match": "\\byou(?:['\u2019]ll|\\s+will)\\s+(?:grow|go\\s+viral|blow\\s+up|get\\s+rich|get\\s+more\\s+(?:views|followers|clients)|make\\s+(?:money|more\\s+money))\\b",
+      "flags": "i",
+      "message": "Promises a result the video can't guarantee.",
+      "fix": "Promise what the video shows, not views, followers or money."
+    },
+    {
+      "id": "greeting-opener",
+      "kind": "regex",
+      "match": "^\\s*(?:hey|hi|hello|what['\u2019]s\\s+up|yo|welcome\\s+back)\\b(?![-'\u2019])",
+      "flags": "i",
+      "message": "The hook opens with a greeting, so the subject arrives late (MC9).",
+      "fix": "Say the subject and the gain in the first words."
+    },
+    {
+      "id": "in-this-video",
+      "kind": "regex",
+      "match": "\\b(?:in\\s+(?:this|today['\u2019]s)\\s+video|today\\s+(?:I['\u2019]m\\s+(?:going\\s+to|gonna)|I['\u2019]ll|we['\u2019]re\\s+(?:going\\s+to|gonna))\\s+(?:talk|show|teach|tell|share))\\b",
+      "flags": "i",
+      "message": "Announces the video instead of starting it.",
+      "fix": "Start with the subject or the scene."
+    },
+    {
+      "id": "stay-till-end",
+      "kind": "regex",
+      "match": "\\b(?:stay|stick\\s+around|watch)\\s+(?:until|till|til|to)\\s+the\\s+end\\b",
+      "flags": "i",
+      "message": "Asks for retention instead of earning it.",
+      "fix": "Open a concrete question the ending answers."
+    },
+    {
+      "id": "did-you-know",
+      "kind": "phrase",
+      "match": "did you know that",
+      "message": "Worn-out opener that delays the subject.",
+      "fix": "State the surprising fact directly, with its source."
+    },
+    {
+      "id": "generic-cta",
+      "kind": "regex",
+      "match": "\\b(?:like\\s+and\\s+(?:share|subscribe)|smash\\s+(?:that|the)\\s+like\\s+button|don['\u2019]t\\s+forget\\s+to\\s+(?:like|subscribe|follow)|hit\\s+(?:that|the)\\s+(?:like|subscribe)\\s+button)\\b",
+      "flags": "i",
+      "message": "Generic CTA unrelated to the video's subject.",
+      "fix": "Continue the subject (\"comment {word} and I'll send you {material}\") or end without a CTA."
+    },
+    {
+      "id": "comment-metalanguage",
+      "kind": "regex",
+      "match": "\\b(?:someone|somebody|people|you\\s+guys|y['\u2019]all|many\\s+of\\s+you|a\\s+lot\\s+of\\s+you|one\\s+of\\s+you)\\s+(?:\\w+\\s+){0,3}in\\s+the\\s+comments\\b|\\bin\\s+the\\s+comments\\b[^.!?\\n]{0,25}\\b(?:said|says|asked|wrote|told\\s+me|pointed\\s+out)\\b|\\bI\\s+(?:saw|read|noticed|got)\\s+(?:\\w+\\s+){0,4}in\\s+the\\s+comments\\b",
+      "flags": "i",
+      "message": "The script says a line came from a comment (Floor FL7).",
+      "fix": "Say the comment as the creator's own line, without quotation marks or metalanguage."
+    },
+    {
+      "id": "some-people-say",
+      "kind": "regex",
+      "match": "\\b(?:some|a\\s+lot\\s+of|lots\\s+of|many|most|so\\s+many)\\s+people\\s+(?:say|said|think|thought|ask|asked|comment|commented|told\\s+me|wrote)\\b|\\bsomeone\\s+(?:commented|wrote|replied)\\b",
+      "flags": "i",
+      "message": "\"Some people say\" turns an audience comment into hearsay (Floor FL7).",
+      "fix": "Make it the creator's own line, in the comment's words."
+    },
+    {
+      "id": "followers-said",
+      "kind": "regex",
+      "match": "\\b(?:my|our|a|one\\s+of\\s+my)\\s+followers?\\b[^.!?\\n]{0,20}\\b(?:said|says|asked|wrote|commented|told\\s+me)\\b",
+      "flags": "i",
+      "message": "Attributes a line to followers instead of the creator (Floor FL7).",
+      "fix": "Say it as the creator's own line."
+    },
+    {
+      "id": "bubble-word",
+      "kind": "regex",
+      "match": "\\b(?:my|your|this|our|the)\\s+bubble\\b",
+      "flags": "i",
+      "message": "Names the bubble in the script; the audience doesn't need to know it exists.",
+      "fix": "Speak in the bubble's words without naming it."
+    }
+  ]
+}

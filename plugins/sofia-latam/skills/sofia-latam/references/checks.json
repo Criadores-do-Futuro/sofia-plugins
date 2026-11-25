@@ -1,0 +1,431 @@
+{
+  "language": "es-419",
+  "speech_words_per_minute": 150,
+  "hook": {
+    "max_words": 15,
+    "message": "El asunto puede tardar en llegar y la persona sigue deslizando. Las 15 palabras son una referencia de esta herramienta para la primera frase, no una regla del método.",
+    "fix": "El método pide un hook de 1 a 3 frases cortas: mira si la primera dice el asunto con menos palabras; lo demás va a la zona de fijación."
+  },
+  "rules": [
+    {
+      "id": "raya-larga",
+      "kind": "regex",
+      "match": "—|\\s–\\s",
+      "flags": "",
+      "message": "Raya larga en la frase (Piso, P1 y M1).",
+      "fix": "Cambia la raya por coma, punto, dos puntos o paréntesis."
+    },
+    {
+      "id": "no-es-x-es-y",
+      "kind": "regex",
+      "match": "\\bno (?:es|era|son|eran)\\b[^.!?\\n]{1,60}?,\\s*(?:es|era|son|eran)\\b",
+      "flags": "i",
+      "message": "Molde \"no es X, es Y\" (Piso, P2 y M3).",
+      "fix": "Afirma Y directo, sin negar X antes."
+    },
+    {
+      "id": "no-es-x-punto-es-y",
+      "kind": "regex",
+      "match": "\\bno es\\b[^.!?\\n]{1,50}\\.\\s+(?:no es\\b[^.!?\\n]{1,50}\\.\\s+)?es\\b",
+      "flags": "i",
+      "message": "Molde \"No es X. Es Y.\" o \"No es A. No es B. Es C.\" (contraste binario).",
+      "fix": "Di solo lo que sí es, con un detalle concreto."
+    },
+    {
+      "id": "no-se-trata-de-sino",
+      "kind": "regex",
+      "match": "\\bno se trata de\\b[^.!?\\n]{1,80}?(?:\\bsino\\b|,\\s*se trata de\\b)",
+      "flags": "i",
+      "message": "Molde \"no se trata de X, sino de Y\" o \"no se trata de X, se trata de Y\" (variante del contraste binario).",
+      "fix": "Afirma Y directo."
+    },
+    {
+      "id": "no-solo-sino",
+      "kind": "regex",
+      "match": "\\bno (?:solo|sólo)\\b[^.!?\\n]{1,80}?\\bsino\\b",
+      "flags": "i",
+      "message": "Molde \"no solo X, sino también Y\" (suena a texto de IA).",
+      "fix": "Di las dos cosas en frases cortas y separadas, o quédate con la más fuerte."
+    },
+    {
+      "id": "x-no-es-el-problema",
+      "kind": "regex",
+      "match": "\\bno (?:es|era) el (?:problema|punto|tema)\\b",
+      "flags": "i",
+      "message": "Molde \"X no es el problema, Y sí\" (variante del contraste binario).",
+      "fix": "Nombra el problema real directo."
+    },
+    {
+      "id": "mas-que-x-es-y",
+      "kind": "regex",
+      "match": "\\bes (?:mucho )?más que (?:un|una|solo|sólo)\\b[^.!?\\n]{1,60}?,\\s*es\\b",
+      "flags": "i",
+      "message": "Molde \"es más que X, es Y\" (contraste binario disfrazado).",
+      "fix": "Afirma lo que es, con un detalle que se pueda ver."
+    },
+    {
+      "id": "parece-x-en-realidad-y",
+      "kind": "regex",
+      "match": "\\b(?:parece|crees que (?:es|son))\\b[^.!?\\n]{1,60}?[.,]\\s*(?:pero )?en realidad\\b",
+      "flags": "i",
+      "message": "Molde \"Parece X. En realidad es Y.\" (fórmula de IA).",
+      "fix": "Cuenta el hecho que muestra Y, sin anunciar la sorpresa."
+    },
+    {
+      "id": "menos-x-mas-y",
+      "kind": "regex",
+      "match": "\\bmenos [\\p{L}]+(?: [\\p{L}]+)?, más [\\p{L}]+",
+      "flags": "iu",
+      "message": "Molde \"Menos X, más Y\" (frase de efecto de IA).",
+      "fix": "Di qué hacer en concreto, con un ejemplo."
+    },
+    {
+      "id": "lista-por-lo-negativo",
+      "kind": "regex",
+      "match": "\\bsin [\\p{L}]+\\.\\s+sin [\\p{L}]+\\.",
+      "flags": "iu",
+      "message": "Lista por lo negativo (\"Sin X. Sin Y. Solo Z.\").",
+      "fix": "Afirma lo que sí hay, en una frase."
+    },
+    {
+      "id": "deja-de-ser-x-y-se-convierte",
+      "kind": "regex",
+      "match": "\\bdeja de ser\\b[^.!?\\n]{1,50}\\by se convierte en\\b",
+      "flags": "i",
+      "message": "Molde \"deja de ser X y se convierte en Y\".",
+      "fix": "Cuenta el cambio con el momento concreto en que pasó."
+    },
+    {
+      "id": "adverbio-en-mente",
+      "kind": "regex",
+      "match": "(?:^|[^\\p{L}])(?!(?:experi|imple|comple|ali|au|docu|argu|incre|frag|seg|ator|co|fo|la|ci|de|cle|ce|pi|ate|desmi|sar|tor|fer|calen|sedi|orna|lamen|pigmen|regla)mente)[\\p{L}]{3,}mente(?![\\p{L}])",
+      "flags": "iu",
+      "message": "Adverbio terminado en -mente (Piso, P3 y M2).",
+      "fix": "Córtalo; la frase casi siempre queda mejor sin él."
+    },
+    {
+      "id": "pregunta-de-apoyo",
+      "kind": "regex",
+      "match": "¿(?:y )?(?:el|la|su|tu|mi) (?:resultado|clave|problema|secreto|truco|razón|respuesta|diferencia|verdad|motivo|solución|parte buena|mejor parte)\\?",
+      "flags": "i",
+      "message": "Pregunta de apoyo (\"¿El resultado? ...\") en lugar de afirmar (M14).",
+      "fix": "Afirma directo: \"Duplicó las ventas\"."
+    },
+    {
+      "id": "pregunta-retorica-sabes-que",
+      "kind": "regex",
+      "match": "¿(?:y )?(?:sabes|saben|sabías) (?:qué|por qué|cuál|lo que)[^?]*\\?",
+      "flags": "i",
+      "message": "Pregunta retórica que se responde enseguida (Piso, P4).",
+      "fix": "Afirma lo que ibas a responder. Solo quedan la pregunta del CTA y la que vino de un comentario."
+    },
+    {
+      "id": "carraspeo",
+      "kind": "regex",
+      "match": "\\b(?:d[eé]jame decirte (?:algo|una cosa)|voy a ser honest[oa]|seamos honestos|el punto aqu[ií] es|presta atenci[oó]n a esto|te voy a contar algo)\\b",
+      "flags": "i",
+      "message": "Carraspeo: la frase anuncia en vez de decir (SS1).",
+      "fix": "Empieza por lo que ibas a decir."
+    },
+    {
+      "id": "preambulo-al-arrancar",
+      "kind": "regex",
+      "match": "(?:^|[.!?]\\s+)(?:antes de empezar|primero que nada|antes que nada)\\s*[,:]",
+      "flags": "im",
+      "message": "Carraspeo al abrir la frase: \"antes de empezar,\" o \"primero que nada,\" anuncia en vez de decir (SS1).",
+      "fix": "Borra el preámbulo y empieza por lo que ibas a decir."
+    },
+    {
+      "id": "la-verdad-es-que",
+      "kind": "phrase",
+      "match": "la verdad es que",
+      "message": "Muletilla de IA \"la verdad es que\" (SS13).",
+      "fix": "Córtala y deja la afirmación sola."
+    },
+    {
+      "id": "muletilla-de-arranque",
+      "kind": "regex",
+      "match": "(?:^|[.!?\\n][ \\t]*)(?:¡)?(?:mira|pues s[ií]|ojo|pi[eé]nsalo)[ \\t]*[,:]",
+      "flags": "i",
+      "message": "Muletilla de arranque (\"Mira,\", \"Pues sí,\", \"Ojo:\", \"Piénsalo:\") de la lista de IA.",
+      "fix": "Empieza la frase por el hecho."
+    },
+    {
+      "id": "aqui-viene-lo-interesante",
+      "kind": "regex",
+      "match": "(?:^|[.!?\\n][ \\t]*)(?:y )?aqu[ií] (?:est[aá] la cosa|viene lo (?:interesante|bueno|mejor))",
+      "flags": "i",
+      "message": "Anuncio de suspenso (\"aquí viene lo interesante\").",
+      "fix": "Cuenta lo interesante sin anunciarlo."
+    },
+    {
+      "id": "y-lo-mejor-de-todo",
+      "kind": "phrase",
+      "match": "y lo mejor de todo",
+      "message": "Frase de anuncio con cara de IA.",
+      "fix": "Di lo mejor directo, con el detalle concreto."
+    },
+    {
+      "id": "enfasis-vacio",
+      "kind": "regex",
+      "match": "\\b(?:as[ií] de simple|deja que eso se asiente|no te equivoques|cr[eé]eme|lo repito\\s*:)",
+      "flags": "i",
+      "message": "Énfasis vacío de la lista de IA.",
+      "fix": "Confía en quien escucha: afirma y sigue."
+    },
+    {
+      "id": "sin-lugar-a-dudas",
+      "kind": "regex",
+      "match": "\\bsin (?:lugar a|ninguna) dudas?\\b|\\bsin duda alguna\\b",
+      "flags": "i",
+      "message": "Énfasis de IA (\"sin lugar a dudas\").",
+      "fix": "Córtalo; si hay prueba, muestra la prueba."
+    },
+    {
+      "id": "en-el-mundo-actual",
+      "kind": "regex",
+      "match": "\\b(?:en (?:el|este) mundo (?:actual|de hoy|moderno|acelerado(?: de hoy)?)|en la era digital|en un mundo (?:donde|en constante evoluci[oó]n)|en constante evoluci[oó]n)\\b",
+      "flags": "i",
+      "message": "Relleno de IA (\"en el mundo actual\", \"en la era digital\").",
+      "fix": "Empieza por la escena o el hecho concreto."
+    },
+    {
+      "id": "relleno-de-conclusion",
+      "kind": "regex",
+      "match": "\\b(?:al final del d[ií]a|a fin de cuentas|cuando se trata de|por as[ií] decirlo|de cierta manera)\\b",
+      "flags": "i",
+      "message": "Relleno de IA que no dice nada.",
+      "fix": "Córtalo y deja la frase con el dato."
+    },
+    {
+      "id": "es-importante-destacar",
+      "kind": "regex",
+      "match": "\\b(?:es importante|cabe|vale la pena) (?:destacar|señalar|mencionar|resaltar|recalcar|recordar|tener en cuenta)\\b",
+      "flags": "i",
+      "message": "Fórmula de texto escrito (\"es importante destacar\", \"cabe mencionar\").",
+      "fix": "Di lo importante directo."
+    },
+    {
+      "id": "en-resumen",
+      "kind": "regex",
+      "match": "\\b(?:en resumen|en conclusi[oó]n|para concluir|para finalizar|para cerrar|en definitiva)\\b",
+      "flags": "i",
+      "message": "Cierre de ensayo (\"en resumen\", \"en conclusión\").",
+      "fix": "Cierra con una frase simple y leve, o con el llamado."
+    },
+    {
+      "id": "sumerjamonos",
+      "kind": "regex",
+      "match": "\\b(?:sumerj[aá]monos|adentr[eé]monos|exploremos|sum[eé]rgete|ad[eé]ntrate)\\b",
+      "flags": "i",
+      "message": "Cliché de IA (\"sumerjámonos\", \"adentrémonos\").",
+      "fix": "Entra al asunto con el primer hecho."
+    },
+    {
+      "id": "juega-un-papel",
+      "kind": "regex",
+      "match": "\\bjuegan? un papel (?:crucial|fundamental|clave|importante|esencial|vital)\\b",
+      "flags": "i",
+      "message": "Cliché de IA (\"juega un papel crucial\").",
+      "fix": "Di qué hace esa cosa, con un verbo de acción."
+    },
+    {
+      "id": "jerga-de-empresa",
+      "kind": "regex",
+      "match": "\\b(?:desbloque\\p{L}* (?:todo )?(?:tu|su) (?:verdadero )?potencial|potenci(?:a|ar) (?:tu|tus|su|sus)|apalanc\\p{L}+|empoder\\p{L}+|sinergias?|al (?:siguiente|próximo|otro) nivel|navegar (?:el|este) panorama|game changer|estar en la misma p[aá]gina)",
+      "flags": "iu",
+      "message": "Jerga de empresa con cara de IA.",
+      "fix": "Usa las palabras que tu público usa en el día a día."
+    },
+    {
+      "id": "cliches-de-ia",
+      "kind": "regex",
+      "match": "\\b(?:un mundo de posibilidades|un verdadero viaje|pensar fuera de la caja|sal(?:ir|gas)? de tu zona de confort|la clave est[aá] en|el secreto est[aá] en|cree en ti)\\b",
+      "flags": "i",
+      "message": "Cliché de la lista de IA.",
+      "fix": "Cambia por un detalle específico: nombre, número, lugar u hora."
+    },
+    {
+      "id": "reglas-del-juego",
+      "kind": "regex",
+      "match": "\\b(?:(?:cambia(?:r[aá])?|cambi[oó]) las reglas del juego|un antes y un despu[eé]s)\\b",
+      "flags": "i",
+      "message": "Cliché de IA (\"cambia las reglas del juego\", \"un antes y un después\").",
+      "fix": "Muestra qué cambió, con el antes y el después concretos."
+    },
+    {
+      "id": "imagina-esto",
+      "kind": "regex",
+      "match": "\\bimagina (?:esto|lo siguiente)\\s*:",
+      "flags": "i",
+      "message": "Apertura de IA (\"Imagina esto:\").",
+      "fix": "Pon a la persona en la escena directo, con \"tú\"."
+    },
+    {
+      "id": "alguna-vez-te-has-preguntado",
+      "kind": "phrase",
+      "match": "alguna vez te has preguntado",
+      "message": "Apertura de IA y pregunta retórica.",
+      "fix": "Abre con el asunto y lo que se gana, en una afirmación."
+    },
+    {
+      "id": "spoiler-y-tips",
+      "kind": "regex",
+      "match": "\\b(?:spoiler|tip de oro|dato curioso)\\s*:",
+      "flags": "i",
+      "message": "Rótulo de texto escrito (\"Spoiler:\", \"Dato curioso:\").",
+      "fix": "Cuenta el dato sin rótulo."
+    },
+    {
+      "id": "comentario-sobre-el-texto",
+      "kind": "regex",
+      "match": "\\b(?:como (?:mencion[eé]|dije|vimos|te dije) (?:antes|arriba|anteriormente|al principio)|a continuaci[oó]n|en la siguiente parte|en esta secci[oó]n|vamos por partes|eso es tema para otro video)\\b",
+      "flags": "i",
+      "message": "Comentario sobre la estructura del propio texto (SS20).",
+      "fix": "Bórralo y pasa al contenido."
+    },
+    {
+      "id": "anuncio-de-intro",
+      "kind": "regex",
+      "match": "\\b(?:hablemos de|en este video (?:te |les )?(?:voy a|vamos a|vas a)|hoy (?:te |les )?(?:voy a|vamos a) (?:hablar|contarte|contarles|explicarte|explicarles|enseñarte|enseñarles)|qu[eé]date hasta el final)\\b",
+      "flags": "i",
+      "message": "Introducción que anuncia en vez de decir el asunto (M9).",
+      "fix": "Di el asunto exacto en el primer o el segundo segundo."
+    },
+    {
+      "id": "saludo-en-el-hook",
+      "kind": "regex",
+      "match": "\\b(?:hola(?:,)? (?:a todos|gente|chicos|chicas|amigos|amigas|familia)|bienvenid[oa]s? (?:a|de nuevo)|qu[eé] tal(?:,)? (?:amigos|gente|chicos))\\b",
+      "flags": "i",
+      "message": "Saludo al comienzo (M9): el público se va en los primeros 2 segundos.",
+      "fix": "Corta el saludo y abre con el asunto y lo que se gana."
+    },
+    {
+      "id": "palabra-de-documental",
+      "kind": "regex",
+      "match": "\\b(?:fascinante|impresionante|asimismo|por ende|cabe resaltar|sin embargo|revolucionari[oa])\\b",
+      "flags": "i",
+      "message": "Palabra de documental o de texto escrito: nadie habla así a la cámara.",
+      "fix": "Usa \"pero\", \"y\" o la palabra que la persona diría en una plática."
+    },
+    {
+      "id": "solo-eso-eso-es-todo",
+      "kind": "regex",
+      "match": "\\b(?:solo eso|eso es todo)\\s*\\.",
+      "flags": "i",
+      "message": "Remate \"Solo eso. Eso es todo.\" (frase de efecto de IA).",
+      "fix": "Termina con el último hecho o con el llamado."
+    },
+    {
+      "id": "y-esta-bien",
+      "kind": "regex",
+      "match": "(?:^|[.!?\\n][ \\t]*)y est[aá] bien[ \\t]*\\.",
+      "flags": "i",
+      "message": "Remate \"Y está bien.\" de la lista de IA.",
+      "fix": "Córtalo o di qué hacer con eso."
+    },
+    {
+      "id": "comentario-con-metalenguaje",
+      "kind": "regex",
+      "match": "\\b(?:en los comentarios|un comentario|los comentarios|este comentario)\\s+(?:me |nos )?(?:dijeron|dijo|dicen|dice|decían|preguntaron|preguntó|pusieron|puso|escribieron|escribió)\\b",
+      "flags": "i",
+      "message": "El comentario entró con metalenguaje (Piso, P7 y M5).",
+      "fix": "Di el comentario como texto del propio creador, sin comillas y sin \"en los comentarios\"."
+    },
+    {
+      "id": "me-dijeron-en-comentarios",
+      "kind": "regex",
+      "match": "\\b(?:me|nos) (?:comentaron|escribieron|preguntaron|dijeron|pidieron) en (?:los )?comentarios\\b",
+      "flags": "i",
+      "message": "Metalenguaje de comentarios dentro del guion (P7 y M5).",
+      "fix": "Usa las palabras del comentario como texto del creador."
+    },
+    {
+      "id": "hay-gente-que",
+      "kind": "regex",
+      "match": "\\bhay (?:mucha )?gente que\\b",
+      "flags": "i",
+      "message": "\"Hay gente que\": metalenguaje o narrador distante (P7, SS19).",
+      "fix": "Di la frase como propia: \"Ya reporté por menos.\""
+    },
+    {
+      "id": "mucha-gente",
+      "kind": "phrase",
+      "match": "mucha gente",
+      "message": "\"Mucha gente\": narrador distante o comentario con metalenguaje (P7, SS19).",
+      "fix": "Pon a la persona en la escena con \"tú\", o di la frase como propia."
+    },
+    {
+      "id": "narrador-distante",
+      "kind": "regex",
+      "match": "\\b(?:la gente|las personas) (?:hoy en d[ií]a|de hoy|ya no|siempre|suele|suelen)\\b|\\bhoy en d[ií]a (?:la gente|las personas)\\b",
+      "flags": "i",
+      "message": "Narrador distante (\"la gente hoy en día\", SS19).",
+      "fix": "Pon a quien mira en la escena con \"tú\" y un detalle concreto."
+    },
+    {
+      "id": "seguidor-en-el-guion",
+      "kind": "regex",
+      "match": "\\b(?:un|una|mis|los|las|algunos|algunas|varios|varias) seguidor(?:a|es|as)?\\b",
+      "flags": "i",
+      "message": "\"Un seguidor me...\": metalenguaje de comentario (P7).",
+      "fix": "Di la frase del comentario como texto del creador."
+    },
+    {
+      "id": "burbuja-en-el-guion",
+      "kind": "regex",
+      "match": "\\bburbujas?\\b",
+      "flags": "i",
+      "message": "La palabra \"burbuja\" en el guion: el público no necesita saber que existe una burbuja (P7).",
+      "fix": "Habla con las palabras de la burbuja, sin nombrarla."
+    },
+    {
+      "id": "termino-de-estadistica",
+      "kind": "regex",
+      "match": "\\b(?:mediana|percentil|promedio de (?:vistas|views|reproducciones|me gusta|seguidores))\\b",
+      "flags": "i",
+      "message": "Término de estadística para comparar resultados (M4).",
+      "fix": "Compara con \"lo normal del perfil\": \"3 veces lo normal del perfil\", \"cerca de lo normal\"."
+    },
+    {
+      "id": "voz-pasiva",
+      "kind": "regex",
+      "match": "\\b(?:fue|fueron|ha sido|han sido|será|serán)\\s+[\\p{L}]+(?:ado|ada|ados|adas|ido|ida|idos|idas)\\s+por\\b",
+      "flags": "iu",
+      "message": "Voz pasiva (M15, SS10): no se ve quién hace.",
+      "fix": "Pon como sujeto a quien hace: \"Mi equipo creó el video\"."
+    },
+    {
+      "id": "cosa-con-verbo-de-persona",
+      "kind": "regex",
+      "match": "\\bel algoritmo (?:te )?(?:decide|quiere|odia|castiga|premia|ama|sabe|piensa|cree)\\b",
+      "flags": "i",
+      "message": "Cosa sin vida con verbo de persona (SS3, SS11).",
+      "fix": "Di qué persona actúa, o qué pasa en concreto."
+    },
+    {
+      "id": "declaracion-vaga",
+      "kind": "regex",
+      "match": "\\b(?:las implicaciones son|el impacto es (?:enorme|gigante|grande))\\b",
+      "flags": "i",
+      "message": "Declaración vaga (SS18).",
+      "fix": "Di cuál es la implicación, con un hecho."
+    },
+    {
+      "id": "cta-generico",
+      "kind": "regex",
+      "match": "\\b(?:dale (?:like|me gusta)|no olvides (?:suscribirte|seguirme|darle like|dar like|compartir)|s[ií]gueme para m[aá]s|activa la campanita|comp[aá]rtelo con tus amigos|suscr[ií]bete (?:al canal|para m[aá]s))",
+      "flags": "i",
+      "message": "Llamado a la acción genérico (CE15).",
+      "fix": "Haz que el CTA siga el asunto del video, o no pongas CTA."
+    },
+    {
+      "id": "vinetas-en-el-guion",
+      "kind": "regex",
+      "match": "^[ \\t]*(?:[-*•]|\\d+[.)])[ \\t]+",
+      "flags": "m",
+      "message": "Lista de viñetas dentro del guion: nadie habla en viñetas.",
+      "fix": "Convierte la lista en frases habladas, con escena y detalle."
+    }
+  ]
+}

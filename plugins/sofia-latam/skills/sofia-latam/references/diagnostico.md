@@ -1,50 +1,63 @@
-# Cómo Diagnosticar un Guion
+# Cómo diagnosticar un guion
 
-## Secuencia obligatoria de preguntas
+Úsalo para una crítica completa, principio por principio. La base está en la pieza [principios](principios.md).
 
-Antes de evaluar cualquier elemento técnico, responder EN ORDEN:
+## El orden del diagnóstico
 
-### 1. ¿Cuál es la idea que vende este video?
-- No es el tema, no es el asunto — es la CREENCIA que instala
-- Si no hay una respuesta clara en 1 frase, el problema es estructural
-- Ejemplos: "Puedes ser grande antes de que te reconozcan", "El hambre importa más que el privilegio"
+Antes de evaluar cualquier técnica, responde en este orden.
 
-### 2. ¿Cuál es el tema y qué tamaño de mundo alcanza?
-- Tema universal (relaciones, dinero, miedo, injusticia) → techo alto
-- Tema de nicho (marketing digital, running, videojuegos) → techo limitado
-- ¿El tema trae carga emocional previa o hay que construirla?
+### 1. La idea que vende el video
 
-### 3. ¿El conflicto y el cambio están pasando?
-Verificar: ¿pasa EN LA PANTALLA o EN LA CABEZA DEL PÚBLICO?
-- En la pantalla: el personaje cambia, la situación da un giro, un valor cambia de signo
-- En la cabeza: el video contradice una creencia, activa memoria de conflicto
-- Si no pasa en ningún lado → sin emoción → sin retención
+- Es la creencia que el video deja en la cabeza de quien lo ve. Está por encima del tema y del asunto.
+- Si no cabe en una frase clara, el problema está en la estructura, antes que en cualquier técnica.
+- Ejemplos: "Puedes ser grande antes de que te reconozcan." "El hambre importa más que el privilegio."
 
-### 4. ¿Dónde están los preguntas abiertas de curiosidad y cuándo se cierran?
-- Listar cada pregunta abierta de curiosidad abierto
-- Cuándo se cierra cada uno (¿demasiado pronto? ¿en el momento justo? ¿nunca se cierra?)
-- Los preguntas abiertas de dato concreto > los preguntas abiertas emocionales para el participación
-- Un pregunta abierta que no se cierra = participación externo (comentarios)
+### 2. El tema y el tamaño del mundo
 
-### 5. ¿El aha llega después del costo justo?
-- Si llega demasiado pronto → satisface sin enganchar
-- Si llega en el momento justo → compartir + volver a ver
-- Si está deliberadamente ausente → externalización máxima
+- El tema que toca a casi todo el mundo (relaciones, dinero, miedo, injusticia) tiene un techo alto.
+- El tema de nicho (marketing digital, correr, videojuegos) tiene un techo más bajo.
+- Fíjate si el tema ya llega con emoción o si el video tiene que construir esa emoción.
 
-## Regla de oro del diagnóstico
+### 3. La familiaridad
 
-**Nunca evaluar lo que falta sin sopesar lo que está presente.**
+- Fíjate si quien lo ve reconoce la situación porque ya la vivió (familiaridad de memoria).
+- Fíjate si reconoce la creencia como suya (familiaridad de identidad). Es la que hace que la persona comparta fuera de la burbuja.
+- Un nombre, un término o una referencia que el público no conoce sube el esfuerzo, y la persona se rinde.
 
-La pregunta correcta NO es: "¿Qué está mal?"
-La pregunta correcta ES: "¿Qué está cargando este video, y qué se podría amplificar?"
+### 4. El conflicto y el cambio
 
-## Señales de alerta rápidas
+Fíjate dónde pasan: en la pantalla o en la cabeza del público.
 
-| Señal | Diagnóstico probable |
-|-------|---------------------|
-| El público no se detiene a ver | Gancho sin pregunta abierta de curiosidad ni familiaridad |
-| Se detiene pero se va rápido | Tema chico o conflicto ausente |
-| Ve todo pero no interactúa | Sin debate mental / aha entregado sin costo |
-| Alta retención, bajo compartidos | Falta familiaridad de identidad |
-| Muchos comentarios | Pregunta abierta de dato concreto que no se cierra |
-| Muchos shares | Familiaridad de identidad + moraleja fuerte |
+- En la pantalla: el personaje cambia, la situación da un giro, lo que era bueno se vuelve malo.
+- En la cabeza: el video contradice una creencia o despierta el recuerdo de un conflicto.
+- Si no pasan en ningún lado, no hay emoción, y sin emoción la persona no se queda.
+
+### 5. Las dudas y cuándo se cierran
+
+- Enumera cada duda que abre el video.
+- Marca cuándo se cierra cada una: demasiado pronto, en el momento justo o nunca.
+- Según la observación del método, la duda de dato concreto (qué, dónde, cuánto, con quién) sostiene más que la duda emocional.
+- La duda que se deja abierta a propósito lleva la conversación a los comentarios. La duda olvidada, sin intención, es carnada.
+
+### 6. El aha
+
+- Demasiado pronto, satisface y no atrapa.
+- En el momento justo, después de que la persona pensó, comparte y vuelve a ver.
+- Dejado afuera a propósito, la persona busca la respuesta fuera del video. Dile a la persona que esa fue la elección y revisa que la promesa del hook siga pagada.
+
+## Regla del diagnóstico
+
+Nunca evalúes lo que falta sin pesar lo que está presente. El diagnóstico útil muestra qué está cargando el video y qué podría crecer.
+
+## Señales rápidas
+
+Úsalas con los números del perfil, cuando la persona los comparte (captura de pantalla, exportación de la plataforma o una herramienta de datos que ya conectó). Cada línea es una hipótesis para comprobar. Un número solo no es una conclusión: lee los comentarios antes de decidir.
+
+| Señal | Causa probable |
+|---|---|
+| El público no se detiene a ver | Hook sin duda o sin familiaridad |
+| Se detiene, pero se va rápido | Tema pequeño o conflicto ausente |
+| Ve todo, pero no comenta ni comparte | Sin debate en la cabeza, o aha entregado sin que la persona pensara |
+| Muchos se quedan hasta el final, pocos comparten | Falta familiaridad de identidad |
+| Muchos comentarios | Duda de dato concreto que quedó abierta, o polémica |
+| Muchos compartidos | Familiaridad de identidad y moraleja fuerte |

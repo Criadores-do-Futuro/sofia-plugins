@@ -1,72 +1,48 @@
 # Estructura IHC
 
-**Identificación > Historia > Contenido**
+**Identificación → Historia → Contenido.**
 
-## Visión General
+## Visión general
 
-Conduce el cerebro de la audiencia en tres etapas: primero llama la atención (Identificación), luego crea conexión (Historia) y finalmente siembra una idea (Contenido). Es como contar una historia donde la persona se ve reflejada, se emociona y termina con una idea en la cabeza.
+Conduce el cerebro del público en tres etapas: primero capta la atención (Identificación), después crea conexión (Historia) y por último siembra la idea (Contenido). Es como contar una historia donde la persona se ve, se emociona y sale con una idea en la cabeza.
 
 ## Etapas
 
 ### 1. Identificación
 
-Entras en la mente de la persona. El objetivo es que piense:
-
-- "Yo también me sentí así"
-- "Parece que me está leyendo la mente..."
-
-Para esto necesitas conocer bien a tu audiencia. Puedes hablar de:
-
-- Cultura pop
-- Rutina
-- Inseguridades
-- Deseos
-- Sentimientos universales
-
-**Consejos prácticos:**
-- Usa palabras que tu audiencia usaría
-- Escribe como si le estuvieras contando algo a una amiga por WhatsApp
+Entra en la cabeza de la persona hasta que piense "parece que me está leyendo la mente" o "yo ya me sentí así". Habla de rutina, inseguridades, ganas, cultura pop, sentimientos que todos tienen, con las palabras del público, como en un chat de WhatsApp con una amiga. Para eso necesitas conocer bien a tu público.
 
 ### 2. Historia
 
-Aquí es donde ocurre la magia. Comparte un momento tuyo (o de alguien más), con inicio, desarrollo y final. No se trata solo de lo que pasó, sino de cómo eso te marcó.
-
-La historia necesita tener:
-
-- **Conflicto** — algo salió mal
-- **Giro** — ¿qué cambió?
-- **Consecuencia** — ¿qué te enseñó eso?
+Un momento tuyo o de alguien más, con inicio, desarrollo y final, y cómo eso te atravesó. Necesita conflicto (algo salió mal), giro (qué cambió) y consecuencia (qué enseñó).
 
 **Ejemplo:**
-"Publiqué más de 100 videos y ninguno generaba interacción. Hasta que un día me di cuenta de que estaba tratando de parecer alguien que no era. Cuando empecé a escribir desde el corazón, mi contenido explotó."
+"Yo ya había publicado más de 100 videos y ninguno generaba interacción. Hasta que un día me di cuenta de que estaba tratando de parecer alguien que yo no era. Cuando empecé a escribir con el corazón, mi contenido explotó."
 
 ### 3. Contenido
 
-Ahora que capturaste la atención y generaste emoción, es momento de sembrar la idea. Puedes:
+La semilla. Un insight ("lo que te frenaba era la forma en que te enseñaron"), un consejo práctico, una provocación o una invitación escondida hacia lo que vendes ("Y por eso enseño estructura de guion con tanta pasión dentro de mi comunidad.").
 
-- Dar un aprendizaje ("el problema nunca fuiste tú — fue la forma en la que te lo enseñaron")
-- Dar un consejo práctico
-- Hacer una provocación
-- Hacer un Llamado a la acción disimulado ("Y por eso enseño estructura de guion con tanta pasión dentro de mi comunidad.")
+El contenido tiene que importarle a la burbuja que intentas romper, sea técnico o no. La moraleja de la historia es la semilla que quieres plantar en la cabeza de quien miró.
 
-**Importante:** el contenido no necesita ser técnico. Necesita ser emocionalmente relevante para el nicho que estás tratando de conquistar. La moraleja de la historia es la semilla que quieres plantar en la cabeza de quien la vio.
+Lo que pide el IHC: el público piensa "soy yo", la historia tiene conflicto, giro y consecuencia, la semilla queda clara y el tono es de conversación.
 
 ## Resumen
 
-- **I — Identificación:** "A ti también te ha pasado esto, ¿verdad?"
-- **H — Historia:** "Yo viví esto... o a Fulano le pasó esto..."
-- **C — Contenido:** "Y lo que aprendí de eso fue..."
+- **I (Identificación):** "A ti también te ha pasado esto."
+- **H (Historia):** "Yo viví esto... o Fulano vivió esto..."
+- **C (Contenido):** "Y lo que aprendí con eso fue..."
 
 ## Cuándo usarla
 
-- Crear conexión sin que parezca que estás "vendiendo" algo
+- Crear conexión sin parecer que estás "vendiendo" algo
 - Posicionar tu historia como parte de un mensaje más grande
-- Enseñar sin sonar demasiado didáctico
-- Sembrar ideas y valores de forma emocional
+- Enseñar sin parecer demasiado didáctico
+- Sembrar ideas y valores por la emoción
 
 ## Checklist rápido
 
-- [ ] ¿La identificación hace que la audiencia piense "soy yo"?
-- [ ] ¿La historia tiene conflicto, giro y consecuencia?
-- [ ] ¿El contenido siembra una idea clara en la cabeza de la audiencia?
-- [ ] ¿El tono es conversacional (no parece una clase)?
+- **ES.ihc.1.** ¿La identificación hace que el público piense "soy yo"?
+- **ES.ihc.2.** ¿La historia tiene conflicto, giro y consecuencia?
+- **ES.ihc.3.** ¿El contenido siembra una semilla clara en la cabeza del público?
+- **ES.ihc.4.** ¿El tono es de conversación (sin cara de clase)?

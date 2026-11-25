@@ -1,79 +1,56 @@
-# Estructura Conflicto, Él, Yo, Tú, Futuro
+# Estructura Él, Yo, Tú, Futuro
 
-**Conflicto > Él > Yo > Tú > Futuro**
+**Él → Yo → Tú → Futuro**
 
-## Visión General
+## Visión general
 
-Transforma una vivencia personal o una observación en una narrativa compartida. Empieza "desde afuera" y termina "dentro de quien está viendo". Sirve justamente para inyectar tensión y estructura narrativa a videos que de otra forma sonarían demasiado didácticos o de clase.
+Transforma una vivencia personal o una observación en una narrativa compartida. Empieza fuera de quien habla y termina dentro de quien mira. Son cuatro giros simples, y fuertes.
 
 ## Etapas
 
-### 1. Conflicto
+### 1. Él
 
-Antes de nombrar a nadie, plantas la fricción: el problema, la tensión o el "dolor" que le da sentido a todo lo que sigue. Sin este conflicto inicial, la historia se vuelve plana — es el "porqué" que hace que la audiencia se quede viendo.
+La historia de otra persona: un amigo, una creadora que admiras, un personaje famoso, un caso que se viralizó. Genera curiosidad y muestra que la idea es más grande que tú.
 
-**Ejemplo:** "Casi todos los que empiezan a crear contenido publican durante meses sin que nadie los vea."
+**Ejemplo:** "Conocí a un creador que sumó 200 mil seguidores en 3 meses. Y el algoritmo solo explica una parte..."
 
-### 2. Él (o Ella)
+### 2. Yo
 
-Abre con la historia de otra persona. Puede ser:
+Cómo eso te atravesó, te enseñó o te provocó. Es el momento de vulnerabilidad o de postura:
 
-- Un amigo
-- Una creadora que admiras
-- Un personaje conocido
-- Un caso que se viralizó
+- "Cuando vi eso, pensé en mi trayectoria."
+- "Eso me recordó algo que viví."
+- "Yo también pasé por algo parecido."
 
-Esto genera curiosidad inmediata y muestra que la idea no es solo sobre ti.
+**Ejemplo:** "En esa misma época, yo estaba trabado creando. Verlo crecer me hizo cuestionar todo lo que estaba haciendo mal."
 
-**Ejemplo:** "Conocí a un creador que sumó 200 mil seguidores en 3 meses. Pero no fue solo por el algoritmo..."
+### 3. Tú
 
-### 3. Yo
+Trae al público hacia adentro. La reflexión se vuelve invitación ("tal vez tú también sientas que estás remando contra la corriente"). También sirve una provocación en forma de afirmación: "Tal vez lo que te frena sea la forma en que cuentas tu historia. El talento no te falta."
 
-Ahora entras tú en la historia. Muestras cómo eso te atravesó, te enseñó o te provocó. Es el momento de vulnerabilidad o posicionamiento:
+En este punto el público se identifica o se mueve.
 
-- "Cuando vi eso, pensé en mi propio camino."
-- "Eso me recordó algo que yo también viví."
-- "A mí también me pasó algo parecido."
+### 4. Futuro
 
-**Ejemplo:** "En esa misma época, yo estaba estancado creando contenido. Verlo crecer me hizo cuestionar todo lo que estaba haciendo mal."
+Lo que puede pasar si la persona aplica, o no aplica, lo que contaste. Ella se vuelve protagonista: plantas una idea de futuro posible.
 
-### 4. Tú
-
-Traes a la audiencia dentro de la narrativa. Conviertes la reflexión en una invitación.
-
-- "Tal vez tú también sientas que estás remando contra la corriente."
-- O una pregunta provocadora: "¿Y si lo que te está frenando no es la falta de talento, sino la forma en que estás contando tu historia?"
-
-Este es el punto donde la audiencia se identifica o se mueve.
-
-### 5. Futuro
-
-Proyectas lo que puede pasar si la persona aplica (o no aplica) lo que acabas de enseñar. Aquí es donde vive el movimiento: siembras una idea de futuro posible y colocas a quien está viendo como protagonista.
-
-**Ejemplo:** "Si dejas de crear para complacer al algoritmo y empiezas a crear con estructura, tal vez tus 200 mil seguidores también estén a tres meses de distancia."
+**Ejemplo:** "Si dejas de crear para agradar al algoritmo y empiezas a crear con estructura, tal vez tus 200 mil seguidores también estén a tres meses de distancia."
 
 ## Por qué funciona
 
-- Da espacio para contar historias sin que parezca que te estás luciendo
-- Hace que la audiencia entre al mensaje de forma más natural
-- Crea una narrativa con tensión creciente + lógica + dirección
+- Da espacio para contar historias sin parecer que te estás luciendo
+- Hace que el público entre al mensaje con más naturalidad
+- Crea una narrativa con crescendo emocional, lógica y dirección
 - Cierra con claridad, movimiento y propósito
-- Es exactamente el tipo de estructura que evita el tono de "clase" o "TED talk genérica": convierte una explicación didáctica en una historia con tensión real
 
-## Dato de valor
+## Consejo de oro
 
-Antes de escribir, pregúntate:
-
-1. ¿Cuál es el mensaje principal que quiero dejar?
-2. ¿Qué acción o reflexión quiero provocar?
-
-Esta estructura solo funciona de verdad si sabes qué estás sembrando al final.
+Antes de escribir, responde: ¿qué mensaje quiero dejar, y qué acción o reflexión quiero provocar? Sin eso, la estructura no cierra: solo funciona de verdad si sabes lo que estás sembrando al final.
 
 ## Checklist rápido
 
-- [ ] ¿El conflicto inicial es claro y genera un "porqué" para seguir viendo?
-- [ ] ¿El "Él" genera curiosidad sobre alguien real?
-- [ ] ¿El "Yo" muestra vulnerabilidad o posicionamiento genuino?
-- [ ] ¿El "Tú" trae a la audiencia dentro de la historia?
-- [ ] ¿El "Futuro" proyecta algo que la audiencia quiere alcanzar?
-- [ ] ¿El mensaje final está claro antes de empezar a escribir?
+- **ES.el-yo-tu-futuro.1.** ¿El "Él" genera curiosidad sobre alguien real?
+- **ES.el-yo-tu-futuro.2.** ¿El "Yo" muestra vulnerabilidad o una postura genuina?
+- **ES.el-yo-tu-futuro.3.** ¿El "Tú" trae al público hacia adentro de la historia?
+- **ES.el-yo-tu-futuro.4.** ¿El "Futuro" proyecta algo que el público quiere alcanzar?
+- **ES.el-yo-tu-futuro.5.** ¿El mensaje final está claro antes de empezar a escribir?
