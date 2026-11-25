@@ -1,6 +1,6 @@
 {
   "name": "sofia-plugins",
-  "description": "Sofia, a estrategista de roteiros para vídeos curtos, em português, espanhol e inglês.",
+  "description": "Sofia, a estrategista de roteiros para vídeos curtos, em português, espanhol e inglês. A Sofia Estrategista mais atual, a do curso Criador Estrategista, fica no marketplace criadores-do-futuro: Criadores-do-Futuro/sofia-estrategista (claude plugin marketplace add Criadores-do-Futuro/sofia-estrategista).",
   "owner": {
     "name": "Alef Marques"
   },
@@ -48,26 +48,6 @@
         "video",
         "analysis",
         "English"
-      ]
-    },
-    {
-      "name": "sofia-estrategista-editora",
-      "source": "./plugins/sofia-estrategista-editora",
-      "version": "0.4.0",
-      "description": "A Sofia Estrategista que também edita: ideia, pesquisa com fonte, formato, estrutura, hook, roteiro, grifos e análise pelo método do curso, mais edição de vídeo direto na timeline do CapCut ou do DaVinci Resolve, aprendizado de estilo a partir de um vídeo já editado, decupagem, motion graphics, finalização e preparo da publicação. Com o conector ligado, lê e salva no planejamento do aluno no site.",
-      "author": {
-        "name": "Criadores do Futuro",
-        "email": "co.criadoresdofuturo@gmail.com",
-        "url": "https://plataforma.academiacriadoresdofuturo.com.br/sofia-editora/suporte"
-      },
-      "keywords": [
-        "roteiro",
-        "edicao de video",
-        "capcut",
-        "davinci resolve",
-        "motion graphics",
-        "video curto",
-        "criador estrategista"
       ]
     }
   ]
