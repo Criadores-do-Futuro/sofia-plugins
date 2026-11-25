@@ -1,4 +1,4 @@
 interface:
   display_name: Sofia
   short_description: Guiones y análisis de videos
-  default_prompt: Usa $sofia-latam para trabajar en mi contenido en español.
+  default_prompt: Usa $sofia-latam para darme ideas, escribir el hook y el guion de mi próximo video o analizar un video de referencia.

@@ -1,28 +1,33 @@
-# Formato: Formato Combinado
+# Formato: Formato combinado
 
 ## Qué es
-Dos formatos reconocibles se funden de forma deliberada y generan un lenguaje coherente. Un recurso breve no alcanza: cada formato tiene que aportar algo estructural.
+Dos formatos reconocibles se fusionan de manera deliberada y generan un lenguaje coherente con personalidad propia. No basta con añadir un efecto puntual: cada formato tiene que aportar de forma estructural.
 
 ## Firma visual
-- Se pueden nombrar los dos formatos
-- Cada capa mantiene señales reconocibles
-- Transición o simultaneidad intencional
+- Se pueden nombrar los dos formatos presentes
+- Cada capa conserva características reconocibles
+- La transición o la simultaneidad parece intencional
 - La fusión suma ritmo, sentido o punto de vista
 
 ## Estructura que combina mejor
-Elige una estructura narrativa dominante y adapta las reglas visuales de los dos formatos.
+Depende de los dos formatos. Elige una estructura narrativa dominante y adapta las reglas visuales de ambos.
 
-## Tipo de gancho que pide este formato
-El del formato que conduce; la otra capa entra después para ampliar.
+## Tipo de hook que pide este formato
+El hook del formato que conduce. Cuando la propia mezcla sorprende (por ejemplo, una Charla breve que se vuelve Cine en medio de la frase), usa un contraste inesperado.
+
+## Elementos adictivos dominantes
+Los del formato que conduce, más el contraste cuando la mezcla crea contraste
 
 ## Reglas de escritura
-1. Define cuál formato conduce y cuál amplía.
-2. Dale una función distinta a cada formato.
-3. Planea dónde entra, sale o se superpone cada capa.
-4. Conserva señales mínimas de ambos.
-5. Haz que las transiciones carguen significado.
-6. Revisa con las reglas de los dos formatos.
-7. Al analizar, nómbralo `Formato A + Formato B`.
+1. Declara para ti cuál formato conduce la narrativa y cuál amplía la ejecución.
+2. Dale una función distinta a cada formato; evita duplicar el mismo efecto.
+3. Planifica dónde entra, sale o se superpone cada capa.
+4. Conserva las señales mínimas que hacen identificable a cada formato.
+5. Haz que las transiciones carguen significado, no solo variedad.
+6. Revisa el guion con las reglas de los dos formatos y resuelve los conflictos de forma consciente.
+7. Al analizar, nombra la combinación como `Formato A + Formato B`.
 
 ## No confundir
-Una variación de escenario o un insert breve no crea combinación; una mezcla caótica sin patrones reconocibles tampoco.
+- Un formato con variación de escenario o un inserto breve sigue siendo un solo formato.
+- Una mezcla caótica sin dos patrones reconocibles no es una combinación.
+- Un segundo formato presente por pocos segundos y sin función estructural es solo un recurso puntual.

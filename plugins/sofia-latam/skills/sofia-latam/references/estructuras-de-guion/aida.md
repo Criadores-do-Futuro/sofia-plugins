@@ -1,48 +1,30 @@
 # Estructura AIDA
 
-**Atención > Interés > Deseo > Acción**
+**Atención → Interés → Deseo → Acción.**
 
-## Visión General
+## Visión general
 
-Tu video necesita llamar la Atención, generar Interés, despertar Deseo por la idea que quieres vender y llevar a la audiencia a una Acción (tu Llamado a la acción).
+Tu video necesita llamar la Atención, generar Interés, despertar Deseo por la idea que quieres vender y llevar al público a una Acción (tu CTA, llamado a la acción).
 
 ## Etapas
 
 ### 1. Atención
 
-Define un Tema Interesante. Para captar la atención al inicio, combina el tema con una **CURIOSIDAD** relacionada o un **CONFLICTO** dentro del tema.
-
-- El tema define el techo de alcance
-- La curiosidad o el conflicto funcionan como gancho
+Un tema interesante, unido a una curiosidad o a un conflicto del tema. El tema define hasta dónde puede llegar el video; la curiosidad o el conflicto se vuelven el hook.
 
 ### 2. Interés
 
-Prepara el terreno para sustentar tu punto:
-
-- Cuenta una historia
-- Trae argumentos lógicos
-- Cita estudios o datos
-- Enseña algo
-
-El objetivo es que la persona quiera seguir viendo porque está aprendiendo o se está enganchando.
+Prepara el terreno para probar tu punto. Cuenta una historia, trae un argumento, cita un estudio, enseña algo. La persona se queda porque está aprendiendo o enganchándose.
 
 ### 3. Deseo
 
-Es la Moraleja de la Historia. Aquí puedes:
-
-- Hacer que la persona crea en tu idea
-- Hacer que sienta que necesita tu producto
-- Generar esperanza
-- Instalar una nueva creencia
-
-El deseo es el momento emocional — la persona necesita SENTIR algo.
+La moraleja de la historia. La persona cree en la idea, siente que necesita el producto, gana esperanza o cambia una creencia. Es el momento de sentir.
 
 ### 4. Acción
 
-Es tu Llamado a la acción (Call to Action). Dos formas:
+El pedido del final, el CTA. Directo (seguir, comentar, tocar el enlace) o indirecto (queda sobreentendido, y suena más elegante).
 
-- **Llamado a la acción directo:** pide explícitamente que sigan, comenten o den like
-- **Llamado a la acción indirecto:** no lo dice directamente, pero queda sobreentendido (más elegante)
+Lo que pide la AIDA: un tema que le interesa a la burbuja, una apertura con curiosidad o conflicto, un medio que prueba el punto, una moraleja que genera deseo y el pedido al final.
 
 ## Cuándo usarla
 
@@ -52,8 +34,8 @@ Es tu Llamado a la acción (Call to Action). Dos formas:
 
 ## Checklist rápido
 
-- [ ] ¿El tema es interesante para tu nicho?
-- [ ] ¿La apertura tiene curiosidad o conflicto?
-- [ ] ¿El desarrollo sustenta el punto con historia, datos o enseñanza?
-- [ ] ¿La moraleja genera deseo emocional?
-- [ ] ¿El Llamado a la acción está presente (directo o indirecto)?
+- **ES.aida.1.** ¿El tema es interesante para la burbuja?
+- **ES.aida.2.** ¿La apertura tiene curiosidad o conflicto?
+- **ES.aida.3.** ¿El medio prueba el punto con historia, datos o enseñanza?
+- **ES.aida.4.** ¿La moraleja genera deseo emocional?
+- **ES.aida.5.** ¿El CTA está presente (directo o indirecto)?

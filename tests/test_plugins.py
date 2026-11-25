@@ -1,11 +1,13 @@
 """Verificações de contrato, sem rede nem serviços pagos."""
 
+import re
 import shutil
 import subprocess
 import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 sys.dont_write_bytecode = True
 
@@ -43,10 +45,85 @@ class PackageContractTests(unittest.TestCase):
             self.assertTrue(all(len(row["sha256"]) == 64 for row in inventory))
             self.assertTrue(all(not row["publication_ready"] for row in inventory))
 
-    def test_submission_gate_rejects_missing_listing_material(self):
+    def test_openai_archive_carries_root_manifests_and_leaves_claude_files_out(self):
+        import json
+        import zipfile
         with tempfile.TemporaryDirectory() as temp:
-            with self.assertRaisesRegex(ValueError, "Listagem incompleta"):
-                package(Path(temp), require_submission=True)
+            inventory = package(Path(temp))
+            for row in inventory:
+                with self.subTest(plugin=row["plugin"]), zipfile.ZipFile(Path(temp) / row["openai_archive"]) as archive:
+                    names = set(archive.namelist())
+                    self.assertIn("plugin.json", names)
+                    self.assertIn("mcp.json", names)
+                    self.assertIn(f"skills/{row['plugin']}/SKILL.md", names)
+                    self.assertIn(f"skills/{row['plugin']}/references/checks.json", names)
+                    self.assertFalse(any(n.split("/")[0] in {".claude-plugin", ".codex-plugin", "agents"} for n in names))
+                    manifest = json.loads(archive.read("plugin.json"))
+                    self.assertNotIn("requires_local_executor", manifest["extensions"]["com.openai"])
+                    self.assertIs(manifest["extensions"]["com.openai"]["review"]["commerce"], False)
+                    servers = json.loads(archive.read("mcp.json"))["mcpServers"]
+                    self.assertEqual(len(servers), 1)
+
+    def test_submission_gate_reports_missing_listing_material(self):
+        import validate_plugins
+        original = validate_plugins.listing
+
+        def sem_site(name):
+            data = original(name)
+            data["extensions"]["com.openai"]["interface"].pop("websiteURL")
+            return data
+
+        with mock.patch.object(validate_plugins, "listing", sem_site):
+            report = validate_plugin(ROOT / "plugins/sofia-english")
+        self.assertIn("websiteURL", report["missing_listing_fields"])
+
+        # Hoje só falta o vídeo de demonstração, que a revisão inicial do MCP exige.
+        for name in NAMES:
+            with self.subTest(plugin=name):
+                self.assertEqual(validate_plugin(ROOT / "plugins" / name)["missing_listing_fields"],
+                                 ["review.demo_recording_url"])
+
+        def com_video(name):
+            data = original(name)
+            data["extensions"]["com.openai"]["review"]["demo_recording_url"] = "https://example.com/demo.mp4"
+            return data
+
+        with mock.patch.object(validate_plugins, "listing", com_video), tempfile.TemporaryDirectory() as temp:
+            inventory = package(Path(temp), require_submission=True)
+            self.assertTrue(all(row["missing_listing_fields"] == [] for row in inventory))
+
+    def test_base_listing_fields_must_be_english(self):
+        import validate_plugins
+        original = validate_plugins.listing
+
+        def em_portugues(name):
+            data = original(name)
+            data["extensions"]["com.openai"]["interface"]["shortDescription"] = "Roteiros e análise de vídeos"
+            data["extensions"]["com.openai"]["interface"]["capabilities"][0] = "Escrever roteiros de criação"
+            return data
+
+        with mock.patch.object(validate_plugins, "listing", em_portugues):
+            report = validate_plugin(ROOT / "plugins/sofia-br")
+        self.assertTrue(any("fora do inglês" in e for e in report["errors"]))
+
+    def test_slow_regex_is_rejected(self):
+        from validate_plugins import js_regex_errors
+        lentas = js_regex_errors([["(?:^|[.!?\\n]\\s*)y está bien", "i"], ["^\\s*[-*•]\\s+", "m"]])
+        self.assertEqual(len(lentas), 2)
+        self.assertTrue(all("ms num texto" in e for e in lentas))
+        self.assertEqual(js_regex_errors([["^[ \\t]*[-*•][ \\t]+", "m"]]), [])
+
+    def test_openai_archive_rejects_links_to_folders_it_leaves_out(self):
+        from package_plugins import package_openai
+        with tempfile.TemporaryDirectory() as temp:
+            dest = Path(temp) / "sofia-english"
+            shutil.copytree(ROOT / "plugins/sofia-english", dest)
+            readme = dest / "README.md"
+            readme.write_text(readme.read_text() + "\n[critic](agents/critic.md)\n")
+            # O empacotador inspeciona o ZIP e se recusa a entregá-lo com o link quebrado.
+            with self.assertRaises(ValueError) as erro:
+                package_openai("sofia-english", dest, Path(temp))
+            self.assertIn("agents/critic.md", str(erro.exception))
 
     def test_plugins_ship_text_only(self):
         for name in NAMES:
@@ -72,7 +149,8 @@ class PackageContractTests(unittest.TestCase):
             shutil.copy(dest / "assets/icon.png", dest / ".claude-plugin/icon.png")
             (dest / "setup.md").write_text("Read `GEMINI_API_KEY` from the environment.")
             readme = dest / "README.md"
-            readme.write_text(readme.read_text().replace("[Privacy]", "[Privacidade]"))
+            # Tira a palavra Privacy de qualquer rótulo de link ([Privacy], [Privacy Policy] …).
+            readme.write_text(re.sub(r"\[([^\]]*?)Privacy([^\]]*)\]", r"[\1Privacidade\2]", readme.read_text()))
             skill = dest / "skills/sofia-english/SKILL.md"
             text = skill.read_text()
             skill.write_text(text.replace("description: ", "description: wrapped\n  ", 1))

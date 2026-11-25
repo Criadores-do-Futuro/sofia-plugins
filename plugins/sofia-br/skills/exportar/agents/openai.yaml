@@ -1,4 +1,0 @@
-interface:
-  display_name: Sofia · Exportar
-  short_description: Roteiros e análise de vídeos
-  default_prompt: Use $exportar para trabalhar no meu conteúdo em português.

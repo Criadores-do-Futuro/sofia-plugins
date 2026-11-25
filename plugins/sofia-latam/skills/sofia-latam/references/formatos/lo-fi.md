@@ -1,27 +1,32 @@
-# Formato: Producción simple
+# Formato: Lo-Fi
 
 ## Qué es
-Video deliberadamente simple, crudo y poco pulido. Cámara de celular, luz disponible, pocos cortes e imperfecciones conservadas crean cercanía. No es descuido: la claridad y la intención siguen siendo obligatorias.
+Video simple a propósito, crudo y poco pulido. La sensación de espontaneidad viene de la cámara del celular, la luz disponible, los pocos cortes y las imperfecciones que se conservan. Lo-Fi y descuido son cosas distintas: la baja producción es una elección para aumentar la cercanía y la credibilidad.
 
 ## Firma visual
-- Luz y ambiente naturales
-- Encuadre simple o cámara en mano
-- Pocos cortes y elementos gráficos
-- Dudas leves conservadas
+- Luz y ambiente naturales, sin aspecto de set
+- Encuadre simple, cámara en la mano o con un apoyo improvisado
+- Pocos cortes, correcciones y elementos gráficos
+- Dudas o ruidos leves que se conservan sin impedir la comprensión
 
 ## Estructura que combina mejor
-IHC directo o relato corto, con una opinión fuerte.
+IHC directo, hot-take o relato corto.
 
-## Tipo de gancho que pide este formato
-Una tesis fuerte dicha como si la idea acabara de surgir, sin introducción.
+## Tipo de hook que pide este formato
+Choque de creencia o provocación directa: la opinión fuerte dicha en la primera frase, sin preparación.
+
+## Elementos adictivos dominantes
+Lenguaje familiar, relevancia emocional, conflicto y cambio
 
 ## Reglas de escritura
-1. Empieza como si la idea te acabara de surgir.
-2. Usa una tesis fuerte que sostenga la producción baja.
-3. Escribe para habla natural, con frases cortas.
-4. Evita la introducción formal y el texto de teleprompter.
-5. Conserva la humanidad, pero corta la repetición vacía.
-6. No compenses la simplicidad con efectos excesivos.
+1. Empieza rápido, como si la idea acabara de surgir.
+2. Usa una tesis lo bastante fuerte para sostener la ausencia de producción elaborada.
+3. Escribe para el habla natural: frases cortas, contracciones y pausas.
+4. Evita las introducciones formales, las listas excesivas y el texto con cara de teleprompter.
+5. Conserva las imperfecciones que generan humanidad, pero corta las repeticiones que no aportan.
+6. No intentes compensar la simplicidad con exceso de efectos en la edición.
 
 ## No confundir
-Trivial exige contexto cotidiano; Creativo Perezoso exige un gancho visual concentrado; un video mal ejecutado no es Producción simple.
+- Trivial: necesita un contexto u objeto cotidiano reconocible; Lo-Fi puede darse en cualquier lugar.
+- Creativo perezoso: concentra un hook visual elaborado al comienzo; Lo-Fi mantiene una simplicidad coherente.
+- Video mal ejecutado: Lo-Fi conserva claridad de audio, intención y punto de vista.

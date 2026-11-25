@@ -1,162 +1,269 @@
-# Cómo Escribir — Patrones Extraídos de Buenos Guiones
+# Cómo escribir guiones que suenen naturales
 
-Este archivo es referencia interna. NUNCA copies frases de aquí. Aprende los PATRONES y escribe texto nuevo.
+Dos partes. La parte 1 trae las reglas base de escritura del método. La parte 2 trae patrones sacados de guiones virales reales. El Piso (pieza [piso](piso.md)) vale por encima de las dos.
 
-## 1. ESPECIFICIDAD MATA GENERALIDAD
+Los ejemplos sirven para aprender la FORMA de escribir, nunca para copiar frases. Los ejemplos inventados traen {variables}, solo para mostrar la forma. Copia el cambio, nunca las frases. Un número de verdad solo entra con fuente.
 
-Los buenos guiones usan detalles concretos, no descripciones genéricas.
+# Parte 1: las reglas base
 
-**El patrón:**
-- Nombre propio > categoría (el nombre real de la persona > "un influencer exitoso")
-- Número exacto > "muchas veces" (la medida o la cifra exacta > "un montón")
-- Detalle absurdo > explicación (lo que compró, comió o usó, con cantidad > "comida barata")
-- Escena descrita > sentimiento narrado (dónde y cómo dormía, comía o trabajaba > "pasó necesidades")
+Cada regla trae el porqué, para que la apliques también en los casos que la lista no cubre.
 
-**Por qué funciona:** el cerebro no puede imaginar "una persona exitosa". Puede imaginar a alguien con nombre, cara y una escena concreta. Imagen mental = retención.
+**Poca carga mental.** Frase corta, una idea por frase, palabras que la persona usa todos los días. Quien mira está deslizando el feed: si tiene que detenerse a descifrar, pasa al siguiente video.
 
+**Contexto antes del nombre.** Di quién es antes de decir el nombre: "la dueña de la panadería de la esquina, doña Rosa" en lugar de "doña Rosa". Un nombre suelto obliga a la persona a buscar en la memoria, y se pierde.
 
-**En la práctica, al escribir:**
-- Cambia todo adjetivo genérico por una escena concreta
-- Si dijiste "muchos", pon el número
-- Si dijiste "alguien famoso", pon el nombre
-- Si dijiste "un mal sentimiento", describe la escena que lo genera
+**Di lo que pasó, con detalle.** Quién hizo qué, cuánto, para qué, cuándo. "La alcaldía actuó" deja a la persona a oscuras. "La alcaldía cerró el mercado y les dio 30 días a los 40 comerciantes para irse" muestra la escena.
 
-## 2. Gancho COGNITIVO: EL GOLPE QUE DETIENE EL Desplazamiento
+**El número se vuelve imagen.** Un número grande solo no dice nada. Compáralo con algo que la persona conoce, con una cuenta hecha solo con datos verificados.
 
-El gancho no es una introducción — es un golpe que genera fricción emocional inmediata. Ataca una creencia, no presenta un tema.
+**Abre, sostén y paga la curiosidad.** El hook abre una duda. Cada bloque responde un pedazo y abre el siguiente. El final paga la promesa del hook. Una promesa sin pago deja sensación de engaño.
 
-**El patrón:**
-- Afirmación que contradice el sentido común
-- Pregunta que desafía una percepción instalada
-- Dato que no cuadra con lo que la gente asume
+**El hook lleva a algún lado.** Conserva el pedazo que a la persona le gustó y cuida el final de la frase, que es donde el hook suele perderse. Un buen hook es concreto y deja una duda: quién, cuánto, cómo.
 
-**Ejemplos del patrón (no copies las palabras, entiende el mecanismo):**
-- Una pregunta que se burla de lo que alguien celebra (ver la pieza `ejemplos-especificidad`) — ataca la definición de éxito antes de explicar nada.
-- "Nuestra relación no está basada en el amor. Ni tampoco en el sexo." — contradice el pilar más obvio de una relación en la primera frase.
+**El video corto también necesita historia.** Corto pide menos palabras, y cada bloque sigue teniendo escena, detalle y giro. Un guion que se vuelve lista de puntos pierde a la persona a la mitad. Escribe el guion de verdad, con el largo que la historia pide, y pregúntale a la persona si tiene una duración en mente.
 
-**Por qué funciona:** genera un gancho cognitivo — la mente no puede seguir de largo sin resolver la contradicción. Cero cliché, cero ángulo trillado, cero "en la generación pasada...". Si el gancho se siente predecible, bórralo y empieza de nuevo.
+**Cambia de tema sin que la persona lo note.** Para pasar de un bloque a otro, parte de un pedazo concreto del bloque anterior: una palabra, un objeto, un número. La frase de transición anunciada ("ahora vamos a hablar de") rompe el ritmo.
 
-**En la práctica:**
-- El gancho nunca explica el tema. Lo tensiona.
-- Prueba: si el gancho podría estar en cualquier otro guion del mismo nicho, es genérico. Bórralo.
-- Nunca empieces con "Vi a alguien decir..." — le quita autoridad al creador desde la primera línea.
+**La salvedad que fluye.** Cuando un hecho necesita cuidado, la salvedad entra dentro de la historia, en la voz de quien habla: "Eso es lo que dice la empresa. La policía todavía está investigando." Un aviso legal pegado en medio corta el video en seco.
 
-## 3. Pregunta abierta DE CURIOSIDAD: LA PREGUNTA QUE NO SE CIERRA TEMPRANO
+**Sin duda por accidente.** Las palabras de duda, como "parece que" o "supuestamente", hacen que la persona dude de todo. Úsalas solo donde la duda es real, una vez, diciendo quién lo afirma.
 
-Un vacío de información bien administrado es lo que sostiene la atención — no la respuesta, la búsqueda de la respuesta.
+**Una emoción por bloque.** Antes de escribir cada bloque, ten claro qué debe sentir la persona ahí: rabia, alivio, sorpresa, ganas de comentar.
 
-**El patrón:**
-- Se planta una pregunta o tensión sin resolverla de inmediato
-- El contenido intermedio construye evidencia, no repite la pregunta
-- La resolución llega solo cuando ya generó suficiente costo cognitivo
+**El elemento adictivo pasa en la frase.** Decir en la idea que un bloque usa contraste ayuda a planear. En el guion, quien mira nunca escucha el nombre del elemento: siente dos cosas opuestas una al lado de la otra, o se queda con una duda en la cabeza. Si solo puedes señalar el elemento por la etiqueta, todavía no está en el texto.
 
-**En la práctica:**
-- Si la revelación llega en los primeros segundos, no hubo pregunta abierta — hubo spoiler.
-- Cada dato suelto que sueltes en el medio debe alimentar la pregunta abierta, no distraer de ella.
-- Cierra el pregunta abierta antes del final, no lo dejes abierto sin resolver salvo que sea una serie con "pregunta abierta de continuidad" (ver punto 10).
+**Escrito para decirse en voz alta.** Léelo en voz alta en tu cabeza. Si te trabas o necesitas tomar aire a la mitad, la frase está demasiado larga.
 
-## 4. Preparación de la promesa Y Resolución de la promesa
+**Hecho, acusación y opinión, separados.** Una acusación todavía no es una condena: di quién acusa. Si el hecho cambió después (la sala que estaba cerrada con llave se abrió y estaba vacía), cuenta el cambio. El motivo, el dinero o el uso de IA de alguien solo entran con fuente.
 
-Un detalle sembrado temprano que se cobra después, sin explicación, premia a quien prestó atención.
+# Parte 2: patrones de buenos guiones
 
-**El patrón:**
-- Se menciona un detalle aparentemente menor
-- Más adelante ese detalle regresa con peso nuevo
-- Nunca se explica la conexión — el público la conecta solo
+Los ejemplos marcados como reales vienen de guiones virales en portugués (caso original en portugués; las citas están traducidas).
 
-**En la práctica:**
-- Planta frases o gestos que parezcan de color al inicio, cóbralos como prueba en el cierre.
-- Si tienes que explicar el resolución de la promesa, no es resolución de la promesa — es un chiste que necesita subtítulos. Bórralo.
+## 1. Escribe como la persona habla, no como escribe
 
-## 5. "PERO" COMO MOTOR DE CONTRASTE
+Los buenos guiones suenan a conversación, no a redacción escolar.
 
-El "pero" es la herramienta más usada en buenos guiones para voltear el sentido de la frase.
+**Sí:**
+- "Y así fue como este empresario mentiroso facturó miles de millones."
+- "Ahora detente y piénsalo."
+- "Y lo peor, el conductor todavía tiene el descaro de..."
+- "Nadie sabía quién era Tommy Hilfiger."
 
-**El patrón:**
-- Construcción positiva + "pero" + inversión
-- Construcción negativa + "pero" + sorpresa
-- Afirmación del público + "pero" + contradicción
+**No:**
+- "En este video, vamos a analizar cómo un empresario alcanzó el éxito."
+- "Reflexiona sobre lo siguiente."
+- "Asimismo, el conductor tuvo la osadía de..."
 
-**En la práctica:**
-- "Factura millones, pero en esa época no tenía nada."
-- "Nunca escuchaste hablar de él, pero es referencia para miles."
-- "Entregas valor, pero te quedas esperando que te reconozcan."
+**Regla:** Lee la frase en voz alta. Si nunca hablarías así en la vida real, reescríbela.
 
-Cada "pero" es una mini-vuelta de tuerca. Acumular vueltas de tuerca = sostener atención.
+## 2. Frases cortas que pegan fuerte
 
-## 6. FRASES CORTAS CON GOLPE
+Cada frase hace UNA cosa. No intentes hacer tres cosas en la misma frase.
 
-Los buenos guiones alternan frases largas con frases que paran todo.
+**Sí:**
+- "El problema es simple: nadie conocía a Tommy."
+- "Y no merecía estar en esa lista."
+- "De la noche a la mañana, todo el mundo quería saber quién diablos era Tommy Hilfiger."
 
-**El patrón:**
-- Frase que construye contexto (más larga)
-- Frase que entrega el impacto (corta, seca)
+**No:**
+- "El problema es que Tommy era un completo desconocido y no merecía estar en esa lista, lo que hizo que de la noche a la mañana todos preguntaran quién era."
 
-**En la práctica:**
-- Después de construir una idea en 2-3 frases, entrega el impacto en UNA frase corta.
-- La frase corta puede ser: pregunta, fragmento, contradicción, revelación.
-- No le tengas miedo a frases de 2-3 palabras. Cargan el peso.
+**Regla:** Si la frase tiene más de 20 palabras, casi siempre se puede partir en dos.
 
-## 7. FRICCIÓN EMOCIONAL COMO ESTRUCTURA (CONFLICTO / ÉL / YO / TÚ / FUTURO)
+## 3. Usa "Y", "Entonces" y "Pero" para empezar frases
 
-Toda historia ajena necesita convertirse en espejo. La estructura Conflicto-Él-Yo-Tú-Futuro es la forma concreta de lograrlo:
+En la escritura formal eso está mal. En un guion, es lo que da el ritmo natural.
 
-- **Conflicto:** el problema o tensión de fondo, planteado sin rodeos.
-- **Él (la historia ajena):** la trayectoria de un tercero real, con detalles concretos, no adjetivos.
-- **Yo (el narrador):** dónde entra la voz del creador — su lectura, su postura, su experiencia.
-- **Tú (el público):** el momento donde la cámara gira hacia quien está viendo: "y a ti, ¿te suena?"
-- **Futuro:** la proyección de lo que cambia si el público actúa distinto.
+**Ejemplos reales:**
+- "**Y** de repente, un carro se pasa el semáforo en rojo."
+- "**Entonces** él dice: ya lo hice más de 600 veces."
+- "**Pero** tú, que entregas valor de verdad, te quedas esperando."
+- "**Y** lo peor, el conductor todavía..."
 
-**En la práctica:**
-- Nunca termines una historia ajena sin traerla a la vida del público.
-- Usa "y tú" o "la verdad es que" como puente.
-- Al público no le importa el tercero en sí — le importa reconocerse en él. La historia es el vehículo, la moraleja aplicada a su vida es el destino.
+## 4. Narra la escena en lugar de describir
 
-## 8. CONTRADICCIÓN COMO APERTURA
+No digas "era persistente". Muéstralo haciendo la cosa 600 veces.
 
-Dos informaciones que no cierran juntas obligan al cerebro a seguir.
+**Sí (muestra):**
+- "Maneja con calma, mira las señales, respeta el tránsito."
+- "Dentro de ese carro va una pareja riéndose, fumando, grabando historias."
+- "Ya lo hice más de 600 veces."
 
-**El patrón:**
-- Frase A afirma algo
-- Frase B lo contradice
-- El público necesita resolverlo → se queda viendo
+**No (cuenta):**
+- "Era un conductor cuidadoso y responsable."
+- "Los ocupantes del otro vehículo eran irresponsables."
+- "Tenía mucha experiencia con la receta."
 
-**En la práctica:**
-- "Terapia de pareja. Sin ser pareja de verdad." (contradicción directa)
-- "Empresario mentiroso que facturó millones." (mentira + éxito = no cierra)
-- La contradicción funciona mejor cuando ambas partes son cortas y están pegadas. Entre menos palabras entre A y B, mayor el impacto.
+**Regla:** Cambia adjetivos por acciones. "Valiente": muestra lo que hizo. "Irresponsable": muestra lo que hizo de irresponsable.
 
-## 9. LENGUAJE REAL, NO DE REDACCIÓN
+## 5. El "pero" es la herramienta más fuerte del guion
 
-Los buenos guiones usan las palabras que la gente realmente usa.
+El "pero" crea contraste en el momento. Cambia la dirección. Rompe la expectativa. Cada "pero" es un pequeño giro, y varios giros sostienen la atención.
 
-**El patrón:**
-- Palabras del día a día, incluso las "feas"
-- Modismos que el público reconoce
-- Términos que la persona usaría contando la historia en una junta con amigos
+**Ejemplos reales:**
+- "Hoy factura 9 mil millones, **pero** en esa época no era nada."
+- "Nunca oíste hablar de ellos, **pero** son referencia para miles."
+- "Lo irónico es que los malos profesionales hacen esto todos los días. **Pero** tú, que entregas valor de verdad..."
 
-**En la práctica:**
-- "¿Quién diablos es ese?" > "¿Quién sería este individuo?"
-- Si la palabra "correcta" suena a ensayo escolar, es la palabra equivocada.
-- Datos sueltos sin contexto no son argumento — son ruido. Todo dato debe entrar como alerta directa, no como estadística flotante.
+**Tres formas de armarlo** (con {variables}):
+- Construcción positiva, "pero", inversión: "Hoy factura {valor con fuente}, pero al principio {situación de antes}."
+- Construcción negativa, "pero", sorpresa: "Nunca oíste hablar de ellos, pero {hecho con fuente}."
+- Lo que el público piensa, "pero", lo contrario: "Tú entregas valor, pero te quedas esperando que te reconozcan."
 
-## 10. Llamado a la acción QUE TIENE SENTIDO (Y Llamado a la acción AFILADO)
+**Regla:** Cuando quieras cambiar la dirección de la historia, usa "pero". Cuando quieras intensificar, usa "y".
 
-El pedido final solo funciona si es coherente con todo lo que vino antes — y si genera ambición real, no simpatía barata.
+## 6. Pregunta solo en el llamado final o cuando vino de un comentario
 
-**El patrón:**
-- Llamado a la acción que es extensión natural del contenido
-- Reciprocidad: pide algo simple, ofrece algo a cambio
-- Llamado a la acción de continuidad: deja un pregunta abierta abierto para la siguiente entrega (válido solo en series)
-- O: ningún Llamado a la acción (el contenido es el valor)
+Los buenos guiones ponen en boca del creador lo que el público ya está pensando, como afirmación. La pregunta retórica, esa que se hace solo para contestarla enseguida, se queda fuera del guion.
 
-**En la práctica:**
-- Nunca cierres con "sígueme y comenta" genérico y sin conexión con el tema.
-- Nunca cierres con un Llamado a la acción infantilizado tipo "¿y tú? ¿quieres ser parte de este grupito?" — eso es "club de los buenos", no ambición.
-- Cierra con algo que incomode: una invitación a actuar distinto, no a sentirse bien.
+Quedan dos preguntas:
+- la del llamado final, que espera la respuesta de quien mira en los comentarios;
+- la que vino de un comentario del público y entró como texto del creador, con las palabras del comentario.
 
-## REGLA DE ORO
+**Regla:** Si el público pensaría eso en ese momento, dilo como afirmación. "¿Quién diablos es Tommy Hilfiger?" se vuelve "Nadie sabía quién era Tommy Hilfiger."
 
-**Copia la emoción y la lógica. Nunca copies las palabras.**
+## 7. Lo específico le gana a lo genérico
 
-Estos patrones son esqueletos. La carne tiene que ser nueva — del tema del usuario, de su público, de las historias reales que él traiga.
+"8 metros cuadrados en São Paulo" > "departamento pequeño"
+"600 veces" > "muchas veces"
+"9 mil millones de dólares" > "mucho dinero"
+"200 mil dólares" > "poco dinero"
+
+- Nombre propio en lugar de la categoría ("Shakira" en lugar de "una cantante famosa").
+- Número exacto en lugar de "muchas veces", siempre con fuente ("{número con fuente} veces").
+- Detalle raro en lugar de la explicación ("la prima segunda de mi mamá" en lugar de "una pariente").
+- Escena en lugar del sentimiento ("se levantó temprano, cansado, solo para llevarte" en lugar de "era dedicado").
+
+Por qué funciona, según la observación del método: la persona no puede imaginar "una persona famosa", y sí puede imaginar a alguien con nombre. Quien imagina la escena se queda. Cuanto más específico, más real parece, y más le cree la persona.
+
+**Regla:** Números concretos, nombres de lugares, detalles visuales. Cambia el adjetivo genérico por una escena. Donde escribiste "muchos", pon el número con fuente, o quita la frase. Donde escribiste "un mal sentimiento", describe la escena que genera ese sentimiento.
+
+## 8. La "escalera" emocional: cada frase sube un escalón
+
+No sueltes todo de una vez. Cada frase intensifica la anterior: hecho, consecuencia, consecuencia mayor, pico.
+
+**Ejemplo real (accidente):**
+1. "Papá se levantó temprano" (ternura)
+2. "Maneja con calma" (tranquilidad)
+3. "Un carro se pasa el semáforo" (choque)
+4. "Una pareja riéndose, fumando, grabando historias" (rabia)
+5. "Choca contra ustedes, pone en riesgo la vida de tu papá" (miedo y rabia intensa)
+6. "El conductor se baja peleando" (indignación máxima)
+7. "Y son esas personas las que reciben aplausos" (rebeldía)
+
+Cada paso queda por encima del anterior. Nunca baja. Dos frases seguidas en el mismo nivel piden un corte.
+
+Ejemplo inventado: si la primera frase es "mintió", la siguiente no puede ser "engañó" (mismo nivel). La siguiente sube: "y la mentira se volvió una marca de {valor con fuente}".
+
+## 9. La historia de otra persona se vuelve espejo
+
+La historia puede ser de otra persona, pero el final tiene que ser sobre QUIEN MIRA.
+
+- Cuenta la historia de alguien (famoso, personaje, caso real).
+- En el momento justo, gira la cámara hacia el público: "y a ti te pasa igual".
+- Muestra que la vida del público tiene el mismo patrón.
+
+**Ejemplos reales:**
+- "No confundas arrogancia con confianza." (va de la historia de MasterChef a TU vida)
+- "Compártelo con quien necesita verlo." (convierte al espectador en participante)
+- "Tú, que entregas valor de verdad, te quedas esperando." (sale de Tommy y viene hacia TI)
+
+Nunca termines una historia sin traerla a la vida de quien mira. Lo que el público quiere saber es sobre sí mismo. La historia es el camino. La moraleja aplicada a su vida es el destino.
+
+**Regla:** El último tercio del guion sale del personaje y viene hacia el público.
+
+## 10. Palabras que crean imágenes: las palabras de verdad
+
+Las palabras que funcionan en un guion crean una imagen en la cabeza.
+
+**Palabras que crean imagen:**
+- "riéndose, fumando, grabando historias" (ves la escena)
+- "se levantó temprano aunque estaba cansado" (imaginas al papá)
+- "un cartel gigante en Times Square" (lo visualizas)
+- "queriendo írsele encima a tu papá" (sientes la amenaza)
+
+**Palabras que NO crean imagen:**
+- "comportamiento inadecuado"
+- "individuos irresponsables"
+- "inversión en publicidad"
+- "actitud agresiva"
+
+Usa las palabras de verdad: las del día a día, incluso las "feas"; las expresiones que el público reconoce; los términos que la persona usaría contando la historia con amigos. Ejemplos: "ese tipo" en lugar de "ese individuo"; "írsele encima" en lugar de "confrontar"; "se me ocurrió la idea de mi vida en el baño" en lugar de "tuve una epifanía". Si la palabra "correcta" suena a ensayo escolar, es la equivocada.
+
+**Regla:** Verbos de acción + detalles que se ven, se oyen o se sienten > sustantivos abstractos + adjetivos genéricos.
+
+## 11. Frase corta después de frase larga
+
+Los buenos guiones alternan frases que construyen el contexto con frases cortas que detienen todo.
+
+- Contexto largo, después "Nada." (una palabra).
+- Contexto largo, después "Nadie contestó." (dos palabras).
+- Contexto largo, después "Del artista que no fui." (un pedazo de frase con peso).
+
+En la práctica: después de construir la idea en 2 o 3 frases, entrega el impacto en una frase corta. Puede ser un pedazo de frase, una contradicción o una revelación. Una frase de 2 o 3 palabras carga peso.
+
+## 12. Frases que hacen ver a la persona
+
+- "Tú conoces a esa persona que {comportamiento específico}." La persona se acuerda de alguien y ve una cara.
+- "Imagina la escena: {lugar}, {hora}, {acción}." La persona arma la imagen.
+- "Piensa en la última vez que {situación del día a día}." La persona conecta el tema con su vida.
+
+Describe el comportamiento en lugar de la personalidad: "súper amable de frente, habla mal del equipo a sus espaldas" en lugar de "persona falsa".
+
+## 13. Final ligero después de una historia pesada
+
+Cuanto más elaborada la historia, más simple el cierre.
+
+- Historia compleja y emocional, después una frase final sin pretensiones.
+- Construcción absurda, después "en fin, así fue como {cosa simple}".
+- Momento de debilidad, después una broma ligera sobre uno mismo.
+
+Según la observación del método, la distancia entre el peso del contenido y la ligereza del final hace reír, alivia y crea identificación. Cierra como quien cuenta una historia entre amigos: "y ya". La broma sobre uno mismo funciona cuando llega después de ganar confianza.
+
+## 14. Contradicción en la apertura
+
+Dos datos que no cierran juntos hacen que la persona siga para entender.
+
+- "Terapia de pareja. Sin ser pareja de verdad."
+- "Le mintió a todo el mundo y se hizo rico con eso." (mentira y éxito no cierran)
+- "No quiero que me vean. Soy muy presumido."
+
+La contradicción funciona mejor cuando las dos partes son cortas y van pegadas.
+
+## 15. Un CTA que combine con el video
+
+- Un CTA (llamado a la acción) que sigue el tema del video.
+- Intercambio: pide algo simple y ofrece algo a cambio.
+- O ningún CTA, cuando el propio contenido basta.
+
+Si el video es sobre ser auténtico, el CTA puede ser "sígueme porque hablo de lo que me gusta". Si el video enseñó algo, "comenta {palabra} y te mando {material}". Un "dale me gusta y comparte" suelto, sin relación con el tema, sale.
+
+## Regla de oro
+
+Copia la emoción y la lógica. Las palabras siempre son nuevas: del tema de la persona, de su público, de las historias reales que ella traiga.
+
+## Antes de entregar
+
+- **CE1.** El texto suena a como habla la persona, con las formas cortas de lo hablado y palabras del día a día (sección 1).
+- **CE2.** Las frases son cortas y pegan fuerte, y las largas son la excepción (sección 2).
+- **CE3.** "Y", "Entonces" y "Pero" abren frase donde suena natural (sección 3).
+- **CE4.** El texto narra la escena en lugar de describir (sección 4).
+- **CE5.** Hay un "pero" que gira la historia en el punto justo (sección 5).
+- **CE6.** Pregunta solo en el llamado final o cuando vino de un comentario (sección 6).
+- **CE7.** Detalle específico en lugar de afirmación genérica (sección 7).
+- **CE8.** La emoción sube escalón por escalón, sin bajar (sección 8).
+- **CE9.** El último tercio sale del personaje y llega a la vida de quien mira (sección 9).
+- **CE10.** Las palabras crean imagen: verbo de acción y detalle concreto (sección 10).
+- **CE11.** Después de 2 o 3 frases de contexto, el impacto llega en una frase corta (sección 11).
+- **CE12.** La persona y la situación aparecen por el comportamiento, y quien mira ve la escena (sección 12).
+- **CE13.** Después de una historia pesada, el cierre es simple y ligero (sección 13).
+- **CE14.** La contradicción, cuando se usa, tiene las dos partes cortas y pegadas (sección 14).
+- **CE15.** El CTA sigue el tema del video, o no hay CTA (sección 15).
+- **CE16.** Cada hecho dice quién hizo qué, cuánto, para qué y cuándo, si la fuente lo dice (parte 1).
+- **CE17.** El cambio de bloque parte de un pedazo concreto del bloque anterior, sin frase de transición anunciada (parte 1).
+- **CE18.** La salvedad entra dentro de la historia, en la voz de quien habla, sin aviso pegado en medio (parte 1).
+- **CE19.** La palabra de duda ("parece que", "supuestamente") aparece solo donde la duda es real, una vez, diciendo quién lo afirma (parte 1).
+- **CE20.** Cada bloque tiene una emoción definida para quien mira (parte 1).
+- **CE21.** Los elementos adictivos están en el texto, quien mira los siente, y ninguno aparece por su nombre en el guion (parte 1).
+- **CE22.** Cada bloque tiene escena, detalle y giro: el guion no se volvió una lista de puntos (parte 1).

@@ -1,4 +1,4 @@
 interface:
   display_name: Sofia
   short_description: Short video scripts and review
-  default_prompt: Use $sofia-english to work on my content in English.
+  default_prompt: Use $sofia-english to help with my short-form video, from the idea and hook to the script and critique.

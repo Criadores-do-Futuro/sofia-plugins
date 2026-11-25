@@ -1,0 +1,9 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+  "mcpServers": {
+    "sofia": {
+      "type": "streamable-http",
+      "url": "https://sofia-latam.academiacriadoresdofuturo.com.br/mcp"
+    }
+  }
+}
