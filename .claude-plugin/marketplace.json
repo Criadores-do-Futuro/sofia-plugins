@@ -8,8 +8,8 @@
     {
       "name": "sofia-br",
       "source": "./plugins/sofia-br",
-      "version": "4.0.0",
-      "description": "Writes, reviews and critiques short-form video scripts in Brazilian Portuguese using Sofia’s creator method: recording formats, script structures, hooks, attention elements and plain-language rules. Analyzes reference videos and transcripts without inventing images, speech or metrics, and learns the creator’s voice. Sofia’s own read-only tools look up the method and flag points to review in a finished script: AI-sounding phrases, banned patterns, first-sentence length and estimated speaking time. Frame-by-frame video preparation needs FFmpeg and a host that can run commands; text work needs nothing installed. Sofia works with what the person shares and never posts or publishes anything.",
+      "version": "4.0.1",
+      "description": "Writes, reviews and critiques short-form video scripts in Brazilian Portuguese using Sofia’s creator method: formats, script structures, hooks and plain-language rules. Analyzes reference videos and transcripts without inventing images, speech or metrics, and learns the creator’s voice. Read-only tools look up the method and flag points to review in a finished script. Frame-by-frame video prep needs FFmpeg. Sofia never posts or publishes anything.",
       "author": {
         "name": "Action Criação Digital Ltda"
       },
@@ -23,8 +23,8 @@
     {
       "name": "sofia-latam",
       "source": "./plugins/sofia-latam",
-      "version": "2.0.0",
-      "description": "Writes, reviews and critiques short-form video scripts in Latin American Spanish using Sofia’s creator method: recording formats, script structures, hooks, attention elements and plain-language rules. Analyzes reference videos and transcripts without inventing images, speech or metrics, and learns the creator’s voice. Sofia’s own read-only tools look up the method and flag points to review in a finished script: AI-sounding phrases, banned patterns, first-sentence length and estimated speaking time. Frame-by-frame video preparation needs FFmpeg and a host that can run commands; text work needs nothing installed. Sofia works with what the person shares and never posts or publishes anything.",
+      "version": "2.0.1",
+      "description": "Writes, reviews and critiques short-form video scripts in Latin American Spanish using Sofia’s creator method: formats, script structures, hooks and plain-language rules. Analyzes reference videos and transcripts without inventing images, speech or metrics, and learns the creator’s voice. Read-only tools look up the method and flag points to review in a finished script. Frame-by-frame video prep needs FFmpeg. Sofia never posts or publishes anything.",
       "author": {
         "name": "Action Criação Digital Ltda"
       },
@@ -38,8 +38,8 @@
     {
       "name": "sofia-english",
       "source": "./plugins/sofia-english",
-      "version": "2.0.0",
-      "description": "Writes, reviews and critiques short-form video scripts in American English using Sofia’s creator method: recording formats, script structures, hooks, attention elements and plain-language rules. Analyzes reference videos and transcripts without inventing images, speech or metrics, and learns the creator’s voice. Sofia’s own read-only tools look up the method and flag points to review in a finished script: AI-sounding phrases, banned patterns, first-sentence length and estimated speaking time. Frame-by-frame video preparation needs FFmpeg and a host that can run commands; text work needs nothing installed. Sofia works with what the person shares and never posts or publishes anything.",
+      "version": "2.0.1",
+      "description": "Writes, reviews and critiques short-form video scripts in American English using Sofia’s creator method: formats, script structures, hooks and plain-language rules. Analyzes reference videos and transcripts without inventing images, speech or metrics, and learns the creator’s voice. Read-only tools look up the method and flag points to review in a finished script. Frame-by-frame video prep needs FFmpeg. Sofia never posts or publishes anything.",
       "author": {
         "name": "Action Criação Digital Ltda"
       },

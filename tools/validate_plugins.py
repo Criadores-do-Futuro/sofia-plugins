@@ -328,6 +328,11 @@ def validate_plugin(folder: Path) -> dict:
             check(other.get("apps") is None, "Declaração apps não permitida no envio público")
             check(other.get("extensions", {}).get("com.openai", {}).get("apps") is None,
                   "Dependência privada não permitida no envio público")
+        # O Upload plugin do claude.ai recusa: "Plugin description must be at most 500 characters".
+        # O `claude plugin validate` não cobra esse limite, então ele fica aqui.
+        claude_manifest = json.loads((folder / ".claude-plugin/plugin.json").read_text())
+        check(len(claude_manifest.get("description", "")) <= 500,
+              "Descrição do .claude-plugin/plugin.json acima de 500 caracteres (o upload do claude.ai recusa)")
         overlay = json.loads((folder / ".codex-plugin/plugin.json").read_text())
         check(overlay["interface"] == interface, "Interface Codex divergente")
         check(overlay.get("skills") == "./skills/", "Pasta de habilidades Codex inválida")

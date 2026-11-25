@@ -1,5 +1,6 @@
 """Verificações de contrato, sem rede nem serviços pagos."""
 
+import json
 import re
 import shutil
 import subprocess
@@ -77,20 +78,35 @@ class PackageContractTests(unittest.TestCase):
             report = validate_plugin(ROOT / "plugins/sofia-english")
         self.assertIn("websiteURL", report["missing_listing_fields"])
 
-        # Hoje só falta o vídeo de demonstração, que a revisão inicial do MCP exige.
+        # As três listagens estão completas, com o vídeo de demonstração publicado.
         for name in NAMES:
             with self.subTest(plugin=name):
-                self.assertEqual(validate_plugin(ROOT / "plugins" / name)["missing_listing_fields"],
-                                 ["review.demo_recording_url"])
-
-        def com_video(name):
-            data = original(name)
-            data["extensions"]["com.openai"]["review"]["demo_recording_url"] = "https://example.com/demo.mp4"
-            return data
-
-        with mock.patch.object(validate_plugins, "listing", com_video), tempfile.TemporaryDirectory() as temp:
+                self.assertEqual(validate_plugin(ROOT / "plugins" / name)["missing_listing_fields"], [])
+        with tempfile.TemporaryDirectory() as temp:
             inventory = package(Path(temp), require_submission=True)
             self.assertTrue(all(row["missing_listing_fields"] == [] for row in inventory))
+
+        # Sem o vídeo, que a revisão inicial do MCP exige, o envio volta a ficar incompleto.
+        def sem_video(name):
+            data = original(name)
+            data["extensions"]["com.openai"]["review"].pop("demo_recording_url")
+            return data
+
+        with mock.patch.object(validate_plugins, "listing", sem_video):
+            report = validate_plugin(ROOT / "plugins/sofia-english")
+        self.assertEqual(report["missing_listing_fields"], ["review.demo_recording_url"])
+
+    def test_claude_upload_rejects_long_description(self):
+        # O Upload plugin do claude.ai recusa "Plugin description must be at most 500 characters".
+        with tempfile.TemporaryDirectory() as temp:
+            copia = Path(temp) / "sofia-english"
+            shutil.copytree(ROOT / "plugins/sofia-english", copia)
+            arquivo = copia / ".claude-plugin/plugin.json"
+            dados = json.loads(arquivo.read_text())
+            dados["description"] = "x" * 501
+            arquivo.write_text(json.dumps(dados))
+            report = validate_plugin(copia)
+        self.assertTrue(any("500 caracteres" in erro for erro in report["errors"]))
 
     def test_base_listing_fields_must_be_english(self):
         import validate_plugins
